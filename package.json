@@ -2,8 +2,9 @@
   "name": "kit42",
   "private": true,
   "scripts": {
-    "build": "turbo run build",
     "dev": "turbo run dev",
+    "build": "turbo run build",
+    "start": "turbo run start",
     "check:lint": "turbo run check:lint",
     "check:format": "prettier --check .",
     "check:types": "turbo run check:types",
@@ -23,6 +24,7 @@
   "packageManager": "npm@11.7.0",
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "examples/*"
   ]
 }

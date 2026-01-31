@@ -1,0 +1,7 @@
+{
+  "extends": "@kit42/tsconfig/nestjs.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": "."
+  }
+}
