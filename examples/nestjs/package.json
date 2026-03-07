@@ -1,6 +1,5 @@
 {
-  "name": "examples/nestjs",
-  "version": "0.0.1",
+  "name": "examples-nestjs",
   "description": "",
   "author": "",
   "private": true,
