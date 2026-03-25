@@ -380,10 +380,11 @@ export const baseJsRules = {
       vars: "all",
       varsIgnorePattern: /^_/.source,
       args: "after-used",
-      ignoreRestSiblings: true,
       argsIgnorePattern: /^_/.source,
       caughtErrors: "all",
       caughtErrorsIgnorePattern: /^_/.source,
+      destructuredArrayIgnorePattern: /^_/.source,
+      ignoreRestSiblings: true,
     },
   ],
   "no-unused-private-class-members": ["error"],
@@ -468,6 +469,7 @@ export const baseJsRules = {
   yoda: ["error"],
   "prefer-object-has-own": ["error"],
   "unicorn/prefer-node-protocol": ["error"],
+  // TODO: Implement the perfectionist plugin for sorting imports and exports
 } as const satisfies Partial<ESLintRules>;
 
 export const baseJs = defineConfig({
@@ -511,22 +513,34 @@ export const baseTsRules = {
   "@typescript-eslint/naming-convention": [
     "error",
     {
-      selector: "variable",
-      format: ["camelCase", "PascalCase", "UPPER_CASE"],
+      selector: "default",
+      format: ["camelCase"],
       leadingUnderscore: "allow",
-      trailingUnderscore: "allow",
+    },
+    {
+      selector: "import",
+      format: ["camelCase", "PascalCase"],
+      leadingUnderscore: "allow",
+    },
+    {
+      selector: "variable",
+      format: ["camelCase", "UPPER_CASE"],
+      leadingUnderscore: "allow",
+    },
+    {
+      selector: "variable",
+      types: ["function"],
+      format: ["camelCase", "PascalCase"],
+      leadingUnderscore: "allow",
     },
     {
       selector: "function",
       format: ["camelCase", "PascalCase"],
       leadingUnderscore: "allow",
-      trailingUnderscore: "allow",
     },
     {
       selector: "typeLike",
-      format: ["PascalCase", "UPPER_CASE"],
-      leadingUnderscore: "allow",
-      trailingUnderscore: "allow",
+      format: ["PascalCase"],
     },
   ],
 } as const satisfies Partial<ESLintRules>;
