@@ -2,7 +2,7 @@ import plugin from "eslint-plugin-perfectionist";
 import { type Linter } from "eslint";
 import { definePluginConfig } from "../utils/define-plugin-config.js";
 
-const rulesConfig = {
+const rules = {
   "sort-array-includes": ["error", { type: "natural", order: "asc" }],
   "sort-classes": ["error", { type: "natural", order: "asc" }],
   "sort-decorators": ["error", { type: "natural", order: "asc" }],
@@ -27,14 +27,17 @@ const rulesConfig = {
   "sort-variable-declarations": ["error", { type: "natural", order: "asc" }],
 } as const satisfies Linter.RulesRecord;
 
-export const { getRulesConfig, getConfig } = definePluginConfig({
-  configName: "perfectionist",
-  defaultPluginName: "perfectionist",
-  rulesConfig,
-  plugin,
-});
+export const { getRules, getConfig, getDefaultPluginName } = definePluginConfig(
+  {
+    configName: "perfectionist",
+    defaultPluginName: "perfectionist",
+    rules,
+    plugin,
+  },
+);
 
 export default {
-  getRulesConfig,
+  getRules,
   getConfig,
+  getDefaultPluginName,
 };

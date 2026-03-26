@@ -54,7 +54,7 @@ export const recommendedTypeCheckedRules = {
   "unbound-method": ["error"],
 } as const satisfies Record<string, Linter.RuleEntry>;
 
-const coreRules = coreConfig.getRulesConfig();
+const coreRules = coreConfig.getRules();
 
 const extensionRules = mapTypescriptExtensionRules({
   coreRules,
@@ -71,7 +71,7 @@ const extraRulesConfig = {
   camelcase: ["off"], // Disabled to use @typescript-eslint/naming-convention
 } as const satisfies Linter.RulesRecord;
 
-const rulesConfig = {
+const rules = {
   ...recommendedTypeCheckedRules,
   "naming-convention": [
     "error",
@@ -108,20 +108,28 @@ const rulesConfig = {
   ],
 } as const satisfies Linter.RulesRecord;
 
-export const { getRulesConfig, getConfig } = definePluginConfig({
-  configName: "typescript",
-  defaultPluginName: "@typescript-eslint",
-  rulesConfig,
-  plugin,
-  extraConfig: {
-    files: ["**/*.{mts,cts,ts,tsx}"],
-    languageOptions: {
-      parser,
-      parserOptions: {
-        projectService: true,
-        warnOnUnsupportedTypeScriptVersion: true,
+export const { getRules, getConfig, getDefaultPluginName } = definePluginConfig(
+  {
+    configName: "typescript",
+    defaultPluginName: "@typescript-eslint",
+    rules,
+    plugin,
+    extraConfig: {
+      files: ["**/*.{mts,cts,ts,tsx}"],
+      languageOptions: {
+        parser,
+        parserOptions: {
+          projectService: true,
+          warnOnUnsupportedTypeScriptVersion: true,
+        },
       },
+      rules: extraRulesConfig,
     },
-    rules: extraRulesConfig,
   },
-});
+);
+
+export default {
+  getRules,
+  getConfig,
+  getDefaultPluginName,
+};

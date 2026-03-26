@@ -2,7 +2,7 @@ import { defineConfig } from "eslint/config";
 import globals from "globals";
 import { type ESLintRules } from "eslint/rules";
 
-export const getRulesConfig = () =>
+export const getRules = () =>
   ({
     "array-callback-return": [
       "error",
@@ -489,10 +489,10 @@ export const getConfig = () =>
       reportUnusedDisableDirectives: "error",
       reportUnusedInlineConfigs: "error",
     },
-    rules: getRulesConfig(),
+    rules: getRules(),
   });
 
 export default {
   getConfig,
-  getRulesConfig,
+  getRules,
 };

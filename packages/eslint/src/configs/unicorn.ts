@@ -2,18 +2,21 @@ import plugin from "eslint-plugin-unicorn";
 import { type Linter } from "eslint";
 import { definePluginConfig } from "../utils/define-plugin-config.js";
 
-const rulesConfig = {
+const rules = {
   "prefer-node-protocol": ["error"],
 } as const satisfies Linter.RulesRecord;
 
-export const { getRulesConfig, getConfig } = definePluginConfig({
-  configName: "unicorn",
-  defaultPluginName: "unicorn",
-  rulesConfig,
-  plugin,
-});
+export const { getRules, getConfig, getDefaultPluginName } = definePluginConfig(
+  {
+    configName: "unicorn",
+    defaultPluginName: "unicorn",
+    rules,
+    plugin,
+  },
+);
 
 export default {
-  getRulesConfig,
+  getRules,
   getConfig,
+  getDefaultPluginName,
 };
