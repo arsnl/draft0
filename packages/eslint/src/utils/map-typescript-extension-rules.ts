@@ -1,5 +1,6 @@
 import { type Linter } from "eslint";
 import { type ESLintRules } from "eslint/rules";
+
 import { type Prettify } from "./typescript.js";
 
 type MutableTuple<T> = T extends readonly [...infer Items] ? Items : T;
@@ -163,7 +164,7 @@ export const mapTypescriptExtensionRules = <
   PluginName extends string = "@typescript-eslint",
   const ProvidedOverrides extends Partial<
     Record<TypescriptRuleName<CoreRules, PluginName>, Linter.RuleEntry>
-  > = {},
+  > = object,
 >(config: {
   /**
    * ESLint core rules. Only core rules listed in {@link ESLINT_CORE_RULES_EXTENDED_BY_TYPESCRIPT} are mapped; all other keys are ignored.

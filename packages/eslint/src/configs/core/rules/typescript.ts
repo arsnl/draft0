@@ -1,6 +1,7 @@
-import { parser, plugin } from "typescript-eslint";
 import { type Linter } from "eslint";
 import { defineConfig } from "eslint/config";
+import { parser, plugin } from "typescript-eslint";
+
 import { mapTypescriptExtensionRules } from "../../../utils/map-typescript-extension-rules.js";
 import { rules as eslintRules } from "./eslint.js";
 

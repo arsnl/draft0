@@ -1,14 +1,14 @@
 import { type Linter } from "eslint";
-import plugin from "eslint-plugin-unicorn";
+import plugin from "eslint-plugin-compat";
 import { defineConfig } from "eslint/config";
 
-export const rules = {
-  "unicorn/prefer-node-protocol": ["error"],
+const rules = {
+  "compat/compat": ["warn"],
 } as const satisfies Linter.RulesRecord;
 
 export const config = defineConfig({
-  name: "kit42/core/unicorn",
-  plugins: { unicorn: plugin },
+  name: "kit42/core/compat",
+  plugins: { compat: plugin },
   rules,
 });
 

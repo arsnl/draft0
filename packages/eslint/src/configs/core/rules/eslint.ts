@@ -1,6 +1,6 @@
 import { defineConfig } from "eslint/config";
-import globals from "globals";
 import { type ESLintRules } from "eslint/rules";
+import globals from "globals";
 
 export const rules = {
   "array-callback-return": [

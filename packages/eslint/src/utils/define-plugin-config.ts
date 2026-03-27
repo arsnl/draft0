@@ -1,5 +1,6 @@
-import { defineConfig } from "eslint/config";
 import { type ESLint, type Linter } from "eslint";
+import { defineConfig } from "eslint/config";
+
 import { prefixRules } from "./prefix-rules.js";
 
 export const definePluginConfig = <
