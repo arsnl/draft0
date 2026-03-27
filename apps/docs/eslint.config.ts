@@ -1,13 +1,10 @@
-import { core, perfectionist, typescript, unicorn } from "@kit42/eslint";
+import { core } from "@kit42/eslint";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 import { defineConfig, globalIgnores } from "eslint/config";
 
 const eslintConfig = defineConfig([
-  core.getConfig(),
-  typescript.getConfig(),
-  perfectionist.getConfig(),
-  unicorn.getConfig(),
+  core,
   // ...nextVitals,
   // ...nextTs,
   // Override default ignores of eslint-config-next.

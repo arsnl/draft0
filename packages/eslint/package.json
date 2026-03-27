@@ -4,8 +4,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "rm -rf dist && tsc --watch",
-    "build": "rm -rf dist && tsc --build",
+    "dev": "rm -rf dist && tsc --watch -p tsconfig.build.json",
+    "build": "rm -rf dist && tsc --build -p tsconfig.build.json",
     "check:lint": "eslint .",
     "check:types": "tsc --noEmit",
     "fix:lint": "eslint --fix ."
@@ -14,6 +14,14 @@
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
+    },
+    "./configs/*": {
+      "import": "./dist/configs/*/eslint.config.js",
+      "types": "./dist/configs/*/eslint.config.d.ts"
+    },
+    "./configs/*/rules/*": {
+      "import": "./dist/configs/*/rules/*.js",
+      "types": "./dist/configs/*/rules/*.d.ts"
     }
   },
   "devDependencies": {
