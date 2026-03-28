@@ -3,7 +3,7 @@
   // Format a file on save.
   "editor.formatOnSave": true,
   // Defines a default formatter which takes precedence over all other formatter settings.
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "oxc.oxc-vscode",
   // Code action kinds to be run on save.
   "editor.codeActionsOnSave": {
     // Controls whether auto fix action should be run on file save.

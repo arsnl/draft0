@@ -1,4 +1,4 @@
-# Configuration to use with Prettier.
+# Configuration to use with Prettier and Oxfmt.
 # Source: https://prettier.io/docs/en/configuration.html#editorconfig
 
 root = true

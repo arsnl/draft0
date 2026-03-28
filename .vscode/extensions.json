@@ -1,10 +1,8 @@
 {
   // List of extensions which should be recommended for users of this workspace.
   "recommendations": [
-    // VS Code ESLint extension
-    "dbaeumer.vscode-eslint",
-    // Prettier Formatter for Visual Studio Code
-    "esbenp.prettier-vscode",
+    // Oxlint and Oxfmt editor integration
+    "oxc.oxc-vscode",
     // EditorConfig for VS Code
     "editorconfig.editorconfig"
   ]
