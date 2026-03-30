@@ -15,12 +15,15 @@
   },
   "scripts": {
     "dev": "rm -rf dist && tsc --watch -p tsconfig.build.json",
-    "build": "rm -rf dist && tsc --build -p tsconfig.build.json",
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
     "check:lint": "oxlint .",
     "fix:lint": "eslint --fix .",
     "check:types": "tsc --noEmit"
   },
-  "dependencies": {},
+  "dependencies": {
+    "oxlint-plugin-eslint": "^1.57.0",
+    "oxlint-tsgolint": "^0.18.1"
+  },
   "devDependencies": {
     "@kit42/tsconfig": "*",
     "oxlint": "^1.57.0",
