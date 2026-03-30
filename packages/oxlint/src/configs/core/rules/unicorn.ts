@@ -1,4 +1,4 @@
-import { defineConfig, type DummyRuleMap } from "oxlint";
+import { type DummyRuleMap, type OxlintConfig } from "oxlint";
 
 export const rules = {
   "unicorn/no-await-in-promise-methods": ["error"],
@@ -14,12 +14,19 @@ export const rules = {
   "unicorn/no-useless-spread": ["error"],
   "unicorn/no-useless-undefined": ["error"],
   "unicorn/prefer-node-protocol": ["error"],
+  "unicorn/prefer-number-properties": [
+    "error",
+    {
+      checkInfinity: true,
+      checkNaN: true,
+    },
+  ],
   "unicorn/prefer-set-size": ["error"],
 } as const satisfies DummyRuleMap;
 
-export const config = defineConfig({
+export const config = {
   plugins: ["unicorn"],
   rules,
-});
+} as const satisfies OxlintConfig;
 
 export default config;

@@ -1,4 +1,4 @@
-import { defineConfig, type DummyRuleMap } from "oxlint";
+import { type DummyRuleMap, type OxlintConfig } from "oxlint";
 
 export const rules = {
   "typescript/await-thenable": ["error"],
@@ -70,12 +70,13 @@ export const rules = {
   "typescript/unbound-method": ["error"],
 } as const satisfies DummyRuleMap;
 
-export const config = defineConfig({
+export const config = {
   plugins: ["typescript"],
   options: {
     typeAware: true,
+    typeCheck: true,
   },
   rules,
-});
+} as const satisfies OxlintConfig;
 
 export default config;

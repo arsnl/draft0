@@ -1,4 +1,4 @@
-import { defineConfig, type DummyRuleMap } from "oxlint";
+import { type DummyRuleMap, type OxlintConfig } from "oxlint";
 
 export const rules = {
   "oxc/bad-array-method-on-arguments": ["error"],
@@ -16,9 +16,9 @@ export const rules = {
   "oxc/uninvoked-array-callback": ["error"],
 } as const satisfies DummyRuleMap;
 
-export const config = defineConfig({
+export const config = {
   plugins: ["oxc"],
   rules,
-});
+} as const satisfies OxlintConfig;
 
 export default config;

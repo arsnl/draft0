@@ -1,4 +1,4 @@
-import { defineConfig, type DummyRuleMap } from "oxlint";
+import { type DummyRuleMap, type OxlintConfig } from "oxlint";
 
 /**
  * ESLint rules that are not supported in Oxlint, yet.
@@ -104,9 +104,9 @@ export const rules = {
   ],
 } as const satisfies DummyRuleMap;
 
-export const config = defineConfig({
+export const config = {
   jsPlugins: ["oxlint-plugin-eslint"],
   rules,
-});
+} as const satisfies OxlintConfig;
 
 export default config;
