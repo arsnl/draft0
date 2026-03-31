@@ -33,7 +33,6 @@ export const rules = {
   "typescript/no-floating-promises": ["error"],
   "typescript/no-for-in-array": ["error"],
   "typescript/no-implied-eval": ["error"],
-  "typescript/no-import-type-side-effects": ["error"],
   "typescript/no-meaningless-void-operator": ["error"],
   "typescript/no-misused-new": ["error"],
   "typescript/no-misused-promises": ["error"],

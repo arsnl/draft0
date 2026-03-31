@@ -145,7 +145,7 @@ export const rules = {
   "eslint/no-restricted-globals": [
     "error",
     { name: "event", message: "Use local parameter instead." },
-    // Confusing globals
+    // Confusing browser globals
     ...[
       "addEventListener",
       "blur",
