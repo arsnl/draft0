@@ -11,6 +11,7 @@ import type { DummyRuleMap, OxlintConfig } from "oxlint";
  * Check updates at https://github.com/oxc-project/oxc/issues/1117 and https://oxc.rs/docs/guide/usage/linter/rules
  */
 export const rules = {
+  "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
   "import/default": ["error"],
   "import/export": ["error"],
   "import/extensions": [

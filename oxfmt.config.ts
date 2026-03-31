@@ -1,18 +1,3 @@
-import { defineConfig } from "oxfmt";
+import { defineConfig } from "@kit42/oxlint/oxfmt";
 
-export default defineConfig({
-  sortImports: {
-    newlinesBetween: false,
-    internalPattern: ["~/", "@/", "#"],
-    groups: [
-      "type",
-      "builtin",
-      "external",
-      ["internal", "subpath"],
-      ["parent", "sibling", "index"],
-      "style",
-      "unknown",
-    ],
-  },
-  sortPackageJson: true,
-});
+export default defineConfig();

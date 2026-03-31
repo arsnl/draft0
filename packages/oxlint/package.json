@@ -11,6 +11,10 @@
     "./configs/*": {
       "import": "./dist/configs/*/config.js",
       "types": "./dist/configs/*/config.d.ts"
+    },
+    "./oxfmt": {
+      "import": "./dist/oxfmt.js",
+      "types": "./dist/oxfmt.d.ts"
     }
   },
   "scripts": {
