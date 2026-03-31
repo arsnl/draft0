@@ -1,9 +1,0 @@
-{
-  "extends": "@kit42/tsconfig/base.json",
-  "compilerOptions": {
-    "noEmit": true,
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  }
-}
