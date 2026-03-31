@@ -1,5 +1,5 @@
 {
-  "name": "@kit42/oxlint",
+  "name": "@kit42/ox",
   "version": "0.0.0",
   "private": true,
   "files": [
@@ -7,17 +7,17 @@
   ],
   "type": "module",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+    "./fmt": {
+      "types": "./dist/fmt/index.d.ts",
+      "import": "./dist/fmt/index.js"
     },
-    "./configs/*": {
-      "types": "./dist/configs/*/config.d.ts",
-      "import": "./dist/configs/*/config.js"
+    "./lint": {
+      "types": "./dist/lint/index.d.ts",
+      "import": "./dist/lint/index.js"
     },
-    "./oxfmt": {
-      "types": "./dist/oxfmt.d.ts",
-      "import": "./dist/oxfmt.js"
+    "./lint/configs/*": {
+      "types": "./dist/lint/configs/*/config.d.ts",
+      "import": "./dist/lint/configs/*/config.js"
     }
   },
   "scripts": {
