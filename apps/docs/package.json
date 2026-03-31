@@ -14,7 +14,6 @@
     "react-dom": "19.2.4"
   },
   "devDependencies": {
-    "@kit42/eslint": "*",
     "@kit42/tsconfig": "*",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
