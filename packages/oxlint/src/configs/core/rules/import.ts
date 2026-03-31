@@ -26,13 +26,8 @@ export const rules = {
   "import/no-absolute-path": ["error"],
   "import/no-amd": ["error"],
   "import/no-cycle": ["error"],
-  "import/no-duplicates": [
-    "error",
-    {
-      considerQueryString: true,
-      "prefer-inline": false,
-    },
-  ],
+  // Covered by eslint/no-duplicate-imports
+  "import/no-duplicates": ["off"],
   "import/no-dynamic-require": ["error"],
   "import/no-empty-named-blocks": ["error"],
   "import/no-mutable-exports": ["error"],

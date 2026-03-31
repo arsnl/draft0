@@ -70,6 +70,12 @@ export const rules = {
   "eslint/no-dupe-else-if": ["error"],
   "eslint/no-dupe-keys": ["error"],
   "eslint/no-duplicate-case": ["error"],
+  "eslint/no-duplicate-imports": [
+    "error",
+    {
+      allowSeparateTypeImports: true,
+    },
+  ],
   "eslint/no-else-return": [
     "error",
     {
@@ -313,6 +319,14 @@ export const rules = {
   radix: ["error"],
   "eslint/require-await": ["error"],
   "eslint/require-yield": ["error"],
+  // Only used for sorting import members since oxfmt don't support it yet.
+  "eslint/sort-imports": [
+    "error",
+    {
+      ignoreCase: true,
+      ignoreDeclarationSort: true, // let oxfmt handle this
+    },
+  ],
   "eslint/symbol-description": ["error"],
   "eslint/unicode-bom": ["error", "never"],
   "eslint/use-isnan": ["error"],
