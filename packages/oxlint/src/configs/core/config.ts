@@ -1,10 +1,10 @@
 import type { OxlintConfig } from "oxlint";
-import { config as eslintConfig } from "./rules/eslint.ts";
 import { config as eslintJsConfig } from "./rules/eslint-js.ts";
+import { config as eslintConfig } from "./rules/eslint.ts";
+import { config as importConfig } from "./rules/import.ts";
+import { config as oxcConfig } from "./rules/oxc.ts";
 import { config as typeScriptConfig } from "./rules/typescript.ts";
 import { config as unicornConfig } from "./rules/unicorn.ts";
-import { config as oxcConfig } from "./rules/oxc.ts";
-import { config as importConfig } from "./rules/import.ts";
 
 export const config = {
   extends: [

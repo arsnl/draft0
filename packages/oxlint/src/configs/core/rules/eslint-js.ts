@@ -1,4 +1,4 @@
-import { type DummyRuleMap, type OxlintConfig } from "oxlint";
+import type { DummyRuleMap, OxlintConfig } from "oxlint";
 
 /**
  * ESLint rules that are not supported in Oxlint, yet.

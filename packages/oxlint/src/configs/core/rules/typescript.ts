@@ -1,4 +1,4 @@
-import { type DummyRuleMap, type OxlintConfig } from "oxlint";
+import type { DummyRuleMap, OxlintConfig } from "oxlint";
 
 export const rules = {
   "typescript/await-thenable": ["error"],
@@ -12,13 +12,13 @@ export const rules = {
   "typescript/consistent-type-exports": [
     "error",
     {
-      fixMixedExportsWithInlineTypeSpecifier: true,
+      fixMixedExportsWithInlineTypeSpecifier: false,
     },
   ],
   "typescript/consistent-type-imports": [
     "error",
     {
-      fixStyle: "inline-type-imports",
+      fixStyle: "separate-type-imports",
       prefer: "type-imports",
     },
   ],
@@ -33,6 +33,7 @@ export const rules = {
   "typescript/no-floating-promises": ["error"],
   "typescript/no-for-in-array": ["error"],
   "typescript/no-implied-eval": ["error"],
+  "typescript/no-import-type-side-effects": ["error"],
   "typescript/no-meaningless-void-operator": ["error"],
   "typescript/no-misused-new": ["error"],
   "typescript/no-misused-promises": ["error"],

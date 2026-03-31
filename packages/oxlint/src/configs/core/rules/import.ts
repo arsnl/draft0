@@ -1,4 +1,4 @@
-import { type DummyRuleMap, type OxlintConfig } from "oxlint";
+import type { DummyRuleMap, OxlintConfig } from "oxlint";
 
 /**
  * Unsupported rules
@@ -30,7 +30,7 @@ export const rules = {
     "error",
     {
       considerQueryString: true,
-      "prefer-inline": true,
+      "prefer-inline": false,
     },
   ],
   "import/no-dynamic-require": ["error"],

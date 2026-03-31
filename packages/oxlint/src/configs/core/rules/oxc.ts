@@ -1,4 +1,4 @@
-import { type DummyRuleMap, type OxlintConfig } from "oxlint";
+import type { DummyRuleMap, OxlintConfig } from "oxlint";
 
 export const rules = {
   "oxc/bad-array-method-on-arguments": ["error"],

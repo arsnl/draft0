@@ -16,8 +16,8 @@
   "scripts": {
     "dev": "rm -rf dist && tsc --watch -p tsconfig.build.json",
     "build": "rm -rf dist && tsc -p tsconfig.build.json",
-    "check:lint": "oxlint .",
-    "fix:lint": "eslint --fix .",
+    "check:lint": "oxlint",
+    "fix:lint": "oxlint --fix",
     "check:types": "tsc --noEmit"
   },
   "dependencies": {
