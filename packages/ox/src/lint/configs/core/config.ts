@@ -3,6 +3,7 @@ import { config as eslintJsConfig } from "./rules/eslint-js.ts";
 import { config as eslintConfig } from "./rules/eslint.ts";
 import { config as importConfig } from "./rules/import.ts";
 import { config as oxcConfig } from "./rules/oxc.ts";
+import { config as promiseConfig } from "./rules/promise.ts";
 import { config as typeScriptConfig } from "./rules/typescript.ts";
 import { config as unicornConfig } from "./rules/unicorn.ts";
 
@@ -11,9 +12,10 @@ export const config = {
     eslintConfig,
     eslintJsConfig,
     typeScriptConfig,
-    unicornConfig,
-    oxcConfig,
     importConfig,
+    oxcConfig,
+    promiseConfig,
+    unicornConfig,
   ],
   /* disable all categories so that we can enable them selectively */
   categories: {
