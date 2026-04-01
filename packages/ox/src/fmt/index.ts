@@ -2,6 +2,9 @@ import type { OxfmtConfig } from "oxfmt";
 import { defineConfig as defineOxfmtConfig } from "oxfmt";
 
 export const config = {
+  jsdoc: {
+    separateReturnsFromParam: true,
+  },
   sortImports: {
     newlinesBetween: false,
     internalPattern: ["~/", "@/", "#"],

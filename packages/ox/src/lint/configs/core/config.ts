@@ -2,6 +2,7 @@ import type { OxlintConfig } from "oxlint";
 import { config as eslintJsConfig } from "./rules/eslint-js.ts";
 import { config as eslintConfig } from "./rules/eslint.ts";
 import { config as importConfig } from "./rules/import.ts";
+import { config as jsdocConfig } from "./rules/jsdoc.ts";
 import { config as oxcConfig } from "./rules/oxc.ts";
 import { config as promiseConfig } from "./rules/promise.ts";
 import { config as typeScriptConfig } from "./rules/typescript.ts";
@@ -13,6 +14,7 @@ export const config = {
     eslintJsConfig,
     typeScriptConfig,
     importConfig,
+    jsdocConfig,
     oxcConfig,
     promiseConfig,
     unicornConfig,
