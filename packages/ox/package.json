@@ -14,10 +14,6 @@
     "./lint": {
       "types": "./dist/lint/index.d.ts",
       "import": "./dist/lint/index.js"
-    },
-    "./lint/configs/*": {
-      "types": "./dist/lint/configs/*/config.d.ts",
-      "import": "./dist/lint/configs/*/config.js"
     }
   },
   "scripts": {
