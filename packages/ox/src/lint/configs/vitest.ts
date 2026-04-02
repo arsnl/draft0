@@ -1,5 +1,49 @@
 import type { DummyRuleMap, OxlintConfig } from "oxlint";
+import { getCompatibleRules } from "../utils/get-compatible-rules.ts";
 import { rules as jestRules } from "./jest.ts";
+
+const compatibleJestRules = getCompatibleRules({
+  source: jestRules,
+  sourcePrefix: "jest/",
+  targetPrefix: "vitest/",
+  rules: [
+    "expect-expect",
+    "no-alias-methods",
+    "no-commented-out-tests",
+    "no-conditional-expect",
+    "no-disabled-tests",
+    "no-duplicate-hooks",
+    "no-focused-tests",
+    "no-identical-title",
+    "no-interpolation-in-snapshots",
+    "no-large-snapshots",
+    "no-mocks-import",
+    "no-restricted-matchers",
+    "no-standalone-expect",
+    "no-test-prefixes",
+    "no-test-return-statement",
+    "prefer-called-with",
+    "prefer-comparison-matcher",
+    "prefer-each",
+    "prefer-equality-matcher",
+    "prefer-expect-resolves",
+    "prefer-hooks-in-order",
+    "prefer-hooks-on-top",
+    "prefer-lowercase-title",
+    "prefer-mock-promise-shorthand",
+    "prefer-spy-on",
+    "prefer-strict-equal",
+    "prefer-to-be",
+    "prefer-to-contain",
+    "prefer-to-have-length",
+    "prefer-todo",
+    "require-to-throw-message",
+    "require-top-level-describe",
+    "valid-describe-callback",
+    "valid-expect",
+    "valid-title",
+  ],
+});
 
 export const rules = {
   // Disabled: mock callbacks often need empty functions
@@ -9,47 +53,7 @@ export const rules = {
   // Disabled: conflicts with vitest/prefer-called-times — both rules enforce opposite styles
   "vitest/prefer-called-once": ["off"],
 
-  // TODO: Write a getCompatibleRules function to cover this kind of scenario.
-  // Compatible with Jest rules
-  "vitest/expect-expect": jestRules["jest/expect-expect"],
-  "vitest/no-alias-methods": jestRules["jest/no-alias-methods"],
-  "vitest/no-commented-out-tests": jestRules["jest/no-commented-out-tests"],
-  "vitest/no-conditional-expect": jestRules["jest/no-conditional-expect"],
-  "vitest/no-disabled-tests": jestRules["jest/no-disabled-tests"],
-  "vitest/no-duplicate-hooks": jestRules["jest/no-duplicate-hooks"],
-  "vitest/no-focused-tests": jestRules["jest/no-focused-tests"],
-  "vitest/no-identical-title": jestRules["jest/no-identical-title"],
-  "vitest/no-interpolation-in-snapshots":
-    jestRules["jest/no-interpolation-in-snapshots"],
-  "vitest/no-large-snapshots": jestRules["jest/no-large-snapshots"],
-  "vitest/no-mocks-import": jestRules["jest/no-mocks-import"],
-  "vitest/no-restricted-matchers": jestRules["jest/no-restricted-matchers"],
-  "vitest/no-standalone-expect": jestRules["jest/no-standalone-expect"],
-  "vitest/no-test-prefixes": jestRules["jest/no-test-prefixes"],
-  "vitest/no-test-return-statement": jestRules["jest/no-test-return-statement"],
-  "vitest/prefer-called-with": jestRules["jest/prefer-called-with"],
-  "vitest/prefer-comparison-matcher":
-    jestRules["jest/prefer-comparison-matcher"],
-  "vitest/prefer-each": jestRules["jest/prefer-each"],
-  "vitest/prefer-equality-matcher": jestRules["jest/prefer-equality-matcher"],
-  "vitest/prefer-expect-resolves": jestRules["jest/prefer-expect-resolves"],
-  "vitest/prefer-hooks-in-order": jestRules["jest/prefer-hooks-in-order"],
-  "vitest/prefer-hooks-on-top": jestRules["jest/prefer-hooks-on-top"],
-  "vitest/prefer-lowercase-title": jestRules["jest/prefer-lowercase-title"],
-  "vitest/prefer-mock-promise-shorthand":
-    jestRules["jest/prefer-mock-promise-shorthand"],
-  "vitest/prefer-spy-on": jestRules["jest/prefer-spy-on"],
-  "vitest/prefer-strict-equal": jestRules["jest/prefer-strict-equal"],
-  "vitest/prefer-to-be": jestRules["jest/prefer-to-be"],
-  "vitest/prefer-to-contain": jestRules["jest/prefer-to-contain"],
-  "vitest/prefer-to-have-length": jestRules["jest/prefer-to-have-length"],
-  "vitest/prefer-todo": jestRules["jest/prefer-todo"],
-  "vitest/require-to-throw-message": jestRules["jest/require-to-throw-message"],
-  "vitest/require-top-level-describe":
-    jestRules["jest/require-top-level-describe"],
-  "vitest/valid-describe-callback": jestRules["jest/valid-describe-callback"],
-  "vitest/valid-expect": jestRules["jest/valid-expect"],
-  "vitest/valid-title": jestRules["jest/valid-title"],
+  ...compatibleJestRules,
 
   "vitest/consistent-each-for": ["error"],
   "vitest/consistent-test-filename": ["error"],
