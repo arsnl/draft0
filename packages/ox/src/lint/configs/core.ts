@@ -506,6 +506,18 @@ export const rules = {
   "jsdoc/require-returns-type": ["off"],
   "jsdoc/require-returns": ["error"],
   "jsdoc/require-yields": ["error"],
+  // TODO: Validate node rules
+  "node/global-require": ["off"],
+  // TODO: Validate node rules
+  "node/handle-callback-err": ["off"],
+  // TODO: Validate node rules
+  "node/no-exports-assign": ["off"],
+  // TODO: Validate node rules
+  "node/no-new-require": ["off"],
+  // TODO: Validate node rules
+  "node/no-path-concat": ["off"],
+  // TODO: Validate node rules
+  "node/no-process-env": ["off"],
   "oxc/approx-constant": ["error"],
   "oxc/bad-array-method-on-arguments": ["error"],
   "oxc/bad-bitwise-operator": ["error"],
@@ -933,7 +945,7 @@ export const config = {
     typeAware: true,
     typeCheck: true,
   },
-  plugins: ["eslint", "import", "jsdoc", "oxc", "promise", "typescript", "unicorn"],
+  plugins: ["eslint", "import", "jsdoc", "node", "oxc", "promise", "typescript", "unicorn"],
   jsPlugins: ["oxlint-plugin-eslint"],
   rules,
 } as const satisfies OxlintConfig;
