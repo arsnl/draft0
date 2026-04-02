@@ -3,12 +3,12 @@ import type { DummyRuleMap, OxlintConfig } from "oxlint";
 /**
  * Unsupported rules
  *
- * As of 2026-03-30, the following rules are not supported by oxlint yet:
- * - import/newline-after-import
- * - import/no-extraneous-dependencies
- * - import/no-useless-path-segments
+ * As of 2026-03-30, the following rules are not supported by oxlint yet: -
+ * import/newline-after-import - import/no-extraneous-dependencies -
+ * import/no-useless-path-segments
  *
- * Check updates at https://github.com/oxc-project/oxc/issues/1117 and https://oxc.rs/docs/guide/usage/linter/rules
+ * Check updates at https://github.com/oxc-project/oxc/issues/1117 and
+ * https://oxc.rs/docs/guide/usage/linter/rules
  */
 export const rules = {
   "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
@@ -27,7 +27,7 @@ export const rules = {
   "import/no-absolute-path": ["error"],
   "import/no-amd": ["error"],
   "import/no-cycle": ["error"],
-  // Covered by eslint/no-duplicate-imports
+  // Disabled: covered by eslint/no-duplicate-imports
   "import/no-duplicates": ["off"],
   "import/no-dynamic-require": ["error"],
   "import/no-empty-named-blocks": ["error"],
@@ -37,6 +37,8 @@ export const rules = {
   "import/no-named-default": ["error"],
   "import/no-namespace": ["error"],
   "import/no-self-import": ["error"],
+  // Disabled: TODO
+  "import/no-unassigned-import": ["off"],
   "import/no-webpack-loader-syntax": ["error"],
   "import/unambiguous": ["error"],
 } as const satisfies DummyRuleMap;

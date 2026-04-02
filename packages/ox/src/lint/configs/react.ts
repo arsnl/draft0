@@ -49,14 +49,16 @@ export const reactRules = {
   "react/no-string-refs": ["error"],
   "react/no-this-in-sfc": ["error"],
   "react/no-unescaped-entities": ["error"],
-  // Disabled: TODO
-  "react/no-unknown-property": ["off"],
+  "react/no-unknown-property": [
+    "error",
+    { ignore: ["css", "jsx", "global"], requireDataLowercase: true },
+  ],
   "react/no-unsafe": ["error"],
   "react/no-will-update-set-state": ["error"],
   // Disabled: TODO
   "react/only-export-components": ["off"],
   "react/prefer-es6-class": ["error"],
-  // Disabled: TODO
+  // Disabled: not needed on React 17+ with new JSX transform
   "react/react-in-jsx-scope": ["off"],
   "react/require-render-return": ["error"],
   "react/rules-of-hooks": ["error"],
@@ -77,7 +79,7 @@ export const reactPerfRules = {
 } as const satisfies DummyRuleMap;
 
 export const jsxA11yRules = {
-  "jsx-a11y/alt-text": ["error"],
+  "jsx-a11y/alt-text": ["error", { img: ["Image"] }],
   "jsx-a11y/anchor-ambiguous-text": ["error"],
   "jsx-a11y/anchor-has-content": ["error"],
   "jsx-a11y/anchor-is-valid": ["error"],
