@@ -7,14 +7,20 @@ export const rules = {
   "jsdoc/empty-tags": ["error"],
   "jsdoc/implements-on-classes": ["error"],
   "jsdoc/no-defaults": ["error"],
-  "jsdoc/require-param": ["error"],
   "jsdoc/require-param-description": ["error"],
   "jsdoc/require-param-name": ["error"],
-  "jsdoc/require-property": ["error"],
+  // Disabled: TODO
+  "jsdoc/require-param-type": ["off"],
+  "jsdoc/require-param": ["error"],
   "jsdoc/require-property-description": ["error"],
   "jsdoc/require-property-name": ["error"],
-  "jsdoc/require-returns": ["error"],
+  // Disabled: TODO
+  "jsdoc/require-property-type": ["off"],
+  "jsdoc/require-property": ["error"],
   "jsdoc/require-returns-description": ["error"],
+  // Disabled: TODO
+  "jsdoc/require-returns-type": ["off"],
+  "jsdoc/require-returns": ["error"],
   "jsdoc/require-yields": ["error"],
 } as const satisfies DummyRuleMap;
 

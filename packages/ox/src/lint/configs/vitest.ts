@@ -48,7 +48,7 @@ const compatibleJestRules = getCompatibleRules({
 const rules = {
   // Disabled: mock callbacks often need empty functions
   "eslint/no-empty-function": ["off"],
-  // Disabled: mock factories use Promise.resolve/reject (conflicts with require-await)
+  // Disabled: mock factories use Promise.resolve/reject
   "promise/prefer-await-to-then": ["off"],
   "vitest/consistent-each-for": ["error"],
   "vitest/consistent-test-filename": ["error"],

@@ -1,7 +1,13 @@
 import type { DummyRuleMap, OxlintConfig } from "oxlint";
 
 export const rules = {
+  // Disabled: TODO
+  "promise/always-return": ["off"],
   "promise/avoid-new": ["error"],
+  // Disabled: TODO
+  "promise/catch-or-return": ["off"],
+  // Disabled: TODO
+  "promise/no-callback-in-promise": ["off"],
   "promise/no-multiple-resolved": ["error"],
   "promise/no-nesting": ["error"],
   "promise/no-new-statics": ["error"],

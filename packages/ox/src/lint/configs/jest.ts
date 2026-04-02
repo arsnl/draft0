@@ -60,7 +60,7 @@ const rules = {
   "jest/valid-describe-callback": ["error"],
   "jest/valid-expect": ["error"],
   "jest/valid-title": ["error"],
-  // Disabled: bun:test mock factories return Promise.resolve/reject
+  // Disabled: mock factories use Promise.resolve/reject
   "promise/prefer-await-to-then": ["off"],
 } as const satisfies DummyRuleMap;
 
