@@ -1,6 +1,8 @@
 import type { DummyRuleMap, OxlintConfig } from "oxlint";
 
 export const rules = {
+  // Disabled: TODO
+  "eslint/accessor-pairs": ["off"],
   "eslint/array-callback-return": [
     "error",
     {
@@ -17,19 +19,27 @@ export const rules = {
     },
   ],
   "eslint/block-scoped-var": ["error"],
-  curly: ["error", "all"],
+  // Disabled: TODO
+  "eslint/capitalized-comments": ["off"],
+  // Disabled: TODO
+  "eslint/class-methods-use-this": ["off"],
+  // Disabled: TODO
+  "eslint/complexity": ["off"],
   "eslint/constructor-super": ["error"],
+  "eslint/curly": ["error", "all"],
+  "eslint/default-case-last": ["error"],
   "eslint/default-case": [
     "error",
     {
       commentPattern: "^no default$",
     },
   ],
-  "eslint/default-case-last": ["error"],
   "eslint/default-param-last": ["error"],
-  eqeqeq: ["error", "always"],
+  "eslint/eqeqeq": ["error", "always"],
   "eslint/for-direction": ["error"],
   "eslint/func-names": ["warn", "as-needed"],
+  // Disabled: TODO
+  "eslint/func-style": ["off"],
   "eslint/getter-return": ["error"],
   "eslint/grouped-accessor-pairs": [
     "error",
@@ -39,6 +49,24 @@ export const rules = {
     },
   ],
   "eslint/guard-for-in": ["error"],
+  // Disabled: TODO
+  "eslint/id-length": ["off"],
+  // Disabled: TODO
+  "eslint/init-declarations": ["off"],
+  // Disabled: TODO
+  "eslint/max-classes-per-file": ["off"],
+  // Disabled: TODO
+  "eslint/max-depth": ["off"],
+  // Disabled: TODO
+  "eslint/max-lines-per-function": ["off"],
+  // Disabled: TODO
+  "eslint/max-lines": ["off"],
+  // Disabled: TODO
+  "eslint/max-nested-callbacks": ["off"],
+  // Disabled: TODO
+  "eslint/max-params": ["off"],
+  // Disabled: TODO
+  "eslint/max-statements": ["off"],
   "eslint/new-cap": [
     "error",
     {
@@ -66,6 +94,8 @@ export const rules = {
   "eslint/no-control-regex": ["error"],
   "eslint/no-debugger": ["error"],
   "eslint/no-delete-var": ["error"],
+  // Disabled: TODO
+  "eslint/no-div-regex": ["off"],
   "eslint/no-dupe-class-members": ["error"],
   "eslint/no-dupe-else-if": ["error"],
   "eslint/no-dupe-keys": ["error"],
@@ -82,17 +112,19 @@ export const rules = {
       allowElseIf: false,
     },
   ],
+  "eslint/no-empty-character-class": ["error"],
+  "eslint/no-empty-function": ["error"],
+  "eslint/no-empty-pattern": ["error"],
+  "eslint/no-empty-static-block": ["error"],
   "eslint/no-empty": [
     "error",
     {
       allowEmptyCatch: true,
     },
   ],
-  "eslint/no-empty-character-class": ["error"],
-  "eslint/no-empty-function": ["error"],
-  "eslint/no-empty-pattern": ["error"],
+  // Disabled: TODO
+  "eslint/no-eq-null": ["off"],
   "eslint/no-eval": ["error"],
-  "eslint/no-empty-static-block": ["error"],
   "eslint/no-ex-assign": ["error"],
   "eslint/no-extend-native": ["error"],
   "eslint/no-extra-bind": ["error"],
@@ -101,7 +133,11 @@ export const rules = {
   "eslint/no-fallthrough": ["error"],
   "eslint/no-func-assign": ["error"],
   "eslint/no-global-assign": ["error"],
+  // Disabled: TODO
+  "eslint/no-implicit-coercion": ["off"],
   "eslint/no-import-assign": ["error"],
+  // Disabled: TODO
+  "eslint/no-inline-comments": ["off"],
   "eslint/no-inner-declarations": ["error"],
   "eslint/no-invalid-regexp": ["error"],
   "eslint/no-irregular-whitespace": ["error"],
@@ -112,27 +148,26 @@ export const rules = {
   "eslint/no-lonely-if": ["error"],
   "eslint/no-loop-func": ["error"],
   "eslint/no-loss-of-precision": ["error"],
+  // Disabled: TODO
+  "eslint/no-magic-numbers": ["off"],
   "eslint/no-misleading-character-class": ["error"],
   "eslint/no-multi-assign": ["error"],
   "eslint/no-multi-str": ["error"],
-  "eslint/no-new": ["error"],
+  // Disabled: TODO
+  "eslint/no-negated-condition": ["off"],
+  // Disabled: TODO
+  "eslint/no-nested-ternary": ["off"],
   "eslint/no-new-func": ["error"],
   "eslint/no-new-native-nonconstructor": ["error"],
   "eslint/no-new-wrappers": ["error"],
+  "eslint/no-new": ["error"],
   "eslint/no-nonoctal-decimal-escape": ["error"],
   "eslint/no-obj-calls": ["error"],
   "eslint/no-object-constructor": ["error"],
   "eslint/no-param-reassign": [
     "error",
     {
-      ignorePropertyModificationsFor: [
-        "ctx",
-        "context",
-        "req",
-        "request",
-        "res",
-        "response",
-      ],
+      ignorePropertyModificationsFor: ["ctx", "context", "req", "request", "res", "response"],
       props: true,
     },
   ],
@@ -209,6 +244,8 @@ export const rules = {
       message: `Use window.${name} instead.`,
     })),
   ],
+  // Disabled: TODO
+  "eslint/no-restricted-imports": ["off"],
   "eslint/no-return-assign": ["error", "always"],
   "eslint/no-script-url": ["error"],
   "eslint/no-self-assign": [
@@ -220,27 +257,33 @@ export const rules = {
   "eslint/no-self-compare": ["error"],
   "eslint/no-sequences": ["error"],
   "eslint/no-setter-return": ["error"],
-  "eslint/no-shadow": ["error"],
   "eslint/no-shadow-restricted-names": [
     "error",
     {
       reportGlobalThis: true,
     },
   ],
+  "eslint/no-shadow": ["error"],
   "eslint/no-sparse-arrays": ["error"],
   "eslint/no-template-curly-in-string": ["error"],
+  // Disabled: TODO
+  "eslint/no-ternary": ["off"],
   "eslint/no-this-before-super": ["error"],
   "eslint/no-throw-literal": ["error"],
   "eslint/no-unassigned-vars": ["error"],
   // TODO: Activate when it is ready. In nursery and not ready yet. Mark global variables as undefined.
-  // "eslint/no-undef": ["error"],
+  "eslint/no-undef": ["off"],
+  // Disabled: TODO
+  "eslint/no-undefined": ["off"],
+  "eslint/no-unexpected-multiline": ["error"],
+  // Disabled: TODO
+  "eslint/no-unmodified-loop-condition": ["off"],
   "eslint/no-unneeded-ternary": [
     "error",
     {
       defaultAssignment: false,
     },
   ],
-  "eslint/no-unexpected-multiline": ["error"],
   "eslint/no-unreachable": ["error"],
   "eslint/no-unsafe-finally": ["error"],
   "eslint/no-unsafe-negation": ["error"],
@@ -260,6 +303,7 @@ export const rules = {
     },
   ],
   "eslint/no-unused-labels": ["error"],
+  "eslint/no-unused-private-class-members": ["error"],
   "eslint/no-unused-vars": [
     "warn",
     {
@@ -273,8 +317,11 @@ export const rules = {
       ignoreRestSiblings: true,
     },
   ],
-  "eslint/no-unused-private-class-members": ["error"],
+  // Disabled: TODO
+  "eslint/no-use-before-define": ["off"],
   "eslint/no-useless-backreference": ["error"],
+  // Disabled: TODO
+  "eslint/no-useless-call": ["off"],
   "eslint/no-useless-catch": ["error"],
   "eslint/no-useless-computed-key": ["error"],
   "eslint/no-useless-concat": ["error"],
@@ -283,6 +330,10 @@ export const rules = {
   "eslint/no-useless-rename": ["error"],
   "eslint/no-useless-return": ["error"],
   "eslint/no-var": ["error"],
+  // Disabled: TODO
+  "eslint/no-void": ["off"],
+  // Disabled: TODO
+  "eslint/no-warning-comments": ["off"],
   "eslint/no-with": ["error"],
   "eslint/operator-assignment": ["error", "always"],
   "eslint/prefer-const": [
@@ -295,14 +346,8 @@ export const rules = {
   "eslint/prefer-destructuring": [
     "error",
     {
-      AssignmentExpression: {
-        array: true,
-        object: false,
-      },
-      VariableDeclarator: {
-        array: false,
-        object: true,
-      },
+      AssignmentExpression: { array: true, object: false },
+      VariableDeclarator: { array: false, object: true },
     },
     {
       enforceForRenamedProperties: false,
@@ -310,13 +355,14 @@ export const rules = {
   ],
   "eslint/prefer-exponentiation-operator": ["error"],
   "eslint/prefer-numeric-literals": ["error"],
+  "eslint/prefer-object-has-own": ["error"],
   "eslint/prefer-object-spread": ["error"],
   "eslint/prefer-promise-reject-errors": ["error"],
   "eslint/prefer-rest-params": ["error"],
   "eslint/prefer-spread": ["error"],
   "eslint/prefer-template": ["error"],
   "eslint/preserve-caught-error": ["error"],
-  radix: ["error"],
+  "eslint/radix": ["error"],
   "eslint/require-await": ["error"],
   "eslint/require-yield": ["error"],
   // Only used for sorting import members since oxfmt don't support it yet.
@@ -324,9 +370,13 @@ export const rules = {
     "error",
     {
       ignoreCase: true,
-      ignoreDeclarationSort: true, // let oxfmt handle this
+      ignoreDeclarationSort: true,
     },
   ],
+  // Disabled: TODO
+  "eslint/sort-keys": ["off"],
+  // Disabled: TODO
+  "eslint/sort-vars": ["off"],
   "eslint/symbol-description": ["error"],
   "eslint/unicode-bom": ["error", "never"],
   "eslint/use-isnan": ["error"],
@@ -337,8 +387,7 @@ export const rules = {
     },
   ],
   "eslint/vars-on-top": ["error"],
-  yoda: ["error"],
-  "eslint/prefer-object-has-own": ["error"],
+  "eslint/yoda": ["error"],
 } as const satisfies DummyRuleMap;
 
 export const config = {
