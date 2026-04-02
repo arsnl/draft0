@@ -2,13 +2,6 @@ import type { DummyRuleMap, OxlintConfig } from "oxlint";
 import { getCompatibleRules } from "../utils/get-compatible-rules.ts";
 import { config as jestConfig } from "./jest.ts";
 
-const coreRules = {
-  // Disabled: mock callbacks often need empty functions
-  "no-empty-function": ["off"],
-  // Disabled: mock factories use Promise.resolve/reject (conflicts with require-await)
-  "promise/prefer-await-to-then": ["off"],
-} as const satisfies DummyRuleMap;
-
 const compatibleJestRules = getCompatibleRules({
   source: jestConfig.overrides[0].rules,
   sourcePrefix: "jest/",
@@ -52,7 +45,11 @@ const compatibleJestRules = getCompatibleRules({
   ],
 });
 
-const vitestRules = {
+const rules = {
+  // Disabled: mock callbacks often need empty functions
+  "eslint/no-empty-function": ["off"],
+  // Disabled: mock factories use Promise.resolve/reject (conflicts with require-await)
+  "promise/prefer-await-to-then": ["off"],
   "vitest/consistent-each-for": ["error"],
   "vitest/consistent-test-filename": ["error"],
   "vitest/consistent-vitest-vi": ["error"],
@@ -77,12 +74,7 @@ const vitestRules = {
   "vitest/require-mock-type-parameters": ["error"],
   "vitest/require-test-timeout": ["error"],
   "vitest/warn-todo": ["error"],
-};
-
-export const rules = {
-  ...coreRules,
   ...compatibleJestRules,
-  ...vitestRules,
 } as const satisfies DummyRuleMap;
 
 export const config = {

@@ -1,6 +1,6 @@
 import type { DummyRuleMap, OxlintConfig } from "oxlint";
 
-const vueRules = {
+const rules = {
   "vue/define-emits-declaration": ["error"],
   "vue/define-props-declaration": ["error"],
   "vue/define-props-destructuring": ["error"],
@@ -18,10 +18,6 @@ const vueRules = {
   "vue/require-typed-ref": ["error"],
   "vue/valid-define-emits": ["error"],
   "vue/valid-define-props": ["error"],
-} as const satisfies DummyRuleMap;
-
-export const rules = {
-  ...vueRules,
 } as const satisfies DummyRuleMap;
 
 export const config = {

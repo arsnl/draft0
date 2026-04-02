@@ -1,6 +1,47 @@
 import type { DummyRuleMap, OxlintConfig } from "oxlint";
 
-const reactRules = {
+const rules = {
+  "jsx-a11y/alt-text": [
+    "error",
+    {
+      img: ["Image"],
+    },
+  ],
+  "jsx-a11y/anchor-ambiguous-text": ["error"],
+  "jsx-a11y/anchor-has-content": ["error"],
+  "jsx-a11y/anchor-is-valid": ["error"],
+  "jsx-a11y/aria-activedescendant-has-tabindex": ["error"],
+  "jsx-a11y/aria-props": ["error"],
+  "jsx-a11y/aria-proptypes": ["error"],
+  "jsx-a11y/aria-role": ["error"],
+  "jsx-a11y/aria-unsupported-elements": ["error"],
+  "jsx-a11y/autocomplete-valid": ["error"],
+  "jsx-a11y/click-events-have-key-events": ["error"],
+  "jsx-a11y/heading-has-content": ["error"],
+  "jsx-a11y/html-has-lang": ["error"],
+  "jsx-a11y/iframe-has-title": ["error"],
+  "jsx-a11y/img-redundant-alt": ["error"],
+  "jsx-a11y/label-has-associated-control": ["error"],
+  "jsx-a11y/lang": ["error"],
+  "jsx-a11y/media-has-caption": ["error"],
+  "jsx-a11y/mouse-events-have-key-events": ["error"],
+  "jsx-a11y/no-access-key": ["error"],
+  "jsx-a11y/no-aria-hidden-on-focusable": ["error"],
+  "jsx-a11y/no-autofocus": [
+    "error",
+    {
+      ignoreNonDOM: true,
+    },
+  ],
+  "jsx-a11y/no-distracting-elements": ["error"],
+  "jsx-a11y/no-noninteractive-tabindex": ["error"],
+  "jsx-a11y/no-redundant-roles": ["error"],
+  "jsx-a11y/no-static-element-interactions": ["error"],
+  "jsx-a11y/prefer-tag-over-role": ["error"],
+  "jsx-a11y/role-has-required-aria-props": ["error"],
+  "jsx-a11y/role-supports-aria-props": ["error"],
+  "jsx-a11y/scope": ["error"],
+  "jsx-a11y/tabindex-no-positive": ["error"],
   "react/button-has-type": ["error"],
   "react/checked-requires-onchange-or-readonly": ["error"],
   "react/display-name": ["error"],
@@ -77,9 +118,6 @@ const reactRules = {
   "react/state-in-constructor": ["error"],
   "react/style-prop-object": ["error"],
   "react/void-dom-elements-no-children": ["error"],
-} as const satisfies DummyRuleMap;
-
-const reactPerfRules = {
   // Disabled: let the React compiler enforce this
   "react-perf/jsx-no-jsx-as-prop": ["off"],
   // Disabled: let the React compiler enforce this
@@ -88,56 +126,6 @@ const reactPerfRules = {
   "react-perf/jsx-no-new-function-as-prop": ["off"],
   // Disabled: let the React compiler enforce this
   "react-perf/jsx-no-new-object-as-prop": ["off"],
-} as const satisfies DummyRuleMap;
-
-const jsxA11yRules = {
-  "jsx-a11y/alt-text": [
-    "error",
-    {
-      img: ["Image"],
-    },
-  ],
-  "jsx-a11y/anchor-ambiguous-text": ["error"],
-  "jsx-a11y/anchor-has-content": ["error"],
-  "jsx-a11y/anchor-is-valid": ["error"],
-  "jsx-a11y/aria-activedescendant-has-tabindex": ["error"],
-  "jsx-a11y/aria-props": ["error"],
-  "jsx-a11y/aria-proptypes": ["error"],
-  "jsx-a11y/aria-role": ["error"],
-  "jsx-a11y/aria-unsupported-elements": ["error"],
-  "jsx-a11y/autocomplete-valid": ["error"],
-  "jsx-a11y/click-events-have-key-events": ["error"],
-  "jsx-a11y/heading-has-content": ["error"],
-  "jsx-a11y/html-has-lang": ["error"],
-  "jsx-a11y/iframe-has-title": ["error"],
-  "jsx-a11y/img-redundant-alt": ["error"],
-  "jsx-a11y/label-has-associated-control": ["error"],
-  "jsx-a11y/lang": ["error"],
-  "jsx-a11y/media-has-caption": ["error"],
-  "jsx-a11y/mouse-events-have-key-events": ["error"],
-  "jsx-a11y/no-access-key": ["error"],
-  "jsx-a11y/no-aria-hidden-on-focusable": ["error"],
-  "jsx-a11y/no-autofocus": [
-    "error",
-    {
-      ignoreNonDOM: true,
-    },
-  ],
-  "jsx-a11y/no-distracting-elements": ["error"],
-  "jsx-a11y/no-noninteractive-tabindex": ["error"],
-  "jsx-a11y/no-redundant-roles": ["error"],
-  "jsx-a11y/no-static-element-interactions": ["error"],
-  "jsx-a11y/prefer-tag-over-role": ["error"],
-  "jsx-a11y/role-has-required-aria-props": ["error"],
-  "jsx-a11y/role-supports-aria-props": ["error"],
-  "jsx-a11y/scope": ["error"],
-  "jsx-a11y/tabindex-no-positive": ["error"],
-} as const satisfies DummyRuleMap;
-
-export const rules = {
-  ...reactRules,
-  ...reactPerfRules,
-  ...jsxA11yRules,
 } as const satisfies DummyRuleMap;
 
 export const config = {

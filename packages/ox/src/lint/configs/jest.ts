@@ -1,17 +1,8 @@
 import type { DummyRuleMap, OxlintConfig } from "oxlint";
 
-export const rules = {
-  // Disabled: mock factories use conditionals for path-based routing
-  "jest/no-conditional-in-test": ["off"],
-  // Disabled: bun:test uses beforeEach hooks for mock.restore()
-  "jest/no-hooks": ["off"],
-  // Disabled: bun:test mock.module() must be called at top level
-  "jest/require-hook": ["off"],
-  // Disabled: bun:test mock factories return Promise.resolve/reject
-  "promise/prefer-await-to-then": ["off"],
+const rules = {
   // Disabled: mock callbacks often need empty functions
   "eslint/no-empty-function": ["off"],
-
   "jest/consistent-test-it": ["error"],
   "jest/expect-expect": ["error"],
   "jest/max-expects": ["error"],
@@ -19,6 +10,8 @@ export const rules = {
   "jest/no-alias-methods": ["error"],
   "jest/no-commented-out-tests": ["error"],
   "jest/no-conditional-expect": ["error"],
+  // Disabled: mock factories use conditionals for path-based routing
+  "jest/no-conditional-in-test": ["off"],
   "jest/no-confusing-set-timeout": ["error"],
   "jest/no-deprecated-functions": ["error"],
   "jest/no-disabled-tests": ["error"],
@@ -26,6 +19,8 @@ export const rules = {
   "jest/no-duplicate-hooks": ["error"],
   "jest/no-export": ["error"],
   "jest/no-focused-tests": ["error"],
+  // Disabled: bun:test uses beforeEach hooks for mock.restore()
+  "jest/no-hooks": ["off"],
   "jest/no-identical-title": ["error"],
   "jest/no-interpolation-in-snapshots": ["error"],
   "jest/no-jasmine-globals": ["error"],
@@ -58,11 +53,15 @@ export const rules = {
   "jest/prefer-to-have-been-called": ["error"],
   "jest/prefer-to-have-length": ["error"],
   "jest/prefer-todo": ["error"],
+  // Disabled: bun:test mock.module() must be called at top level
+  "jest/require-hook": ["off"],
   "jest/require-to-throw-message": ["error"],
   "jest/require-top-level-describe": ["error"],
   "jest/valid-describe-callback": ["error"],
   "jest/valid-expect": ["error"],
   "jest/valid-title": ["error"],
+  // Disabled: bun:test mock factories return Promise.resolve/reject
+  "promise/prefer-await-to-then": ["off"],
 } as const satisfies DummyRuleMap;
 
 export const config = {
