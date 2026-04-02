@@ -1,64 +1,10 @@
 import type { DummyRuleMap, OxlintConfig } from "oxlint";
 
-/**
- * ESLint rules that are not supported in Oxlint, yet.
- */
 export const rules = {
   "eslint-js/no-restricted-exports": [
     "error",
     {
       restrictedNamedExports: ["default"],
-    },
-  ],
-  "eslint-js/no-restricted-properties": [
-    "error",
-    {
-      message: "arguments.callee is deprecated.",
-      object: "arguments",
-      property: "callee",
-    },
-    {
-      message: "Use Number.isFinite instead.",
-      object: "global",
-      property: "isFinite",
-    },
-    {
-      message: "Use Number.isFinite instead.",
-      object: "self",
-      property: "isFinite",
-    },
-    {
-      message: "Use Number.isFinite instead.",
-      object: "window",
-      property: "isFinite",
-    },
-    {
-      message: "Use Number.isNaN instead.",
-      object: "global",
-      property: "isNaN",
-    },
-    {
-      message: "Use Number.isNaN instead.",
-      object: "self",
-      property: "isNaN",
-    },
-    {
-      message: "Use Number.isNaN instead.",
-      object: "window",
-      property: "isNaN",
-    },
-    {
-      message: "Use Object.defineProperty instead.",
-      property: "__defineGetter__",
-    },
-    {
-      message: "Use Object.defineProperty instead.",
-      property: "__defineSetter__",
-    },
-    {
-      message: "Use the exponentiation operator (**) instead.",
-      object: "Math",
-      property: "pow",
     },
   ],
   "eslint-js/no-restricted-syntax": [
