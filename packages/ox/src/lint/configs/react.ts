@@ -1,6 +1,6 @@
 import type { DummyRuleMap, OxlintConfig } from "oxlint";
 
-export const reactRules = {
+const reactRules = {
   "react/button-has-type": ["error"],
   "react/checked-requires-onchange-or-readonly": ["error"],
   "react/display-name": ["error"],
@@ -9,16 +9,24 @@ export const reactRules = {
   "react/forbid-elements": ["error"],
   "react/forward-ref-uses-ref": ["error"],
   "react/iframe-missing-sandbox": ["error"],
-  // Disabled: TODO
-  "react/jsx-boolean-value": ["off"],
+  "react/jsx-boolean-value": [
+    "error",
+    "never",
+    {
+      assumeUndefinedIsFalse: true,
+    },
+  ],
   "react/jsx-curly-brace-presence": ["error"],
-  // Disabled: TODO
-  "react/jsx-filename-extension": ["off"],
+  "react/jsx-filename-extension": [
+    "error",
+    {
+      extensions: [".jsx", ".tsx"],
+    },
+  ],
   "react/jsx-fragments": ["error"],
   "react/jsx-handler-names": ["error"],
   "react/jsx-key": ["error"],
-  // Disabled: TODO
-  "react/jsx-max-depth": ["off"],
+  "react/jsx-max-depth": ["error", { max: 6 }],
   "react/jsx-no-comment-textnodes": ["error"],
   "react/jsx-no-constructed-context-values": ["error"],
   "react/jsx-no-duplicate-props": ["error"],
@@ -28,7 +36,7 @@ export const reactRules = {
   "react/jsx-no-useless-fragment": ["error"],
   "react/jsx-pascal-case": ["error"],
   "react/jsx-props-no-spread-multi": ["error"],
-  // Disabled: TODO
+  // Disabled: prop forwarding, polymorphic components, and “pass rest to DOM” are idiomatic React
   "react/jsx-props-no-spreading": ["off"],
   "react/no-array-index-key": ["error"],
   "react/no-children-prop": ["error"],
@@ -39,7 +47,7 @@ export const reactRules = {
   "react/no-direct-mutation-state": ["error"],
   "react/no-find-dom-node": ["error"],
   "react/no-is-mounted": ["error"],
-  // Disabled: TODO
+  // Disabled: allow multiple components per file for colocation
   "react/no-multi-comp": ["off"],
   "react/no-namespace": ["error"],
   "react/no-react-children": ["error"],
@@ -51,11 +59,14 @@ export const reactRules = {
   "react/no-unescaped-entities": ["error"],
   "react/no-unknown-property": [
     "error",
-    { ignore: ["css", "jsx", "global"], requireDataLowercase: true },
+    {
+      ignore: ["css", "jsx", "global"],
+      requireDataLowercase: true,
+    },
   ],
   "react/no-unsafe": ["error"],
   "react/no-will-update-set-state": ["error"],
-  // Disabled: TODO
+  // Disabled: allow hooks, constants, helpers beside components
   "react/only-export-components": ["off"],
   "react/prefer-es6-class": ["error"],
   // Disabled: not needed on React 17+ with new JSX transform
@@ -68,18 +79,24 @@ export const reactRules = {
   "react/void-dom-elements-no-children": ["error"],
 } as const satisfies DummyRuleMap;
 
-export const reactPerfRules = {
-  // Disabled: TODO
+const reactPerfRules = {
+  // Disabled: let the React compiler enforce this
   "react-perf/jsx-no-jsx-as-prop": ["off"],
-  // Disabled: TODO
+  // Disabled: let the React compiler enforce this
   "react-perf/jsx-no-new-array-as-prop": ["off"],
-  "react-perf/jsx-no-new-function-as-prop": ["error"],
-  // Disabled: TODO
+  // Disabled: let the React compiler enforce this
+  "react-perf/jsx-no-new-function-as-prop": ["off"],
+  // Disabled: let the React compiler enforce this
   "react-perf/jsx-no-new-object-as-prop": ["off"],
 } as const satisfies DummyRuleMap;
 
-export const jsxA11yRules = {
-  "jsx-a11y/alt-text": ["error", { img: ["Image"] }],
+const jsxA11yRules = {
+  "jsx-a11y/alt-text": [
+    "error",
+    {
+      img: ["Image"],
+    },
+  ],
   "jsx-a11y/anchor-ambiguous-text": ["error"],
   "jsx-a11y/anchor-has-content": ["error"],
   "jsx-a11y/anchor-is-valid": ["error"],
@@ -100,8 +117,12 @@ export const jsxA11yRules = {
   "jsx-a11y/mouse-events-have-key-events": ["error"],
   "jsx-a11y/no-access-key": ["error"],
   "jsx-a11y/no-aria-hidden-on-focusable": ["error"],
-  // Disabled: TODO
-  "jsx-a11y/no-autofocus": ["off"],
+  "jsx-a11y/no-autofocus": [
+    "error",
+    {
+      ignoreNonDOM: true,
+    },
+  ],
   "jsx-a11y/no-distracting-elements": ["error"],
   "jsx-a11y/no-noninteractive-tabindex": ["error"],
   "jsx-a11y/no-redundant-roles": ["error"],

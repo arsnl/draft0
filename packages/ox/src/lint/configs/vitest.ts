@@ -1,9 +1,16 @@
 import type { DummyRuleMap, OxlintConfig } from "oxlint";
 import { getCompatibleRules } from "../utils/get-compatible-rules.ts";
-import { rules as jestRules } from "./jest.ts";
+import { config as jestConfig } from "./jest.ts";
+
+const coreRules = {
+  // Disabled: mock callbacks often need empty functions
+  "no-empty-function": ["off"],
+  // Disabled: mock factories use Promise.resolve/reject (conflicts with require-await)
+  "promise/prefer-await-to-then": ["off"],
+} as const satisfies DummyRuleMap;
 
 const compatibleJestRules = getCompatibleRules({
-  source: jestRules,
+  source: jestConfig.overrides[0].rules,
   sourcePrefix: "jest/",
   targetPrefix: "vitest/",
   rules: [
@@ -45,16 +52,7 @@ const compatibleJestRules = getCompatibleRules({
   ],
 });
 
-export const rules = {
-  // Disabled: mock callbacks often need empty functions
-  "no-empty-function": ["off"],
-  // Disabled: mock factories use Promise.resolve/reject (conflicts with require-await)
-  "promise/prefer-await-to-then": ["off"],
-  // Disabled: conflicts with vitest/prefer-called-times — both rules enforce opposite styles
-  "vitest/prefer-called-once": ["off"],
-
-  ...compatibleJestRules,
-
+const vitestRules = {
   "vitest/consistent-each-for": ["error"],
   "vitest/consistent-test-filename": ["error"],
   "vitest/consistent-vitest-vi": ["error"],
@@ -64,6 +62,8 @@ export const rules = {
   "vitest/no-importing-vitest-globals": ["error"],
   "vitest/no-restricted-vi-methods": ["error"],
   "vitest/prefer-called-exactly-once-with": ["error"],
+  // Disabled: conflicts with vitest/prefer-called-times — both rules enforce opposite styles
+  "vitest/prefer-called-once": ["off"],
   "vitest/prefer-called-times": ["error"],
   "vitest/prefer-describe-function-title": ["error"],
   "vitest/prefer-expect-type-of": ["error"],
@@ -77,6 +77,12 @@ export const rules = {
   "vitest/require-mock-type-parameters": ["error"],
   "vitest/require-test-timeout": ["error"],
   "vitest/warn-todo": ["error"],
+};
+
+export const rules = {
+  ...coreRules,
+  ...compatibleJestRules,
+  ...vitestRules,
 } as const satisfies DummyRuleMap;
 
 export const config = {
