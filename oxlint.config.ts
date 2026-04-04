@@ -1,0 +1,9 @@
+import { defineConfig } from "oxlint";
+
+export default defineConfig({
+  options: {
+    reportUnusedDisableDirectives: "warn",
+    typeAware: true,
+    typeCheck: true,
+  },
+});

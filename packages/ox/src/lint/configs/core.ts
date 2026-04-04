@@ -49,8 +49,7 @@ export const rules = {
     },
   ],
   "eslint/guard-for-in": ["error"],
-  // Disabled: TODO
-  "eslint/id-length": ["off"],
+  "eslint/id-length": ["error", { min: 2, checkGeneric: false, properties: "never" }],
   // Disabled: TODO
   "eslint/init-declarations": ["off"],
   // Disabled: TODO
@@ -133,8 +132,7 @@ export const rules = {
   "eslint/no-fallthrough": ["error"],
   "eslint/no-func-assign": ["error"],
   "eslint/no-global-assign": ["error"],
-  // Disabled: TODO
-  "eslint/no-implicit-coercion": ["off"],
+  "eslint/no-implicit-coercion": ["error"],
   "eslint/no-import-assign": ["error"],
   // Disabled: TODO
   "eslint/no-inline-comments": ["off"],
@@ -320,8 +318,7 @@ export const rules = {
   // Disabled: TODO
   "eslint/no-use-before-define": ["off"],
   "eslint/no-useless-backreference": ["error"],
-  // Disabled: TODO
-  "eslint/no-useless-call": ["off"],
+  "eslint/no-useless-call": ["error"],
   "eslint/no-useless-catch": ["error"],
   "eslint/no-useless-computed-key": ["error"],
   "eslint/no-useless-concat": ["error"],
@@ -484,7 +481,8 @@ export const rules = {
   "import/no-webpack-loader-syntax": ["error"],
   // Disabled: TODO
   "import/prefer-default-export": ["off"],
-  "import/unambiguous": ["error"],
+  // Disabled: TODO
+  "import/unambiguous": ["off"],
   "jsdoc/check-access": ["error"],
   "jsdoc/check-property-names": ["error"],
   "jsdoc/check-tag-names": ["error"],
@@ -556,10 +554,14 @@ export const rules = {
   // Disabled: TODO
   "promise/always-return": ["off"],
   "promise/avoid-new": ["error"],
-  // Disabled: TODO
-  "promise/catch-or-return": ["off"],
-  // Disabled: TODO
-  "promise/no-callback-in-promise": ["off"],
+  "promise/catch-or-return": [
+    "error",
+    {
+      allowFinally: true,
+      terminationMethod: ["catch", "finally"],
+    },
+  ],
+  "promise/no-callback-in-promise": ["error"],
   "promise/no-multiple-resolved": ["error"],
   "promise/no-nesting": ["error"],
   "promise/no-new-statics": ["error"],
@@ -582,7 +584,16 @@ export const rules = {
   // Disabled: TODO
   "typescript/array-type": ["off"],
   "typescript/await-thenable": ["error"],
-  "typescript/ban-ts-comment": ["error"],
+  "typescript/ban-ts-comment": [
+    "error",
+    {
+      "ts-expect-error": "allow-with-description",
+      "ts-ignore": true,
+      "ts-nocheck": true,
+      "ts-check": true,
+      minimumDescriptionLength: 3,
+    },
+  ],
   // Disabled: TODO
   "typescript/ban-tslint-comment": ["off"],
   // Disabled: TODO
@@ -599,8 +610,7 @@ export const rules = {
       treatUndefinedAsUnspecified: true,
     },
   ],
-  // Disabled: TODO
-  "typescript/consistent-type-assertions": ["off"],
+  "typescript/consistent-type-assertions": ["error", { assertionStyle: "as" }],
   // Disabled: TODO
   "typescript/consistent-type-definitions": ["off"],
   "typescript/consistent-type-exports": [
@@ -627,19 +637,16 @@ export const rules = {
   "typescript/no-confusing-non-null-assertion": ["off"],
   // Disabled: TODO
   "typescript/no-confusing-void-expression": ["off"],
-  // Disabled: TODO
-  "typescript/no-deprecated": ["off"],
+  "typescript/no-deprecated": ["error"],
   "typescript/no-duplicate-enum-values": ["error"],
   "typescript/no-duplicate-type-constituents": ["error"],
-  // Disabled: TODO
-  "typescript/no-dynamic-delete": ["off"],
+  "typescript/no-dynamic-delete": ["error"],
   // Disabled: TODO
   "typescript/no-empty-interface": ["off"],
   "typescript/no-empty-object-type": ["error"],
   "typescript/no-explicit-any": ["error"],
   "typescript/no-extra-non-null-assertion": ["error"],
-  // Disabled: TODO
-  "typescript/no-extraneous-class": ["off"],
+  "typescript/no-extraneous-class": ["error"],
   "typescript/no-floating-promises": ["error"],
   "typescript/no-for-in-array": ["error"],
   "typescript/no-implied-eval": ["error"],
@@ -653,8 +660,7 @@ export const rules = {
   "typescript/no-misused-new": ["error"],
   "typescript/no-misused-promises": ["error"],
   "typescript/no-misused-spread": ["error"],
-  // Disabled: TODO
-  "typescript/no-mixed-enums": ["off"],
+  "typescript/no-mixed-enums": ["error"],
   "typescript/no-namespace": ["error"],
   // Disabled: TODO
   "typescript/no-non-null-asserted-nullish-coalescing": ["off"],
@@ -706,66 +712,47 @@ export const rules = {
   // Disabled: TODO
   "typescript/parameter-properties": ["off"],
   "typescript/prefer-as-const": ["error"],
-  // Disabled: TODO
-  "typescript/prefer-enum-initializers": ["off"],
-  // Disabled: TODO
-  "typescript/prefer-find": ["off"],
+  "typescript/prefer-enum-initializers": ["error"],
+  "typescript/prefer-find": ["error"],
   // Disabled: TODO
   "typescript/prefer-for-of": ["off"],
-  // Disabled: TODO
-  "typescript/prefer-function-type": ["off"],
+  "typescript/prefer-function-type": ["error"],
   // Disabled: TODO
   "typescript/prefer-includes": ["off"],
-  // Disabled: TODO
-  "typescript/prefer-literal-enum-member": ["off"],
+  "typescript/prefer-literal-enum-member": ["error"],
   "typescript/prefer-namespace-keyword": ["error"],
-  // Disabled: TODO
-  "typescript/prefer-nullish-coalescing": ["off"],
+  "typescript/prefer-nullish-coalescing": ["error"],
   "typescript/prefer-optional-chain": ["error"],
   "typescript/prefer-promise-reject-errors": ["error"],
-  // Disabled: TODO
-  "typescript/prefer-readonly-parameter-types": ["off"],
-  // Disabled: TODO
-  "typescript/prefer-readonly": ["off"],
-  // Disabled: TODO
-  "typescript/prefer-reduce-type-parameter": ["off"],
-  // Disabled: TODO
+  "typescript/prefer-readonly-parameter-types": ["error"],
+  "typescript/prefer-readonly": ["warn"],
+  "typescript/prefer-reduce-type-parameter": ["error"],
+  // Disabled: Conflicts with unicorn/prefer-regexp-test
   "typescript/prefer-regexp-exec": ["off"],
-  // Disabled: TODO
-  "typescript/prefer-return-this-type": ["off"],
+  "typescript/prefer-return-this-type": ["error"],
   "typescript/prefer-string-starts-ends-with": ["error"],
-  // Disabled: TODO
-  "typescript/prefer-ts-expect-error": ["off"],
-  // Disabled: TODO
-  "typescript/promise-function-async": ["off"],
-  // Disabled: TODO
-  "typescript/related-getter-setter-pairs": ["off"],
+  "typescript/prefer-ts-expect-error": ["error"],
+  "typescript/promise-function-async": ["error"],
+  "typescript/related-getter-setter-pairs": ["error"],
   "typescript/require-array-sort-compare": ["error"],
   "typescript/require-await": ["error"],
   "typescript/restrict-plus-operands": ["error"],
   "typescript/restrict-template-expressions": ["error"],
-  // Disabled: TODO
-  "typescript/return-await": ["off"],
+  "typescript/return-await": ["error", "in-try-catch"],
   // Disabled: TODO
   "typescript/strict-boolean-expressions": ["off"],
-  // Disabled: TODO
-  "typescript/strict-void-return": ["off"],
-  // Disabled: TODO
-  "typescript/switch-exhaustiveness-check": ["off"],
+  "typescript/strict-void-return": ["error"],
+  "typescript/switch-exhaustiveness-check": ["error"],
   "typescript/triple-slash-reference": ["error"],
   "typescript/unbound-method": ["error"],
-  // Disabled: TODO
-  "typescript/unified-signatures": ["off"],
-  // Disabled: TODO
-  "typescript/use-unknown-in-catch-callback-variable": ["off"],
+  "typescript/unified-signatures": ["error"],
+  "typescript/use-unknown-in-catch-callback-variable": ["error"],
   "unicorn/catch-error-name": ["error"],
-  // Disabled: TODO
-  "unicorn/consistent-assert": ["off"],
+  "unicorn/consistent-assert": ["error"],
   "unicorn/consistent-date-clone": ["error"],
   "unicorn/consistent-empty-array-spread": ["error"],
   "unicorn/consistent-existence-index-check": ["error"],
-  // Disabled: TODO
-  "unicorn/consistent-function-scoping": ["off"],
+  "unicorn/consistent-function-scoping": ["error"],
   "unicorn/custom-error-definition": ["error"],
   // Disabled: TODO
   "unicorn/empty-brace-spaces": ["off"],
@@ -774,11 +761,9 @@ export const rules = {
   // Disabled: TODO
   "unicorn/explicit-length-check": ["off"],
   "unicorn/filename-case": ["error"],
-  // Disabled: TODO
-  "unicorn/new-for-builtins": ["off"],
+  "unicorn/new-for-builtins": ["error"],
   "unicorn/no-abusive-eslint-disable": ["error"],
-  // Disabled: TODO
-  "unicorn/no-accessor-recursion": ["off"],
+  "unicorn/no-accessor-recursion": ["error"],
   "unicorn/no-anonymous-default-export": ["error"],
   // Disabled: TODO
   "unicorn/no-array-callback-reference": ["off"],
@@ -798,29 +783,24 @@ export const rules = {
   "unicorn/no-hex-escape": ["error"],
   "unicorn/no-immediate-mutation": ["error"],
   "unicorn/no-instanceof-array": ["error"],
-  // Disabled: TODO
-  "unicorn/no-instanceof-builtins": ["off"],
+  "unicorn/no-instanceof-builtins": ["error"],
   "unicorn/no-invalid-fetch-options": ["error"],
   "unicorn/no-invalid-remove-event-listener": ["error"],
   "unicorn/no-length-as-slice-end": ["error"],
   "unicorn/no-lonely-if": ["error"],
-  // Disabled: TODO
-  "unicorn/no-magic-array-flat-depth": ["off"],
+  "unicorn/no-magic-array-flat-depth": ["error"],
   "unicorn/no-negation-in-equality-check": ["error"],
   // Disabled: TODO
   "unicorn/no-nested-ternary": ["off"],
   "unicorn/no-new-array": ["error"],
-  // Disabled: TODO
-  "unicorn/no-new-buffer": ["off"],
+  "unicorn/no-new-buffer": ["error"],
   // Disabled: TODO
   "unicorn/no-null": ["off"],
-  // Disabled: TODO
-  "unicorn/no-object-as-default-parameter": ["off"],
+  "unicorn/no-object-as-default-parameter": ["error"],
   // Disabled: TODO
   "unicorn/no-process-exit": ["off"],
   "unicorn/no-single-promise-in-promise-methods": ["error"],
-  // Disabled: TODO
-  "unicorn/no-static-only-class": ["off"],
+  "unicorn/no-static-only-class": ["error"],
   "unicorn/no-thenable": ["error"],
   "unicorn/no-this-assignment": ["error"],
   "unicorn/no-typeof-undefined": [
@@ -841,8 +821,7 @@ export const rules = {
   "unicorn/no-useless-error-capture-stack-trace": ["error"],
   "unicorn/no-useless-fallback-in-spread": ["error"],
   "unicorn/no-useless-length-check": ["error"],
-  // Disabled: TODO
-  "unicorn/no-useless-promise-resolve-reject": ["off"],
+  "unicorn/no-useless-promise-resolve-reject": ["error"],
   "unicorn/no-useless-spread": ["error"],
   "unicorn/no-useless-switch-case": ["error"],
   "unicorn/no-useless-undefined": ["error"],
@@ -850,18 +829,15 @@ export const rules = {
   // Disabled: TODO
   "unicorn/number-literal-case": ["off"],
   "unicorn/numeric-separators-style": ["error"],
-  // Disabled: TODO
-  "unicorn/prefer-add-event-listener": ["off"],
+  "unicorn/prefer-add-event-listener": ["error"],
   "unicorn/prefer-array-find": ["error"],
   "unicorn/prefer-array-flat-map": ["error"],
   "unicorn/prefer-array-flat": ["error"],
   "unicorn/prefer-array-index-of": ["error"],
   "unicorn/prefer-array-some": ["error"],
   "unicorn/prefer-at": ["error"],
-  // Disabled: TODO
-  "unicorn/prefer-bigint-literals": ["off"],
-  // Disabled: TODO
-  "unicorn/prefer-blob-reading-methods": ["off"],
+  "unicorn/prefer-bigint-literals": ["error"],
+  "unicorn/prefer-blob-reading-methods": ["error"],
   "unicorn/prefer-class-fields": ["error"],
   "unicorn/prefer-classlist-toggle": ["error"],
   "unicorn/prefer-code-point": ["error"],
@@ -881,8 +857,7 @@ export const rules = {
   "unicorn/prefer-modern-dom-apis": ["error"],
   "unicorn/prefer-modern-math-apis": ["error"],
   "unicorn/prefer-module": ["error"],
-  // Disabled: TODO
-  "unicorn/prefer-native-coercion-functions": ["off"],
+  "unicorn/prefer-native-coercion-functions": ["error"],
   "unicorn/prefer-negative-index": ["error"],
   "unicorn/prefer-node-protocol": ["error"],
   "unicorn/prefer-number-properties": [
@@ -919,7 +894,7 @@ export const rules = {
   "unicorn/require-module-attributes": ["error"],
   "unicorn/require-module-specifiers": ["error"],
   "unicorn/require-number-to-fixed-digits-argument": ["error"],
-  // Disabled: TODO
+  // Disabled: May have false positives; cannot distinguish between window.postMessage() and other calls.
   "unicorn/require-post-message-target-origin": ["off"],
   "unicorn/switch-case-braces": ["error", "always"],
   "unicorn/text-encoding-identifier-case": ["error"],
