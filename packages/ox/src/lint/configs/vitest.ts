@@ -46,9 +46,9 @@ const compatibleJestRules = getCompatibleRules({
 });
 
 const rules = {
-  // Disabled: mock callbacks often need empty functions
+  // Disabled: Too strict; mock callbacks often need empty functions
   "eslint/no-empty-function": ["off"],
-  // Disabled: mock factories use Promise.resolve/reject
+  // Disabled: Too strict; mock factories use Promise.resolve/reject
   "promise/prefer-await-to-then": ["off"],
   "vitest/consistent-each-for": ["error"],
   "vitest/consistent-test-filename": ["error"],
@@ -59,7 +59,7 @@ const rules = {
   "vitest/no-importing-vitest-globals": ["error"],
   "vitest/no-restricted-vi-methods": ["error"],
   "vitest/prefer-called-exactly-once-with": ["error"],
-  // Disabled: conflicts with vitest/prefer-called-times — both rules enforce opposite styles
+  // Disabled: Conflicts with vitest/prefer-called-times — both rules enforce opposite styles
   "vitest/prefer-called-once": ["off"],
   "vitest/prefer-called-times": ["error"],
   "vitest/prefer-describe-function-title": ["error"],

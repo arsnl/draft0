@@ -1,7 +1,7 @@
 import type { DummyRuleMap, OxlintConfig } from "oxlint";
 
 export const rules = {
-  // Disabled: TODO
+  // Disabled: Too restrictive; read-only or write-only accessors are valid
   "eslint/accessor-pairs": ["off"],
   "eslint/array-callback-return": [
     "error",
@@ -19,11 +19,11 @@ export const rules = {
     },
   ],
   "eslint/block-scoped-var": ["error"],
-  // Disabled: TODO
+  // Disabled: Purely cosmetic; too noisy across diverse codebases
   "eslint/capitalized-comments": ["off"],
-  // Disabled: TODO
+  // Disabled: Conflicts with interface contracts and method override patterns
   "eslint/class-methods-use-this": ["off"],
-  // Disabled: TODO
+  // Disabled: Arbitrary threshold; better enforced through code review
   "eslint/complexity": ["off"],
   "eslint/constructor-super": ["error"],
   "eslint/curly": ["error", "all"],
@@ -38,7 +38,7 @@ export const rules = {
   "eslint/eqeqeq": ["error", "always"],
   "eslint/for-direction": ["error"],
   "eslint/func-names": ["warn", "as-needed"],
-  // Disabled: TODO
+  // Disabled: Style preference; both declarations and expressions are valid
   "eslint/func-style": ["off"],
   "eslint/getter-return": ["error"],
   "eslint/grouped-accessor-pairs": [
@@ -50,21 +50,21 @@ export const rules = {
   ],
   "eslint/guard-for-in": ["error"],
   "eslint/id-length": ["error", { min: 2, checkGeneric: false, properties: "never" }],
-  // Disabled: TODO
+  // Disabled: TypeScript strict mode already catches uninitialized variables
   "eslint/init-declarations": ["off"],
-  // Disabled: TODO
+  // Disabled: Arbitrary limit; co-located helper classes are valid
   "eslint/max-classes-per-file": ["off"],
-  // Disabled: TODO
+  // Disabled: Arbitrary threshold; better enforced through code review
   "eslint/max-depth": ["off"],
-  // Disabled: TODO
+  // Disabled: Arbitrary limit; better enforced through code review
   "eslint/max-lines-per-function": ["off"],
-  // Disabled: TODO
+  // Disabled: Arbitrary limit; better enforced through code review
   "eslint/max-lines": ["off"],
-  // Disabled: TODO
+  // Disabled: Arbitrary threshold; better enforced through code review
   "eslint/max-nested-callbacks": ["off"],
-  // Disabled: TODO
+  // Disabled: Arbitrary limit; better enforced through code review
   "eslint/max-params": ["off"],
-  // Disabled: TODO
+  // Disabled: Arbitrary limit; better enforced through code review
   "eslint/max-statements": ["off"],
   "eslint/new-cap": [
     "error",
@@ -93,7 +93,7 @@ export const rules = {
   "eslint/no-control-regex": ["error"],
   "eslint/no-debugger": ["error"],
   "eslint/no-delete-var": ["error"],
-  // Disabled: TODO
+  // Disabled: Extremely rare edge case with minimal practical value
   "eslint/no-div-regex": ["off"],
   "eslint/no-dupe-class-members": ["error"],
   "eslint/no-dupe-else-if": ["error"],
@@ -121,7 +121,7 @@ export const rules = {
       allowEmptyCatch: true,
     },
   ],
-  // Disabled: TODO
+  // Disabled: Redundant; eslint/eqeqeq "always" already enforces strict equality
   "eslint/no-eq-null": ["off"],
   "eslint/no-eval": ["error"],
   "eslint/no-ex-assign": ["error"],
@@ -134,7 +134,7 @@ export const rules = {
   "eslint/no-global-assign": ["error"],
   "eslint/no-implicit-coercion": ["error"],
   "eslint/no-import-assign": ["error"],
-  // Disabled: TODO
+  // Disabled: Too restrictive; inline comments often improve clarity
   "eslint/no-inline-comments": ["off"],
   "eslint/no-inner-declarations": ["error"],
   "eslint/no-invalid-regexp": ["error"],
@@ -146,14 +146,14 @@ export const rules = {
   "eslint/no-lonely-if": ["error"],
   "eslint/no-loop-func": ["error"],
   "eslint/no-loss-of-precision": ["error"],
-  // Disabled: TODO
+  // Disabled: Too noisy; trivial values don't need named constants
   "eslint/no-magic-numbers": ["off"],
   "eslint/no-misleading-character-class": ["error"],
   "eslint/no-multi-assign": ["error"],
   "eslint/no-multi-str": ["error"],
-  // Disabled: TODO
+  // Disabled: Subjective; negated conditions can be more readable
   "eslint/no-negated-condition": ["off"],
-  // Disabled: TODO
+  // Disabled: Style preference; formatted nested ternaries are readable
   "eslint/no-nested-ternary": ["off"],
   "eslint/no-new-func": ["error"],
   "eslint/no-new-native-nonconstructor": ["error"],
@@ -242,7 +242,7 @@ export const rules = {
       message: `Use window.${name} instead.`,
     })),
   ],
-  // Disabled: TODO
+  // Disabled: Project-specific; no universal import restrictions to apply
   "eslint/no-restricted-imports": ["off"],
   "eslint/no-return-assign": ["error", "always"],
   "eslint/no-script-url": ["error"],
@@ -264,17 +264,17 @@ export const rules = {
   "eslint/no-shadow": ["error"],
   "eslint/no-sparse-arrays": ["error"],
   "eslint/no-template-curly-in-string": ["error"],
-  // Disabled: TODO
+  // Disabled: Too restrictive; ternary expressions are core JavaScript
   "eslint/no-ternary": ["off"],
   "eslint/no-this-before-super": ["error"],
   "eslint/no-throw-literal": ["error"],
   "eslint/no-unassigned-vars": ["error"],
-  // TODO: Activate when it is ready. In nursery and not ready yet. Mark global variables as undefined.
+  // Disabled: Rule in nursery and not ready yet
   "eslint/no-undef": ["off"],
-  // Disabled: TODO
+  // Disabled: Too restrictive; undefined is standard in modern JS/TS
   "eslint/no-undefined": ["off"],
   "eslint/no-unexpected-multiline": ["error"],
-  // Disabled: TODO
+  // Disabled: May produce false positives; not fully stable yet
   "eslint/no-unmodified-loop-condition": ["off"],
   "eslint/no-unneeded-ternary": [
     "error",
@@ -315,7 +315,7 @@ export const rules = {
       ignoreRestSiblings: true,
     },
   ],
-  // Disabled: TODO
+  // Disabled: TypeScript handles this; conflicts with function hoisting
   "eslint/no-use-before-define": ["off"],
   "eslint/no-useless-backreference": ["error"],
   "eslint/no-useless-call": ["error"],
@@ -327,9 +327,9 @@ export const rules = {
   "eslint/no-useless-rename": ["error"],
   "eslint/no-useless-return": ["error"],
   "eslint/no-var": ["error"],
-  // Disabled: TODO
+  // Disabled: Conflicts with eslint/array-callback-return "allowVoid" option
   "eslint/no-void": ["off"],
-  // Disabled: TODO
+  // Disabled: TODO/FIXME comments are expected during active development
   "eslint/no-warning-comments": ["off"],
   "eslint/no-with": ["error"],
   "eslint/operator-assignment": ["error", "always"],
@@ -370,9 +370,9 @@ export const rules = {
       ignoreDeclarationSort: true,
     },
   ],
-  // Disabled: TODO
+  // Disabled: Too strict; logical grouping preferred over alphabetical
   "eslint/sort-keys": ["off"],
-  // Disabled: TODO
+  // Disabled: Too strict; logical grouping preferred over alphabetical
   "eslint/sort-vars": ["off"],
   "eslint/symbol-description": ["error"],
   "eslint/unicode-bom": ["error", "never"],
@@ -435,7 +435,7 @@ export const rules = {
   "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
   "import/default": ["error"],
   "import/export": ["error"],
-  // Disabled: TODO
+  // Disabled: Too restrictive; co-located exports improve readability
   "import/exports-last": ["off"],
   "import/extensions": [
     "error",
@@ -445,22 +445,22 @@ export const rules = {
     },
   ],
   "import/first": ["error"],
-  // Disabled: TODO
+  // Disabled: Too restrictive; individual named exports are standard
   "import/group-exports": ["off"],
-  // Disabled: TODO
+  // Disabled: Arbitrary limit; varies per module responsibility
   "import/max-dependencies": ["off"],
   "import/named": ["error"],
   "import/namespace": ["error"],
   "import/no-absolute-path": ["error"],
   "import/no-amd": ["error"],
-  // Disabled: TODO
+  // Disabled: Framework configs often require anonymous default exports
   "import/no-anonymous-default-export": ["off"],
-  // Disabled: TODO
+  // Disabled: Redundant; typescript/no-require-imports already covers this
   "import/no-commonjs": ["off"],
   "import/no-cycle": ["error"],
-  // Disabled: TODO
+  // Disabled: Too strict universally; frameworks and configs need defaults
   "import/no-default-export": ["off"],
-  // Disabled: covered by eslint/no-duplicate-imports
+  // Disabled: Redundant; eslint/no-duplicate-imports already covers this
   "import/no-duplicates": ["off"],
   "import/no-dynamic-require": ["error"],
   "import/no-empty-named-blocks": ["error"],
@@ -468,20 +468,20 @@ export const rules = {
   "import/no-named-as-default-member": ["error"],
   "import/no-named-as-default": ["error"],
   "import/no-named-default": ["error"],
-  // Disabled: TODO
+  // Disabled: Contradicts the codebase preference for named exports
   "import/no-named-export": ["off"],
   "import/no-namespace": ["error"],
-  // Disabled: TODO
+  // Disabled: Would break all Node.js and server-side projects
   "import/no-nodejs-modules": ["off"],
-  // Disabled: TODO
+  // Disabled: Too restrictive without project-specific path alias setup
   "import/no-relative-parent-imports": ["off"],
   "import/no-self-import": ["error"],
-  // Disabled: TODO
+  // Disabled: Side-effect imports (CSS, polyfills) are common and valid
   "import/no-unassigned-import": ["off"],
   "import/no-webpack-loader-syntax": ["error"],
-  // Disabled: TODO
+  // Disabled: Contradicts the codebase preference for named exports
   "import/prefer-default-export": ["off"],
-  // Disabled: TODO
+  // Disabled: Too strict; script files are common and valid
   "import/unambiguous": ["off"],
   "jsdoc/check-access": ["error"],
   "jsdoc/check-property-names": ["error"],
@@ -491,30 +491,30 @@ export const rules = {
   "jsdoc/no-defaults": ["error"],
   "jsdoc/require-param-description": ["error"],
   "jsdoc/require-param-name": ["error"],
-  // Disabled: TODO
+  // Disabled: Redundant; TypeScript already provides type information
   "jsdoc/require-param-type": ["off"],
   "jsdoc/require-param": ["error"],
   "jsdoc/require-property-description": ["error"],
   "jsdoc/require-property-name": ["error"],
-  // Disabled: TODO
+  // Disabled: Redundant; TypeScript already provides type information
   "jsdoc/require-property-type": ["off"],
   "jsdoc/require-property": ["error"],
   "jsdoc/require-returns-description": ["error"],
-  // Disabled: TODO
+  // Disabled: Redundant; TypeScript already provides type information
   "jsdoc/require-returns-type": ["off"],
   "jsdoc/require-returns": ["error"],
   "jsdoc/require-yields": ["error"],
-  // TODO: Validate node rules
+  // Disabled: Conflicts with typescript/no-require-imports
   "node/global-require": ["off"],
-  // TODO: Validate node rules
+  // Disabled: Redundant; already covered by eslint/no-unused-vars
   "node/handle-callback-err": ["off"],
-  // TODO: Validate node rules
+  // Disabled: Conflicts with unicorn/prefer-module
   "node/no-exports-assign": ["off"],
-  // TODO: Validate node rules
+  // Disabled: Conflicts with unicorn/prefer-module
   "node/no-new-require": ["off"],
-  // TODO: Validate node rules
+  // Disabled: Conflicts with unicorn/prefer-module
   "node/no-path-concat": ["off"],
-  // TODO: Validate node rules
+  // Disabled: Project-specific; no universal allowed variables to apply
   "node/no-process-env": ["off"],
   "oxc/approx-constant": ["error"],
   "oxc/bad-array-method-on-arguments": ["error"],
@@ -524,34 +524,34 @@ export const rules = {
   "oxc/bad-min-max-func": ["error"],
   "oxc/bad-object-literal-comparison": ["error"],
   "oxc/bad-replace-all-arg": ["error"],
-  // Disabled: TODO
+  // Disabled: Rule in nursery and not ready yet
   "oxc/branches-sharing-code": ["off"],
   "oxc/const-comparisons": ["error"],
   "oxc/double-comparisons": ["error"],
   "oxc/erasing-op": ["error"],
   "oxc/misrefactored-assign-op": ["error"],
   "oxc/missing-throw": ["error"],
-  // Disabled: TODO
+  // Disabled: Premature optimization; spread accumulation rarely bottlenecks
   "oxc/no-accumulating-spread": ["off"],
-  // Disabled: TODO
+  // Disabled: Too restrictive; async/await is standard modern JavaScript
   "oxc/no-async-await": ["off"],
-  // Disabled: TODO
+  // Disabled: Framework-specific; not applicable to all projects
   "oxc/no-async-endpoint-handlers": ["off"],
-  // Disabled: TODO
+  // Disabled: Barrel files are a valid and widely used pattern
   "oxc/no-barrel-file": ["off"],
   "oxc/no-const-enum": ["error"],
-  // Disabled: TODO
+  // Disabled: Micro-optimization; spread in .map() rarely bottlenecks
   "oxc/no-map-spread": ["off"],
-  // Disabled: TODO
+  // Disabled: Too restrictive; optional chaining is standard JavaScript
   "oxc/no-optional-chaining": ["off"],
-  // Disabled: TODO
+  // Disabled: Too restrictive; rest/spread properties are idiomatic JS
   "oxc/no-rest-spread-properties": ["off"],
-  // Disabled: TODO
+  // Disabled: Too restrictive; class and prototype patterns use this
   "oxc/no-this-in-exported-function": ["off"],
   "oxc/number-arg-out-of-range": ["error"],
   "oxc/only-used-in-recursion": ["error"],
   "oxc/uninvoked-array-callback": ["error"],
-  // Disabled: TODO
+  // Disabled: Irrelevant; promise/prefer-await-to-then already bans .then() chains
   "promise/always-return": ["off"],
   "promise/avoid-new": ["error"],
   "promise/catch-or-return": [
@@ -579,9 +579,9 @@ export const rules = {
   "promise/prefer-catch": ["error"],
   "promise/spec-only": ["error"],
   "promise/valid-params": ["error"],
-  // Disabled: TODO
+  // Disabled: Style preference; grouping by concern can be clearer
   "typescript/adjacent-overload-signatures": ["off"],
-  // Disabled: TODO
+  // Disabled: Style preference; both T[] and Array<T> are valid
   "typescript/array-type": ["off"],
   "typescript/await-thenable": ["error"],
   "typescript/ban-ts-comment": [
@@ -594,15 +594,15 @@ export const rules = {
       minimumDescriptionLength: 3,
     },
   ],
-  // Disabled: TODO
+  // Disabled: Legacy rule; irrelevant without TSLint migration history
   "typescript/ban-tslint-comment": ["off"],
-  // Disabled: TODO
+  // Disabled: Deprecated; replaced by enabled typescript/no-wrapper-object-types
   "typescript/ban-types": ["off"],
-  // Disabled: TODO
+  // Disabled: Style preference; both getters and readonly fields are valid
   "typescript/class-literal-property-style": ["off"],
-  // Disabled: TODO
+  // Disabled: Style preference; context determines best constructor form
   "typescript/consistent-generic-constructors": ["off"],
-  // Disabled: TODO
+  // Disabled: Style preference; both Record and index signatures valid
   "typescript/consistent-indexed-object-style": ["off"],
   "typescript/consistent-return": [
     "error",
@@ -611,7 +611,7 @@ export const rules = {
     },
   ],
   "typescript/consistent-type-assertions": ["error", { assertionStyle: "as" }],
-  // Disabled: TODO
+  // Disabled: Style preference; type and interface both have valid uses
   "typescript/consistent-type-definitions": ["off"],
   "typescript/consistent-type-exports": [
     "error",
@@ -627,21 +627,21 @@ export const rules = {
     },
   ],
   "typescript/dot-notation": ["error"],
-  // Disabled: TODO
+  // Disabled: Too verbose; TypeScript inference handles return types reliably
   "typescript/explicit-function-return-type": ["off"],
-  // Disabled: TODO
+  // Disabled: Too verbose; TypeScript inference handles boundary types reliably
   "typescript/explicit-module-boundary-types": ["off"],
   "typescript/no-array-delete": ["error"],
   "typescript/no-base-to-string": ["error"],
-  // Disabled: TODO
+  // Disabled: Low severity; developers using ! understand its semantics
   "typescript/no-confusing-non-null-assertion": ["off"],
-  // Disabled: TODO
+  // Disabled: Too strict; void returns in arrow functions are common
   "typescript/no-confusing-void-expression": ["off"],
   "typescript/no-deprecated": ["error"],
   "typescript/no-duplicate-enum-values": ["error"],
   "typescript/no-duplicate-type-constituents": ["error"],
   "typescript/no-dynamic-delete": ["error"],
-  // Disabled: TODO
+  // Disabled: Redundant; typescript/no-empty-object-type already covers this
   "typescript/no-empty-interface": ["off"],
   "typescript/no-empty-object-type": ["error"],
   "typescript/no-explicit-any": ["error"],
@@ -650,44 +650,36 @@ export const rules = {
   "typescript/no-floating-promises": ["error"],
   "typescript/no-for-in-array": ["error"],
   "typescript/no-implied-eval": ["error"],
-  // Disabled: TODO
+  // Disabled: Redundant; typescript/consistent-type-imports already handles this
   "typescript/no-import-type-side-effects": ["off"],
-  // Disabled: TODO
+  // Disabled: Explicit types can serve as documentation and readability
   "typescript/no-inferrable-types": ["off"],
-  // Disabled: TODO
-  "typescript/no-invalid-void-type": ["off"],
+  "typescript/no-invalid-void-type": ["error"],
   "typescript/no-meaningless-void-operator": ["error"],
   "typescript/no-misused-new": ["error"],
   "typescript/no-misused-promises": ["error"],
   "typescript/no-misused-spread": ["error"],
   "typescript/no-mixed-enums": ["error"],
   "typescript/no-namespace": ["error"],
-  // Disabled: TODO
-  "typescript/no-non-null-asserted-nullish-coalescing": ["off"],
+  "typescript/no-non-null-asserted-nullish-coalescing": ["error"],
   "typescript/no-non-null-asserted-optional-chain": ["error"],
-  // Disabled: TODO
-  "typescript/no-non-null-assertion": ["off"],
+  "typescript/no-non-null-assertion": ["error"],
   "typescript/no-redundant-type-constituents": ["error"],
   "typescript/no-require-imports": ["error"],
-  // Disabled: TODO
+  // Disabled: Project-specific; no universal type restrictions to apply
   "typescript/no-restricted-types": ["off"],
   "typescript/no-this-alias": ["error"],
-  // Disabled: TODO
-  "typescript/no-unnecessary-boolean-literal-compare": ["off"],
-  // Disabled: TODO
-  "typescript/no-unnecessary-condition": ["off"],
+  "typescript/no-unnecessary-boolean-literal-compare": ["warn"],
+  "typescript/no-unnecessary-condition": ["error"],
   "typescript/no-unnecessary-parameter-property-assignment": ["error"],
-  // Disabled: TODO
-  "typescript/no-unnecessary-qualifier": ["off"],
-  // Disabled: TODO
-  "typescript/no-unnecessary-template-expression": ["off"],
-  // Disabled: TODO
-  "typescript/no-unnecessary-type-arguments": ["off"],
+  "typescript/no-unnecessary-qualifier": ["error"],
+  "typescript/no-unnecessary-template-expression": ["error"],
+  "typescript/no-unnecessary-type-arguments": ["error"],
   "typescript/no-unnecessary-type-assertion": ["error"],
   "typescript/no-unnecessary-type-constraint": ["error"],
-  // Disabled: TODO
+  // Disabled: Rule in nursery and not ready yet
   "typescript/no-unnecessary-type-conversion": ["off"],
-  // Disabled: TODO
+  // Disabled: Rule in nursery and not ready yet
   "typescript/no-unnecessary-type-parameters": ["off"],
   "typescript/no-unsafe-argument": ["error"],
   "typescript/no-unsafe-assignment": ["error"],
@@ -697,27 +689,26 @@ export const rules = {
   "typescript/no-unsafe-function-type": ["error"],
   "typescript/no-unsafe-member-access": ["error"],
   "typescript/no-unsafe-return": ["error"],
-  // Disabled: TODO
-  "typescript/no-unsafe-type-assertion": ["off"],
+  "typescript/no-unsafe-type-assertion": ["error"],
   "typescript/no-unsafe-unary-minus": ["error"],
-  // Disabled: TODO
+  // Disabled: Rule in nursery and not ready yet
   "typescript/no-useless-default-assignment": ["off"],
   "typescript/no-useless-empty-export": ["error"],
-  // Disabled: TODO
+  // Disabled: Redundant; typescript/no-require-imports is already enabled
   "typescript/no-var-requires": ["off"],
   "typescript/no-wrapper-object-types": ["error"],
-  // Disabled: TODO
+  // Disabled: Conflicts with the codebase preference for non-null assertions
   "typescript/non-nullable-type-assertion-style": ["off"],
   "typescript/only-throw-error": ["error"],
-  // Disabled: TODO
+  // Disabled: Style preference; both constructor patterns have valid uses
   "typescript/parameter-properties": ["off"],
   "typescript/prefer-as-const": ["error"],
   "typescript/prefer-enum-initializers": ["error"],
   "typescript/prefer-find": ["error"],
-  // Disabled: TODO
+  // Disabled: Conflicts with enabled eslint-js/no-restricted-syntax ForOfStatement
   "typescript/prefer-for-of": ["off"],
   "typescript/prefer-function-type": ["error"],
-  // Disabled: TODO
+  // Disabled: Redundant; unicorn/prefer-includes already covers this
   "typescript/prefer-includes": ["off"],
   "typescript/prefer-literal-enum-member": ["error"],
   "typescript/prefer-namespace-keyword": ["error"],
@@ -739,7 +730,7 @@ export const rules = {
   "typescript/restrict-plus-operands": ["error"],
   "typescript/restrict-template-expressions": ["error"],
   "typescript/return-await": ["error", "in-try-catch"],
-  // Disabled: TODO
+  // Disabled: Too strict; breaks idiomatic JavaScript truthiness checks
   "typescript/strict-boolean-expressions": ["off"],
   "typescript/strict-void-return": ["error"],
   "typescript/switch-exhaustiveness-check": ["error"],
@@ -754,27 +745,27 @@ export const rules = {
   "unicorn/consistent-existence-index-check": ["error"],
   "unicorn/consistent-function-scoping": ["error"],
   "unicorn/custom-error-definition": ["error"],
-  // Disabled: TODO
+  // Disabled: Formatting concern; delegated to the formatter
   "unicorn/empty-brace-spaces": ["off"],
   "unicorn/error-message": ["error"],
   "unicorn/escape-case": ["error"],
-  // Disabled: TODO
+  // Disabled: Too verbose; truthy .length checks are idiomatic JavaScript
   "unicorn/explicit-length-check": ["off"],
   "unicorn/filename-case": ["error"],
   "unicorn/new-for-builtins": ["error"],
   "unicorn/no-abusive-eslint-disable": ["error"],
   "unicorn/no-accessor-recursion": ["error"],
   "unicorn/no-anonymous-default-export": ["error"],
-  // Disabled: TODO
+  // Disabled: Too strict; point-free function callbacks are idiomatic
   "unicorn/no-array-callback-reference": ["off"],
-  // Disabled: TODO
+  // Disabled: Conflicts with eslint-js/no-restricted-syntax banning for...of alternative
   "unicorn/no-array-for-each": ["off"],
   "unicorn/no-array-method-this-argument": ["error"],
-  // Disabled: TODO
+  // Disabled: Too opinionated; reduce is valid for many patterns
   "unicorn/no-array-reduce": ["off"],
   "unicorn/no-array-reverse": ["error"],
   "unicorn/no-array-sort": ["error"],
-  // Disabled: TODO
+  // Disabled: Too strict; accessing awaited expression members is common
   "unicorn/no-await-expression-member": ["off"],
   "unicorn/no-await-in-promise-methods": ["error"],
   "unicorn/no-console-spaces": ["error"],
@@ -790,14 +781,14 @@ export const rules = {
   "unicorn/no-lonely-if": ["error"],
   "unicorn/no-magic-array-flat-depth": ["error"],
   "unicorn/no-negation-in-equality-check": ["error"],
-  // Disabled: TODO
+  // Disabled: Duplicate of eslint/no-nested-ternary; intentionally allowed
   "unicorn/no-nested-ternary": ["off"],
   "unicorn/no-new-array": ["error"],
   "unicorn/no-new-buffer": ["error"],
-  // Disabled: TODO
+  // Disabled: Too opinionated; null is standard in APIs and DOM
   "unicorn/no-null": ["off"],
   "unicorn/no-object-as-default-parameter": ["error"],
-  // Disabled: TODO
+  // Disabled: Would break CLI tools, scripts, and shutdown logic
   "unicorn/no-process-exit": ["off"],
   "unicorn/no-single-promise-in-promise-methods": ["error"],
   "unicorn/no-static-only-class": ["error"],
@@ -813,9 +804,9 @@ export const rules = {
   "unicorn/no-unnecessary-array-splice-count": ["error"],
   "unicorn/no-unnecessary-await": ["error"],
   "unicorn/no-unnecessary-slice-end": ["error"],
-  // Disabled: TODO
+  // Disabled: Subjective; readability is context-dependent
   "unicorn/no-unreadable-array-destructuring": ["off"],
-  // Disabled: TODO
+  // Disabled: Subjective; formatted IIFEs are readable enough
   "unicorn/no-unreadable-iife": ["off"],
   "unicorn/no-useless-collection-argument": ["error"],
   "unicorn/no-useless-error-capture-stack-trace": ["error"],
@@ -826,7 +817,7 @@ export const rules = {
   "unicorn/no-useless-switch-case": ["error"],
   "unicorn/no-useless-undefined": ["error"],
   "unicorn/no-zero-fractions": ["error"],
-  // Disabled: TODO
+  // Disabled: Formatting concern; delegated to the formatter
   "unicorn/number-literal-case": ["off"],
   "unicorn/numeric-separators-style": ["error"],
   "unicorn/prefer-add-event-listener": ["error"],
@@ -871,7 +862,7 @@ export const rules = {
   "unicorn/prefer-optional-catch-binding": ["error"],
   "unicorn/prefer-prototype-methods": ["error"],
   "unicorn/prefer-query-selector": ["error"],
-  // Disabled: TODO
+  // Disabled: Too obscure; Function.prototype.apply is more idiomatic
   "unicorn/prefer-reflect-apply": ["off"],
   "unicorn/prefer-regexp-test": ["error"],
   "unicorn/prefer-response-static-json": ["error"],
@@ -886,10 +877,10 @@ export const rules = {
   "unicorn/prefer-structured-clone": ["error"],
   "unicorn/prefer-ternary": ["error"],
   "unicorn/prefer-top-level-await": ["error"],
-  // Disabled: TODO
+  // Disabled: Too strict; other error types may be semantically correct
   "unicorn/prefer-type-error": ["off"],
   "unicorn/relative-url-style": ["error", "never"],
-  // Disabled: TODO
+  // Disabled: Too strict; default comma separator is universally known
   "unicorn/require-array-join-separator": ["off"],
   "unicorn/require-module-attributes": ["error"],
   "unicorn/require-module-specifiers": ["error"],
@@ -902,7 +893,7 @@ export const rules = {
 } as const satisfies DummyRuleMap;
 
 export const config = {
-  /* disable all categories so that we can enable them selectively */
+  /* disable all categories so that we can enable rules selectively */
   categories: {
     correctness: "off",
     nursery: "off",

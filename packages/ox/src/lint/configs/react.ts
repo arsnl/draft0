@@ -67,7 +67,8 @@ const rules = {
   "react/jsx-fragments": ["error"],
   "react/jsx-handler-names": ["error"],
   "react/jsx-key": ["error"],
-  "react/jsx-max-depth": ["error", { max: 6 }],
+  // Disabled: Arbitrary threshold; better enforced through code review
+  "react/jsx-max-depth": ["off"],
   "react/jsx-no-comment-textnodes": ["error"],
   "react/jsx-no-constructed-context-values": ["error"],
   "react/jsx-no-duplicate-props": ["error"],
@@ -77,7 +78,7 @@ const rules = {
   "react/jsx-no-useless-fragment": ["error"],
   "react/jsx-pascal-case": ["error"],
   "react/jsx-props-no-spread-multi": ["error"],
-  // Disabled: prop forwarding, polymorphic components, and “pass rest to DOM” are idiomatic React
+  // Disabled: Too restrictive; prop forwarding, polymorphic components, and “pass rest to DOM” are idiomatic React
   "react/jsx-props-no-spreading": ["off"],
   "react/no-array-index-key": ["error"],
   "react/no-children-prop": ["error"],
@@ -88,7 +89,7 @@ const rules = {
   "react/no-direct-mutation-state": ["error"],
   "react/no-find-dom-node": ["error"],
   "react/no-is-mounted": ["error"],
-  // Disabled: allow multiple components per file for colocation
+  // Disabled: Too restrictive; multiple components per file for colocation is idiomatic React and encouraged for readability
   "react/no-multi-comp": ["off"],
   "react/no-namespace": ["error"],
   "react/no-react-children": ["error"],
@@ -107,10 +108,10 @@ const rules = {
   ],
   "react/no-unsafe": ["error"],
   "react/no-will-update-set-state": ["error"],
-  // Disabled: allow hooks, constants, helpers beside components
+  // Disabled: Too restrictive; hooks, constants, helpers beside components are idiomatic React
   "react/only-export-components": ["off"],
   "react/prefer-es6-class": ["error"],
-  // Disabled: not needed on React 17+ with new JSX transform
+  // Disabled: Deprecated; not needed on React 17+ with new JSX transform
   "react/react-in-jsx-scope": ["off"],
   "react/require-render-return": ["error"],
   "react/rules-of-hooks": ["error"],
@@ -118,13 +119,13 @@ const rules = {
   "react/state-in-constructor": ["error"],
   "react/style-prop-object": ["error"],
   "react/void-dom-elements-no-children": ["error"],
-  // Disabled: let the React compiler enforce this
+  // Disabled: Redundant; let the React compiler enforce this
   "react-perf/jsx-no-jsx-as-prop": ["off"],
-  // Disabled: let the React compiler enforce this
+  // Disabled: Redundant; let the React compiler enforce this
   "react-perf/jsx-no-new-array-as-prop": ["off"],
-  // Disabled: let the React compiler enforce this
+  // Disabled: Redundant; let the React compiler enforce this
   "react-perf/jsx-no-new-function-as-prop": ["off"],
-  // Disabled: let the React compiler enforce this
+  // Disabled: Redundant; let the React compiler enforce this
   "react-perf/jsx-no-new-object-as-prop": ["off"],
 } as const satisfies DummyRuleMap;
 
