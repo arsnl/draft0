@@ -49,7 +49,8 @@ export const rules = {
     },
   ],
   "eslint/guard-for-in": ["error"],
-  "eslint/id-length": ["error", { min: 2, checkGeneric: false, properties: "never" }],
+  // Disabled: Style preference; variable names are context-dependent
+  "eslint/id-length": ["off"],
   // Disabled: TypeScript strict mode already catches uninitialized variables
   "eslint/init-declarations": ["off"],
   // Disabled: Arbitrary limit; co-located helper classes are valid
@@ -715,7 +716,8 @@ export const rules = {
   "typescript/prefer-nullish-coalescing": ["error"],
   "typescript/prefer-optional-chain": ["error"],
   "typescript/prefer-promise-reject-errors": ["error"],
-  "typescript/prefer-readonly-parameter-types": ["error"],
+  // Disabled: Rule in nursery and not ready yet
+  "typescript/prefer-readonly-parameter-types": ["off"],
   "typescript/prefer-readonly": ["warn"],
   "typescript/prefer-reduce-type-parameter": ["error"],
   // Disabled: Conflicts with unicorn/prefer-regexp-test

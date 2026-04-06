@@ -18,10 +18,7 @@
   },
   "scripts": {
     "dev": "tsdown --watch",
-    "build": "tsdown",
-    "check:lint": "oxlint",
-    "fix:lint": "oxlint --fix",
-    "check:types": "tsc --noEmit"
+    "build": "tsdown"
   },
   "dependencies": {
     "oxlint-plugin-eslint": "^1.57.0",

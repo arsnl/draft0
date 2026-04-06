@@ -13,15 +13,6 @@
     },
     "start": {
       "dependsOn": ["^start"]
-    },
-    "check:lint": {
-      "dependsOn": ["^check:lint"]
-    },
-    "check:types": {
-      "dependsOn": ["^check:types"]
-    },
-    "fix:lint": {
-      "dependsOn": ["^fix:lint"]
     }
   }
 }

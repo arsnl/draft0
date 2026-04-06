@@ -1,5 +1,4 @@
 {
-  "eslint.workingDirectories": [{ "mode": "auto" }],
   // Format a file on save.
   "editor.formatOnSave": true,
   // Defines a default formatter which takes precedence over all other formatter settings.
