@@ -166,7 +166,16 @@ export const rules = {
   "eslint/no-param-reassign": [
     "error",
     {
-      ignorePropertyModificationsFor: ["ctx", "context", "req", "request", "res", "response"],
+      ignorePropertyModificationsFor: [
+        "acc",
+        "accumulator",
+        "ctx",
+        "context",
+        "req",
+        "request",
+        "res",
+        "response",
+      ],
       props: true,
     },
   ],
@@ -361,7 +370,8 @@ export const rules = {
   "eslint/prefer-template": ["error"],
   "eslint/preserve-caught-error": ["error"],
   "eslint/radix": ["error"],
-  "eslint/require-await": ["error"],
+  // Disabled: Redundant; typescript/require-await already covers this
+  "eslint/require-await": ["off"],
   "eslint/require-yield": ["error"],
   // Only used for sorting import members since oxfmt don't support it yet.
   "eslint/sort-imports": [
@@ -456,7 +466,7 @@ export const rules = {
   "import/no-amd": ["error"],
   // Disabled: Framework configs often require anonymous default exports
   "import/no-anonymous-default-export": ["off"],
-  // Disabled: Redundant; typescript/no-require-imports already covers this
+  // Disabled: Redundant; unicorn/prefer-module already covers this
   "import/no-commonjs": ["off"],
   "import/no-cycle": ["error"],
   // Disabled: Too strict universally; frameworks and configs need defaults
@@ -471,7 +481,8 @@ export const rules = {
   "import/no-named-default": ["error"],
   // Disabled: Contradicts the codebase preference for named exports
   "import/no-named-export": ["off"],
-  "import/no-namespace": ["error"],
+  // Disabled: Too strict; wildcard imports are valid for packages without a default export
+  "import/no-namespace": ["off"],
   // Disabled: Would break all Node.js and server-side projects
   "import/no-nodejs-modules": ["off"],
   // Disabled: Too restrictive without project-specific path alias setup
@@ -505,7 +516,7 @@ export const rules = {
   "jsdoc/require-returns-type": ["off"],
   "jsdoc/require-returns": ["error"],
   "jsdoc/require-yields": ["error"],
-  // Disabled: Conflicts with typescript/no-require-imports
+  // Disabled: Useless; cannot use with unicorn/prefer-module
   "node/global-require": ["off"],
   // Disabled: Redundant; already covered by eslint/no-unused-vars
   "node/handle-callback-err": ["off"],
@@ -647,7 +658,10 @@ export const rules = {
   "typescript/no-empty-object-type": ["error"],
   "typescript/no-explicit-any": ["error"],
   "typescript/no-extra-non-null-assertion": ["error"],
-  "typescript/no-extraneous-class": ["error"],
+  "typescript/no-extraneous-class": [
+    "error",
+    { allowConstructorOnly: true, allowWithDecorator: true },
+  ],
   "typescript/no-floating-promises": ["error"],
   "typescript/no-for-in-array": ["error"],
   "typescript/no-implied-eval": ["error"],
@@ -666,7 +680,8 @@ export const rules = {
   "typescript/no-non-null-asserted-optional-chain": ["error"],
   "typescript/no-non-null-assertion": ["error"],
   "typescript/no-redundant-type-constituents": ["error"],
-  "typescript/no-require-imports": ["error"],
+  // Disabled: Redundant; unicorn/prefer-module already covers this
+  "typescript/no-require-imports": ["off"],
   // Disabled: Project-specific; no universal type restrictions to apply
   "typescript/no-restricted-types": ["off"],
   "typescript/no-this-alias": ["error"],
@@ -695,7 +710,7 @@ export const rules = {
   // Disabled: Rule in nursery and not ready yet
   "typescript/no-useless-default-assignment": ["off"],
   "typescript/no-useless-empty-export": ["error"],
-  // Disabled: Redundant; typescript/no-require-imports is already enabled
+  // Disabled: Redundant; unicorn/prefer-module already covers this
   "typescript/no-var-requires": ["off"],
   "typescript/no-wrapper-object-types": ["error"],
   // Disabled: Conflicts with the codebase preference for non-null assertions
@@ -789,7 +804,8 @@ export const rules = {
   "unicorn/no-new-buffer": ["error"],
   // Disabled: Too opinionated; null is standard in APIs and DOM
   "unicorn/no-null": ["off"],
-  "unicorn/no-object-as-default-parameter": ["error"],
+  // Disabled: Too strict; object as default parameter is valid
+  "unicorn/no-object-as-default-parameter": ["off"],
   // Disabled: Would break CLI tools, scripts, and shutdown logic
   "unicorn/no-process-exit": ["off"],
   "unicorn/no-single-promise-in-promise-methods": ["error"],
@@ -878,7 +894,8 @@ export const rules = {
   "unicorn/prefer-string-trim-start-end": ["error"],
   "unicorn/prefer-structured-clone": ["error"],
   "unicorn/prefer-ternary": ["error"],
-  "unicorn/prefer-top-level-await": ["error"],
+  // Disabled: Too strict; it's not always appropriate to use top-level await
+  "unicorn/prefer-top-level-await": ["off"],
   // Disabled: Too strict; other error types may be semantically correct
   "unicorn/prefer-type-error": ["off"],
   "unicorn/relative-url-style": ["error", "never"],
@@ -916,6 +933,22 @@ export const config = {
   plugins: ["eslint", "import", "jsdoc", "node", "oxc", "promise", "typescript", "unicorn"],
   jsPlugins: ["oxlint-plugin-eslint"],
   rules,
+  overrides: [
+    {
+      files: [
+        "**/*.{test,spec}.{js,jsx,cjs,mjs,ts,tsx}",
+        "**/__tests__/**/*.{js,jsx,cjs,mjs,ts,tsx}",
+      ],
+      rules: {
+        // Disabled: Too strict; mock callbacks often need empty functions
+        "eslint/no-empty-function": ["off"],
+        // Disabled: Too strict; explicit any is common in test code
+        "typescript/no-explicit-any": ["off"],
+        // Disabled: Too strict; help readability of test code
+        "unicorn/consistent-function-scoping": ["off"],
+      },
+    },
+  ],
 } as const satisfies OxlintConfig;
 
 export default config;

@@ -27,7 +27,6 @@
   "devDependencies": {
     "@arethetypeswrong/core": "^0.18.2",
     "@kit42/tsconfig": "*",
-    "oxlint": "^1.57.0",
     "publint": "^0.3.18",
     "tsdown": "^0.21.7",
     "typescript": "^5.9.2"
