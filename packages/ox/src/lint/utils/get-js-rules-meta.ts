@@ -110,8 +110,8 @@ const JS_RULES_META = [
 /**
  * Get the JavaScript rules metadata.
  *
- * JavaScript rules are rules that are NOT part of the oxlint core and are provided by third-party
- * JavaScript plugins. They are not listed in the oxlint CLI rules output.
+ * JavaScript rules are rules that are NOT part of the Oxlint core and are provided by third-party
+ * JavaScript plugins. They are not listed in the Oxlint CLI rules output.
  *
  * @returns The JavaScript rules metadata.
  */

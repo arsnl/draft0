@@ -17,7 +17,7 @@ export type OxlintRuleMeta = {
   plugin: OxlintPlugin;
   /**
    * Like `plugin`, but in snake_case instead of kebab-case. This is the value returned by the
-   * oxlint CLI and then transformed to `plugin` by `getPluginFromRuleScope`. e.g. `react_perf`
+   * Oxlint CLI and then transformed to `plugin` by `getPluginFromRuleScope`. e.g. `react_perf`
    */
   scope: OxlintRuleScope;
   /** The name of the rule without the plugin prefix. e.g. `jsx-no-jsx-as-prop` */
@@ -25,7 +25,7 @@ export type OxlintRuleMeta = {
   /** The full name of the rule including the plugin prefix. e.g. `react-perf/jsx-no-jsx-as-prop` */
   name: string;
   /**
-   * Whether the rule is built in to oxlint. Built-in rules are rules that are part of the oxlint
+   * Whether the rule is built in to Oxlint. Built-in rules are rules that are part of the Oxlint
    * core and are not third-party JavaScript plugins.
    */
   isBuiltIn: boolean;

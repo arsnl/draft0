@@ -20,7 +20,7 @@ const isOxlintCliRuleMeta = (rule: unknown): rule is OxlintCliRuleMeta =>
 /**
  * Get the built-in rules metadata.
  *
- * Built-in rules are rules that are part of the oxlint core and are not third-party JavaScript
+ * Built-in rules are rules that are part of the Oxlint core and are not third-party JavaScript
  * plugins.
  *
  * @returns The built-in rules metadata.
@@ -60,7 +60,7 @@ export const getBuiltInRulesMeta = (): OxlintRuleMeta[] => {
 
       if (!sourceRule) {
         throw new Error(
-          `Source rule ${sourceRuleName} not found from oxlint CLI rules while getting compatible rule ${compatibleRuleName}`,
+          `Source rule ${sourceRuleName} not found from Oxlint CLI rules while getting compatible rule ${compatibleRuleName}`,
         );
       }
 
