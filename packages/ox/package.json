@@ -21,8 +21,8 @@
     "build": "tsdown"
   },
   "dependencies": {
-    "oxlint-plugin-eslint": "^1.57.0",
-    "oxlint-tsgolint": "^0.18.1",
+    "oxlint-plugin-eslint": "^1.59.0",
+    "oxlint-tsgolint": "^0.20.0",
     "type-fest": "^5.5.0"
   },
   "devDependencies": {

@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@kit42/ox": "*",
-    "oxfmt": "^0.42.0",
+    "oxfmt": "^0.44.0",
     "oxlint": "^1.59.0",
     "turbo": "^2.8.1",
     "typescript": "5.9.2"
