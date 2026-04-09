@@ -1,5 +1,4 @@
 import type { OxfmtConfig } from "oxfmt";
-
 import { defineConfig as defineOxfmtConfig } from "oxfmt";
 
 export const config = {
@@ -17,7 +16,6 @@ export const config = {
       "type-parent",
       "type-sibling",
       "type-index",
-      { newlinesBetween: true },
       "builtin",
       "external",
       "internal",
