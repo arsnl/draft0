@@ -904,6 +904,7 @@ export const rules = {
   // Disabled: May have false positives; cannot distinguish between window.postMessage() and other calls.
   "unicorn/require-post-message-target-origin": ["off"],
   "unicorn/switch-case-braces": ["error", "always"],
+  "unicorn/switch-case-break-position": ["error"],
   "unicorn/text-encoding-identifier-case": ["error"],
   "unicorn/throw-new-error": ["error"],
 } as const satisfies DummyRuleMap;
