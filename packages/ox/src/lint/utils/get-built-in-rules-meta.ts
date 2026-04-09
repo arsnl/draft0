@@ -2,9 +2,12 @@ import type { OxlintPlugin, OxlintRuleMeta } from "../common.ts";
 import { spawnSync } from "node:child_process";
 import { COMPATIBLE_RULES, getRuleScopeFromPlugin } from "../common.ts";
 import { getPluginFromRuleScope } from "../common.ts";
-import { getUsedRuleNames } from "./get-used-rule-names.ts";
+import { getReferencedRuleNames } from "./get-referenced-rule-names.ts";
 
-type OxlintCliRuleMeta = Omit<OxlintRuleMeta, "plugin" | "name" | "isBuiltIn" | "isCompatible">;
+type OxlintCliRuleMeta = Omit<
+  OxlintRuleMeta,
+  "plugin" | "name" | "builtIn" | "compatible" | "referenced"
+>;
 
 const isOxlintCliRuleMeta = (rule: unknown): rule is OxlintCliRuleMeta =>
   typeof rule === "object" &&
@@ -26,7 +29,7 @@ const isOxlintCliRuleMeta = (rule: unknown): rule is OxlintCliRuleMeta =>
  * @returns The built-in rules metadata.
  */
 export const getBuiltInRulesMeta = (): OxlintRuleMeta[] => {
-  const usedRuleNames = getUsedRuleNames();
+  const referencedRuleNames = getReferencedRuleNames();
 
   const { stdout } = spawnSync("npx", ["oxlint", "--rules", "--format", "json"], {
     encoding: "utf8",
@@ -47,9 +50,9 @@ export const getBuiltInRulesMeta = (): OxlintRuleMeta[] => {
       ...rule,
       plugin,
       name,
-      isBuiltIn: true,
-      isCompatible: false,
-      isUsed: usedRuleNames.has(name),
+      builtIn: true,
+      compatible: false,
+      referenced: referencedRuleNames.has(name),
     };
   });
 
@@ -81,10 +84,10 @@ export const getBuiltInRulesMeta = (): OxlintRuleMeta[] => {
         value,
         plugin,
         name,
-        isBuiltIn: false,
-        isCompatible: true,
-        isUsed: usedRuleNames.has(name),
-      };
+        builtIn: false,
+        compatible: true,
+        referenced: referencedRuleNames.has(name),
+      } satisfies OxlintRuleMeta;
     },
   );
 

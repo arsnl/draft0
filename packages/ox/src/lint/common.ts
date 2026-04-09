@@ -20,22 +20,10 @@ export type OxlintRuleMeta = {
    * Oxlint CLI and then transformed to `plugin` by `getPluginFromRuleScope`. e.g. `react_perf`
    */
   scope: OxlintRuleScope;
-  /** The name of the rule without the plugin prefix. e.g. `jsx-no-jsx-as-prop` */
-  value: string;
   /** The full name of the rule including the plugin prefix. e.g. `react-perf/jsx-no-jsx-as-prop` */
   name: string;
-  /**
-   * Whether the rule is built in to Oxlint. Built-in rules are rules that are part of the Oxlint
-   * core and are not third-party JavaScript plugins.
-   */
-  isBuiltIn: boolean;
-  /**
-   * Whether the rule is a compatible rule. A rule is compatible if it shares the same name and
-   * functionality, but has a different prefix. Compatible don't show up in the list of rules from
-   * the CLI, but can be used in the config. e.g. `vitest/no-alias-methods` (compatible rule) and
-   * `jest/no-alias-methods` (source rule).
-   */
-  isCompatible: boolean;
+  /** The name of the rule without the plugin prefix. e.g. `jsx-no-jsx-as-prop` */
+  value: string;
   /**
    * The category represents the type of intent or purpose of the rule. e.g. `style`. There is a
    * special category `nursery` which is used for rules that are experimental and may be modified in
@@ -74,11 +62,28 @@ export type OxlintRuleMeta = {
   default: boolean;
   /** The URL to the rule's documentation. */
   docs_url: string;
+
   /**
-   * Whether the rule is used in the configs. If a rule is marked as used it means that it is used
-   * in the configs, it doesn't mean that it is enabled in any of the configs.
+   * Whether the rule is built in to Oxlint. Built-in rules are rules that are part of the Oxlint
+   * core and are not third-party JavaScript plugins.
    */
-  isUsed: boolean;
+  builtIn: boolean;
+  /**
+   * Whether the rule is a compatible rule. A rule is compatible if it shares the same name and
+   * functionality, but has a different prefix. Compatible don't show up in the list of rules from
+   * the CLI, but can be used in the config. e.g. `vitest/no-alias-methods` (compatible rule) and
+   * `jest/no-alias-methods` (source rule).
+   */
+  compatible: boolean;
+  /**
+   * Whether the rule is referenced in any of the configs.
+   *
+   * A rule is referenced if the linter configuration names that rule at least once, anywhere it
+   * would normally appear in config. It does not matter what level the rule is set to. If the rule
+   * is present as "error", "warn", or even "off", it is still referenced, because it is explicitly
+   * mentioned.
+   */
+  referenced: boolean;
 };
 
 /**

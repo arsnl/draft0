@@ -1,5 +1,5 @@
 import type { OxlintRuleMeta } from "../common.ts";
-import { getUsedRuleNames } from "./get-used-rule-names.ts";
+import { getReferencedRuleNames } from "./get-referenced-rule-names.ts";
 
 /**
  * Metadata for the JavaScript rules.
@@ -17,9 +17,9 @@ const JS_RULES_META = [
     docs_url: "https://eslint.org/docs/latest/rules/no-restricted-syntax",
     plugin: "eslint-js",
     name: "eslint-js/no-restricted-syntax",
-    isBuiltIn: false,
-    isCompatible: false,
-    isUsed: false,
+    builtIn: false,
+    compatible: false,
+    referenced: false,
   },
   {
     scope: "eslint_js",
@@ -31,9 +31,9 @@ const JS_RULES_META = [
     docs_url: "https://eslint.org/docs/latest/rules/no-unreachable-loop",
     plugin: "eslint-js",
     name: "eslint-js/no-unreachable-loop",
-    isBuiltIn: false,
-    isCompatible: false,
-    isUsed: false,
+    builtIn: false,
+    compatible: false,
+    referenced: false,
   },
   {
     scope: "eslint_js",
@@ -45,9 +45,9 @@ const JS_RULES_META = [
     docs_url: "https://eslint.org/docs/latest/rules/one-var",
     plugin: "eslint-js",
     name: "eslint-js/one-var",
-    isBuiltIn: false,
-    isCompatible: false,
-    isUsed: false,
+    builtIn: false,
+    compatible: false,
+    referenced: false,
   },
   {
     scope: "eslint_js",
@@ -59,9 +59,9 @@ const JS_RULES_META = [
     docs_url: "https://eslint.org/docs/latest/rules/prefer-arrow-callback",
     plugin: "eslint-js",
     name: "eslint-js/prefer-arrow-callback",
-    isBuiltIn: false,
-    isCompatible: false,
-    isUsed: false,
+    builtIn: false,
+    compatible: false,
+    referenced: false,
   },
 ] as const satisfies OxlintRuleMeta[];
 
@@ -74,7 +74,7 @@ const JS_RULES_META = [
  * @returns The JavaScript rules metadata.
  */
 export const getJsRulesMeta = (): OxlintRuleMeta[] => {
-  const usedRuleNames = getUsedRuleNames();
+  const referencedRuleNames = getReferencedRuleNames();
 
-  return JS_RULES_META.map((rule) => ({ ...rule, isUsed: usedRuleNames.has(rule.name) }));
+  return JS_RULES_META.map((rule) => ({ ...rule, referenced: referencedRuleNames.has(rule.name) }));
 };
