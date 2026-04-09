@@ -1,4 +1,5 @@
 import type { OxfmtConfig } from "oxfmt";
+
 import { defineConfig as defineOxfmtConfig } from "oxfmt";
 
 export const config = {
@@ -9,11 +10,21 @@ export const config = {
     newlinesBetween: false,
     internalPattern: ["~/", "@/", "#"],
     groups: [
-      "type",
+      "type-builtin",
+      "type-external",
+      "type-internal",
+      "type-subpath",
+      "type-parent",
+      "type-sibling",
+      "type-index",
+      { newlinesBetween: true },
       "builtin",
       "external",
-      ["internal", "subpath"],
-      ["parent", "sibling", "index"],
+      "internal",
+      "subpath",
+      "parent",
+      "sibling",
+      "index",
       "style",
       "unknown",
     ],
