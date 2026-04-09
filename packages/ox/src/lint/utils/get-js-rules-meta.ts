@@ -9,20 +9,6 @@ import { getUsedRuleNames } from "./get-used-rule-names.ts";
 const JS_RULES_META = [
   {
     scope: "eslint_js",
-    value: "no-restricted-exports",
-    category: "restriction",
-    type_aware: false,
-    fix: "none",
-    default: false,
-    docs_url: "https://eslint.org/docs/latest/rules/no-restricted-exports",
-    plugin: "eslint-js",
-    name: "eslint-js/no-restricted-exports",
-    isBuiltIn: false,
-    isCompatible: false,
-    isUsed: false,
-  },
-  {
-    scope: "eslint_js",
     value: "no-restricted-syntax",
     category: "restriction",
     type_aware: false,

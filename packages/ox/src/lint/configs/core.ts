@@ -185,6 +185,12 @@ export const rules = {
   "eslint/no-prototype-builtins": ["error"],
   "eslint/no-redeclare": ["error"],
   "eslint/no-regex-spaces": ["error"],
+  "eslint/no-restricted-exports": [
+    "error",
+    {
+      restrictedNamedExports: ["default"],
+    },
+  ],
   "eslint/no-restricted-globals": [
     "error",
     { name: "event", message: "Use local parameter instead." },
@@ -396,12 +402,6 @@ export const rules = {
   ],
   "eslint/vars-on-top": ["error"],
   "eslint/yoda": ["error"],
-  "eslint-js/no-restricted-exports": [
-    "error",
-    {
-      restrictedNamedExports: ["default"],
-    },
-  ],
   "eslint-js/no-restricted-syntax": [
     "error",
     {
