@@ -349,6 +349,14 @@ export const rules = {
   // Disabled: TODO/FIXME comments are expected during active development
   "eslint/no-warning-comments": ["off"],
   "eslint/no-with": ["error"],
+  "eslint/object-shorthand": [
+    "error",
+    "always",
+    {
+      avoidQuotes: true,
+      ignoreConstructors: false,
+    },
+  ],
   "eslint/operator-assignment": ["error", "always"],
   "eslint/prefer-const": [
     "error",
@@ -427,14 +435,6 @@ export const rules = {
     },
   ],
   "eslint-js/no-unreachable-loop": ["error"],
-  "eslint-js/object-shorthand": [
-    "error",
-    "always",
-    {
-      avoidQuotes: true,
-      ignoreConstructors: false,
-    },
-  ],
   "eslint-js/one-var": ["error", "never"],
   "eslint-js/prefer-arrow-callback": ["error"],
   "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
