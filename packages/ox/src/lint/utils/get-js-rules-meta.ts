@@ -1,6 +1,12 @@
-import type { OxlintRule } from "../common.ts";
+import type { OxlintRuleMeta } from "../common.ts";
+import { getUsedRuleNames } from "./get-used-rule-names.ts";
 
-const JS_RULES = [
+/**
+ * Metadata for the JavaScript rules.
+ *
+ * Only list the rules that are used in the configs.
+ */
+const JS_RULES_META = [
   {
     scope: "eslint_js",
     value: "no-restricted-exports",
@@ -13,6 +19,7 @@ const JS_RULES = [
     name: "eslint-js/no-restricted-exports",
     isBuiltIn: false,
     isCompatible: false,
+    isUsed: false,
   },
   {
     scope: "eslint_js",
@@ -26,6 +33,7 @@ const JS_RULES = [
     name: "eslint-js/no-restricted-syntax",
     isBuiltIn: false,
     isCompatible: false,
+    isUsed: false,
   },
   {
     scope: "eslint_js",
@@ -39,6 +47,7 @@ const JS_RULES = [
     name: "eslint-js/no-unreachable-loop",
     isBuiltIn: false,
     isCompatible: false,
+    isUsed: false,
   },
   {
     scope: "eslint_js",
@@ -52,6 +61,7 @@ const JS_RULES = [
     name: "eslint-js/no-useless-assignment",
     isBuiltIn: false,
     isCompatible: false,
+    isUsed: false,
   },
   {
     scope: "eslint_js",
@@ -65,6 +75,7 @@ const JS_RULES = [
     name: "eslint-js/object-shorthand",
     isBuiltIn: false,
     isCompatible: false,
+    isUsed: false,
   },
   {
     scope: "eslint_js",
@@ -78,6 +89,7 @@ const JS_RULES = [
     name: "eslint-js/one-var",
     isBuiltIn: false,
     isCompatible: false,
+    isUsed: false,
   },
   {
     scope: "eslint_js",
@@ -91,7 +103,20 @@ const JS_RULES = [
     name: "eslint-js/prefer-arrow-callback",
     isBuiltIn: false,
     isCompatible: false,
+    isUsed: false,
   },
-] as const satisfies OxlintRule[];
+] as const satisfies OxlintRuleMeta[];
 
-export const getJsRules = (): OxlintRule[] => [...JS_RULES];
+/**
+ * Get the JavaScript rules metadata.
+ *
+ * JavaScript rules are rules that are NOT part of the oxlint core and are provided by third-party
+ * JavaScript plugins. They are not listed in the oxlint CLI rules output.
+ *
+ * @returns The JavaScript rules metadata.
+ */
+export const getJsRulesMeta = (): OxlintRuleMeta[] => {
+  const usedRuleNames = getUsedRuleNames();
+
+  return JS_RULES_META.map((rule) => ({ ...rule, isUsed: usedRuleNames.has(rule.name) }));
+};

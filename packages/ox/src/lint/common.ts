@@ -9,7 +9,7 @@ export type OxlintRuleCategory = {
   [K in keyof Required<RuleCategories>]: K;
 }[keyof RuleCategories];
 
-export type OxlintRule = {
+export type OxlintRuleMeta = {
   /**
    * Name of the plugin that the rule belongs to. Also used as the prefix for the rule name. e.g.
    * `react-perf`
@@ -74,6 +74,11 @@ export type OxlintRule = {
   default: boolean;
   /** The URL to the rule's documentation. */
   docs_url: string;
+  /**
+   * Whether the rule is used in the configs. If a rule is marked as used it means that it is used
+   * in the configs, it doesn't mean that it is enabled in any of the configs.
+   */
+  isUsed: boolean;
 };
 
 /**

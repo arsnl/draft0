@@ -1,9 +1,9 @@
-import { getBuiltInRules } from "../src/lint/utils/get-built-in-rules.ts";
+import { getBuiltInRulesMeta } from "../src/lint/utils/get-built-in-rules-meta.ts";
 import { getCompatibleRules } from "../src/lint/utils/get-compatible-rules.ts";
-import { getJsRules } from "../src/lint/utils/get-js-rules.ts";
+import { getJsRulesMeta } from "../src/lint/utils/get-js-rules-meta.ts";
 import { getUsedRuleNames } from "../src/lint/utils/get-used-rule-names.ts";
 
-console.log(JSON.stringify([...getUsedRuleNames()], null, 2));
+console.log(JSON.stringify([...getBuiltInRulesMeta()], null, 2));
 
 // TODO: getJsRules - add "used" property to the rules
 // TODO: getBuiltInRules - add compatibles rules

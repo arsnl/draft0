@@ -2,20 +2,20 @@ import type { DummyRuleMap } from "oxlint";
 import { COMPATIBLE_RULES } from "../common.ts";
 
 /**
- * Get the compatible rules from the source rules.
+ * Get the compatible rules configuration from the source rules configuration.
  *
- * Compatible rules are rules that share the same name and functionality, but have a different
- * prefix than the source rules. For example, `jest/no-alias-methods` (source rule) and
- * `vitest/no-alias-methods` (compatible rule).
+ * Compatible rules are rules that share the same name, functionality and configuration, but have a
+ * different prefix than the source rules configuration. For example, `jest/no-alias-methods`
+ * (source rule) and `vitest/no-alias-methods` (compatible rule).
  *
  * @example
  *   ```ts
- *   const jestCompatibleRules = getCompatibleRules(jestRules);
+ *   const jestCompatibleRules = getCompatibleRules(jestRules, "vitest");
  *   ```;
  *
  * @param config - The configuration object.
- * @param config.sourceRules - The source rules.
- * @param config.compatiblePlugin - The compatible plugin.
+ * @param config.sourceRules - The source rules configuration.
+ * @param config.compatiblePlugin - The compatible plugin name.
  *
  * @returns The compatible rules.
  */
