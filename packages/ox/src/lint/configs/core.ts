@@ -854,6 +854,7 @@ export const rules = {
   "unicorn/prefer-dom-node-text-content": ["error"],
   "unicorn/prefer-event-target": ["error"],
   "unicorn/prefer-global-this": ["error"],
+  "unicorn/prefer-import-meta-properties": ["error"],
   "unicorn/prefer-includes": ["error"],
   "unicorn/prefer-keyboard-event-key": ["error"],
   "unicorn/prefer-logical-operator-over-ternary": ["error"],
