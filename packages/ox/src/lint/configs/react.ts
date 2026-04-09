@@ -49,6 +49,7 @@ const rules = {
   "react/forbid-dom-props": ["error"],
   "react/forbid-elements": ["error"],
   "react/forward-ref-uses-ref": ["error"],
+  "react/hook-use-state": ["error"],
   "react/iframe-missing-sandbox": ["error"],
   "react/jsx-boolean-value": [
     "error",
