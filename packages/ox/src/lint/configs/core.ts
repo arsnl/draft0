@@ -437,12 +437,6 @@ export const rules = {
   ],
   "eslint-js/one-var": ["error", "never"],
   "eslint-js/prefer-arrow-callback": ["error"],
-  "eslint-js/prefer-regex-literals": [
-    "error",
-    {
-      disallowRedundantWrapping: true,
-    },
-  ],
   "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
   "import/default": ["error"],
   "import/export": ["error"],
@@ -705,7 +699,8 @@ export const rules = {
   "typescript/no-unsafe-function-type": ["error"],
   "typescript/no-unsafe-member-access": ["error"],
   "typescript/no-unsafe-return": ["error"],
-  "typescript/no-unsafe-type-assertion": ["error"],
+  // Disabled: Too strict; often used to cast to a more specific type
+  "typescript/no-unsafe-type-assertion": ["off"],
   "typescript/no-unsafe-unary-minus": ["error"],
   // Disabled: Rule in nursery and not ready yet
   "typescript/no-useless-default-assignment": ["off"],

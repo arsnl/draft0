@@ -22,11 +22,13 @@
   },
   "dependencies": {
     "oxlint-plugin-eslint": "^1.57.0",
-    "oxlint-tsgolint": "^0.18.1"
+    "oxlint-tsgolint": "^0.18.1",
+    "type-fest": "^5.5.0"
   },
   "devDependencies": {
     "@arethetypeswrong/core": "^0.18.2",
     "@kit42/tsconfig": "*",
+    "@types/node": "^25.5.2",
     "publint": "^0.3.18",
     "tsdown": "^0.21.7",
     "typescript": "^5.9.2"

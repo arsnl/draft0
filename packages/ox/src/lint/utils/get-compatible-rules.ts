@@ -1,57 +1,51 @@
 import type { DummyRuleMap } from "oxlint";
-
-type StripPrefix<T extends string, P extends string> = T extends `${P}${infer Rest}` ? Rest : never;
+import { COMPATIBLE_RULES } from "../common.ts";
 
 /**
- * Get the compatible rules from the source rules to the target rules.
+ * Get the compatible rules from the source rules.
  *
  * Compatible rules are rules that share the same name and functionality, but have a different
- * prefix. For example, `jest/no-alias-methods` and `vitest/no-alias-methods`.
+ * prefix than the source rules. For example, `jest/no-alias-methods` (source rule) and
+ * `vitest/no-alias-methods` (compatible rule).
  *
  * @example
  *   ```ts
- *   const compatibleRules = getCompatibleRules({
- *     source: jestRules,
- *     sourcePrefix: "jest/",
- *     targetPrefix: "vitest/",
- *     rules: ["no-alias-methods", "no-commented-out-tests"],
- *   });
+ *   const jestCompatibleRules = getCompatibleRules(jestRules);
  *   ```;
  *
  * @param config - The configuration object.
- * @param config.source - The source rules.
- * @param config.sourcePrefix - The prefix of the source rules.
- * @param config.targetPrefix - The prefix of the target rules.
- * @param config.rules - The rules, without prefixes, to get the compatible rules for.
+ * @param config.sourceRules - The source rules.
+ * @param config.compatiblePlugin - The compatible plugin.
  *
  * @returns The compatible rules.
  */
 export const getCompatibleRules = <
-  Source extends DummyRuleMap,
-  SourcePrefix extends string = "",
-  TargetPrefix extends string = "",
-  Rules extends StripPrefix<Extract<keyof Source, string>, SourcePrefix>[] = [],
+  SourceRules extends DummyRuleMap,
+  CompatiblePlugin extends string,
 >({
-  source,
-  sourcePrefix,
-  targetPrefix,
-  rules,
+  sourceRules,
+  compatiblePlugin,
 }: {
-  source: Source;
-  sourcePrefix?: SourcePrefix;
-  targetPrefix?: TargetPrefix;
-  rules: Rules;
+  sourceRules: SourceRules;
+  compatiblePlugin: CompatiblePlugin;
 }) => {
-  const entries = rules.flatMap((rule) => {
-    const ruleEntry = source[`${sourcePrefix ?? ""}${rule}`];
-    if (!ruleEntry) {
-      return [];
-    }
-    return [[`${targetPrefix ?? ""}${rule}`, ruleEntry]];
-  });
+  const compatibleRules = Object.fromEntries(
+    Object.entries(COMPATIBLE_RULES)
+      .filter(
+        ([compatibleRuleName, sourceRuleName]) =>
+          compatibleRuleName.startsWith(compatiblePlugin) && sourceRuleName in sourceRules,
+      )
+      .map(([compatibleRuleName, sourceRuleName]) => [
+        compatibleRuleName,
+        sourceRules[sourceRuleName],
+      ]),
+  );
 
-  // oxlint-disable-next-line typescript/no-unsafe-type-assertion -- Object.fromEntries cannot express this mapped, per-rule return type.
-  return Object.fromEntries(entries) as {
-    [K in Rules[number] as `${TargetPrefix}${Extract<K, string>}`]: Source[`${SourcePrefix}${K}`];
+  return compatibleRules as {
+    [K in keyof typeof COMPATIBLE_RULES as K extends `${CompatiblePlugin}/${string}`
+      ? (typeof COMPATIBLE_RULES)[K] extends keyof SourceRules
+        ? K
+        : never
+      : never]: SourceRules[(typeof COMPATIBLE_RULES)[K]];
   };
 };
