@@ -111,7 +111,9 @@ const rules = {
   "react/no-will-update-set-state": ["error"],
   // Disabled: Too restrictive; hooks, constants, helpers beside components are idiomatic React
   "react/only-export-components": ["off"],
-  "react/prefer-es6-class": ["error"],
+  // Useless rule most of the time, but useful if the rule react/prefer-function-component is disabled
+  "react/prefer-es6-class": ["error", "always"],
+  "react/prefer-function-component": ["error"],
   // Disabled: Deprecated; not needed on React 17+ with new JSX transform
   "react/react-in-jsx-scope": ["off"],
   "react/require-render-return": ["error"],
