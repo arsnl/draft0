@@ -333,6 +333,7 @@ export const rules = {
   ],
   // Disabled: TypeScript handles this; conflicts with function hoisting
   "eslint/no-use-before-define": ["off"],
+  "eslint/no-useless-assignment": ["error"],
   "eslint/no-useless-backreference": ["error"],
   "eslint/no-useless-call": ["error"],
   "eslint/no-useless-catch": ["error"],
@@ -426,7 +427,6 @@ export const rules = {
     },
   ],
   "eslint-js/no-unreachable-loop": ["error"],
-  "eslint-js/no-useless-assignment": ["error"],
   "eslint-js/object-shorthand": [
     "error",
     "always",
