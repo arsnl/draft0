@@ -56,7 +56,10 @@ export const getBuiltInRulesMeta = (): OxlintRuleMeta[] => {
   const compatibleRules = Object.entries(COMPATIBLE_RULES).map(
     ([compatibleRuleName, sourceRuleName]) => {
       const sourceRule = sourceRules.find(({ name }) => name === sourceRuleName);
-      const plugin = compatibleRuleName.split("/")[0] as OxlintPlugin | undefined;
+      const [plugin, value] = compatibleRuleName.split("/") as [
+        OxlintPlugin | undefined,
+        string | undefined,
+      ];
 
       if (!sourceRule) {
         throw new Error(
@@ -64,15 +67,18 @@ export const getBuiltInRulesMeta = (): OxlintRuleMeta[] => {
         );
       }
 
-      if (!plugin) {
-        throw new Error(`Compatible rule ${compatibleRuleName} name has no plugin prefix`);
+      if (!plugin || !value) {
+        throw new Error(
+          `Compatible rule ${compatibleRuleName} name is invalid. Expected format: "plugin/value".`,
+        );
       }
 
-      const name = `${plugin}/${sourceRule.value}`;
+      const name = `${plugin}/${value}`;
 
       return {
         ...sourceRule,
         scope: getRuleScopeFromPlugin(plugin),
+        value,
         plugin,
         name,
         isBuiltIn: false,
