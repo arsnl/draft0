@@ -18,7 +18,7 @@ import { DEFAULT_OXFMT_CONFIG } from "../common.ts";
  *
  * @returns The Oxfmt configuration.
  */
-export const defineConfig = <T extends OxfmtConfig>(oxfmtConfig?: T) =>
+export const defineConfig = <T extends OxfmtConfig = Record<never, never>>(oxfmtConfig?: T) =>
   defineOxfmtConfig({ ...DEFAULT_OXFMT_CONFIG, ...oxfmtConfig }) as SimplifyDeep<
     Merge<typeof DEFAULT_OXFMT_CONFIG, ReadonlyDeep<T>>
   >;
