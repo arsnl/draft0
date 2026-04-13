@@ -1,7 +1,6 @@
-import { next, react } from "@kit42/ox/lint";
-import { defineConfig } from "oxlint";
-import baseConfig from "../../oxlint.config.ts";
+import { defineConfig } from "@kit42/ox/lint";
 
 export default defineConfig({
-  extends: [baseConfig, next, react],
+  root: false,
+  configs: ["next"],
 });

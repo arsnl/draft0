@@ -14,6 +14,10 @@
     "./lint": {
       "types": "./dist/lint/index.d.ts",
       "import": "./dist/lint/index.js"
+    },
+    "./lint/configs": {
+      "types": "./dist/lint/configs/index.d.ts",
+      "import": "./dist/lint/configs/index.js"
     }
   },
   "scripts": {
@@ -29,6 +33,7 @@
     "@arethetypeswrong/core": "^0.18.2",
     "@kit42/tsconfig": "*",
     "@types/node": "^25.5.2",
+    "oxlint": "^1.59.0",
     "publint": "^0.3.18",
     "tsdown": "^0.21.7",
     "typescript": "^5.9.2"

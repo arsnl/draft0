@@ -1,11 +1,3 @@
-import { core } from "@kit42/ox/lint";
-import { defineConfig } from "oxlint";
+import { defineConfig } from "@kit42/ox/lint";
 
-export default defineConfig({
-  extends: [core],
-  options: {
-    reportUnusedDisableDirectives: "warn",
-    typeAware: true,
-    typeCheck: true,
-  },
-});
+export default defineConfig();

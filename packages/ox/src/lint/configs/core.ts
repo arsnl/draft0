@@ -921,6 +921,7 @@ export const config = {
     suspicious: "off",
   },
   env: {
+    builtin: true,
     browser: true,
   },
   options: {

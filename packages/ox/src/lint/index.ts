@@ -1,13 +1,4 @@
-export { config as angular } from "./configs/angular.ts";
-export { config as astro } from "./configs/astro.ts";
-export { config as core } from "./configs/core.ts";
-export { config as jest } from "./configs/jest.ts";
-export { config as nestjs } from "./configs/nestjs.ts";
-export { config as next } from "./configs/next.ts";
-export { config as qwik } from "./configs/qwik.ts";
-export { config as react } from "./configs/react.ts";
-export { config as remix } from "./configs/remix.ts";
-export { config as solid } from "./configs/solid.ts";
-export { config as svelte } from "./configs/svelte.ts";
-export { config as vitest } from "./configs/vitest.ts";
-export { config as vue } from "./configs/vue.ts";
+import { configs } from "./configs/index.ts";
+import { defineConfig } from "./utils/define-config.ts";
+
+export { configs, defineConfig };

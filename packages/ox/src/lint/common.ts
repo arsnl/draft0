@@ -86,6 +86,21 @@ export type OxlintRuleMeta = {
   referenced: boolean;
 };
 
+export type OxlintConfigName =
+  | "core"
+  | "angular"
+  | "astro"
+  | "jest"
+  | "nestjs"
+  | "next"
+  | "qwik"
+  | "react"
+  | "remix"
+  | "solid"
+  | "svelte"
+  | "vitest"
+  | "vue";
+
 /**
  * Map of plugins where the key is the plugin name and the value is whether the plugin is built in
  * to Oxlint (true) or a third-party JavaScript plugin (false).
