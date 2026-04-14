@@ -1,14 +1,22 @@
 import type { OxlintConfig } from "oxlint";
 
 type FieldValue<T, K extends keyof OxlintConfig> = K extends keyof T ? T[K] : never;
+
 type ObjectPart<T> = Extract<T, object>;
+
 type ArrayPart<T> = Extract<T, readonly unknown[]>;
+
 type Element<T> = T extends readonly (infer U)[] ? U : never;
+
 type IsTuple<T extends readonly unknown[]> = number extends T["length"] ? false : true;
+
 type HasDefined<T> = [Exclude<T, undefined>] extends [never] ? false : true;
+
 type CanBeUndefined<T> = undefined extends T ? true : false;
+
 type AlwaysPresent<T> =
   HasDefined<T> extends true ? (CanBeUndefined<T> extends true ? false : true) : false;
+
 type Or<A extends boolean, B extends boolean> = A extends true ? true : B;
 
 type MergeObjectField<A, B> = [ObjectPart<A> | ObjectPart<B>] extends [never]
