@@ -22,7 +22,7 @@
     "@kit42/oxlint": "*",
     "oxfmt": "^0.44.0",
     "oxlint": "^1.59.0",
-    "turbo": "^2.8.1",
+    "turbo": "^2.9.6",
     "typescript": "5.9.2"
   },
   "engines": {
