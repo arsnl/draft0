@@ -1,12 +1,92 @@
 import type { OxlintConfig } from "oxlint";
+import type { Except, IsNever, IsUnknown, Merge, SimplifyDeep } from "type-fest";
+import type { OxlintConfigName } from "../common.ts";
+import type { Configs } from "../configs/index.ts";
+import { configs } from "../configs/index.ts";
 
-const unique = <T>(values: readonly T[]): T[] => [...new Set(values)];
+type IsExactlyUndefined<M> = [M] extends [undefined]
+  ? [undefined] extends [M]
+    ? true
+    : false
+  : false;
 
-export const mergeConfigs = (
-  self: OxlintConfig,
-  other: OxlintConfig = {},
-  { root = true }: { root?: boolean } = {},
-): OxlintConfig => {
+type IsAbsentMerge<M> =
+  IsNever<M> extends true
+    ? true
+    : IsUnknown<M> extends true
+      ? true
+      : IsExactlyUndefined<M> extends true
+        ? true
+        : false;
+
+type DedupeTuple<T extends unknown[], Seen = never> = T extends [infer Head, ...infer Tail]
+  ? Head extends Seen
+    ? DedupeTuple<Tail, Seen>
+    : [Head, ...DedupeTuple<Tail, Seen | Head>]
+  : [];
+
+type UniqueConcat<A, B> = A extends readonly unknown[]
+  ? B extends readonly unknown[]
+    ? DedupeTuple<[...A, ...B]>
+    : DedupeTuple<[...A]>
+  : B extends readonly unknown[]
+    ? DedupeTuple<[...B]>
+    : never;
+
+type Concat<A, B> = A extends unknown[]
+  ? B extends unknown[]
+    ? [...A, ...B]
+    : [...A]
+  : B extends unknown[]
+    ? [...B]
+    : never;
+
+type MergeField<K, M> =
+  IsAbsentMerge<M> extends true ? Record<never, never> : { [P in K & PropertyKey]: M };
+
+type MergeConfigs<
+  Other extends OxlintConfig,
+  Self extends OxlintConfig,
+  TRoot extends boolean = true,
+> = SimplifyDeep<
+  MergeField<"categories", Merge<Other["categories"], Self["categories"]>> &
+    MergeField<"rules", Merge<Other["rules"], Self["rules"]>> &
+    (TRoot extends true
+      ? MergeField<"options", Merge<Other["options"], Self["options"]>>
+      : Record<never, never>) &
+    MergeField<"plugins", UniqueConcat<Other["plugins"], Self["plugins"]>> &
+    MergeField<"jsPlugins", UniqueConcat<Other["jsPlugins"], Self["jsPlugins"]>> &
+    MergeField<"overrides", Concat<Other["overrides"], Self["overrides"]>> &
+    MergeField<"settings", Merge<Other["settings"], Self["settings"]>> &
+    MergeField<"env", Merge<Other["env"], Self["env"]>> &
+    MergeField<"globals", Merge<Other["globals"], Self["globals"]>> &
+    MergeField<"ignorePatterns", UniqueConcat<Other["ignorePatterns"], Self["ignorePatterns"]>> &
+    MergeField<"extends", Concat<Other["extends"], Self["extends"]>> &
+    Except<
+      Self,
+      | "categories"
+      | "rules"
+      | "options"
+      | "plugins"
+      | "jsPlugins"
+      | "overrides"
+      | "settings"
+      | "env"
+      | "globals"
+      | "ignorePatterns"
+      | "extends"
+    >
+>;
+
+export const mergeConfigs = <
+  const TSelf extends OxlintConfig,
+  const TOther extends OxlintConfig,
+  const TRoot extends boolean = true,
+>(
+  self: TSelf,
+  other: TOther = {} as TOther,
+  { root = true as TRoot }: { root?: TRoot } = {},
+) => {
   const {
     categories: _categories,
     rules: _rules,
@@ -34,10 +114,10 @@ export const mergeConfigs = (
         options: { ...other.options, ...self.options },
       }),
     ...((self.plugins ?? other.plugins) !== undefined && {
-      plugins: unique([...(other.plugins ?? []), ...(self.plugins ?? [])]),
+      plugins: [...new Set([...(other.plugins ?? []), ...(self.plugins ?? [])])],
     }),
     ...((self.jsPlugins ?? other.jsPlugins) !== undefined && {
-      jsPlugins: unique([...(other.jsPlugins ?? []), ...(self.jsPlugins ?? [])]),
+      jsPlugins: [...new Set([...(other.jsPlugins ?? []), ...(self.jsPlugins ?? [])])],
     }),
     ...((self.overrides ?? other.overrides) !== undefined && {
       overrides: [...(other.overrides ?? []), ...(self.overrides ?? [])],
@@ -52,25 +132,13 @@ export const mergeConfigs = (
       globals: { ...other.globals, ...self.globals },
     }),
     ...((self.ignorePatterns ?? other.ignorePatterns) !== undefined && {
-      ignorePatterns: unique([...(other.ignorePatterns ?? []), ...(self.ignorePatterns ?? [])]),
+      ignorePatterns: [
+        ...new Set([...(other.ignorePatterns ?? []), ...(self.ignorePatterns ?? [])]),
+      ],
     }),
     ...((self.extends ?? other.extends) !== undefined && {
-      extends: unique([...(other.extends ?? []), ...(self.extends ?? [])]),
+      extends: [...(other.extends ?? []), ...(self.extends ?? [])],
     }),
     ...rest,
-  };
+  } as MergeConfigs<TSelf, TOther, TRoot>;
 };
-
-/**
- * Merge a full extends chain from left-to-right priority.
- *
- * @param configs Config chain ordered as `[base, ..., current]`.
- * @param options Merge options.
- * @param options.root Whether the result config should be a root config. Default is `true`.
- *
- * @returns A single merged Oxlint config.
- */
-export const mergeManyConfigs = (
-  configs: readonly OxlintConfig[],
-  { root = true }: { root?: boolean } = {},
-): OxlintConfig => configs.reduceRight((acc, config) => mergeConfigs(config, acc, { root }), {});

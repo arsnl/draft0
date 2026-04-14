@@ -2,7 +2,7 @@ import type { OxlintConfig as OxlintConfigType } from "oxlint";
 import type { OxlintConfigName } from "../common.ts";
 import { defineConfig as defineOxlConfig } from "oxlint";
 import { configs as oxlintConfigs } from "../configs/index.ts";
-import { mergeManyConfigs } from "./merge-configs.ts";
+import { mergeConfigs } from "./merge-configs.ts";
 
 export type OxlintConfig = OxlintConfigType & {
   // TODO: Check if we can remove the root option and just auto-check if the config is a root config.
@@ -14,7 +14,7 @@ export type OxlintConfig = OxlintConfigType & {
 };
 
 export const defineConfig = (oxlintConfig: OxlintConfig = {}): OxlintConfigType => {
-  const { root = true, configs = [], options, ...self } = oxlintConfig;
+  const { root = true, configs = [], ...self } = oxlintConfig;
   const selectedConfigs = [
     ...new Set<OxlintConfigName>([
       "core" as const,
@@ -23,5 +23,8 @@ export const defineConfig = (oxlintConfig: OxlintConfig = {}): OxlintConfigType 
     ]),
   ].map((config) => oxlintConfigs[config]);
 
-  return defineOxlConfig(mergeManyConfigs([...selectedConfigs, self], { root }));
+  return [...selectedConfigs, self].reduceRight(
+    (acc, config) => mergeConfigs(config, acc, { root }),
+    {},
+  );
 };
