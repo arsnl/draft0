@@ -18,7 +18,8 @@
     "fix:all": "npm run fix:lint && npm run fix:format"
   },
   "devDependencies": {
-    "@kit42/ox": "*",
+    "@kit42/oxfmt": "*",
+    "@kit42/oxlint": "*",
     "oxfmt": "^0.44.0",
     "oxlint": "^1.59.0",
     "turbo": "^2.8.1",

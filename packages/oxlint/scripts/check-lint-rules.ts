@@ -1,6 +1,6 @@
 // oxlint-disable no-console
-import { getReferencedRuleNames } from "../src/lint/utils/get-referenced-rule-names.ts";
-import { getRulesMeta } from "../src/lint/utils/get-rules-meta.ts";
+import { getReferencedRuleNames } from "../src/utils/get-referenced-rule-names.ts";
+import { getRulesMeta } from "../src/utils/get-rules-meta.ts";
 
 const rulesMeta = getRulesMeta();
 const referencedRuleNames = getReferencedRuleNames();
