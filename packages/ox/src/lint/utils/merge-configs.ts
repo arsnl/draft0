@@ -1,89 +1,159 @@
 import type { OxlintConfig } from "oxlint";
-import type { Except, IsNever, IsUnknown, Merge, SimplifyDeep } from "type-fest";
 
-type IsExactlyUndefined<M> = [M] extends [undefined]
-  ? [undefined] extends [M]
+type FieldValue<T, K extends keyof OxlintConfig> = K extends keyof T ? T[K] : never;
+type ObjectPart<T> = Extract<T, object>;
+type ArrayPart<T> = Extract<T, readonly unknown[]>;
+type Element<T> = T extends readonly (infer U)[] ? U : never;
+type IsTuple<T extends readonly unknown[]> = number extends T["length"] ? false : true;
+type HasDefined<T> = [Exclude<T, undefined>] extends [never] ? false : true;
+type CanBeUndefined<T> = undefined extends T ? true : false;
+type AlwaysPresent<T> =
+  HasDefined<T> extends true ? (CanBeUndefined<T> extends true ? false : true) : false;
+type Or<A extends boolean, B extends boolean> = A extends true ? true : B;
+
+type MergeObjectField<A, B> = [ObjectPart<A> | ObjectPart<B>] extends [never]
+  ? never
+  : [ObjectPart<B>] extends [never]
+    ? ObjectPart<A>
+    : [ObjectPart<A>] extends [never]
+      ? ObjectPart<B>
+      : Omit<ObjectPart<A>, keyof ObjectPart<B>> & ObjectPart<B>;
+
+type TupleIncludes<TTuple extends readonly unknown[], TValue> = TTuple extends readonly [
+  infer THead,
+  ...infer TTail,
+]
+  ? [THead] extends [TValue]
     ? true
-    : false
+    : TupleIncludes<TTail, TValue>
   : false;
 
-type IsAbsentMerge<M> =
-  IsNever<M> extends true
-    ? true
-    : IsUnknown<M> extends true
-      ? true
-      : IsExactlyUndefined<M> extends true
-        ? true
-        : false;
-
-type DedupeTuple<T extends unknown[], Seen = never> = T extends [infer Head, ...infer Tail]
-  ? Head extends Seen
-    ? DedupeTuple<Tail, Seen>
-    : [Head, ...DedupeTuple<Tail, Seen | Head>]
+type TupleDedupe<
+  TTuple extends readonly unknown[],
+  TSeen extends readonly unknown[] = [],
+> = TTuple extends readonly [infer THead, ...infer TTail]
+  ? TupleIncludes<TSeen, THead> extends true
+    ? TupleDedupe<TTail, TSeen>
+    : [THead, ...TupleDedupe<TTail, [...TSeen, THead]>]
   : [];
 
-type UniqueConcat<A, B> = A extends readonly unknown[]
-  ? B extends readonly unknown[]
-    ? DedupeTuple<[...A, ...B]>
-    : DedupeTuple<[...A]>
-  : B extends readonly unknown[]
-    ? DedupeTuple<[...B]>
-    : never;
+type ConcatArrayField<A, B> = [ArrayPart<A> | ArrayPart<B>] extends [never]
+  ? never
+  : [ArrayPart<B>] extends [never]
+    ? ArrayPart<A>
+    : [ArrayPart<A>] extends [never]
+      ? ArrayPart<B>
+      : IsTuple<ArrayPart<A>> extends true
+        ? IsTuple<ArrayPart<B>> extends true
+          ? [...ArrayPart<A>, ...ArrayPart<B>]
+          : Array<Element<A> | Element<B>>
+        : Array<Element<A> | Element<B>>;
 
-type Concat<A, B> = A extends unknown[]
-  ? B extends unknown[]
-    ? [...A, ...B]
-    : [...A]
-  : B extends unknown[]
-    ? [...B]
-    : never;
+type UniqueArrayField<A, B> = [ArrayPart<A> | ArrayPart<B>] extends [never]
+  ? never
+  : [ArrayPart<B>] extends [never]
+    ? ArrayPart<A>
+    : [ArrayPart<A>] extends [never]
+      ? ArrayPart<B>
+      : IsTuple<ArrayPart<A>> extends true
+        ? IsTuple<ArrayPart<B>> extends true
+          ? TupleDedupe<[...ArrayPart<A>, ...ArrayPart<B>]>
+          : Array<Element<A> | Element<B>>
+        : Array<Element<A> | Element<B>>;
 
-type MergeField<K, M> =
-  IsAbsentMerge<M> extends true ? Record<never, never> : { [P in K & PropertyKey]: M };
+type PresenceField<K extends PropertyKey, V, A, B> = [V] extends [never]
+  ? Record<never, never>
+  : Or<AlwaysPresent<A>, AlwaysPresent<B>> extends true
+    ? { [P in K]: V }
+    : { [P in K]?: V };
 
-type MergeConfigs<
-  Other extends OxlintConfig,
-  Self extends OxlintConfig,
-  TRoot extends boolean = true,
-> = SimplifyDeep<
-  MergeField<"categories", Merge<Other["categories"], Self["categories"]>> &
-    MergeField<"rules", Merge<Other["rules"], Self["rules"]>> &
-    (TRoot extends true
-      ? MergeField<"options", Merge<Other["options"], Self["options"]>>
-      : Record<never, never>) &
-    MergeField<"plugins", UniqueConcat<Other["plugins"], Self["plugins"]>> &
-    MergeField<"jsPlugins", UniqueConcat<Other["jsPlugins"], Self["jsPlugins"]>> &
-    MergeField<"overrides", Concat<Other["overrides"], Self["overrides"]>> &
-    MergeField<"settings", Merge<Other["settings"], Self["settings"]>> &
-    MergeField<"env", Merge<Other["env"], Self["env"]>> &
-    MergeField<"globals", Merge<Other["globals"], Self["globals"]>> &
-    MergeField<"ignorePatterns", UniqueConcat<Other["ignorePatterns"], Self["ignorePatterns"]>> &
-    MergeField<"extends", Concat<Other["extends"], Self["extends"]>> &
-    Except<
-      Self,
-      | "categories"
-      | "rules"
-      | "options"
-      | "plugins"
-      | "jsPlugins"
-      | "overrides"
-      | "settings"
-      | "env"
-      | "globals"
-      | "ignorePatterns"
-      | "extends"
-    >
->;
+export type MergeConfigs<TSelf extends OxlintConfig, TOther, TRoot extends boolean> = Omit<
+  TSelf,
+  | "categories"
+  | "rules"
+  | "options"
+  | "plugins"
+  | "jsPlugins"
+  | "overrides"
+  | "settings"
+  | "env"
+  | "globals"
+  | "ignorePatterns"
+  | "extends"
+> & {} & PresenceField<
+    "categories",
+    MergeObjectField<FieldValue<TOther, "categories">, FieldValue<TSelf, "categories">>,
+    FieldValue<TOther, "categories">,
+    FieldValue<TSelf, "categories">
+  > &
+  PresenceField<
+    "rules",
+    MergeObjectField<FieldValue<TOther, "rules">, FieldValue<TSelf, "rules">>,
+    FieldValue<TOther, "rules">,
+    FieldValue<TSelf, "rules">
+  > &
+  PresenceField<
+    "plugins",
+    UniqueArrayField<FieldValue<TOther, "plugins">, FieldValue<TSelf, "plugins">>,
+    FieldValue<TOther, "plugins">,
+    FieldValue<TSelf, "plugins">
+  > &
+  PresenceField<
+    "jsPlugins",
+    UniqueArrayField<FieldValue<TOther, "jsPlugins">, FieldValue<TSelf, "jsPlugins">>,
+    FieldValue<TOther, "jsPlugins">,
+    FieldValue<TSelf, "jsPlugins">
+  > &
+  PresenceField<
+    "overrides",
+    ConcatArrayField<FieldValue<TOther, "overrides">, FieldValue<TSelf, "overrides">>,
+    FieldValue<TOther, "overrides">,
+    FieldValue<TSelf, "overrides">
+  > &
+  PresenceField<
+    "settings",
+    MergeObjectField<FieldValue<TOther, "settings">, FieldValue<TSelf, "settings">>,
+    FieldValue<TOther, "settings">,
+    FieldValue<TSelf, "settings">
+  > &
+  PresenceField<
+    "env",
+    MergeObjectField<FieldValue<TOther, "env">, FieldValue<TSelf, "env">>,
+    FieldValue<TOther, "env">,
+    FieldValue<TSelf, "env">
+  > &
+  PresenceField<
+    "globals",
+    MergeObjectField<FieldValue<TOther, "globals">, FieldValue<TSelf, "globals">>,
+    FieldValue<TOther, "globals">,
+    FieldValue<TSelf, "globals">
+  > &
+  PresenceField<
+    "ignorePatterns",
+    UniqueArrayField<FieldValue<TOther, "ignorePatterns">, FieldValue<TSelf, "ignorePatterns">>,
+    FieldValue<TOther, "ignorePatterns">,
+    FieldValue<TSelf, "ignorePatterns">
+  > &
+  PresenceField<
+    "extends",
+    ConcatArrayField<FieldValue<TOther, "extends">, FieldValue<TSelf, "extends">>,
+    FieldValue<TOther, "extends">,
+    FieldValue<TSelf, "extends">
+  > &
+  (TRoot extends true
+    ? PresenceField<
+        "options",
+        MergeObjectField<FieldValue<TOther, "options">, FieldValue<TSelf, "options">>,
+        FieldValue<TOther, "options">,
+        FieldValue<TSelf, "options">
+      >
+    : Record<never, never>);
 
-export const mergeConfigs = <
-  const TSelf extends OxlintConfig,
-  const TOther extends OxlintConfig,
-  const TRoot extends boolean = true,
->(
-  self: TSelf,
-  other: TOther = {} as TOther,
-  { root = true as TRoot }: { root?: TRoot } = {},
-) => {
+export const mergeConfigs = (
+  self: OxlintConfig,
+  other: OxlintConfig = {},
+  { root = true }: { root?: boolean } = {},
+): OxlintConfig => {
   const {
     categories: _categories,
     rules: _rules,
@@ -137,5 +207,5 @@ export const mergeConfigs = <
       extends: [...(other.extends ?? []), ...(self.extends ?? [])],
     }),
     ...rest,
-  } as MergeConfigs<TSelf, TOther, TRoot>;
+  };
 };
