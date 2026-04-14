@@ -157,6 +157,16 @@ export type MergeConfigs<TSelf extends OxlintConfig, TOther, TRoot extends boole
       >
     : Record<never, never>);
 
+/**
+ * Merge two oxlint configs.
+ *
+ * @param self - The self config. The config that is being merged into.
+ * @param other - The other config. The config that is being merged from.
+ * @param options - The options for the merge.
+ * @param options.root - Whether the config is the root config. Defaults to true.
+ *
+ * @returns The merged config.
+ */
 export const mergeConfigs = (
   self: OxlintConfig,
   other: OxlintConfig = {},

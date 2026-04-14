@@ -14,6 +14,6 @@ export type {
   VitestPreset,
   VuePreset,
 } from "./presets/index.ts";
-export type { OxlintConfig } from "./utils/define-config.ts";
+export type { OxlintConfig, DefinedConfig } from "./utils/define-config.ts";
 export { presets } from "./presets/index.ts";
 export { defineConfig } from "./utils/define-config.ts";

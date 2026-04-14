@@ -58,4 +58,4 @@ export const presets = {
   svelte,
   vitest,
   vue,
-} satisfies Record<PresetName, OxlintConfig>;
+} as const satisfies Record<PresetName, OxlintConfig>;

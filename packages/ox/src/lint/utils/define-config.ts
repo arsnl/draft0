@@ -1,17 +1,30 @@
 import type { OxlintConfig as OxlintConfigBase } from "oxlint";
-import type { SimplifyDeep } from "type-fest";
+import type { Simplify, SimplifyDeep } from "type-fest";
 import type { PresetName } from "../common.ts";
+import type { Presets } from "../presets/index.ts";
 import type { MergeConfigs } from "./merge-configs.ts";
-import { presets as oxlintPresets } from "../presets/index.ts";
+import { presets } from "../presets/index.ts";
 import { mergeConfigs } from "./merge-configs.ts";
 
-export type OxlintConfig = OxlintConfigBase & {
-  root?: boolean;
-  presets?: PresetName[];
-  // TODO: Add esm and typescript options support
-  // esm?: boolean;
-  // typescript?: boolean;
-};
+export type OxlintConfig = Simplify<
+  {
+    /**
+     * Whether the config is the root config.
+     *
+     * @default true
+     */
+    root?: boolean;
+    /**
+     * The framework/library presets to use.
+     *
+     * @default [ ]
+     */
+    presets?: PresetName[];
+    // TODO: Add esm and typescript options support
+    // esm?: boolean;
+    // typescript?: boolean;
+  } & OxlintConfigBase
+>;
 
 type InputPresets<T extends OxlintConfig> = T["presets"] extends readonly PresetName[]
   ? T["presets"]
@@ -46,9 +59,7 @@ type OrderedPresetNames<T extends OxlintConfig> = DedupePresets<
 >;
 
 type PresetConfigTuple<TPresetNames extends readonly PresetName[]> = {
-  [K in keyof TPresetNames]: TPresetNames[K] extends PresetName
-    ? (typeof oxlintPresets)[TPresetNames[K]]
-    : never;
+  [K in keyof TPresetNames]: TPresetNames[K] extends PresetName ? Presets[TPresetNames[K]] : never;
 };
 
 type NormalizeMergeInput<T> = {
@@ -73,6 +84,38 @@ export type DefinedConfig<T extends OxlintConfig> = SimplifyDeep<
   ReduceConfigsLeft<[...PresetConfigTuple<OrderedPresetNames<T>>, SelfConfig<T>], InputRoot<T>>
 >;
 
+/**
+ * Define an Oxlint configuration with type inference.
+ *
+ * Compared to Oxlint’s defineConfig, this helper returns a more opinionated configuration: it
+ * applies stronger defaults and exposes extra fields so you can compose presets and overrides in
+ * one place.
+ *
+ * The following extra options are available:
+ *
+ * - `root` - Controls whether root-level options are merged as root config. Defaults to `true`.
+ * - `presets` - Select framework/library presets to compose with `core` Defaults to `[]`.
+ *
+ * The following extra presets are available:
+ *
+ * - `core` - Always included.
+ * - `angular`
+ * - `astro`
+ * - `jest`
+ * - `nestjs`
+ * - `next`- Automatically includes the `react` preset.
+ * - `qwik`
+ * - `react`
+ * - `remix`
+ * - `solid`
+ * - `svelte`
+ * - `vitest`
+ * - `vue`
+ *
+ * @param config - The Oxlint configuration to define.
+ *
+ * @returns The defined Oxlint configuration.
+ */
 export function defineConfig(): DefinedConfig<Record<never, never>>;
 export function defineConfig<const TConfig extends OxlintConfig>(
   oxlintConfig: TConfig,
@@ -80,15 +123,17 @@ export function defineConfig<const TConfig extends OxlintConfig>(
 export function defineConfig<const TConfig extends OxlintConfig>(
   oxlintConfig?: TConfig,
 ): DefinedConfig<TConfig | Record<never, never>> {
-  const { root = true, presets = [], ...self } = (oxlintConfig ?? {}) as OxlintConfig;
+  const { root = true, presets: inputPresets = [], ...self } = (oxlintConfig ?? {}) as OxlintConfig;
 
   const configs = [
     ...new Set<PresetName>([
       "core",
-      ...presets,
-      ...(presets.includes("next") && !presets.includes("react") ? ["react" as const] : []),
+      ...inputPresets,
+      ...(inputPresets.includes("next") && !inputPresets.includes("react")
+        ? ["react" as const]
+        : []),
     ]),
-  ].map((preset) => oxlintPresets[preset]);
+  ].map((preset) => presets[preset]);
 
   return [...configs, self].reduce(
     (acc, config) => mergeConfigs(config, acc, { root }),
