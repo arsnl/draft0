@@ -1,8 +1,5 @@
 import type { OxlintConfig } from "oxlint";
 import type { Except, IsNever, IsUnknown, Merge, SimplifyDeep } from "type-fest";
-import type { OxlintConfigName } from "../common.ts";
-import type { Configs } from "../configs/index.ts";
-import { configs } from "../configs/index.ts";
 
 type IsExactlyUndefined<M> = [M] extends [undefined]
   ? [undefined] extends [M]
