@@ -66,7 +66,7 @@ const rules = {
   "promise/prefer-await-to-then": ["off"],
 } as const satisfies DummyRuleMap;
 
-export const config = {
+export const preset = {
   overrides: [
     {
       files: [
@@ -79,4 +79,4 @@ export const config = {
   ],
 } as const satisfies OxlintConfig;
 
-export default config;
+export default preset;

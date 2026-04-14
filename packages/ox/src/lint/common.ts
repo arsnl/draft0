@@ -86,7 +86,7 @@ export type OxlintRuleMeta = {
   referenced: boolean;
 };
 
-export type OxlintConfigName =
+export type PresetName =
   | "core"
   | "angular"
   | "astro"

@@ -1,16 +1,16 @@
-import { config as angularConfig } from "../configs/angular.ts";
-import { config as astroConfig } from "../configs/astro.ts";
-import { config as coreConfig } from "../configs/core.ts";
-import { config as jestConfig } from "../configs/jest.ts";
-import { config as nestjsConfig } from "../configs/nestjs.ts";
-import { config as nextConfig } from "../configs/next.ts";
-import { config as qwikConfig } from "../configs/qwik.ts";
-import { config as reactConfig } from "../configs/react.ts";
-import { config as remixConfig } from "../configs/remix.ts";
-import { config as solidConfig } from "../configs/solid.ts";
-import { config as svelteConfig } from "../configs/svelte.ts";
-import { config as vitestConfig } from "../configs/vitest.ts";
-import { config as vueConfig } from "../configs/vue.ts";
+import { preset as angularPreset } from "../presets/angular.ts";
+import { preset as astroPreset } from "../presets/astro.ts";
+import { preset as corePreset } from "../presets/core.ts";
+import { preset as jestPreset } from "../presets/jest.ts";
+import { preset as nestjsPreset } from "../presets/nestjs.ts";
+import { preset as nextPreset } from "../presets/next.ts";
+import { preset as qwikPreset } from "../presets/qwik.ts";
+import { preset as reactPreset } from "../presets/react.ts";
+import { preset as remixPreset } from "../presets/remix.ts";
+import { preset as solidPreset } from "../presets/solid.ts";
+import { preset as sveltePreset } from "../presets/svelte.ts";
+import { preset as vitestPreset } from "../presets/vitest.ts";
+import { preset as vuePreset } from "../presets/vue.ts";
 import { getConfigReferencedRuleNames } from "./get-config-referenced-rule-names.ts";
 
 /**
@@ -25,17 +25,17 @@ import { getConfigReferencedRuleNames } from "./get-config-referenced-rule-names
  */
 export const getReferencedRuleNames = (): Set<string> =>
   new Set([
-    ...getConfigReferencedRuleNames(angularConfig),
-    ...getConfigReferencedRuleNames(astroConfig),
-    ...getConfigReferencedRuleNames(coreConfig),
-    ...getConfigReferencedRuleNames(jestConfig),
-    ...getConfigReferencedRuleNames(nestjsConfig),
-    ...getConfigReferencedRuleNames(nextConfig),
-    ...getConfigReferencedRuleNames(qwikConfig),
-    ...getConfigReferencedRuleNames(reactConfig),
-    ...getConfigReferencedRuleNames(remixConfig),
-    ...getConfigReferencedRuleNames(solidConfig),
-    ...getConfigReferencedRuleNames(svelteConfig),
-    ...getConfigReferencedRuleNames(vitestConfig),
-    ...getConfigReferencedRuleNames(vueConfig),
+    ...getConfigReferencedRuleNames(angularPreset),
+    ...getConfigReferencedRuleNames(astroPreset),
+    ...getConfigReferencedRuleNames(corePreset),
+    ...getConfigReferencedRuleNames(jestPreset),
+    ...getConfigReferencedRuleNames(nestjsPreset),
+    ...getConfigReferencedRuleNames(nextPreset),
+    ...getConfigReferencedRuleNames(qwikPreset),
+    ...getConfigReferencedRuleNames(reactPreset),
+    ...getConfigReferencedRuleNames(remixPreset),
+    ...getConfigReferencedRuleNames(solidPreset),
+    ...getConfigReferencedRuleNames(sveltePreset),
+    ...getConfigReferencedRuleNames(vitestPreset),
+    ...getConfigReferencedRuleNames(vuePreset),
   ]);

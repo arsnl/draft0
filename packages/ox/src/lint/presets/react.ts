@@ -132,9 +132,9 @@ const rules = {
   "react-perf/jsx-no-new-object-as-prop": ["off"],
 } as const satisfies DummyRuleMap;
 
-export const config = {
+export const preset = {
   plugins: ["react", "react-perf", "jsx-a11y"],
   rules,
 } as const satisfies OxlintConfig;
 
-export default config;
+export default preset;

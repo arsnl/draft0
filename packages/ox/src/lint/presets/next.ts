@@ -24,9 +24,9 @@ const rules = {
   "nextjs/no-unwanted-polyfillio": ["error"],
 } as const satisfies DummyRuleMap;
 
-export const config = {
+export const preset = {
   plugins: ["nextjs"],
   rules,
 } as const satisfies OxlintConfig;
 
-export default config;
+export default preset;

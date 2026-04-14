@@ -909,7 +909,7 @@ export const rules = {
   "unicorn/throw-new-error": ["error"],
 } as const satisfies DummyRuleMap;
 
-export const config = {
+export const preset = {
   /* disable all categories so that we can enable rules selectively */
   categories: {
     correctness: "off",
@@ -950,4 +950,4 @@ export const config = {
   ],
 } as const satisfies OxlintConfig;
 
-export default config;
+export default preset;

@@ -15,9 +15,9 @@
       "types": "./dist/lint/index.d.ts",
       "import": "./dist/lint/index.js"
     },
-    "./lint/configs": {
-      "types": "./dist/lint/configs/index.d.ts",
-      "import": "./dist/lint/configs/index.js"
+    "./lint/presets": {
+      "types": "./dist/lint/presets/index.d.ts",
+      "import": "./dist/lint/presets/index.js"
     }
   },
   "scripts": {

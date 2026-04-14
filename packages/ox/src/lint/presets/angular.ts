@@ -2,9 +2,9 @@ import type { DummyRuleMap, OxlintConfig } from "oxlint";
 
 const rules = {} as const satisfies DummyRuleMap;
 
-export const config = {
+export const preset = {
   plugins: [],
   rules,
 } as const satisfies OxlintConfig;
 
-export default config;
+export default preset;

@@ -20,9 +20,9 @@ const rules = {
   "vue/valid-define-props": ["error"],
 } as const satisfies DummyRuleMap;
 
-export const config = {
+export const preset = {
   plugins: ["vue"],
   rules,
 } as const satisfies OxlintConfig;
 
-export default config;
+export default preset;

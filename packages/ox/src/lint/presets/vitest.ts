@@ -1,9 +1,9 @@
 import type { DummyRuleMap, OxlintConfig } from "oxlint";
 import { getCompatibleRules } from "../utils/get-compatible-rules.ts";
-import { config as jestConfig } from "./jest.ts";
+import { preset as jestPreset } from "./jest.ts";
 
 export const vitestCompatibleRules = getCompatibleRules({
-  sourceRules: jestConfig.overrides[0].rules,
+  sourceRules: jestPreset.overrides[0].rules,
   compatiblePlugin: "vitest",
 });
 
@@ -39,7 +39,7 @@ const rules = {
   ...vitestCompatibleRules,
 } as const satisfies DummyRuleMap;
 
-export const config = {
+export const preset = {
   overrides: [
     {
       files: [
@@ -52,4 +52,4 @@ export const config = {
   ],
 } as const satisfies OxlintConfig;
 
-export default config;
+export default preset;
