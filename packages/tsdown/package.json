@@ -1,0 +1,30 @@
+{
+  "name": "@kit42/tsdown",
+  "version": "0.0.0",
+  "private": true,
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "dev": "tsdown --watch",
+    "build": "tsdown"
+  },
+  "dependencies": {
+    "@arethetypeswrong/core": "^0.18.2",
+    "@kit42/tsconfig": "*",
+    "@types/node": "^25.5.2",
+    "publint": "^0.3.18",
+    "tsdown": "^0.21.7",
+    "typescript": "^5.9.2"
+  },
+  "engines": {
+    "node": ">=22.18"
+  }
+}
