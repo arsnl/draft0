@@ -1,4 +1,5 @@
 import type { UserConfig } from "tsdown";
+import type { Simplify } from "type-fest";
 
 /**
  * Presets for TSDown.
@@ -28,3 +29,14 @@ export const presets = {
 export type Preset = typeof presets;
 
 export type PresetName = keyof Preset;
+
+export type TSDownConfig = Simplify<
+  {
+    /**
+     * The TSDown preset to use.
+     *
+     * @default "default"
+     */
+    preset?: PresetName;
+  } & UserConfig
+>;

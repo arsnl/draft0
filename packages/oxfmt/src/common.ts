@@ -1,38 +1,54 @@
-import type { OxfmtConfig } from "oxfmt";
+import type { OxfmtConfig as OxfmtConfigBase } from "oxfmt";
+import type { Simplify } from "type-fest";
 
 /**
- * Default configuration for Oxfmt.
+ * Presets for Oxfmt.
  *
- * This is the configuration that is used if no configuration is provided to the `defineConfig`
- * function.
- *
- * @see https://oxc.rs/docs/guide/usage/formatter/config-file-reference
+ * @see https://oxc.rs/docs/guide/usage/formatter/config-file-reference for more information about
+ * the configuration options.
  */
-export const DEFAULT_OXFMT_CONFIG = {
-  jsdoc: {
-    separateReturnsFromParam: true,
+export const presets = {
+  default: {
+    jsdoc: {
+      separateReturnsFromParam: true,
+    },
+    sortImports: {
+      newlinesBetween: false,
+      internalPattern: ["~/", "@/", "#"],
+      groups: [
+        "type-builtin",
+        "type-external",
+        "type-internal",
+        "type-subpath",
+        "type-parent",
+        "type-sibling",
+        "type-index",
+        "builtin",
+        "external",
+        "internal",
+        "subpath",
+        "parent",
+        "sibling",
+        "index",
+        "style",
+        "unknown",
+      ],
+    },
+    sortPackageJson: true,
   },
-  sortImports: {
-    newlinesBetween: false,
-    internalPattern: ["~/", "@/", "#"],
-    groups: [
-      "type-builtin",
-      "type-external",
-      "type-internal",
-      "type-subpath",
-      "type-parent",
-      "type-sibling",
-      "type-index",
-      "builtin",
-      "external",
-      "internal",
-      "subpath",
-      "parent",
-      "sibling",
-      "index",
-      "style",
-      "unknown",
-    ],
-  },
-  sortPackageJson: true,
-} as const satisfies OxfmtConfig;
+} as const satisfies Record<string, OxfmtConfigBase>;
+
+export type Preset = typeof presets;
+
+export type PresetName = keyof Preset;
+
+export type OxfmtConfig = Simplify<
+  {
+    /**
+     * The Oxfmt preset to use.
+     *
+     * @default "default"
+     */
+    preset?: PresetName;
+  } & OxfmtConfigBase
+>;

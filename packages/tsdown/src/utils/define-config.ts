@@ -1,18 +1,6 @@
-import type { UserConfig } from "tsdown";
-import type { Merge, ReadonlyDeep, Simplify, SimplifyDeep } from "type-fest";
-import type { Preset, PresetName } from "../common.ts";
+import type { Merge, ReadonlyDeep, SimplifyDeep } from "type-fest";
+import type { Preset, TSDownConfig } from "../common.ts";
 import { presets } from "../common.ts";
-
-export type TSDownConfig = Simplify<
-  {
-    /**
-     * The TSDown preset to use.
-     *
-     * @default "default"
-     */
-    preset?: PresetName;
-  } & UserConfig
->;
 
 export type DefinedConfig<T extends TSDownConfig> = SimplifyDeep<
   Merge<
@@ -21,6 +9,19 @@ export type DefinedConfig<T extends TSDownConfig> = SimplifyDeep<
   >
 >;
 
+/**
+ * Define a TSDown configuration with type inference.
+ *
+ * Resolves {@link presets | `presets[preset]`} (default `preset` is `"default"`) and shallow-merges
+ * your `config` on top so explicit options override the preset.
+ *
+ * See [UserConfig](https://tsdown.dev/reference/api/Interface.UserConfig) for the full set of
+ * build options.
+ *
+ * @param config - TSDown options merged after the preset.
+ *
+ * @returns The merged configuration, typed as {@link DefinedConfig}.
+ */
 export function defineConfig(): DefinedConfig<Record<never, never>>;
 export function defineConfig<const TConfig extends TSDownConfig>(
   config: TConfig,
