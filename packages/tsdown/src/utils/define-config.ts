@@ -1,10 +1,10 @@
 import type { Merge, ReadonlyDeep, SimplifyDeep } from "type-fest";
-import type { Preset, TSDownConfig } from "../common.ts";
+import type { Presets, TSDownConfig } from "../common.ts";
 import { presets } from "../common.ts";
 
 export type DefinedConfig<T extends TSDownConfig> = SimplifyDeep<
   Merge<
-    Preset[T extends { preset: infer TPreset } ? TPreset : "default"],
+    Presets[T extends { preset: infer TPreset } ? TPreset : "default"],
     Omit<ReadonlyDeep<T>, "preset">
   >
 >;
@@ -15,8 +15,8 @@ export type DefinedConfig<T extends TSDownConfig> = SimplifyDeep<
  * Resolves {@link presets | `presets[preset]`} (default `preset` is `"default"`) and shallow-merges
  * your `config` on top so explicit options override the preset.
  *
- * See [UserConfig](https://tsdown.dev/reference/api/Interface.UserConfig) for the full set of
- * build options.
+ * See [UserConfig](https://tsdown.dev/reference/api/Interface.UserConfig) for the full set of build
+ * options.
  *
  * @param config - TSDown options merged after the preset.
  *

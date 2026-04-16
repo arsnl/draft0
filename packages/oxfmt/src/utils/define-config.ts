@@ -1,10 +1,10 @@
 import type { Merge, ReadonlyDeep, SimplifyDeep } from "type-fest";
-import type { OxfmtConfig, Preset } from "../common.ts";
+import type { OxfmtConfig, Presets } from "../common.ts";
 import { presets } from "../common.ts";
 
 export type DefinedConfig<T extends OxfmtConfig> = SimplifyDeep<
   Merge<
-    Preset[T extends { preset: infer TPreset } ? TPreset : "default"],
+    Presets[T extends { preset: infer TPreset } ? TPreset : "default"],
     Omit<ReadonlyDeep<T>, "preset">
   >
 >;

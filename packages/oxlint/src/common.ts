@@ -1,5 +1,6 @@
-import type { RuleCategories } from "oxlint";
-import type { KebabCase, SnakeCase } from "type-fest";
+import type { OxlintConfig as OxlintConfigBase, RuleCategories } from "oxlint";
+import type { KebabCase, Simplify, SnakeCase } from "type-fest";
+import type { PresetName } from "./presets/index.ts";
 
 export type OxlintPlugin = keyof typeof PLUGINS;
 
@@ -86,20 +87,25 @@ export type OxlintRuleMeta = {
   referenced: boolean;
 };
 
-export type PresetName =
-  | "core"
-  | "angular"
-  | "astro"
-  | "jest"
-  | "nestjs"
-  | "next"
-  | "qwik"
-  | "react"
-  | "remix"
-  | "solid"
-  | "svelte"
-  | "vitest"
-  | "vue";
+export type OxlintConfig = Simplify<
+  {
+    /**
+     * Whether the config is the root config.
+     *
+     * @default true
+     */
+    root?: boolean;
+    /**
+     * The framework/library presets to use.
+     *
+     * @default [ ]
+     */
+    presets?: PresetName[];
+    // TODO: Add esm and typescript options support
+    // esm?: boolean;
+    // typescript?: boolean;
+  } & OxlintConfigBase
+>;
 
 /**
  * Map of plugins where the key is the plugin name and the value is whether the plugin is built in

@@ -1,30 +1,10 @@
 import type { OxlintConfig as OxlintConfigBase } from "oxlint";
-import type { Simplify, SimplifyDeep } from "type-fest";
-import type { PresetName } from "../common.ts";
-import type { Presets } from "../presets/index.ts";
+import type { SimplifyDeep } from "type-fest";
+import type { OxlintConfig } from "../common.ts";
+import type { PresetName, Presets } from "../presets/index.ts";
 import type { MergeConfigs } from "./merge-configs.ts";
 import { presets } from "../presets/index.ts";
 import { mergeConfigs } from "./merge-configs.ts";
-
-export type OxlintConfig = Simplify<
-  {
-    /**
-     * Whether the config is the root config.
-     *
-     * @default true
-     */
-    root?: boolean;
-    /**
-     * The framework/library presets to use.
-     *
-     * @default [ ]
-     */
-    presets?: PresetName[];
-    // TODO: Add esm and typescript options support
-    // esm?: boolean;
-    // typescript?: boolean;
-  } & OxlintConfigBase
->;
 
 type InputPresets<T extends OxlintConfig> = T["presets"] extends readonly PresetName[]
   ? T["presets"]
@@ -87,34 +67,34 @@ export type DefinedConfig<T extends OxlintConfig> = SimplifyDeep<
 /**
  * Define an Oxlint configuration with type inference.
  *
- * Compared to Oxlint’s defineConfig, this helper returns a more opinionated configuration: it
- * applies stronger defaults and exposes extra fields so you can compose presets and overrides in
- * one place.
+ * Composes the requested {@link presets} in order and deep-merges your own options on top, so
+ * explicit fields always win over presets. The opinionated `core` preset is prepended
+ * automatically, duplicate presets are deduplicated, and some presets pull in their dependencies
+ * (e.g. `next` implies `react`).
  *
- * The following extra options are available:
+ * See the [Oxlint configuration
+ * reference](https://oxc.rs/docs/guide/usage/linter/config-file-reference) for the full set of
+ * linter options. On top of those, this function accepts two extra fields:
  *
- * - `root` - Controls whether root-level options are merged as root config. Defaults to `true`.
- * - `presets` - Select framework/library presets to compose with `core` Defaults to `[]`.
+ * - `root` (default `true`) - Whether this is the root config. Some options are only valid on the
+ *   root config, so set this to `false` for nested configs.
+ * - `presets` (default `[]`) - Framework or tooling presets to include. Available names: `angular`,
+ *   `astro`, `jest`, `nestjs`, `next`, `qwik`, `react`, `remix`, `solid`, `svelte`, `vitest`,
+ *   `vue`.
  *
- * The following extra presets are available:
+ * @example
+ *   import { defineConfig } from "@kit42/oxlint";
  *
- * - `core` - Always included.
- * - `angular`
- * - `astro`
- * - `jest`
- * - `nestjs`
- * - `next`- Automatically includes the `react` preset.
- * - `qwik`
- * - `react`
- * - `remix`
- * - `solid`
- * - `svelte`
- * - `vitest`
- * - `vue`
+ *   export default defineConfig({
+ *     presets: ["next", "vitest"],
+ *     rules: {
+ *       "no-console": "error",
+ *     },
+ *   });
  *
- * @param config - The Oxlint configuration to define.
+ * @param oxlintConfig - Oxlint options merged after the resolved presets.
  *
- * @returns The defined Oxlint configuration.
+ * @returns The merged configuration, typed as {@link DefinedConfig}.
  */
 export function defineConfig(): DefinedConfig<Record<never, never>>;
 export function defineConfig<const TConfig extends OxlintConfig>(

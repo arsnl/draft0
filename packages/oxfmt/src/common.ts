@@ -38,9 +38,9 @@ export const presets = {
   },
 } as const satisfies Record<string, OxfmtConfigBase>;
 
-export type Preset = typeof presets;
+export type Presets = typeof presets;
 
-export type PresetName = keyof Preset;
+export type PresetName = keyof Presets;
 
 export type OxfmtConfig = Simplify<
   {
