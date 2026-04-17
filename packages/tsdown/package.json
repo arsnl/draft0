@@ -21,8 +21,11 @@
     "@draft0/tsconfig": "*",
     "@types/node": "^25.5.2",
     "publint": "^0.3.18",
-    "tsdown": "^0.21.7",
+    "tsdown": "0.21.9",
     "typescript": "^5.9.2"
+  },
+  "peerDependencies": {
+    "tsdown": "^0.21.9"
   },
   "engines": {
     "node": ">=22.18"

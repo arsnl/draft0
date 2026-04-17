@@ -29,11 +29,11 @@
     "@draft0/tsconfig": "*",
     "@draft0/tsdown": "*",
     "@types/node": "^25.5.2",
-    "oxlint": "^1.59.0",
+    "oxlint": "1.60.0",
     "typescript": "^5.9.2"
   },
   "peerDependencies": {
-    "oxlint": "^1.57.0"
+    "oxlint": "^1.60.0"
   },
   "engines": {
     "node": ">=22.18"
