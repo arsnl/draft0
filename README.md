@@ -17,8 +17,8 @@ This Turborepo includes the following packages/apps:
 ### Apps and Packages
 
 - `docs`: a [Next.js](https://nextjs.org/) app
-- `@kit42/eslint`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@kit42/tsconfig`: `tsconfig.json`s used throughout the monorepo
+- `@draft0/eslint`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `@draft0/tsconfig`: `tsconfig.json`s used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 

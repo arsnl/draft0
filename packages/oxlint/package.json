@@ -1,5 +1,5 @@
 {
-  "name": "@kit42/oxlint",
+  "name": "@draft0/oxlint",
   "version": "0.0.0",
   "private": true,
   "files": [
@@ -26,8 +26,8 @@
     "type-fest": "^5.5.0"
   },
   "devDependencies": {
-    "@kit42/tsconfig": "*",
-    "@kit42/tsdown": "*",
+    "@draft0/tsconfig": "*",
+    "@draft0/tsdown": "*",
     "@types/node": "^25.5.2",
     "oxlint": "^1.59.0",
     "typescript": "^5.9.2"

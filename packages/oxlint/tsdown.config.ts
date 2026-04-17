@@ -1,3 +1,3 @@
-import { defineConfig } from "@kit42/tsdown";
+import { defineConfig } from "@draft0/tsdown";
 
 export default defineConfig();

@@ -1,3 +1,3 @@
-import { defineConfig } from "@kit42/oxfmt";
+import { defineConfig } from "@draft0/oxfmt";
 
 export default defineConfig();

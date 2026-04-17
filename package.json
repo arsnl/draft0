@@ -1,5 +1,5 @@
 {
-  "name": "kit42",
+  "name": "draft0",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -18,8 +18,8 @@
     "fix:all": "npm run fix:lint && npm run fix:format"
   },
   "devDependencies": {
-    "@kit42/oxfmt": "*",
-    "@kit42/oxlint": "*",
+    "@draft0/oxfmt": "*",
+    "@draft0/oxlint": "*",
     "oxfmt": "^0.44.0",
     "oxlint": "^1.59.0",
     "turbo": "^2.9.6",

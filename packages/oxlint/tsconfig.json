@@ -1,5 +1,5 @@
 {
-  "extends": "@kit42/tsconfig/base.json",
+  "extends": "@draft0/tsconfig/base.json",
   "compilerOptions": {
     "noEmit": true,
     "rewriteRelativeImportExtensions": true,

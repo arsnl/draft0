@@ -1,4 +1,4 @@
-import { defineConfig } from "@kit42/oxlint";
+import { defineConfig } from "@draft0/oxlint";
 
 export default defineConfig({
   root: false,

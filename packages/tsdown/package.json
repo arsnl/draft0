@@ -1,5 +1,5 @@
 {
-  "name": "@kit42/tsdown",
+  "name": "@draft0/tsdown",
   "version": "0.0.0",
   "private": true,
   "files": [
@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@arethetypeswrong/core": "^0.18.2",
-    "@kit42/tsconfig": "*",
+    "@draft0/tsconfig": "*",
     "@types/node": "^25.5.2",
     "publint": "^0.3.18",
     "tsdown": "^0.21.7",

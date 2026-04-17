@@ -1,4 +1,4 @@
-# `@kit42/tsconfig`
+# `@draft0/tsconfig`
 
 Collection of TypeScript configurations.
 

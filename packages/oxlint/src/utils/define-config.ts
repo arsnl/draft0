@@ -83,7 +83,7 @@ export type DefinedConfig<T extends OxlintConfig> = SimplifyDeep<
  *   `vue`.
  *
  * @example
- *   import { defineConfig } from "@kit42/oxlint";
+ *   import { defineConfig } from "@draft0/oxlint";
  *
  *   export default defineConfig({
  *     presets: ["next", "vitest"],
