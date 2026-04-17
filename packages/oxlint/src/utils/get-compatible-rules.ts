@@ -10,7 +10,7 @@ import { COMPATIBLE_RULES } from "../common.ts";
  *
  * @example
  *   ```ts
- *   const jestCompatibleRules = getCompatibleRules(jestRules, "vitest");
+ *   const vitestCompatibleRules = getCompatibleRules({ sourceRules: jestRules, compatiblePlugin: "vitest" });
  *   ```;
  *
  * @param config - The configuration object.

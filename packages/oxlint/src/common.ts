@@ -137,13 +137,13 @@ export const getRuleScopeFromPlugin = <T extends OxlintPlugin>(plugin: T) =>
   plugin.replace("-", "_") as SnakeCase<T>;
 
 /**
- * Map of compatible rules where the key is the compatible rule and the value is the rule source.
- *
- * A **source rule** is the rule that is listed in the Oxlint CLI and documentation. In the
- * documentation, they have a section that explains with which other rules it is compatible.
+ * Map of compatible rules where the key is the compatible rule and the value is the source rule.
  *
  * A **compatible rule** is a rule that shares the same name and functionality as a source rule, but
  * has a different prefix. For example, `jest/no-alias-methods` and `vitest/no-alias-methods`.
+ *
+ * A **source rule** is the rule that is listed in the Oxlint CLI and documentation. In the
+ * documentation, they have a section that explains with which other rules it is compatible.
  */
 export const COMPATIBLE_RULES = {
   "vitest/consistent-test-it": "jest/consistent-test-it",
