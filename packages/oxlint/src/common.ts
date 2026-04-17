@@ -190,6 +190,7 @@ export const COMPATIBLE_RULES = {
   "vitest/require-to-throw-message": "jest/require-to-throw-message",
   "vitest/require-top-level-describe": "jest/require-top-level-describe",
   "vitest/valid-describe-callback": "jest/valid-describe-callback",
+  "vitest/valid-expect-in-promise": "jest/valid-expect-in-promise",
   "vitest/valid-expect": "jest/valid-expect",
   "vitest/valid-title": "jest/valid-title",
 } as const satisfies Record<string, string>;

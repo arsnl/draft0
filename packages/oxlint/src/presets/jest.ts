@@ -38,10 +38,17 @@ const rules = {
   "jest/prefer-called-with": ["error"],
   "jest/prefer-comparison-matcher": ["error"],
   "jest/prefer-each": ["error"],
+  "jest/prefer-ending-with-an-expect": [
+    "error",
+    {
+      additionalTestBlockFunctions: ["each.test"],
+    },
+  ],
   "jest/prefer-equality-matcher": ["error"],
   "jest/prefer-expect-resolves": ["error"],
   "jest/prefer-hooks-in-order": ["error"],
   "jest/prefer-hooks-on-top": ["error"],
+  "jest/prefer-importing-jest-globals": ["error"],
   "jest/prefer-jest-mocked": ["error"],
   "jest/prefer-lowercase-title": ["error"],
   "jest/prefer-mock-promise-shorthand": ["error"],
@@ -61,6 +68,7 @@ const rules = {
   "jest/require-top-level-describe": ["error"],
   "jest/valid-describe-callback": ["error"],
   "jest/valid-expect": ["error"],
+  "jest/valid-expect-in-promise": ["error"],
   "jest/valid-title": ["error"],
   // Disabled: Too strict; mock factories use Promise.resolve/reject
   "promise/prefer-await-to-then": ["off"],

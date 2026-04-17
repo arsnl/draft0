@@ -756,6 +756,7 @@ export const rules = {
   "unicorn/consistent-empty-array-spread": ["error"],
   "unicorn/consistent-existence-index-check": ["error"],
   "unicorn/consistent-function-scoping": ["error"],
+  "unicorn/consistent-template-literal-escape": ["error"],
   "unicorn/custom-error-definition": ["error"],
   // Disabled: Formatting concern; delegated to the formatter
   "unicorn/empty-brace-spaces": ["off"],
