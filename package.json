@@ -18,6 +18,8 @@
     "fix:all": "npm run fix:lint && npm run fix:format"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.6.0",
+    "@changesets/cli": "^2.31.0",
     "@draft0/oxfmt": "*",
     "@draft0/oxlint": "*",
     "turbo": "^2.9.6",

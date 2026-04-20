@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and discussions
+    url: https://github.com/arsnl/draft0/discussions
+    about: Ask usage questions, share ideas, and discuss Draft0 presets with the community.
+  - name: Documentation
+    url: https://draft0.dev
+    about: Check the Draft0 documentation site.
+  - name: Security report
+    url: https://github.com/arsnl/draft0/security/advisories/new
+    about: Report a vulnerability privately. Please do not open a public issue for security reports.

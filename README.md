@@ -1,133 +1,47 @@
-# Turborepo starter
+# Draft0
 
-This Turborepo starter is maintained by the Turborepo core team.
+**Skip setup, start shipping.**
 
-## Using this example
+Draft0 is an opinionated, zero-configuration toolkit for modern TypeScript projects. Pick the preset you need, drop it into your project, and get back to shipping.
 
-Run the following command:
+## Why Draft0?
 
-```sh
-npx create-turbo@latest
-```
+Every new TypeScript project starts with the same ritual: wire up a linter, a formatter, a TypeScript config, a bundler, decide on rules, copy fragments from your last repo, tweak until it _feels_ right, then repeat on the next project.
 
-## What's inside?
+Draft0 replaces that ritual with a set of presets that are already wired up the way a modern TypeScript project should be. You install one package, extend it, and you're done.
 
-This Turborepo includes the following packages/apps:
+- **Zero-config by design.** Sensible defaults, strict where it matters, out of your way where it doesn't.
+- **Highly opinionated.** Fewer knobs, more ship time. One good default beats ten reasonable ones.
+- **Type-safe first.** Every preset is built around TypeScript as the source of truth.
+- **Composable.** Use one preset, or use them all. They're independent packages.
+- **Monorepo friendly.** Share a single set of presets across every app and package in your workspace.
 
-### Apps and Packages
+## Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `@draft0/eslint`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@draft0/tsconfig`: `tsconfig.json`s used throughout the monorepo
+Draft0 is a growing ecosystem. The current presets are:
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+| Package                                 | What it is       | npm                                                                                                         |
+| --------------------------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------- |
+| [`@draft0/oxlint`](packages/oxlint)     | Oxlint presets   | [![npm](https://img.shields.io/npm/v/@draft0/oxlint.svg)](https://www.npmjs.com/package/@draft0/oxlint)     |
+| [`@draft0/oxfmt`](packages/oxfmt)       | Oxfmt presets    | [![npm](https://img.shields.io/npm/v/@draft0/oxfmt.svg)](https://www.npmjs.com/package/@draft0/oxfmt)       |
+| [`@draft0/tsdown`](packages/tsdown)     | tsdown presets   | [![npm](https://img.shields.io/npm/v/@draft0/tsdown.svg)](https://www.npmjs.com/package/@draft0/tsdown)     |
+| [`@draft0/tsconfig`](packages/tsconfig) | tsconfig presets | [![npm](https://img.shields.io/npm/v/@draft0/tsconfig.svg)](https://www.npmjs.com/package/@draft0/tsconfig) |
 
-### Utilities
+More presets, tools, and starters will land here over time. Each package ships independently, so you only pull in what you use.
 
-This Turborepo has some additional tools already setup for you:
+## Philosophy
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+Draft0 is not a framework. It doesn't tell you what to build — it removes the setup you didn't want to think about in the first place.
 
-### Build
+- **Defaults over options.** Configuration is a liability. The fewer decisions you have to make at the start of a project, the faster you reach something real.
+- **One way to do it.** Every preset picks a lane so your team doesn't have to argue about style, rules, or build settings.
+- **Modern stack, no legacy baggage.** Draft0 targets current Node, current TypeScript, current tooling. It doesn't try to please every setup — just good ones.
+- **Small surface area.** Each package does one thing. If it grows beyond that, it becomes a new package.
 
-To build all apps and packages, run the following command:
+## Contributing
 
-```
-cd my-turborepo
+Contributions are welcome. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for local setup, changeset workflow, and release automation.
 
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
+## License
 
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
-```
-
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
-
-```
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
-```
-
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
-
-```
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+[MIT](LICENSE)

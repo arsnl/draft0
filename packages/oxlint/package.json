@@ -1,7 +1,25 @@
 {
   "name": "@draft0/oxlint",
   "version": "0.0.0",
-  "private": true,
+  "description": "Opinionated Oxlint presets to help you ship faster.",
+  "keywords": [
+    "config",
+    "draft0",
+    "eslint",
+    "lint",
+    "oxlint"
+  ],
+  "homepage": "https://github.com/arsnl/draft0",
+  "bugs": {
+    "url": "https://github.com/arsnl/draft0/issues"
+  },
+  "license": "MIT",
+  "author": "arsnl",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arsnl/draft0.git",
+    "directory": "packages/oxlint"
+  },
   "files": [
     "dist"
   ],
@@ -16,6 +34,11 @@
       "import": "./dist/presets/index.js"
     }
   },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true,
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "dev": "tsdown --watch",
     "build": "tsdown"
@@ -26,8 +49,8 @@
     "type-fest": "^5.5.0"
   },
   "devDependencies": {
-    "@draft0/tsconfig": "*",
-    "@draft0/tsdown": "*",
+    "@draft0/tsconfig": "workspace:*",
+    "@draft0/tsdown": "workspace:*",
     "@types/node": "^25.5.2",
     "oxlint": "1.60.0",
     "typescript": "^5.9.2"
