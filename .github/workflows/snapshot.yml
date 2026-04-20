@@ -64,7 +64,8 @@ jobs:
       - name: Version snapshot packages
         shell: bash
         run: |
-          npx changeset version --snapshot "next"
+          SHORT_SHA="$(git rev-parse --short=8 HEAD)"
+          npx changeset version --snapshot "next.${SHORT_SHA}"
 
       - name: Collect snapshot package versions
         run: |
