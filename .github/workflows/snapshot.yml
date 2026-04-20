@@ -12,7 +12,7 @@ jobs:
       has_changesets: ${{ steps.check.outputs.has_changesets }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Check for pending changesets
         id: check
@@ -43,10 +43,10 @@ jobs:
       id-token: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 22.18.0
           cache: npm
