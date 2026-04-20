@@ -1,0 +1,29 @@
+{
+  "$schema": "https://www.schemastore.org/tsconfig",
+  "display": "Base",
+
+  "compilerOptions": {
+    // Environment Settings
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "target": "esnext",
+
+    // Outputs
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    // Recommended Options
+    "strict": true,
+    "jsx": "react-jsx",
+    "isolatedModules": true,
+    "noUncheckedIndexedAccess": true,
+    "noUncheckedSideEffectImports": true,
+    "exactOptionalPropertyTypes": true,
+    "skipLibCheck": true,
+    "moduleDetection": "force",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true
+  }
+}

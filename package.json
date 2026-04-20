@@ -1,0 +1,32 @@
+{
+  "name": "draft0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "start": "turbo run start",
+    "check:lint": "oxlint",
+    "check:format": "oxfmt --check",
+    "check:all": "npm run check:lint && npm run check:format",
+    "fix:lint": "oxlint --fix",
+    "fix:format": "oxfmt",
+    "fix:all": "npm run fix:lint && npm run fix:format"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.6.0",
+    "@changesets/cli": "^2.31.0",
+    "@draft0/oxfmt": "*",
+    "@draft0/oxlint": "*",
+    "turbo": "^2.9.6",
+    "typescript": "5.9.2"
+  },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "packageManager": "npm@11.7.0"
+}

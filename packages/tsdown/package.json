@@ -1,0 +1,55 @@
+{
+  "name": "@draft0/tsdown",
+  "version": "0.0.0",
+  "description": "Opinionated tsdown presets to help you ship faster.",
+  "keywords": [
+    "build",
+    "draft0",
+    "tsdown",
+    "typescript"
+  ],
+  "homepage": "https://github.com/arsnl/draft0",
+  "bugs": {
+    "url": "https://github.com/arsnl/draft0/issues"
+  },
+  "license": "MIT",
+  "author": "arsnl",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arsnl/draft0.git",
+    "directory": "packages/tsdown"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true,
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "dev": "tsdown --watch",
+    "build": "tsdown"
+  },
+  "dependencies": {
+    "@arethetypeswrong/core": "^0.18.2",
+    "@draft0/tsconfig": "*",
+    "@types/node": "^25.5.2",
+    "publint": "^0.3.18",
+    "tsdown": "0.21.9",
+    "typescript": "^5.9.2"
+  },
+  "peerDependencies": {
+    "tsdown": "^0.21.9"
+  },
+  "engines": {
+    "node": ">=22.18"
+  }
+}

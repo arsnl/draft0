@@ -1,0 +1,9 @@
+{
+  // List of extensions which should be recommended for users of this workspace.
+  "recommendations": [
+    // Oxlint and Oxfmt editor integration
+    "oxc.oxc-vscode",
+    // EditorConfig for VS Code
+    "editorconfig.editorconfig"
+  ]
+}

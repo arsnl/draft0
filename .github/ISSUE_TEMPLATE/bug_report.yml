@@ -1,0 +1,104 @@
+name: Bug report
+description: Something isn't working as expected in a Draft0 package.
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Before filing, please:
+
+        - Search [existing issues](https://github.com/arsnl/draft0/issues) to avoid duplicates.
+        - Make sure you're on the latest version of the affected `@draft0/*` package.
+        - Try to provide a minimal reproduction — a small repo or snippet helps enormously.
+
+  - type: dropdown
+    id: package
+    attributes:
+      label: Affected package
+      description: Which Draft0 package is this about?
+      options:
+        - "@draft0/oxlint"
+        - "@draft0/oxfmt"
+        - "@draft0/tsdown"
+        - "@draft0/tsconfig"
+        - Multiple / not sure
+    validations:
+      required: true
+
+  - type: input
+    id: package-version
+    attributes:
+      label: Package version
+      description: e.g. 0.1.2 or 0.1.2-next.abcdef12
+      placeholder: 0.0.0
+    validations:
+      required: true
+
+  - type: input
+    id: node-version
+    attributes:
+      label: Node.js version
+      placeholder: 22.18.0
+    validations:
+      required: true
+
+  - type: input
+    id: package-manager
+    attributes:
+      label: Package manager
+      placeholder: npm 11.x / pnpm 9 / yarn 4 / bun 1
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: macOS 15.4 / Ubuntu 24.04 / Windows 11
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: A clear description of the bug.
+      placeholder: When I ... I expected ... but got ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Steps to reproduce, or a link to a minimal repo / StackBlitz / Gist.
+      placeholder: |
+        1. Install `@draft0/<package>`
+        2. Configure with ...
+        3. Run ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs / error output
+      render: shell
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues and couldn't find a duplicate.
+          required: true
+        - label: I'm using the latest version of the affected package.
+          required: true

@@ -1,0 +1,65 @@
+name: Feature request
+description: Suggest a new preset, option, or tool for Draft0.
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for sharing an idea! Draft0 is intentionally opinionated, so not every feature fits — but every idea is read and considered.
+
+        Please describe the **problem** first, then your preferred solution. That helps maintainers evaluate fit before jumping to implementation details.
+
+  - type: dropdown
+    id: package
+    attributes:
+      label: Target package
+      description: Which Draft0 package would this affect?
+      options:
+        - "@draft0/oxlint"
+        - "@draft0/oxfmt"
+        - "@draft0/tsdown"
+        - "@draft0/tsconfig"
+        - New package
+        - Tooling / repo-wide
+        - Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What pain point or use case is not covered today?
+      placeholder: I'm trying to ... but Draft0 currently ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: How would you like Draft0 to solve it? API, option names, examples welcome.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Other approaches you've tried or considered and why they fall short.
+
+  - type: textarea
+    id: fit
+    attributes:
+      label: Fit with Draft0's philosophy
+      description: |
+        Draft0 favors opinionated defaults, small surface area, and modern tooling. How does this proposal align with that?
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues and discussions for similar proposals.
+          required: true

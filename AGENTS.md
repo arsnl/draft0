@@ -1,0 +1,4 @@
+- This is a monorepo containing npm libraries and a documentation site.
+- Use Turborepo and npm workspaces to manage the dependencies.
+- See each package's AGENTS.md for specific guidelines.
+- For commit conventions, see agents/COMMIT.md.
