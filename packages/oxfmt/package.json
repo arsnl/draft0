@@ -39,8 +39,8 @@
     "build": "tsdown"
   },
   "devDependencies": {
-    "@draft0/tsconfig": "workspace:*",
-    "@draft0/tsdown": "workspace:*",
+    "@draft0/tsconfig": "*",
+    "@draft0/tsdown": "*",
     "@types/node": "^25.5.2",
     "oxfmt": "0.45.0",
     "typescript": "^5.9.2"

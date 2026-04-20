@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@arethetypeswrong/core": "^0.18.2",
-    "@draft0/tsconfig": "workspace:*",
+    "@draft0/tsconfig": "*",
     "@types/node": "^25.5.2",
     "publint": "^0.3.18",
     "tsdown": "0.21.9",
