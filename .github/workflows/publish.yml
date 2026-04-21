@@ -26,7 +26,7 @@ on:
 jobs:
   stable_release:
     name: Stable release
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -45,7 +45,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
-          node-version: 22.18.0
+          node-version: 24
           cache: npm
           registry-url: https://registry.npmjs.org
 
@@ -78,24 +78,13 @@ jobs:
       id-token: write
 
     steps:
-      - name: Guard package selection
-        shell: bash
-        run: |
-          if [[ "${{ inputs.oxlint }}" != "true" && \
-                "${{ inputs.oxfmt }}" != "true" && \
-                "${{ inputs.tsdown }}" != "true" && \
-                "${{ inputs.tsconfig }}" != "true" ]]; then
-            echo "Select at least one package before running snapshot publish."
-            exit 1
-          fi
-
       - name: Checkout
         uses: actions/checkout@v6
 
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
-          node-version: 22.18.0
+          node-version: 24
           cache: npm
           registry-url: https://registry.npmjs.org
 
@@ -108,114 +97,13 @@ jobs:
       - name: Run checks
         run: npm run check:all
 
-      - name: Version snapshot packages
-        shell: bash
-        run: |
-          # Snapshot runs do not commit; skip changelog writes so @changesets/changelog-github
-          # does not need GitHub API access during this step (stable releases still use config.json as committed).
-          node -e "
-            const fs = require('node:fs');
-            const p = '.changeset/config.json';
-            const c = JSON.parse(fs.readFileSync(p, 'utf8'));
-            c.changelog = false;
-            fs.writeFileSync(p, JSON.stringify(c, null, 2) + '\n');
-          "
-          SHORT_SHA="$(git rev-parse --short=7 HEAD)"
-          npx changeset version --snapshot "next.${SHORT_SHA}"
-
-      - name: Collect snapshot package versions
-        run: |
-          node <<'EOF'
-          const fs = require('node:fs');
-          const path = require('node:path');
-          const { execSync } = require('node:child_process');
-
-          const changed = execSync('git diff --name-only -- packages/*/package.json', { encoding: 'utf8' })
-            .split('\n')
-            .map(file => file.trim())
-            .filter(Boolean);
-
-          const packages = changed.map(file => {
-            const manifest = JSON.parse(fs.readFileSync(path.resolve(file), 'utf8'));
-            return `${manifest.name}@${manifest.version}`;
-          });
-
-          fs.writeFileSync('published-packages.txt', `${packages.join('\n')}\n`, 'utf8');
-          console.log(`Prepared ${packages.length} package release entries.`);
-          EOF
-
-      - name: Keep selected packages only
-        shell: bash
+      - name: Prepare snapshot versions
         env:
           INPUT_OXLINT: ${{ inputs.oxlint }}
           INPUT_OXFMT: ${{ inputs.oxfmt }}
           INPUT_TSDOWN: ${{ inputs.tsdown }}
           INPUT_TSCONFIG: ${{ inputs.tsconfig }}
-        run: |
-          node <<'EOF'
-          const fs = require('node:fs');
-
-          const selected = new Set();
-          if (process.env.INPUT_OXLINT === 'true') selected.add('@draft0/oxlint');
-          if (process.env.INPUT_OXFMT === 'true') selected.add('@draft0/oxfmt');
-          if (process.env.INPUT_TSDOWN === 'true') selected.add('@draft0/tsdown');
-          if (process.env.INPUT_TSCONFIG === 'true') selected.add('@draft0/tsconfig');
-
-          const entries = fs
-            .readFileSync('published-packages.txt', 'utf8')
-            .split('\n')
-            .map(line => line.trim())
-            .filter(Boolean);
-
-          const selectedEntries = [];
-          const matchedPackages = new Set();
-
-          for (const entry of entries) {
-            const atIndex = entry.lastIndexOf('@');
-            if (atIndex <= 0) continue;
-            const pkgName = entry.slice(0, atIndex);
-            if (selected.has(pkgName)) {
-              selectedEntries.push(entry);
-              matchedPackages.add(pkgName);
-            }
-          }
-
-          for (const pkgName of selected) {
-            if (!matchedPackages.has(pkgName)) {
-              console.log(`::warning::Selected package ${pkgName} has no pending changeset/version bump in this run. Skipping.`);
-            }
-          }
-
-          fs.writeFileSync('selected-packages.txt', `${selectedEntries.join('\n')}\n`, 'utf8');
-          console.log(`Selected ${selectedEntries.length} package release entries.`);
-          EOF
-
-      - name: Filter already published snapshot versions
-        id: filter_versions
-        shell: bash
-        run: |
-          : > packages-to-publish.txt
-
-          while IFS= read -r entry; do
-            if [[ -z "$entry" ]]; then
-              continue
-            fi
-
-            if npm view "$entry" version >/dev/null 2>&1; then
-              echo "Skipping already published version: $entry"
-            else
-              echo "$entry" >> packages-to-publish.txt
-            fi
-          done < selected-packages.txt
-
-          if [[ -s packages-to-publish.txt ]]; then
-            echo "has_unpublished=true" >> "$GITHUB_OUTPUT"
-            echo "Packages pending publish:"
-            awk '1' packages-to-publish.txt
-          else
-            echo "has_unpublished=false" >> "$GITHUB_OUTPUT"
-            echo "All selected snapshot package versions are already published. Skipping publish."
-          fi
+        run: node .github/scripts/prepare-snapshot-release.ts
 
       - name: Publish snapshot to npm
         run: npx changeset publish --no-git-tag --tag next
