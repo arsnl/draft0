@@ -223,21 +223,3 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Create GitHub prereleases
-        if: steps.filter_versions.outputs.has_unpublished == 'true'
-        shell: bash
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_SHA: ${{ github.sha }}
-        run: |
-          while IFS= read -r entry; do
-            if [[ -z "$entry" ]]; then
-              continue
-            fi
-
-            gh release create "$entry" \
-              --prerelease \
-              --title "$entry" \
-              --notes "Snapshot prerelease from $GITHUB_SHA"
-          done < packages-to-publish.txt
