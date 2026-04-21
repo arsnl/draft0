@@ -66,7 +66,7 @@ Open a [feature request](https://github.com/arsnl/draft0/issues/new/choose) usin
 │   ├── tsdown/          # @draft0/tsdown
 │   └── tsconfig/        # @draft0/tsconfig
 ├── .changeset/          # Pending release notes
-├── .github/workflows/   # CI, release, snapshot automation
+├── .github/workflows/   # CI and publish automation
 ├── turbo.json           # Turborepo pipeline
 └── package.json         # Workspace root
 ```
@@ -150,34 +150,37 @@ We use squash-merge, so your commit history in the PR can be messy; only the fin
 
 ## Release automation
 
-Releases are fully automated via [Changesets](https://github.com/changesets/changesets) and GitHub Actions. Two workflows run on every push to `main`:
+Releases are automated with [Changesets](https://github.com/changesets/changesets) via a single workflow file: `.github/workflows/publish.yml`.
 
 ```mermaid
 flowchart TD
   featurePr[Feature PR with changeset] -->|merge to main| mainPush[Push to main]
-  mainPush --> snapshotCheck{Pending .changeset/*.md?}
-  snapshotCheck -->|yes| snapshotWorkflow[Snapshot workflow]
-  snapshotWorkflow -->|publish predicted version| npmNext["npm tag: next (X.Y.Z-next.abc123)"]
-  snapshotCheck -->|no| skipSnapshot[Skip snapshot publish]
-  mainPush --> releaseWorkflow[Release workflow]
-  releaseWorkflow --> changesetCheck{Pending changesets?}
+  mainPush --> stableWorkflow[Stable release job]
+  stableWorkflow --> changesetCheck{Pending changesets?}
   changesetCheck -->|yes| versionPr["Open or update Version Packages PR"]
   changesetCheck -->|no| stablePublish["Publish to npm tag: latest"]
   versionPr -->|merge| mainPush
+
+  admin[Maintainer triggers workflow_dispatch] --> snapshotWorkflow[Snapshot release job]
+  snapshotWorkflow --> select[Choose package checkboxes in UI]
+  select --> versionSnap["Version selected packages: X.Y.Z-next.<sha7>"]
+  versionSnap --> skipCheck{Already published on npm?}
+  skipCheck -->|yes| done[Skip publish]
+  skipCheck -->|no| nextPublish["Publish to npm tag: next + create prereleases"]
 ```
 
-1. **Snapshot workflow**
-   - Runs only when `.changeset/*.md` files are present.
-   - Versions with `npx changeset version --snapshot next.<sha8>`.
-   - Publishes to npm with dist-tag `next` (e.g. `1.2.3-next.abcdef12`, where `1.2.3` is the predicted next stable version).
-   - Creates a GitHub prerelease per published package for traceability.
+1. **Stable releases (`push` to `main`)**
+   - `publish.yml` runs the stable job automatically on every push to `main`.
+   - Uses `changesets/action@v1` to open/update the `Version Packages` PR.
+   - When that PR is merged, publishes to npm dist-tag `latest` and creates GitHub Releases.
 
-2. **Stable release workflow**
-   - Uses `changesets/action@v1`.
-   - Opens or updates a `Version Packages` PR when pending changesets exist.
-   - When that PR is merged, publishes to npm dist-tag `latest` and creates a GitHub Release per package.
+2. **Snapshot releases (`workflow_dispatch`)**
+   - Triggered manually from the GitHub Actions UI by maintainers/admins.
+   - You choose which package(s) to include via per-package boolean inputs.
+   - The workflow calculates snapshot versions (`X.Y.Z-next.<sha7>`), warns and skips selected packages with no pending changesets, then filters out versions already published on npm.
+   - Only unpublished selected versions are published to npm dist-tag `next`, with matching GitHub prereleases.
 
-As a contributor you generally don't need to touch this — just add a changeset and the pipeline takes care of the rest.
+As a contributor you usually only need to add a changeset. Maintainers handle manual snapshot runs when needed.
 
 ## Project lifecycle
 
