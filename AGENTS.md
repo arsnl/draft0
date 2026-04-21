@@ -20,5 +20,6 @@ Tasks run through npm workspaces + Turborepo — invoke them via `npm run ...` o
 - Publishable libraries (`packages/*`): [`agents/LIBRARIES.md`](agents/LIBRARIES.md)
 - Commit style: [`agents/COMMIT.md`](agents/COMMIT.md)
 - Changesets, PRs, releases: [`CONTRIBUTING.md`](CONTRIBUTING.md)
+- Writing or editing files under `agents/`: [`agents/AGENT-DOCS.md`](agents/AGENT-DOCS.md)
 
 Subprojects may ship their own `AGENTS.md` — the closest file wins.

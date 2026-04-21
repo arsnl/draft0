@@ -1,1 +1,48 @@
-- Use the conventional commit 1.0.0 specification.
+# Commits
+
+Follow [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/): `<type>(<optional scope>): <description>`.
+
+Draft0 squash-merges, so the **PR title** is what lands on `main` — that's what must match this format.
+
+Commit types don't drive versioning — Changesets does. Run `npx changeset` whenever you change a published `@draft0/*` package, regardless of commit type.
+
+## Types
+
+`feat`, `fix`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`, plus `docs`.
+
+`docs` is for documentation **content** only (prose, JSDoc, README, docs-site pages). Code changes under `apps/docs` use `feat(docs)`, `fix(docs)`, `refactor(docs)`, etc. — the type describes the change, the scope describes where.
+
+## Scopes
+
+Scope is the package or app folder name, without the `@draft0/` prefix (e.g. `oxlint`, not `@draft0/oxlint`):
+
+- Packages under `packages/`: `oxlint`, `oxfmt`, `tsdown`, `tsconfig`, and any folder added later.
+- Apps under `apps/`: `docs`.
+- Cross-cutting: `deps` (dependency bumps), `release` (changesets/publish flow).
+
+Omit the scope for workspace-wide changes (root config, agent docs, root scripts). Prefer one scope per commit — split changes that naturally span several packages.
+
+## Description, Body and Footer(s)
+
+Keep the description short (max 50 characters) and self-explanatory, imperative mood (`add`, not `added` or `adds`). Avoid adding a body and footer(s) unless it explains _why_ the change is needed and the description can't carry that on its own.
+
+## Breaking changes
+
+Mark with `!` and describe the break in a footer. Bump the changeset to `major` when the break affects a published package.
+
+```text
+feat(oxlint)!: remove the deprecated `nextjs` preset
+
+BREAKING CHANGE: migrate to the combined `react` preset.
+```
+
+## Examples
+
+```text
+feat(tsdown): support multiple entry points
+fix(oxlint): honor `.ts` extensions on type-only imports
+docs(oxfmt): document the `experimentalSort` option
+feat(docs): add search to the preset listing page
+ci(release): fail snapshot workflow when no package is selected
+chore(deps): bump turbo to 2.9.6
+```
