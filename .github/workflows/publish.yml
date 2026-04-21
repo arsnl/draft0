@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - chore/improve-gh-actions
   workflow_dispatch:
     inputs:
       oxlint:
@@ -26,6 +25,7 @@ on:
 
 jobs:
   stable_release:
+    name: Stable release
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
@@ -70,6 +70,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   snapshot_release:
+    name: Snapshot release
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
