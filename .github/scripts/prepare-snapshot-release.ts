@@ -1,4 +1,3 @@
-// oxlint-disable no-console
 import { execSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
@@ -25,11 +24,6 @@ const selectedPackages = new Set(
     env.INPUT_TSCONFIG === "true" ? "@draft0/tsconfig" : "",
   ].filter((pkg): pkg is string => pkg.length > 0),
 );
-
-if (selectedPackages.size < 1) {
-  console.error("Select at least one package before running snapshot publish.");
-  process.exit(1);
-}
 
 const configPath = ".changeset/config.json";
 const parsedConfig = JSON.parse(readFileSync(configPath, "utf8")) as ChangesetConfig;
