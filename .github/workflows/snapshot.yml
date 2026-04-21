@@ -1,0 +1,112 @@
+name: Snapshot Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    outputs:
+      has_changesets: ${{ steps.check.outputs.has_changesets }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Check for pending changesets
+        id: check
+        shell: bash
+        run: |
+          shopt -s nullglob
+          files=(.changeset/*.md)
+          pending=0
+          for file in "${files[@]}"; do
+            if [[ "$file" != ".changeset/README.md" ]]; then
+              pending=1
+              break
+            fi
+          done
+
+          if [[ "$pending" -eq 1 ]]; then
+            echo "has_changesets=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changesets=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  publish:
+    needs: detect
+    if: needs.detect.outputs.has_changesets == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22.18.0
+          cache: npm
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build packages
+        run: npx turbo run build --filter="./packages/*"
+
+      - name: Run checks
+        run: npm run check:all
+
+      - name: Version snapshot packages
+        shell: bash
+        run: |
+          SHORT_SHA="$(git rev-parse --short=8 HEAD)"
+          npx changeset version --snapshot "next.${SHORT_SHA}"
+
+      - name: Collect snapshot package versions
+        run: |
+          node <<'EOF'
+          const fs = require('node:fs');
+          const path = require('node:path');
+          const { execSync } = require('node:child_process');
+
+          const changed = execSync('git diff --name-only -- packages/*/package.json', { encoding: 'utf8' })
+            .split('\n')
+            .map(file => file.trim())
+            .filter(Boolean);
+
+          const packages = changed.map(file => {
+            const manifest = JSON.parse(fs.readFileSync(path.resolve(file), 'utf8'));
+            return `${manifest.name}@${manifest.version}`;
+          });
+
+          fs.writeFileSync('published-packages.txt', `${packages.join('\n')}\n`, 'utf8');
+          console.log(`Prepared ${packages.length} package release entries.`);
+          EOF
+
+      - name: Publish snapshot to npm
+        run: npx changeset publish --no-git-tag --tag next
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create GitHub prereleases
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_SHA: ${{ github.sha }}
+        run: |
+          while IFS= read -r entry; do
+            if [[ -z "$entry" ]]; then
+              continue
+            fi
+
+            gh release create "$entry" \
+              --prerelease \
+              --title "$entry" \
+              --notes "Snapshot prerelease from $GITHUB_SHA"
+          done < published-packages.txt

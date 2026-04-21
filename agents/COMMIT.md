@@ -1,0 +1,1 @@
+- Use the conventional commit 1.0.0 specification.

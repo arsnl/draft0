@@ -1,0 +1,5 @@
+export type { Presets } from "./presets/index.ts";
+export type { OxlintConfig } from "./common.ts";
+export type { DefinedConfig } from "./utils/define-config.ts";
+export { presets } from "./presets/index.ts";
+export { defineConfig } from "./utils/define-config.ts";

@@ -1,0 +1,8 @@
+{
+  "extends": "@draft0/tsconfig/base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "rewriteRelativeImportExtensions": true,
+    "types": ["node"]
+  }
+}
