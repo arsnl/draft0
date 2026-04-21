@@ -218,7 +218,6 @@ jobs:
           fi
 
       - name: Publish snapshot to npm
-        if: steps.filter_versions.outputs.has_unpublished == 'true'
         run: npx changeset publish --no-git-tag --tag next
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
