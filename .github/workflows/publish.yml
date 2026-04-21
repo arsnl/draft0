@@ -1,0 +1,112 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      oxlint:
+        description: Publish @draft0/oxlint snapshot
+        type: boolean
+        default: false
+      oxfmt:
+        description: Publish @draft0/oxfmt snapshot
+        type: boolean
+        default: false
+      tsdown:
+        description: Publish @draft0/tsdown snapshot
+        type: boolean
+        default: false
+      tsconfig:
+        description: Publish @draft0/tsconfig snapshot
+        type: boolean
+        default: false
+
+jobs:
+  stable_release:
+    name: Stable release
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Prepare repository
+        run: git fetch --unshallow --tags
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build packages
+        run: npx turbo run build --filter="./packages/*"
+
+      - name: Run checks
+        run: npm run check:all
+
+      - name: Create release PR or publish
+        uses: changesets/action@v1
+        with:
+          version: npx changeset version
+          publish: npx changeset publish
+          createGithubReleases: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  snapshot_release:
+    name: Snapshot release
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build packages
+        run: npx turbo run build --filter="./packages/*"
+
+      - name: Run checks
+        run: npm run check:all
+
+      - name: Prepare snapshot versions
+        env:
+          INPUT_OXLINT: ${{ inputs.oxlint }}
+          INPUT_OXFMT: ${{ inputs.oxfmt }}
+          INPUT_TSDOWN: ${{ inputs.tsdown }}
+          INPUT_TSCONFIG: ${{ inputs.tsconfig }}
+        run: node .github/scripts/prepare-snapshot-release.ts
+
+      - name: Publish snapshot to npm
+        run: npx changeset publish --no-git-tag --tag next
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

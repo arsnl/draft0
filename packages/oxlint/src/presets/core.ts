@@ -697,7 +697,7 @@ export const rules = {
   "typescript/no-unsafe-declaration-merging": ["error"],
   "typescript/no-unsafe-enum-comparison": ["error"],
   "typescript/no-unsafe-function-type": ["error"],
-  "typescript/no-unsafe-member-access": ["error"],
+  "typescript/no-unsafe-member-access": ["error", { allowOptionalChaining: true }],
   "typescript/no-unsafe-return": ["error"],
   // Disabled: Too strict; often used to cast to a more specific type
   "typescript/no-unsafe-type-assertion": ["off"],
