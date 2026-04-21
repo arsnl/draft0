@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - chore/improve-gh-actions
 
 jobs:
   detect:
@@ -66,6 +67,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # Snapshot runs do not commit; skip changelog writes so @changesets/changelog-github
+          # does not need GitHub API access during this step (stable releases still use config.json as committed).
+          node -e "
+            const fs = require('node:fs');
+            const p = '.changeset/config.json';
+            const c = JSON.parse(fs.readFileSync(p, 'utf8'));
+            c.changelog = false;
+            fs.writeFileSync(p, JSON.stringify(c, null, 2) + '\n');
+          "
           SHORT_SHA="$(git rev-parse --short=8 HEAD)"
           npx changeset version --snapshot "next.${SHORT_SHA}"
 
