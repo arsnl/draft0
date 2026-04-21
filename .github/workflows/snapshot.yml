@@ -63,6 +63,8 @@ jobs:
 
       - name: Version snapshot packages
         shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           SHORT_SHA="$(git rev-parse --short=8 HEAD)"
           npx changeset version --snapshot "next.${SHORT_SHA}"
