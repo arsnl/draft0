@@ -1,1 +1,0 @@
-- Return a lighter type from `defineConfig`. `DefinedConfig<T>` deep-simplifies a left-fold of `MergeConfigs` over 1300+ rule literals; returning `OxlintConfig` (or a shallower alias) would cut consumer TypeScript perf cost substantially.
