@@ -1,6 +1,6 @@
 import type { UserConfig } from "tsdown";
 
-export const preset = {
+export const preset: UserConfig = {
   entry: ["src/**/*.ts", "!**/*.test.ts", "!**/*.spec.ts"],
   dts: true,
   // To make sure the output files have the .js and .d.ts extension.
@@ -16,4 +16,4 @@ export const preset = {
   publint: {
     level: "suggestion",
   },
-} as const satisfies UserConfig;
+};

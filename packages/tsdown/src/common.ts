@@ -2,12 +2,12 @@ import type { UserConfig } from "tsdown";
 import type { Simplify } from "type-fest";
 import type { PresetName } from "./presets/index.ts";
 
-export type TSDownConfig = Simplify<
+export type Draft0TSDownConfig = Simplify<
   {
     /**
      * The TSDown preset to use.
      *
-     * @default "default"
+     * @default "recommended"
      */
     preset?: PresetName;
   } & UserConfig

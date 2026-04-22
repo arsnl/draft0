@@ -1,6 +1,10 @@
 import type { UserConfig } from "tsdown";
 import { preset as recommended } from "./recommended.ts";
 
+export type PresetName = "recommended";
+
+export type Presets = Record<PresetName, UserConfig>;
+
 export { recommended };
 
 /**
@@ -9,10 +13,6 @@ export { recommended };
  * @see https://tsdown.dev/reference/api/Interface.UserConfig for more information about the
  * configuration options.
  */
-export const presets = {
+export const presets: Presets = {
   recommended,
-} as const satisfies Record<string, UserConfig>;
-
-export type Presets = typeof presets;
-
-export type PresetName = keyof Presets;
+};
