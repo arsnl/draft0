@@ -38,6 +38,9 @@
     "dev": "tsdown --watch",
     "build": "tsdown"
   },
+  "dependencies": {
+    "type-fest": "^5.5.0"
+  },
   "devDependencies": {
     "@draft0/tsconfig": "*",
     "@draft0/tsdown": "*",
