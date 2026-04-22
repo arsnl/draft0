@@ -8,10 +8,8 @@ export const vitestCompatibleRules = getCompatibleRules({
 });
 
 const rules = {
-  // Disabled: Too strict; mock callbacks often need empty functions
-  "eslint/no-empty-function": ["off"],
-  // Disabled: Too strict; mock factories use Promise.resolve/reject
-  "promise/prefer-await-to-then": ["off"],
+  "eslint/no-empty-function": ["off"], // Disabled: Too strict; mock callbacks often need empty functions
+  "promise/prefer-await-to-then": ["off"], // Disabled: Too strict; mock factories use Promise.resolve/reject
   "vitest/consistent-each-for": ["error"],
   "vitest/consistent-test-filename": ["error"],
   "vitest/consistent-vitest-vi": ["error"],
@@ -20,8 +18,7 @@ const rules = {
   "vitest/no-import-node-test": ["error"],
   "vitest/no-importing-vitest-globals": ["error"],
   "vitest/prefer-called-exactly-once-with": ["error"],
-  // Disabled: Conflicts with vitest/prefer-called-times — both rules enforce opposite styles
-  "vitest/prefer-called-once": ["off"],
+  "vitest/prefer-called-once": ["off"], // Disabled: Conflicts with vitest/prefer-called-times — both rules enforce opposite styles
   "vitest/prefer-called-times": ["error"],
   "vitest/prefer-describe-function-title": ["error"],
   "vitest/prefer-expect-type-of": ["error"],
@@ -51,5 +48,3 @@ export const preset = {
     },
   ],
 } as const satisfies OxlintConfig;
-
-export default preset;

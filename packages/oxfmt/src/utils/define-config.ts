@@ -1,10 +1,11 @@
 import type { Merge, ReadonlyDeep, SimplifyDeep } from "type-fest";
-import type { OxfmtConfig, Presets } from "../common.ts";
-import { presets } from "../common.ts";
+import type { OxfmtConfig } from "../common.ts";
+import type { Presets } from "../presets/index.ts";
+import { presets } from "../presets/index.ts";
 
 export type DefinedConfig<T extends OxfmtConfig> = SimplifyDeep<
   Merge<
-    Presets[T extends { preset: infer TPreset } ? TPreset : "default"],
+    Presets[T extends { preset: infer TPreset } ? TPreset : "recommended"],
     Omit<ReadonlyDeep<T>, "preset">
   >
 >;
@@ -12,8 +13,8 @@ export type DefinedConfig<T extends OxfmtConfig> = SimplifyDeep<
 /**
  * Define an Oxfmt configuration with type inference.
  *
- * Resolves {@link presets | `presets`} (default is `"default"`) and shallow-merges your `config` on
- * top so explicit options override the preset.
+ * Resolves {@link presets | `presets`} (default is `"recommended"`) and shallow-merges your `config`
+ * on top so explicit options override the preset.
  *
  * See the [Oxfmt configuration
  * reference](https://oxc.rs/docs/guide/usage/formatter/config-file-reference) for the full set of
@@ -30,7 +31,7 @@ export function defineConfig<const TConfig extends OxfmtConfig>(
 export function defineConfig<const TConfig extends OxfmtConfig>(
   config?: TConfig,
 ): DefinedConfig<TConfig | Record<never, never>> {
-  const { preset = "default", ...self } = (config ?? {}) as OxfmtConfig;
+  const { preset = "recommended", ...self } = (config ?? {}) as OxfmtConfig;
   const presetConfig = presets[preset];
 
   return {

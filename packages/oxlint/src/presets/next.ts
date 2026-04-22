@@ -28,5 +28,3 @@ export const preset = {
   plugins: ["nextjs"],
   rules,
 } as const satisfies OxlintConfig;
-
-export default preset;

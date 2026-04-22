@@ -6,5 +6,3 @@ export const preset = {
   plugins: [],
   rules,
 } as const satisfies OxlintConfig;
-
-export default preset;

@@ -25,8 +25,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build packages
-        run: npx turbo run build --filter="./packages/*"
+      - name: Build workspace
+        run: npm run build
 
       - name: Run checks
         run: npm run check:all

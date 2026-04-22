@@ -17,13 +17,15 @@
   "author": "arsnl",
   "repository": {
     "type": "git",
-    "url": "https://github.com/arsnl/draft0.git",
+    "url": "git+https://github.com/arsnl/draft0.git",
     "directory": "packages/oxlint"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -55,7 +57,7 @@
     "typescript": "^5.9.2"
   },
   "peerDependencies": {
-    "oxlint": "^1.60.0"
+    "oxlint": "^1.61.0"
   },
   "engines": {
     "node": ">=22.18"

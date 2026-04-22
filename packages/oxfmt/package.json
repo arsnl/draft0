@@ -16,17 +16,23 @@
   "author": "arsnl",
   "repository": {
     "type": "git",
-    "url": "https://github.com/arsnl/draft0.git",
+    "url": "git+https://github.com/arsnl/draft0.git",
     "directory": "packages/oxfmt"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./presets": {
+      "types": "./dist/presets/index.d.ts",
+      "import": "./dist/presets/index.js"
     }
   },
   "publishConfig": {
@@ -38,6 +44,9 @@
     "dev": "tsdown --watch",
     "build": "tsdown"
   },
+  "dependencies": {
+    "type-fest": "^5.5.0"
+  },
   "devDependencies": {
     "@draft0/tsconfig": "*",
     "@draft0/tsdown": "*",
@@ -45,7 +54,7 @@
     "typescript": "^5.9.2"
   },
   "peerDependencies": {
-    "oxfmt": "^0.45.0"
+    "oxfmt": "^0.46.0"
   },
   "engines": {
     "node": ">=22.18"

@@ -1,0 +1,19 @@
+# Testing
+
+- **Unit tests**: [Vitest](https://vitest.dev). Place the test file next to the source (`foo.ts` → `foo.test.ts` or `foo.spec.ts`). Check whether a test file already exists before creating a new one.
+- **End-to-end tests**: [Playwright](https://playwright.dev). Keep E2E specs under the app's / package's `e2e/` (or `tests/e2e/`) folder so Vitest doesn't pick them up.
+
+## Conventions
+
+- Write assertions inside `it()` / `test()` blocks — never at the `describe` level.
+- Use `async`/`await` in async tests; no `done` callbacks.
+- Never commit `.only` or `.skip`.
+- Keep `describe` nesting shallow.
+- Aim for full coverage of the code you add or change.
+- Always run the tests locally before claiming they pass.
+
+## Mocking
+
+- Keep mocks minimal — only stub what the code under test actually reads. Use type casts with `any` where it keeps the mock small (test files allow `any`).
+- Mock the imported module at the top of the test file; set per-test behavior inside `it()` / `test()`; reset between tests with `beforeEach` / `afterEach`.
+- Empty function bodies are fine in mocks.

@@ -24,5 +24,3 @@ export const preset = {
   plugins: ["vue"],
   rules,
 } as const satisfies OxlintConfig;
-
-export default preset;

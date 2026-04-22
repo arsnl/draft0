@@ -13,6 +13,14 @@ import { preset as svelte } from "./svelte.ts";
 import { preset as vitest } from "./vitest.ts";
 import { preset as vue } from "./vue.ts";
 
+export { angular, astro, core, jest, nestjs, next, qwik, react, remix, solid, svelte, vitest, vue };
+
+/**
+ * Presets for Oxlint.
+ *
+ * @see https://oxc.rs/docs/guide/usage/linter/config-file-reference for more information about the
+ * configuration options.
+ */
 export const presets = {
   angular,
   astro,

@@ -16,17 +16,23 @@
   "author": "arsnl",
   "repository": {
     "type": "git",
-    "url": "https://github.com/arsnl/draft0.git",
+    "url": "git+https://github.com/arsnl/draft0.git",
     "directory": "packages/tsdown"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./presets": {
+      "types": "./dist/presets/index.d.ts",
+      "import": "./dist/presets/index.js"
     }
   },
   "publishConfig": {
@@ -41,8 +47,11 @@
   "dependencies": {
     "@arethetypeswrong/core": "^0.18.2",
     "@draft0/tsconfig": "*",
-    "@types/node": "^25.5.2",
     "publint": "^0.3.18",
+    "type-fest": "^5.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.2",
     "tsdown": "0.21.9",
     "typescript": "^5.9.2"
   },
