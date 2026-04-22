@@ -1,8 +1,7 @@
 import type { DummyRuleMap, OxlintConfig } from "oxlint";
 
 const rules = {
-  // Disabled: Too strict; mock callbacks often need empty functions
-  "eslint/no-empty-function": ["off"],
+  "eslint/no-empty-function": ["off"], // Disabled: Too strict; mock callbacks often need empty functions
   "jest/consistent-test-it": ["error"],
   "jest/expect-expect": ["error"],
   "jest/max-expects": ["error"],
@@ -10,8 +9,7 @@ const rules = {
   "jest/no-alias-methods": ["error"],
   "jest/no-commented-out-tests": ["error"],
   "jest/no-conditional-expect": ["error"],
-  // Disabled: Too strict; mock factories use conditionals for path-based routing
-  "jest/no-conditional-in-test": ["off"],
+  "jest/no-conditional-in-test": ["off"], // Disabled: Too strict; mock factories use conditionals for path-based routing
   "jest/no-confusing-set-timeout": ["error"],
   "jest/no-deprecated-functions": ["error"],
   "jest/no-disabled-tests": ["error"],
@@ -19,8 +17,7 @@ const rules = {
   "jest/no-duplicate-hooks": ["error"],
   "jest/no-export": ["error"],
   "jest/no-focused-tests": ["error"],
-  // Disabled: Too strict universally; bun:test uses beforeEach hooks for mock.restore()
-  "jest/no-hooks": ["off"],
+  "jest/no-hooks": ["off"], // Disabled: Too strict universally; bun:test uses beforeEach hooks for mock.restore()
   "jest/no-identical-title": ["error"],
   "jest/no-interpolation-in-snapshots": ["error"],
   "jest/no-jasmine-globals": ["error"],
@@ -38,12 +35,7 @@ const rules = {
   "jest/prefer-called-with": ["error"],
   "jest/prefer-comparison-matcher": ["error"],
   "jest/prefer-each": ["error"],
-  "jest/prefer-ending-with-an-expect": [
-    "error",
-    {
-      additionalTestBlockFunctions: ["each.test"],
-    },
-  ],
+  "jest/prefer-ending-with-an-expect": ["error", { additionalTestBlockFunctions: ["each.test"] }],
   "jest/prefer-equality-matcher": ["error"],
   "jest/prefer-expect-resolves": ["error"],
   "jest/prefer-hooks-in-order": ["error"],
@@ -62,16 +54,14 @@ const rules = {
   "jest/prefer-to-have-been-called": ["error"],
   "jest/prefer-to-have-length": ["error"],
   "jest/prefer-todo": ["error"],
-  // Disabled: Too strict universally; bun:test mock.module() must be called at top level
-  "jest/require-hook": ["off"],
+  "jest/require-hook": ["off"], // Disabled: Too strict universally; bun:test mock.module() must be called at top level
   "jest/require-to-throw-message": ["error"],
   "jest/require-top-level-describe": ["error"],
   "jest/valid-describe-callback": ["error"],
   "jest/valid-expect": ["error"],
   "jest/valid-expect-in-promise": ["error"],
   "jest/valid-title": ["error"],
-  // Disabled: Too strict; mock factories use Promise.resolve/reject
-  "promise/prefer-await-to-then": ["off"],
+  "promise/prefer-await-to-then": ["off"], // Disabled: Too strict; mock factories use Promise.resolve/reject
 } as const satisfies DummyRuleMap;
 
 export const preset = {
