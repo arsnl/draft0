@@ -94,10 +94,10 @@ Open a [feature request](https://github.com/arsnl/draft0/issues/new/choose) usin
    npm install
    ```
 
-3. Build the publishable packages (needed before checks or app builds that depend on them):
+3. Build the workspace:
 
    ```sh
-   npx turbo run build --filter="./packages/*"
+   npm run build
    ```
 
 4. Run quality checks:

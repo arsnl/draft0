@@ -24,7 +24,7 @@ Thanks for opening a PR! A few things that help reviewers:
 
 ## Checklist
 
-- [ ] I ran `npx turbo run build --filter="./packages/*"` and `npm run check:all` locally.
+- [ ] I ran `npm run check:all` locally.
 - [ ] I added a changeset (`npx changeset`) if this change affects a published package.
 - [ ] I updated docs or examples if behavior changed.
 - [ ] I've read the [CONTRIBUTING guide](../CONTRIBUTING.md).
