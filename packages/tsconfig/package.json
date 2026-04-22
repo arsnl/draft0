@@ -16,7 +16,7 @@
   "author": "arsnl",
   "repository": {
     "type": "git",
-    "url": "https://github.com/arsnl/draft0.git",
+    "url": "git+https://github.com/arsnl/draft0.git",
     "directory": "packages/tsconfig"
   },
   "publishConfig": {

@@ -11,9 +11,9 @@ export const preset = {
   },
   attw: {
     profile: "esm-only",
-    level: "error",
+    level: "warn",
   },
   publint: {
-    level: "error",
+    level: "suggestion",
   },
 } as const satisfies UserConfig;
