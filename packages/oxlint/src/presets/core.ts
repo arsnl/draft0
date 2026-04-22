@@ -5,19 +5,9 @@ export const rules = {
   "eslint/accessor-pairs": ["off"],
   "eslint/array-callback-return": [
     "error",
-    {
-      allowImplicit: true,
-      checkForEach: false,
-      allowVoid: true,
-    },
+    { allowImplicit: true, checkForEach: false, allowVoid: true },
   ],
-  "eslint/arrow-body-style": [
-    "error",
-    "as-needed",
-    {
-      requireReturnForObjectLiteral: false,
-    },
-  ],
+  "eslint/arrow-body-style": ["error", "as-needed", { requireReturnForObjectLiteral: false }],
   "eslint/block-scoped-var": ["error"],
   // Disabled: Purely cosmetic; too noisy across diverse codebases
   "eslint/capitalized-comments": ["off"],
@@ -28,12 +18,7 @@ export const rules = {
   "eslint/constructor-super": ["error"],
   "eslint/curly": ["error", "all"],
   "eslint/default-case-last": ["error"],
-  "eslint/default-case": [
-    "error",
-    {
-      commentPattern: "^no default$",
-    },
-  ],
+  "eslint/default-case": ["error", { commentPattern: "^no default$" }],
   "eslint/default-param-last": ["error"],
   "eslint/eqeqeq": ["error", "always"],
   "eslint/for-direction": ["error"],
@@ -41,13 +26,7 @@ export const rules = {
   // Disabled: Style preference; both declarations and expressions are valid
   "eslint/func-style": ["off"],
   "eslint/getter-return": ["error"],
-  "eslint/grouped-accessor-pairs": [
-    "error",
-    "getBeforeSet",
-    {
-      enforceForTSTypes: true,
-    },
-  ],
+  "eslint/grouped-accessor-pairs": ["error", "getBeforeSet", { enforceForTSTypes: true }],
   "eslint/guard-for-in": ["error"],
   // Disabled: Style preference; variable names are context-dependent
   "eslint/id-length": ["off"],
@@ -67,14 +46,7 @@ export const rules = {
   "eslint/max-params": ["off"],
   // Disabled: Arbitrary limit; better enforced through code review
   "eslint/max-statements": ["off"],
-  "eslint/new-cap": [
-    "error",
-    {
-      newIsCap: true,
-      capIsNew: false,
-      properties: true,
-    },
-  ],
+  "eslint/new-cap": ["error", { newIsCap: true, capIsNew: false, properties: true }],
   "eslint/no-alert": ["warn"],
   "eslint/no-array-constructor": ["error"],
   "eslint/no-async-promise-executor": ["error"],
@@ -100,28 +72,13 @@ export const rules = {
   "eslint/no-dupe-else-if": ["error"],
   "eslint/no-dupe-keys": ["error"],
   "eslint/no-duplicate-case": ["error"],
-  "eslint/no-duplicate-imports": [
-    "error",
-    {
-      allowSeparateTypeImports: true,
-    },
-  ],
-  "eslint/no-else-return": [
-    "error",
-    {
-      allowElseIf: false,
-    },
-  ],
+  "eslint/no-duplicate-imports": ["error", { allowSeparateTypeImports: true }],
+  "eslint/no-else-return": ["error", { allowElseIf: false }],
   "eslint/no-empty-character-class": ["error"],
   "eslint/no-empty-function": ["error"],
   "eslint/no-empty-pattern": ["error"],
   "eslint/no-empty-static-block": ["error"],
-  "eslint/no-empty": [
-    "error",
-    {
-      allowEmptyCatch: true,
-    },
-  ],
+  "eslint/no-empty": ["error", { allowEmptyCatch: true }],
   // Disabled: Redundant; eslint/eqeqeq "always" already enforces strict equality
   "eslint/no-eq-null": ["off"],
   "eslint/no-eval": ["error"],
@@ -185,12 +142,7 @@ export const rules = {
   "eslint/no-prototype-builtins": ["error"],
   "eslint/no-redeclare": ["error"],
   "eslint/no-regex-spaces": ["error"],
-  "eslint/no-restricted-exports": [
-    "error",
-    {
-      restrictedNamedExports: ["default"],
-    },
-  ],
+  "eslint/no-restricted-exports": ["error", { restrictedNamedExports: ["default"] }],
   "eslint/no-restricted-globals": [
     "error",
     { name: "event", message: "Use local parameter instead." },
@@ -262,21 +214,11 @@ export const rules = {
   "eslint/no-restricted-imports": ["off"],
   "eslint/no-return-assign": ["error", "always"],
   "eslint/no-script-url": ["error"],
-  "eslint/no-self-assign": [
-    "error",
-    {
-      props: true,
-    },
-  ],
+  "eslint/no-self-assign": ["error", { props: true }],
   "eslint/no-self-compare": ["error"],
   "eslint/no-sequences": ["error"],
   "eslint/no-setter-return": ["error"],
-  "eslint/no-shadow-restricted-names": [
-    "error",
-    {
-      reportGlobalThis: true,
-    },
-  ],
+  "eslint/no-shadow-restricted-names": ["error", { reportGlobalThis: true }],
   "eslint/no-shadow": ["error"],
   "eslint/no-sparse-arrays": ["error"],
   "eslint/no-template-curly-in-string": ["error"],
@@ -292,21 +234,11 @@ export const rules = {
   "eslint/no-unexpected-multiline": ["error"],
   // Disabled: May produce false positives; not fully stable yet
   "eslint/no-unmodified-loop-condition": ["off"],
-  "eslint/no-unneeded-ternary": [
-    "error",
-    {
-      defaultAssignment: false,
-    },
-  ],
+  "eslint/no-unneeded-ternary": ["error", { defaultAssignment: false }],
   "eslint/no-unreachable": ["error"],
   "eslint/no-unsafe-finally": ["error"],
   "eslint/no-unsafe-negation": ["error"],
-  "eslint/no-unsafe-optional-chaining": [
-    "error",
-    {
-      disallowArithmeticOperators: true,
-    },
-  ],
+  "eslint/no-unsafe-optional-chaining": ["error", { disallowArithmeticOperators: true }],
   "eslint/no-unused-expressions": [
     "error",
     {
@@ -349,22 +281,9 @@ export const rules = {
   // Disabled: TODO/FIXME comments are expected during active development
   "eslint/no-warning-comments": ["off"],
   "eslint/no-with": ["error"],
-  "eslint/object-shorthand": [
-    "error",
-    "always",
-    {
-      avoidQuotes: true,
-      ignoreConstructors: false,
-    },
-  ],
+  "eslint/object-shorthand": ["error", "always", { avoidQuotes: true, ignoreConstructors: false }],
   "eslint/operator-assignment": ["error", "always"],
-  "eslint/prefer-const": [
-    "error",
-    {
-      destructuring: "any",
-      ignoreReadBeforeAssign: true,
-    },
-  ],
+  "eslint/prefer-const": ["error", { destructuring: "any", ignoreReadBeforeAssign: true }],
   "eslint/prefer-destructuring": [
     "error",
     {
@@ -389,13 +308,7 @@ export const rules = {
   "eslint/require-await": ["off"],
   "eslint/require-yield": ["error"],
   // Only used for sorting import members since oxfmt don't support it yet.
-  "eslint/sort-imports": [
-    "error",
-    {
-      ignoreCase: true,
-      ignoreDeclarationSort: true,
-    },
-  ],
+  "eslint/sort-imports": ["error", { ignoreCase: true, ignoreDeclarationSort: true }],
   // Disabled: Too strict; logical grouping preferred over alphabetical
   "eslint/sort-keys": ["off"],
   // Disabled: Too strict; logical grouping preferred over alphabetical
@@ -403,12 +316,7 @@ export const rules = {
   "eslint/symbol-description": ["error"],
   "eslint/unicode-bom": ["error", "never"],
   "eslint/use-isnan": ["error"],
-  "eslint/valid-typeof": [
-    "error",
-    {
-      requireStringLiterals: true,
-    },
-  ],
+  "eslint/valid-typeof": ["error", { requireStringLiterals: true }],
   "eslint/vars-on-top": ["error"],
   "eslint/yoda": ["error"],
   "eslint-js/no-restricted-syntax": [
@@ -442,13 +350,7 @@ export const rules = {
   "import/export": ["error"],
   // Disabled: Too restrictive; co-located exports improve readability
   "import/exports-last": ["off"],
-  "import/extensions": [
-    "error",
-    "always",
-    {
-      ignorePackages: true,
-    },
-  ],
+  "import/extensions": ["error", "always", { ignorePackages: true }],
   "import/first": ["error"],
   // Disabled: Too restrictive; individual named exports are standard
   "import/group-exports": ["off"],
@@ -562,10 +464,7 @@ export const rules = {
   "promise/avoid-new": ["error"],
   "promise/catch-or-return": [
     "error",
-    {
-      allowFinally: true,
-      terminationMethod: ["catch", "finally"],
-    },
+    { allowFinally: true, terminationMethod: ["catch", "finally"] },
   ],
   "promise/no-callback-in-promise": ["error"],
   "promise/no-multiple-resolved": ["error"],
@@ -576,12 +475,7 @@ export const rules = {
   "promise/no-return-wrap": ["error"],
   "promise/param-names": ["error"],
   "promise/prefer-await-to-callbacks": ["error"],
-  "promise/prefer-await-to-then": [
-    "error",
-    {
-      strict: true,
-    },
-  ],
+  "promise/prefer-await-to-then": ["error", { strict: true }],
   "promise/prefer-catch": ["error"],
   "promise/spec-only": ["error"],
   "promise/valid-params": ["error"],
@@ -610,31 +504,25 @@ export const rules = {
   "typescript/consistent-generic-constructors": ["off"],
   // Disabled: Style preference; both Record and index signatures valid
   "typescript/consistent-indexed-object-style": ["off"],
-  "typescript/consistent-return": [
-    "error",
-    {
-      treatUndefinedAsUnspecified: true,
-    },
-  ],
+  "typescript/consistent-return": ["error", { treatUndefinedAsUnspecified: true }],
   "typescript/consistent-type-assertions": ["error", { assertionStyle: "as" }],
   // Disabled: Style preference; type and interface both have valid uses
   "typescript/consistent-type-definitions": ["off"],
   "typescript/consistent-type-exports": [
     "error",
-    {
-      fixMixedExportsWithInlineTypeSpecifier: false,
-    },
+    { fixMixedExportsWithInlineTypeSpecifier: false },
   ],
   "typescript/consistent-type-imports": [
     "error",
-    {
-      fixStyle: "separate-type-imports",
-      prefer: "type-imports",
-    },
+    { fixStyle: "separate-type-imports", prefer: "type-imports" },
   ],
   "typescript/dot-notation": ["error"],
   // Disabled: Too verbose; TypeScript inference handles return types reliably
   "typescript/explicit-function-return-type": ["off"],
+  "typescript/explicit-member-accessibility": [
+    "error",
+    { accessibility: "explicit", overrides: { constructors: "no-public" } },
+  ],
   // Disabled: Too verbose; TypeScript inference handles boundary types reliably
   "typescript/explicit-module-boundary-types": ["off"],
   "typescript/no-array-delete": ["error"],
@@ -808,12 +696,7 @@ export const rules = {
   "unicorn/no-static-only-class": ["error"],
   "unicorn/no-thenable": ["error"],
   "unicorn/no-this-assignment": ["error"],
-  "unicorn/no-typeof-undefined": [
-    "error",
-    {
-      checkGlobalVariables: true,
-    },
-  ],
+  "unicorn/no-typeof-undefined": ["error", { checkGlobalVariables: true }],
   "unicorn/no-unnecessary-array-flat-depth": ["error"],
   "unicorn/no-unnecessary-array-splice-count": ["error"],
   "unicorn/no-unnecessary-await": ["error"],
@@ -867,13 +750,7 @@ export const rules = {
   "unicorn/prefer-native-coercion-functions": ["error"],
   "unicorn/prefer-negative-index": ["error"],
   "unicorn/prefer-node-protocol": ["error"],
-  "unicorn/prefer-number-properties": [
-    "error",
-    {
-      checkInfinity: true,
-      checkNaN: true,
-    },
-  ],
+  "unicorn/prefer-number-properties": ["error", { checkInfinity: true, checkNaN: true }],
   "unicorn/prefer-object-from-entries": ["error"],
   "unicorn/prefer-optional-catch-binding": ["error"],
   "unicorn/prefer-prototype-methods": ["error"],
