@@ -136,5 +136,3 @@ export const preset = {
   plugins: ["react", "react-perf", "jsx-a11y"],
   rules,
 } as const satisfies OxlintConfig;
-
-export default preset;

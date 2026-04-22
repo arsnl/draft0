@@ -827,5 +827,3 @@ export const preset = {
     },
   ],
 } as const satisfies OxlintConfig;
-
-export default preset;

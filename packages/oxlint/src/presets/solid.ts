@@ -7,5 +7,3 @@ export const preset = {
   rules,
   ignorePatterns: ["**/routeTree.gen.ts"],
 } as const satisfies OxlintConfig;
-
-export default preset;
