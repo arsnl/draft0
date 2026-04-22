@@ -15,7 +15,7 @@ npm install -D @draft0/tsconfig typescript
 ```jsonc
 // tsconfig.json
 {
-  "extends": "@draft0/tsconfig/base.json"
+  "extends": "@draft0/tsconfig/base.json",
 }
 ```
 
