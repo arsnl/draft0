@@ -1,0 +1,16 @@
+import type { OxfmtConfig } from "oxfmt";
+import { preset as defaultPreset } from "./default.ts";
+
+/**
+ * Presets for Oxfmt.
+ *
+ * @see https://oxc.rs/docs/guide/usage/formatter/config-file-reference for more information about
+ * the configuration options.
+ */
+export const presets = {
+  default: defaultPreset,
+} as const satisfies Record<string, OxfmtConfig>;
+
+export type Presets = typeof presets;
+
+export type PresetName = keyof Presets;

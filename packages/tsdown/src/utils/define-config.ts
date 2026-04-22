@@ -1,6 +1,7 @@
 import type { Merge, ReadonlyDeep, SimplifyDeep } from "type-fest";
-import type { Presets, TSDownConfig } from "../common.ts";
-import { presets } from "../common.ts";
+import type { TSDownConfig } from "../common.ts";
+import type { Presets } from "../presets/index.ts";
+import { presets } from "../presets/index.ts";
 
 export type DefinedConfig<T extends TSDownConfig> = SimplifyDeep<
   Merge<
