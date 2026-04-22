@@ -1,5 +1,7 @@
 import type { UserConfig } from "tsdown";
-import { preset as defaultPreset } from "./default.ts";
+import { preset as recommended } from "./recommended.ts";
+
+export { recommended };
 
 /**
  * Presets for TSDown.
@@ -8,7 +10,7 @@ import { preset as defaultPreset } from "./default.ts";
  * configuration options.
  */
 export const presets = {
-  default: defaultPreset,
+  recommended,
 } as const satisfies Record<string, UserConfig>;
 
 export type Presets = typeof presets;

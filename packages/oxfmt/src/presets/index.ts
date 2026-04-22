@@ -1,5 +1,7 @@
 import type { OxfmtConfig } from "oxfmt";
-import { preset as defaultPreset } from "./default.ts";
+import { preset as recommended } from "./recommended.ts";
+
+export { recommended };
 
 /**
  * Presets for Oxfmt.
@@ -8,7 +10,7 @@ import { preset as defaultPreset } from "./default.ts";
  * the configuration options.
  */
 export const presets = {
-  default: defaultPreset,
+  recommended,
 } as const satisfies Record<string, OxfmtConfig>;
 
 export type Presets = typeof presets;
