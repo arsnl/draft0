@@ -1,6 +1,6 @@
 import type { DummyRuleMap, OxlintConfig } from "oxlint";
 
-export const rules = {
+export const rules: DummyRuleMap = {
   "eslint/accessor-pairs": ["off"], // Disabled: Too restrictive; read-only or write-only accessors are valid
   "eslint/array-callback-return": [
     "error",
@@ -673,9 +673,9 @@ export const rules = {
   "unicorn/switch-case-break-position": ["error"],
   "unicorn/text-encoding-identifier-case": ["error"],
   "unicorn/throw-new-error": ["error"],
-} as const satisfies DummyRuleMap;
+};
 
-export const preset = {
+export const preset: OxlintConfig = {
   // disable all categories so that we can enable rules selectively
   categories: {
     correctness: "off",
@@ -711,4 +711,4 @@ export const preset = {
       },
     },
   ],
-} as const satisfies OxlintConfig;
+};

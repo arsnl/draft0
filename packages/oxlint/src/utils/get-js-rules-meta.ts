@@ -6,7 +6,7 @@ import { getReferencedRuleNames } from "./get-referenced-rule-names.ts";
  *
  * Only list the rules that are used in the configs.
  */
-const JS_RULES_META = [
+const JS_RULES_META: OxlintRuleMeta[] = [
   {
     scope: "eslint_js",
     value: "no-restricted-syntax",
@@ -63,7 +63,7 @@ const JS_RULES_META = [
     compatible: false,
     referenced: false,
   },
-] as const satisfies OxlintRuleMeta[];
+];
 
 /**
  * Get the JavaScript rules metadata.

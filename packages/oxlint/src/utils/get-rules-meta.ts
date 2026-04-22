@@ -1,3 +1,4 @@
+import type { OxlintRuleMeta } from "../common.ts";
 import { getBuiltInRulesMeta } from "./get-built-in-rules-meta.ts";
 import { getJsRulesMeta } from "./get-js-rules-meta.ts";
 
@@ -9,4 +10,4 @@ import { getJsRulesMeta } from "./get-js-rules-meta.ts";
  *
  * @returns The rules metadata.
  */
-export const getRulesMeta = () => [...getBuiltInRulesMeta(), ...getJsRulesMeta()];
+export const getRulesMeta = (): OxlintRuleMeta[] => [...getBuiltInRulesMeta(), ...getJsRulesMeta()];

@@ -3,8 +3,10 @@ import { spawnSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { COMPATIBLE_RULES, getPluginFromRuleScope, getRuleScopeFromPlugin } from "../common.ts";
+import { COMPATIBLE_RULES } from "./get-compatible-rules.ts";
+import { getPluginFromRuleScope } from "./get-plugin-from-rule-scope.ts";
 import { getReferencedRuleNames } from "./get-referenced-rule-names.ts";
+import { getRuleScopeFromPlugin } from "./get-rule-scope-from-plugin.ts";
 
 // `oxlint --rules --format json` is not a documented public contract and can drift across
 // versions. If `isOxlintCliRuleMeta` starts rejecting entries, update both shapes together.

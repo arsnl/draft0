@@ -19,7 +19,7 @@ const selectablePackages = [
   { name: "@draft0/oxfmt", input: "INPUT_OXFMT" },
   { name: "@draft0/tsdown", input: "INPUT_TSDOWN" },
   { name: "@draft0/tsconfig", input: "INPUT_TSCONFIG" },
-] as const;
+];
 
 const selectedPackages = new Set(
   selectablePackages.filter(({ input }) => env[input] === "true").map(({ name }) => name),
