@@ -51,9 +51,7 @@
     "type-fest": "^5.5.0"
   },
   "devDependencies": {
-    "@types/node": "^25.5.2",
-    "tsdown": "0.21.9",
-    "typescript": "^5.9.2"
+    "tsdown": "0.21.9"
   },
   "peerDependencies": {
     "tsdown": "^0.21.9"

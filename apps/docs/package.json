@@ -17,10 +17,8 @@
     "@draft0/oxlint": "*",
     "@draft0/tsconfig": "*",
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "tailwindcss": "^4"
   }
 }

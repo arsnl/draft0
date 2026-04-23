@@ -57,7 +57,6 @@ export const COMPATIBLE_RULES: Record<string, string> = {
   "vitest/valid-describe-callback": "jest/valid-describe-callback",
   "vitest/valid-expect-in-promise": "jest/valid-expect-in-promise",
   "vitest/valid-expect": "jest/valid-expect",
-  "vitest/valid-title": "jest/valid-title",
 };
 
 /**
