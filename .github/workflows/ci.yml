@@ -28,5 +28,8 @@ jobs:
       - name: Build workspace
         run: npm run build
 
+      - name: Run tests
+        run: npm test
+
       - name: Run checks
         run: npm run check:all

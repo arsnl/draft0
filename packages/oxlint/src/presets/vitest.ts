@@ -16,7 +16,7 @@ const rules: DummyRuleMap = {
   "vitest/hoisted-apis-on-top": ["error"],
   "vitest/no-conditional-tests": ["error"],
   "vitest/no-import-node-test": ["error"],
-  "vitest/no-importing-vitest-globals": ["error"],
+  "vitest/no-importing-vitest-globals": ["off"], // Disabled: Conflicts with vitest/prefer-importing-vitest-globals — both rules enforce opposite styles
   "vitest/prefer-called-exactly-once-with": ["error"],
   "vitest/prefer-called-once": ["off"], // Disabled: Conflicts with vitest/prefer-called-times — both rules enforce opposite styles
   "vitest/prefer-called-times": ["error"],
@@ -31,7 +31,7 @@ const rules: DummyRuleMap = {
   "vitest/require-awaited-expect-poll": ["error"],
   "vitest/require-local-test-context-for-concurrent-snapshots": ["error"],
   "vitest/require-mock-type-parameters": ["error"],
-  "vitest/require-test-timeout": ["error"],
+  "vitest/require-test-timeout": ["off"], // Disabled: Too verbose; use default timeout or overrides per test if needed
   "vitest/warn-todo": ["error"],
   ...vitestCompatibleRules,
 };

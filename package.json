@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
+    "test": "turbo run test",
     "start": "turbo run start",
     "check:lint": "oxlint",
     "check:format": "oxfmt --check",

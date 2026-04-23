@@ -13,6 +13,10 @@
     },
     "start": {
       "dependsOn": ["^start"]
+    },
+    "test": {
+      "cache": true,
+      "outputs": []
     }
   }
 }
