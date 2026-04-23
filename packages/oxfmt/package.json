@@ -42,9 +42,7 @@
   },
   "scripts": {
     "dev": "tsdown --watch",
-    "build": "tsdown",
-    "test": "vitest run",
-    "test:watch": "vitest"
+    "build": "tsdown"
   },
   "dependencies": {
     "type-fest": "^5.5.0"
@@ -55,8 +53,7 @@
     "@draft0/tsdown": "*",
     "@types/node": "^25.5.2",
     "oxfmt": "^0.46.0",
-    "typescript": "^5.9.2",
-    "vitest": "^3.2.4"
+    "typescript": "^5.9.2"
   },
   "peerDependencies": {
     "oxfmt": "^0.46.0"
