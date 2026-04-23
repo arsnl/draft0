@@ -3,6 +3,7 @@ import { getCompatibleRules } from "../utils/get-compatible-rules.ts";
 import { preset as jestPreset } from "./jest.ts";
 
 export const vitestCompatibleRules: DummyRuleMap = getCompatibleRules({
+  /* v8 ignore next -- @preserve */
   sourceRules: jestPreset.overrides?.[0]?.rules ?? {},
   compatiblePlugin: "vitest",
 });
@@ -25,9 +26,9 @@ const rules: DummyRuleMap = {
   "vitest/prefer-import-in-mock": ["error"],
   "vitest/prefer-importing-vitest-globals": ["error"],
   "vitest/prefer-strict-boolean-matchers": ["error"],
-  "vitest/prefer-to-be-falsy": ["error"],
+  "vitest/prefer-to-be-falsy": ["off"], // Disabled: Conflicts with vitest/prefer-strict-boolean-matchers — both rules enforce opposite styles
   "vitest/prefer-to-be-object": ["error"],
-  "vitest/prefer-to-be-truthy": ["error"],
+  "vitest/prefer-to-be-truthy": ["off"], // Disabled: Conflicts with vitest/prefer-strict-boolean-matchers — both rules enforce opposite styles
   "vitest/require-awaited-expect-poll": ["error"],
   "vitest/require-local-test-context-for-concurrent-snapshots": ["error"],
   "vitest/require-mock-type-parameters": ["error"],
