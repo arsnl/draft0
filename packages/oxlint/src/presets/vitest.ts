@@ -2,12 +2,12 @@ import type { DummyRuleMap, OxlintConfig } from "oxlint";
 import { getCompatibleRules } from "../utils/get-compatible-rules.ts";
 import { preset as jestPreset } from "./jest.ts";
 
-export const vitestCompatibleRules = getCompatibleRules({
-  sourceRules: jestPreset.overrides[0].rules,
+export const vitestCompatibleRules: DummyRuleMap = getCompatibleRules({
+  sourceRules: jestPreset.overrides?.[0]?.rules ?? {},
   compatiblePlugin: "vitest",
 });
 
-const rules = {
+const rules: DummyRuleMap = {
   "eslint/no-empty-function": ["off"], // Disabled: Too strict; mock callbacks often need empty functions
   "promise/prefer-await-to-then": ["off"], // Disabled: Too strict; mock factories use Promise.resolve/reject
   "vitest/consistent-each-for": ["error"],
@@ -34,9 +34,9 @@ const rules = {
   "vitest/require-test-timeout": ["error"],
   "vitest/warn-todo": ["error"],
   ...vitestCompatibleRules,
-} as const satisfies DummyRuleMap;
+};
 
-export const preset = {
+export const preset: OxlintConfig = {
   overrides: [
     {
       files: [
@@ -47,4 +47,4 @@ export const preset = {
       rules,
     },
   ],
-} as const satisfies OxlintConfig;
+};

@@ -1,6 +1,6 @@
 import type { DummyRuleMap, OxlintConfig } from "oxlint";
 
-const rules = {
+const rules: DummyRuleMap = {
   "jsx-a11y/alt-text": ["error", { img: ["Image"] }],
   "jsx-a11y/anchor-ambiguous-text": ["error"],
   "jsx-a11y/anchor-has-content": ["error"],
@@ -96,9 +96,9 @@ const rules = {
   "react-perf/jsx-no-new-array-as-prop": ["off"], // Disabled: Redundant; let the React compiler enforce this
   "react-perf/jsx-no-new-function-as-prop": ["off"], // Disabled: Redundant; let the React compiler enforce this
   "react-perf/jsx-no-new-object-as-prop": ["off"], // Disabled: Redundant; let the React compiler enforce this
-} as const satisfies DummyRuleMap;
+};
 
-export const preset = {
+export const preset: OxlintConfig = {
   plugins: ["react", "react-perf", "jsx-a11y"],
   rules,
-} as const satisfies OxlintConfig;
+};

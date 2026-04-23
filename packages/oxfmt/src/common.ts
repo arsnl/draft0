@@ -1,14 +1,14 @@
-import type { OxfmtConfig as OxfmtConfigBase } from "oxfmt";
+import type { OxfmtConfig } from "oxfmt";
 import type { Simplify } from "type-fest";
 import type { PresetName } from "./presets/index.ts";
 
-export type OxfmtConfig = Simplify<
+export type Draft0OxfmtConfig = Simplify<
   {
     /**
      * The Oxfmt preset to use.
      *
-     * @default "default"
+     * @default "recommended"
      */
     preset?: PresetName;
-  } & OxfmtConfigBase
+  } & OxfmtConfig
 >;

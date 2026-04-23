@@ -1,88 +1,39 @@
-import type { OxlintConfig as OxlintConfigBase } from "oxlint";
-import type { SimplifyDeep } from "type-fest";
-import type { OxlintConfig } from "../common.ts";
-import type { PresetName, Presets } from "../presets/index.ts";
-import type { MergeConfigs } from "./merge-configs.ts";
+import type { OxlintConfig } from "oxlint";
+import type { Draft0OxlintConfig } from "../common.ts";
+import type { PresetName } from "../presets/index.ts";
 import { presets } from "../presets/index.ts";
 import { mergeConfigs } from "./merge-configs.ts";
 
-type InputPresets<T extends OxlintConfig> = T["presets"] extends readonly PresetName[]
-  ? T["presets"]
-  : [];
-
-type InputRoot<T extends OxlintConfig> = T extends { root: infer TRoot extends boolean }
-  ? TRoot
-  : true;
-
-type MaybeAutoReact<T extends readonly PresetName[]> = "next" extends T[number]
-  ? "react" extends T[number]
-    ? []
-    : ["react"]
-  : [];
-
-type DedupePresets<
-  T extends readonly PresetName[],
-  TSeen extends PresetName = never,
-  TOutput extends PresetName[] = [],
-> = T extends readonly [infer THead, ...infer TTail]
-  ? THead extends PresetName
-    ? TTail extends readonly PresetName[]
-      ? THead extends TSeen
-        ? DedupePresets<TTail, TSeen, TOutput>
-        : DedupePresets<TTail, TSeen | THead, [...TOutput, THead]>
-      : TOutput
-    : TOutput
-  : TOutput;
-
-type OrderedPresetNames<T extends OxlintConfig> = DedupePresets<
-  ["core", ...InputPresets<T>, ...MaybeAutoReact<InputPresets<T>>]
->;
-
-type PresetConfigTuple<TPresetNames extends readonly PresetName[]> = {
-  [K in keyof TPresetNames]: TPresetNames[K] extends PresetName ? Presets[TPresetNames[K]] : never;
-};
-
-type NormalizeMergeInput<T> = {
-  [K in keyof T as K extends keyof OxlintConfigBase ? K : never]: Exclude<T[K], undefined>;
-};
-
-type SelfConfig<T extends OxlintConfig> = NormalizeMergeInput<Omit<T, "root" | "presets">>;
-
-type ReduceConfigsLeft<
-  TConfigs extends readonly OxlintConfigBase[],
-  TRoot extends boolean,
-  TAcc = Record<never, never>,
-> = TConfigs extends readonly [infer THead, ...infer TRest]
-  ? THead extends OxlintConfigBase
-    ? TRest extends readonly OxlintConfigBase[]
-      ? ReduceConfigsLeft<TRest, TRoot, MergeConfigs<THead, TAcc, TRoot>>
-      : TAcc
-    : TAcc
-  : TAcc;
-
-export type DefinedConfig<T extends OxlintConfig> = SimplifyDeep<
-  ReduceConfigsLeft<[...PresetConfigTuple<OrderedPresetNames<T>>, SelfConfig<T>], InputRoot<T>>
->;
-
 /**
- * Define an Oxlint configuration with type inference.
+ * Define an Oxlint configuration.
  *
- * Composes the requested {@link presets} in order and deep-merges your own options on top, so
- * explicit fields always win over presets. The opinionated `core` preset is prepended
- * automatically, duplicate presets are deduplicated, and some presets pull in their dependencies
- * (e.g. `next` implies `react`).
+ * Composes the requested {@link presets} in order and merges your own options on top, so explicit
+ * fields always win over presets. The merge is field-aware: object fields (`rules`, `settings`,
+ * `env`, ...) are merged key-by-key, while array fields (`plugins`, `overrides`, `ignorePatterns`,
+ * `extends`, ...) are concatenated and deduplicated where it makes sense.
+ *
+ * The opinionated `core` preset is always prepended, duplicate presets are deduplicated, and `next`
+ * auto-adds `react` when it isn't already listed.
+ *
+ * On top of the native Oxlint schema, the config accepts two extra fields:
+ *
+ * - `root` (default `true`) - Whether this is the root config. Some options (e.g. `options`) are only
+ *   honored on the root config, so set this to `false` for nested configs.
+ * - `presets` (default `[]`) - Additional presets to include. Available names: `angular`, `astro`,
+ *   `jest`, `nestjs`, `next`, `qwik`, `react`, `remix`, `solid`, `svelte`, `vitest`, `vue`.
  *
  * See the [Oxlint configuration
  * reference](https://oxc.rs/docs/guide/usage/linter/config-file-reference) for the full set of
- * linter options. On top of those, this function accepts two extra fields:
- *
- * - `root` (default `true`) - Whether this is the root config. Some options are only valid on the
- *   root config, so set this to `false` for nested configs.
- * - `presets` (default `[]`) - Framework or tooling presets to include. Available names: `angular`,
- *   `astro`, `jest`, `nestjs`, `next`, `qwik`, `react`, `remix`, `solid`, `svelte`, `vitest`,
- *   `vue`.
+ * linter options.
  *
  * @example
+ *   // Use the opinionated `core` preset as-is.
+ *   import { defineConfig } from "@draft0/oxlint";
+ *
+ *   export default defineConfig();
+ *
+ * @example
+ *   // Compose framework presets and override rules locally.
  *   import { defineConfig } from "@draft0/oxlint";
  *
  *   export default defineConfig({
@@ -92,20 +43,14 @@ export type DefinedConfig<T extends OxlintConfig> = SimplifyDeep<
  *     },
  *   });
  *
- * @param oxlintConfig - Oxlint options merged after the resolved presets.
+ * @param config - Oxlint options merged after the resolved presets.
  *
- * @returns The merged configuration, typed as {@link DefinedConfig}.
+ * @returns The merged Oxlint configuration.
  */
-export function defineConfig(): DefinedConfig<Record<never, never>>;
-export function defineConfig<const TConfig extends OxlintConfig>(
-  oxlintConfig: TConfig,
-): DefinedConfig<TConfig>;
-export function defineConfig<const TConfig extends OxlintConfig>(
-  oxlintConfig?: TConfig,
-): DefinedConfig<TConfig | Record<never, never>> {
-  const { root = true, presets: inputPresets = [], ...self } = (oxlintConfig ?? {}) as OxlintConfig;
+export const defineConfig = (config: Draft0OxlintConfig = {}): OxlintConfig => {
+  const { root = true, presets: inputPresets = [], ...self } = config;
 
-  const configs = [
+  const presetConfigs = [
     ...new Set<PresetName>([
       "core",
       ...inputPresets,
@@ -115,8 +60,5 @@ export function defineConfig<const TConfig extends OxlintConfig>(
     ]),
   ].map((preset) => presets[preset]);
 
-  return [...configs, self].reduce(
-    (acc, config) => mergeConfigs(config, acc, { root }),
-    {},
-  ) as DefinedConfig<TConfig | Record<never, never>>;
-}
+  return [...presetConfigs, self].reduce((acc, conf) => mergeConfigs(conf, acc, { root }), {});
+};

@@ -1,6 +1,6 @@
 import type { DummyRuleMap, OxlintConfig } from "oxlint";
 
-const rules = {
+const rules: DummyRuleMap = {
   "eslint/no-empty-function": ["off"], // Disabled: Too strict; mock callbacks often need empty functions
   "jest/consistent-test-it": ["error"],
   "jest/expect-expect": ["error"],
@@ -62,9 +62,9 @@ const rules = {
   "jest/valid-expect-in-promise": ["error"],
   "jest/valid-title": ["error"],
   "promise/prefer-await-to-then": ["off"], // Disabled: Too strict; mock factories use Promise.resolve/reject
-} as const satisfies DummyRuleMap;
+};
 
-export const preset = {
+export const preset: OxlintConfig = {
   overrides: [
     {
       files: [
@@ -75,4 +75,4 @@ export const preset = {
       rules,
     },
   ],
-} as const satisfies OxlintConfig;
+};

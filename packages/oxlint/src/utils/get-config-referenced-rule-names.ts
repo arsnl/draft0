@@ -12,7 +12,7 @@ import type { OxlintConfig } from "oxlint";
  *
  * @returns A set of the names of all the rules that are referenced in the config.
  */
-export const getConfigReferencedRuleNames = (config: OxlintConfig) => {
+export const getConfigReferencedRuleNames = (config: OxlintConfig): Set<string> => {
   const rootRules = Object.keys(config.rules ?? {});
   const overrideRules =
     config.overrides?.map((override) => Object.keys(override.rules ?? {})) ?? [];

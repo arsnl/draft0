@@ -1,6 +1,6 @@
 import type { OxfmtConfig } from "oxfmt";
 
-export const preset = {
+export const preset: OxfmtConfig = {
   jsdoc: {
     separateReturnsFromParam: true,
   },
@@ -27,4 +27,4 @@ export const preset = {
     ],
   },
   sortPackageJson: true,
-} as const satisfies OxfmtConfig;
+};

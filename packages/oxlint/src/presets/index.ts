@@ -13,6 +13,23 @@ import { preset as svelte } from "./svelte.ts";
 import { preset as vitest } from "./vitest.ts";
 import { preset as vue } from "./vue.ts";
 
+export type PresetName =
+  | "angular"
+  | "astro"
+  | "core"
+  | "jest"
+  | "nestjs"
+  | "next"
+  | "qwik"
+  | "react"
+  | "remix"
+  | "solid"
+  | "svelte"
+  | "vitest"
+  | "vue";
+
+export type Presets = Record<PresetName, OxlintConfig>;
+
 export { angular, astro, core, jest, nestjs, next, qwik, react, remix, solid, svelte, vitest, vue };
 
 /**
@@ -21,7 +38,7 @@ export { angular, astro, core, jest, nestjs, next, qwik, react, remix, solid, sv
  * @see https://oxc.rs/docs/guide/usage/linter/config-file-reference for more information about the
  * configuration options.
  */
-export const presets = {
+export const presets: Presets = {
   angular,
   astro,
   core,
@@ -35,8 +52,4 @@ export const presets = {
   svelte,
   vitest,
   vue,
-} as const satisfies Record<string, OxlintConfig>;
-
-export type Presets = typeof presets;
-
-export type PresetName = keyof Presets;
+};

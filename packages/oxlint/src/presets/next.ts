@@ -1,6 +1,6 @@
 import type { DummyRuleMap, OxlintConfig } from "oxlint";
 
-const rules = {
+const rules: DummyRuleMap = {
   "nextjs/google-font-display": ["error"],
   "nextjs/google-font-preconnect": ["error"],
   "nextjs/inline-script-id": ["error"],
@@ -22,9 +22,9 @@ const rules = {
   "nextjs/no-title-in-document-head": ["error"],
   "nextjs/no-typos": ["error"],
   "nextjs/no-unwanted-polyfillio": ["error"],
-} as const satisfies DummyRuleMap;
+};
 
-export const preset = {
+export const preset: OxlintConfig = {
   plugins: ["nextjs"],
   rules,
-} as const satisfies OxlintConfig;
+};
