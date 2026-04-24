@@ -1,6 +1,5 @@
 import type { OxlintConfig } from "oxlint";
 import type { Draft0OxlintConfig } from "../common.ts";
-import type { PresetName } from "../presets/index.ts";
 import { presets } from "../presets/index.ts";
 import { mergeConfigs } from "./merge-configs.ts";
 import { resolvePresetDependencies } from "./resolve-preset-dependencies.ts";
@@ -52,12 +51,9 @@ import { resolvePresetDependencies } from "./resolve-preset-dependencies.ts";
 export const defineConfig = (config: Draft0OxlintConfig = {}): OxlintConfig => {
   const { root = true, presets: inputPresets = [], ...self } = config;
 
-  const presetConfigs = [
-    ...new Set<PresetName>([
-      "core",
-      ...resolvePresetDependencies(inputPresets),
-    ]),
-  ].map((preset) => presets[preset]);
+  const presetConfigs = [...resolvePresetDependencies(inputPresets)].map(
+    (preset) => presets[preset],
+  );
 
   return [...presetConfigs, self].reduce((acc, conf) => mergeConfigs(conf, acc, { root }), {});
 };

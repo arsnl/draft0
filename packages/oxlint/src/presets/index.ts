@@ -3,6 +3,7 @@ import { preset as angular } from "./angular.ts";
 import { preset as astro } from "./astro.ts";
 import { preset as core } from "./core.ts";
 import { preset as jest } from "./jest.ts";
+import { preset as jsx } from "./jsx.ts";
 import { preset as nestjs } from "./nestjs.ts";
 import { preset as next } from "./next.ts";
 import { preset as playwright } from "./playwright.ts";
@@ -20,6 +21,7 @@ export type PresetName =
   | "astro"
   | "core"
   | "jest"
+  | "jsx"
   | "nestjs"
   | "next"
   | "playwright"
@@ -34,7 +36,24 @@ export type PresetName =
 
 export type Presets = Record<PresetName, OxlintConfig>;
 
-export { angular, astro, core, jest, nestjs, next, qwik, react, remix, solid, svelte, vitest, vue };
+export {
+  angular,
+  astro,
+  core,
+  jest,
+  jsx,
+  nestjs,
+  next,
+  playwright,
+  qwik,
+  reactRouter,
+  react,
+  remix,
+  solid,
+  svelte,
+  vitest,
+  vue,
+};
 
 /**
  * Presets for Oxlint.
@@ -47,6 +66,7 @@ export const presets: Presets = {
   astro,
   core,
   jest,
+  jsx,
   nestjs,
   next,
   playwright,
