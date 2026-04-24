@@ -1,13 +1,19 @@
+---
+description: Draft0 TypeScript/JavaScript code style (oxlint-aligned)
+globs: "**/*.{ts,tsx,js,jsx,mts,cts}"
+alwaysApply: false
+---
+
 # Code style
 
-Write code that is type-safe, explicit, modern, and easy to delete. Favor clarity over cleverness. `@draft0/oxlint` and `@draft0/oxfmt` catch most issues automatically — see the root `AGENTS.md` for the commands. When the linter flags something, trust its rule name and docs over this file.
+Write code that is type-safe, explicit, modern, and easy to delete. Favor clarity over cleverness. `@draft0/oxlint` and `@draft0/oxfmt` catch most issues automatically — see the always-applied Draft0 core rule and root `AGENTS.md` for commands. When the linter flags something, trust its rule name and docs over this file.
 
 ## Type safety
 
 - No `any`. Prefer `unknown` when the type is genuinely unknown. (Test files may use `any` for minimal mocks.)
 - No non-null assertions (`!`). Narrow with guards or explicit checks instead.
 - Always `await` or explicitly handle returned promises.
-- Don't guard against cases the compiler already rules out.
+- Do not guard against cases the compiler already rules out.
 - Write `import type { ... }` as a separate statement; same for type re-exports.
 - Use `value as T`, never `<T>value`.
 - Use `as const` for literal/immutable values. Prefer `as const` unions or string-literal types over `enum`; if you must use an enum, initialize every member.
@@ -30,11 +36,11 @@ Write code that is type-safe, explicit, modern, and easy to delete. Favor clarit
 - Filenames use `kebab-case` unless a framework requires otherwise (e.g. Next.js route segments).
 - Local imports include the file extension (e.g. `./foo.ts`); package imports do not.
 
-## Async & promises
+## Async and promises
 
 - Use `async`/`await`. No `.then()` chains, and no callback-style APIs when an async alternative exists.
-- Don't create `new Promise(...)` executors unless wrapping a callback API. Never use an async function as a Promise executor.
-- Don't `await` inside a loop — use `Promise.all` / `Promise.allSettled` for parallel work.
+- Do not create `new Promise(...)` executors unless wrapping a callback API. Never use an async function as a Promise executor.
+- Do not `await` inside a loop — use `Promise.all` / `Promise.allSettled` for parallel work.
 - Mark a function `async` only when it actually awaits. Functions that return a promise should be `async`.
 - Use `return await` only inside `try`/`catch`.
 
@@ -48,9 +54,9 @@ Write code that is type-safe, explicit, modern, and easy to delete. Favor clarit
 ## Code organization
 
 - Named exports preferred; default exports are reserved for framework-required files (Next.js pages, config files).
-- Don't shadow variables. Don't reassign parameters — common accumulator names (`acc`, `ctx`, `req`, `res`) may mutate their properties.
+- Do not shadow variables. Do not reassign parameters — common accumulator names (`acc`, `ctx`, `req`, `res`) may mutate their properties.
 - No import cycles, self-imports, or duplicate imports.
-- Write JSDoc only when it adds intent the code can't convey. TypeScript already provides the types — don't duplicate them in JSDoc.
+- Write JSDoc only when it adds intent the code cannot convey. TypeScript already provides the types — do not duplicate them in JSDoc.
 
 ## Security
 
@@ -67,6 +73,6 @@ Write code that is type-safe, explicit, modern, and easy to delete. Favor clarit
 - Use `Set` / `Map` lookups for hot paths.
 - Prefer `structuredClone` over hand-rolled deep clones.
 
-## When the linter can't help
+## When the linter cannot help
 
-Reserve human judgment for things the linter can't see: business logic correctness, API design, error messages, documentation quality, and performance trade-offs backed by measurements.
+Reserve human judgment for things the linter cannot see: business logic correctness, API design, error messages, documentation quality, and performance trade-offs backed by measurements.
