@@ -19,9 +19,10 @@ import { resolvePresetDependencies } from "./resolve-preset-dependencies.ts";
  *
  * - `root` (default `true`) - Whether this is the root config. Some options (e.g. `options`) are only
  *   honored on the root config, so set this to `false` for nested configs.
- * - `presets` (default `[]`) - Additional presets to include. Available names: `angular`, `astro`,
- *   `jest`, `nestjs`, `next`, `playwright`, `qwik`, `reactRouter`, `react`, `remix`, `solid`,
- *   `svelte`, `vitest`, `vue`.
+ * - `presets` (default `[]`) - Additional presets to include. Available names: `analog`, `angular`,
+ *   `astro`, `core`, `ember`, `jest`, `jsx`, `lit`, `nestjs`, `nextjs`, `nuxt`, `playwright`,
+ *   `preact`, `qwik`, `reactNative`, `reactRouter`, `react`, `remix`, `solid`, `svelteKit`,
+ *   `svelte`, `tanstackStart`, `vitest`, `vue`
  *
  * See the [Oxlint configuration
  * reference](https://oxc.rs/docs/guide/usage/linter/config-file-reference) for the full set of

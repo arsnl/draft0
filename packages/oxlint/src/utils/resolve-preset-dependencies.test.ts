@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
 import type { PresetName } from "../presets/index.ts";
+import { describe, expect, it } from "vitest";
 import { resolvePresetDependencies } from "./resolve-preset-dependencies.ts";
 
 describe(resolvePresetDependencies, () => {
@@ -11,8 +11,8 @@ describe(resolvePresetDependencies, () => {
     expect(resolvePresetDependencies(["core"])).toStrictEqual(["core"]);
   });
 
-  it("puts react before next when next is requested", () => {
-    expect(resolvePresetDependencies(["next"])).toStrictEqual(["core", "jsx", "react", "next"]);
+  it("puts react before next when nextjs is requested", () => {
+    expect(resolvePresetDependencies(["nextjs"])).toStrictEqual(["core", "jsx", "react", "nextjs"]);
   });
 
   it("pulls in jsx and react in order for react, qwik, and solid", () => {
@@ -37,29 +37,29 @@ describe(resolvePresetDependencies, () => {
   });
 
   it("does not duplicate existing dependencies", () => {
-    expect(resolvePresetDependencies(["next", "react"])).toStrictEqual([
+    expect(resolvePresetDependencies(["nextjs", "react"])).toStrictEqual([
       "core",
       "jsx",
       "react",
-      "next",
+      "nextjs",
     ]);
   });
 
   it("skips a preset already in the list when the user requests it again", () => {
-    expect(resolvePresetDependencies(["next", "next"])).toStrictEqual([
+    expect(resolvePresetDependencies(["nextjs", "nextjs"])).toStrictEqual([
       "core",
       "jsx",
       "react",
-      "next",
+      "nextjs",
     ]);
   });
 
   it("preserves unrelated preset order while injecting dependencies first", () => {
-    expect(resolvePresetDependencies(["next", "vitest"])).toStrictEqual([
+    expect(resolvePresetDependencies(["nextjs", "vitest"])).toStrictEqual([
       "core",
       "jsx",
       "react",
-      "next",
+      "nextjs",
       "vitest",
     ]);
   });

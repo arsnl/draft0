@@ -2,20 +2,28 @@ import type { PresetName } from "../presets/index.ts";
 
 /** Dependency graph for presets that require another preset to function correctly. */
 const presetDependencies: Record<PresetName, readonly PresetName[]> = {
+  analog: ["angular", "vitest"],
   angular: [],
   astro: [],
   core: [],
+  ember: [],
   jest: [],
   jsx: [],
+  lit: [],
   nestjs: [],
-  next: ["react"],
+  nextjs: ["react"],
+  nuxt: ["vue"],
   playwright: [],
+  preact: ["react"],
   qwik: ["jsx"],
+  reactNative: ["react"],
   reactRouter: ["react"],
   react: ["jsx"],
   remix: [],
   solid: ["jsx"],
+  svelteKit: ["svelte"],
   svelte: [],
+  tanstackStart: [], // Not added `react`or `solid` dependencies because user can choose either.
   vitest: [],
   vue: [],
 };
