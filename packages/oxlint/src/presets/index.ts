@@ -5,7 +5,9 @@ import { preset as core } from "./core.ts";
 import { preset as jest } from "./jest.ts";
 import { preset as nestjs } from "./nestjs.ts";
 import { preset as next } from "./next.ts";
+import { preset as playwright } from "./playwright.ts";
 import { preset as qwik } from "./qwik.ts";
+import { preset as reactRouter } from "./react-router.ts";
 import { preset as react } from "./react.ts";
 import { preset as remix } from "./remix.ts";
 import { preset as solid } from "./solid.ts";
@@ -20,7 +22,9 @@ export type PresetName =
   | "jest"
   | "nestjs"
   | "next"
+  | "playwright"
   | "qwik"
+  | "reactRouter"
   | "react"
   | "remix"
   | "solid"
@@ -45,7 +49,9 @@ export const presets: Presets = {
   jest,
   nestjs,
   next,
+  playwright,
   qwik,
+  reactRouter,
   react,
   remix,
   solid,
