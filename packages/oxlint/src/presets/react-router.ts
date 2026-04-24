@@ -1,9 +1,15 @@
-import type { DummyRuleMap, OxlintConfig } from "oxlint";
+import type { OxlintConfig } from "oxlint";
 
-const rules: DummyRuleMap = {};
-
-/** Preset for React Router 7 and above. */
+/**
+ * [React Router](https://reactrouter.com/) preset for Oxlint.
+ *
+ * This preset is for React Router 7 and above.
+ *
+ * This preset is currently a stub for future implementation.
+ *
+ * This preset depends on the `core` and `react` presets.
+ */
 export const preset: OxlintConfig = {
   plugins: [],
-  rules,
+  rules: {},
 };
