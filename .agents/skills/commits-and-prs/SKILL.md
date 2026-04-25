@@ -18,7 +18,7 @@ The repository enforces PR title checks in CI (blocking by default). Accepted PR
 
 ## Types
 
-`feat`, `fix`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`, `docs`.
+`feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`.
 
 - **`docs`** — documentation _content_ only (prose, JSDoc, README, docs-site copy).
 - **Code in `apps/docs`** — often `feat(docs):`, `fix(docs):`, `refactor(docs):`, etc. (the type is the change; the scope is where it lives).
