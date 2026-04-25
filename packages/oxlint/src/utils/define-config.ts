@@ -39,7 +39,7 @@ import { resolvePresetDependencies } from "./resolve-preset-dependencies.ts";
  *   import { defineConfig } from "@draft0/oxlint";
  *
  *   export default defineConfig({
- *     presets: ["next", "vitest"],
+ *     presets: ["nextjs", "vitest"],
  *     rules: {
  *       "no-console": "error",
  *     },
