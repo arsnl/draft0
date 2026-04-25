@@ -142,17 +142,17 @@ Changes that don't affect a published package (docs, CI, internal refactor, test
 
 - Keep PRs focused. One logical change per PR.
 - Include a changeset for user-facing package changes.
-- Make sure CI is green before requesting review.
+- Make sure the build (`npm run build`), checks (`npm run check:all`), and tests (`npm test`) are passing before requesting review.
 - Update docs / examples if behavior changed.
 - Be patient — reviews happen in batches.
 
 We use squash-merge, so your commit history in the PR can be messy; only the final PR title and body end up in `main`.
 
-### PR title format
+### Pull request title format
 
-Because Draft0 uses squash-merge, the PR title becomes the merge commit on `main`.
+Because Draft0 uses squash-merge, the pull request title becomes the merge commit on `main`.
 
-- PR titles follow the [Conventional Commits](https://www.conventionalcommits.org/) specification.
+- Pull request titles follow the [Conventional Commits](https://www.conventionalcommits.org/) specification.
 - Required shape: `<type>(<optional scope>)!: <subject>` (scope optional, `!` optional).
 - Allowed types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`.
 - Allowed scopes (when present): `oxlint`, `oxfmt`, `tsdown`, `tsconfig`, `docs`, `deps`, `release`.
