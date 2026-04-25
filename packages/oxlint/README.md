@@ -25,7 +25,7 @@ Frameworks and tooling are opt-in via presets:
 import { defineConfig } from "@draft0/oxlint";
 
 export default defineConfig({
-  presets: ["next", "vitest"],
+  presets: ["nextjs", "vitest"],
 });
 ```
 

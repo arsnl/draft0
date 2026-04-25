@@ -10,7 +10,7 @@ describe(defineConfig, () => {
   });
 
   it("auto-includes react when next preset is used", () => {
-    const config = defineConfig({ presets: ["next"] });
+    const config = defineConfig({ presets: ["nextjs"] });
 
     expect(config.plugins).toContain("nextjs");
     expect(config.plugins).toContain("react");
@@ -18,8 +18,15 @@ describe(defineConfig, () => {
     expect(config.rules?.["nextjs/no-img-element"]).toStrictEqual(["error"]);
   });
 
+  it("auto-includes react when reactRouter preset is used", () => {
+    const config = defineConfig({ presets: ["reactRouter"] });
+
+    expect(config.plugins).toContain("react");
+    expect(config.rules?.["react/jsx-key"]).toStrictEqual(["error"]);
+  });
+
   it("deduplicates repeated presets while preserving resulting config", () => {
-    const config = defineConfig({ presets: ["next", "react", "react"] });
+    const config = defineConfig({ presets: ["nextjs", "react", "react"] });
     const reactPlugins = (config.plugins ?? []).filter((plugin) => plugin === "react");
 
     expect(reactPlugins).toHaveLength(1);

@@ -1,10 +1,15 @@
+---
+description: Draft0 Conventional Commits and PR title conventions
+alwaysApply: true
+---
+
 # Commits
 
 Follow [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/): `<type>(<optional scope>): <description>`.
 
-Draft0 squash-merges, so the **PR title** is what lands on `main` — that's what must match this format.
+Draft0 squash-merges, so the **PR title** is what lands on `main` — that is what must match this format.
 
-Commit types don't drive versioning — Changesets does. Run `npx changeset` whenever you change a published `@draft0/*` package, regardless of commit type.
+Commit types do not drive versioning — Changesets does. Run `npx changeset` whenever you change a published `@draft0/*` package, regardless of commit type.
 
 ## Types
 
@@ -22,9 +27,9 @@ Scope is the package or app folder name, without the `@draft0/` prefix (e.g. `ox
 
 Omit the scope for workspace-wide changes (root config, agent docs, root scripts). Prefer one scope per commit — split changes that naturally span several packages.
 
-## Description, Body and Footer(s)
+## Description, body and footers
 
-Keep the description short (max 50 characters) and self-explanatory, imperative mood (`add`, not `added` or `adds`). Avoid adding a body and footer(s) unless it explains _why_ the change is needed and the description can't carry that on its own.
+Keep the description short (max 50 characters) and self-explanatory, imperative mood (`add`, not `added` or `adds`). Avoid adding a body and footers unless it explains _why_ the change is needed and the description cannot carry that on its own.
 
 ## Breaking changes
 

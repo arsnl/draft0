@@ -1,0 +1,31 @@
+---
+description: Draft0 monorepo essentials — tooling, commands, where to find deeper rules
+alwaysApply: true
+---
+
+# Draft0
+
+Draft0 is an opinionated, zero-config preset toolkit for modern TypeScript — a monorepo that publishes `@draft0/*` packages and a Next.js documentation site. It dogfoods its own presets, so code style is enforced by `@draft0/oxlint` and `@draft0/oxfmt`.
+
+## Essentials
+
+- Package manager: `npm@11.7.0` (enforced via `packageManager`). Node `>=24`. Do not switch to `bun`, `pnpm`, or `yarn`.
+- Install: `npm install`.
+- Auto-fix everything: `npm run fix:all`.
+- Verify before pushing: `npm run check:all`.
+- Target specific files (faster during iteration): `npx oxlint <paths>` (add `--fix`) and `npx oxfmt <paths>` (add `--check` to verify without rewriting).
+- Use Typescript: Node `>=24` supports TypeScript natively and without any flags.
+
+Tasks run through npm workspaces + Turborepo — invoke them via `npm run ...` or `npx turbo run ...` so caching and dependency order hold.
+
+## More context
+
+- Code style: Cursor rule `draft0-code-style.mdc` and [`agents/CODE-STYLE.md`](agents/CODE-STYLE.md)
+- Testing: Cursor rule `draft0-testing.mdc` and [`agents/TESTING.md`](agents/TESTING.md)
+- React and Next.js (`apps/docs`): Cursor rule `draft0-react-next.mdc` and [`agents/REACT.md`](agents/REACT.md)
+- Publishable libraries (`packages/*`): Cursor rule `draft0-libraries.mdc` and [`agents/LIBRARIES.md`](agents/LIBRARIES.md)
+- Commits: Cursor rule `draft0-commits.mdc` and [`agents/COMMIT.md`](agents/COMMIT.md)
+- Changesets, PRs, releases: [`CONTRIBUTING.md`](CONTRIBUTING.md)
+- Agent docs and native rules: Cursor rule `draft0-agent-docs.mdc`, [`agents/AGENT-DOCS.md`](agents/AGENT-DOCS.md), and [`.claude/CLAUDE.md`](.claude/CLAUDE.md)
+
+Subprojects may ship their own `AGENTS.md` — the closest file wins.

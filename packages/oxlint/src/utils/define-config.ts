@@ -1,8 +1,8 @@
 import type { OxlintConfig } from "oxlint";
 import type { Draft0OxlintConfig } from "../common.ts";
-import type { PresetName } from "../presets/index.ts";
 import { presets } from "../presets/index.ts";
 import { mergeConfigs } from "./merge-configs.ts";
+import { resolvePresetDependencies } from "./resolve-preset-dependencies.ts";
 
 /**
  * Define an Oxlint configuration.
@@ -12,15 +12,17 @@ import { mergeConfigs } from "./merge-configs.ts";
  * `env`, ...) are merged key-by-key, while array fields (`plugins`, `overrides`, `ignorePatterns`,
  * `extends`, ...) are concatenated and deduplicated where it makes sense.
  *
- * The opinionated `core` preset is always prepended, duplicate presets are deduplicated, and `next`
- * auto-adds `react` when it isn't already listed.
+ * The opinionated `core` preset is always prepended, duplicate presets are deduplicated, and
+ * dependencies for requested presets are auto-included.
  *
  * On top of the native Oxlint schema, the config accepts two extra fields:
  *
  * - `root` (default `true`) - Whether this is the root config. Some options (e.g. `options`) are only
  *   honored on the root config, so set this to `false` for nested configs.
- * - `presets` (default `[]`) - Additional presets to include. Available names: `angular`, `astro`,
- *   `jest`, `nestjs`, `next`, `qwik`, `react`, `remix`, `solid`, `svelte`, `vitest`, `vue`.
+ * - `presets` (default `[]`) - Additional presets to include. Available names: `analog`, `angular`,
+ *   `astro`, `core`, `ember`, `jest`, `jsx`, `lit`, `nestjs`, `nextjs`, `nuxt`, `playwright`,
+ *   `preact`, `qwik`, `reactNative`, `reactRouter`, `react`, `remix`, `solid`, `svelteKit`,
+ *   `svelte`, `tanstackStart`, `vitest`, `vue`
  *
  * See the [Oxlint configuration
  * reference](https://oxc.rs/docs/guide/usage/linter/config-file-reference) for the full set of
@@ -37,7 +39,7 @@ import { mergeConfigs } from "./merge-configs.ts";
  *   import { defineConfig } from "@draft0/oxlint";
  *
  *   export default defineConfig({
- *     presets: ["next", "vitest"],
+ *     presets: ["nextjs", "vitest"],
  *     rules: {
  *       "no-console": "error",
  *     },
@@ -50,15 +52,9 @@ import { mergeConfigs } from "./merge-configs.ts";
 export const defineConfig = (config: Draft0OxlintConfig = {}): OxlintConfig => {
   const { root = true, presets: inputPresets = [], ...self } = config;
 
-  const presetConfigs = [
-    ...new Set<PresetName>([
-      "core",
-      ...inputPresets,
-      ...(inputPresets.includes("next") && !inputPresets.includes("react")
-        ? ["react" as const]
-        : []),
-    ]),
-  ].map((preset) => presets[preset]);
+  const presetConfigs = [...resolvePresetDependencies(inputPresets)].map(
+    (preset) => presets[preset],
+  );
 
   return [...presetConfigs, self].reduce((acc, conf) => mergeConfigs(conf, acc, { root }), {});
 };

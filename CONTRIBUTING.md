@@ -75,7 +75,7 @@ Open a [feature request](https://github.com/arsnl/draft0/issues/new/choose) usin
 
 **Prerequisites**
 
-- Node.js `>=22.18`
+- Node.js `>=24`
 - npm `11.x`
 - A GitHub account and git configured locally
 

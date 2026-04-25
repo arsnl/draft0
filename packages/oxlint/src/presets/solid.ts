@@ -1,9 +1,14 @@
-import type { DummyRuleMap, OxlintConfig } from "oxlint";
+import type { OxlintConfig } from "oxlint";
 
-const rules: DummyRuleMap = {};
-
+/**
+ * [Solid](https://solidjs.com/) preset for Oxlint.
+ *
+ * This preset is currently a stub for future implementation.
+ *
+ * This preset depends on the `core` and `jsx` presets.
+ */
 export const preset: OxlintConfig = {
   plugins: [],
-  rules,
+  rules: {},
   ignorePatterns: ["**/routeTree.gen.ts"],
 };

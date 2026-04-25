@@ -1,11 +1,11 @@
 import type { OxlintConfig } from "oxlint";
 
 /**
- * [Svelte](https://svelte.dev/) preset for Oxlint.
+ * [Analog](https://analogjs.org/) preset for Oxlint.
  *
  * This preset is currently a stub for future implementation.
  *
- * This preset depends on the `core` preset.
+ * This preset depends on the `core`, `angular`, and `vitest` presets.
  *
  * ⚠️ Oxlint does not yet support template linting.
  *
