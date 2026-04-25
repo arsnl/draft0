@@ -11,6 +11,7 @@ on:
 jobs:
   validate_pr_title:
     name: Validate PR title
+    if: github.repository == 'arsnl/draft0'
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write

@@ -1,10 +1,12 @@
-name: PR Labeler
+name: PR Label
+
 on:
   - pull_request_target
 
 jobs:
-  labeler:
-    name: Apply labels
+  apply_pr_labels:
+    name: Apply PR label(s)
+    if: github.repository == 'arsnl/draft0'
     permissions:
       contents: read
       pull-requests: write
