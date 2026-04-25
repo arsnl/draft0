@@ -148,6 +148,18 @@ Changes that don't affect a published package (docs, CI, internal refactor, test
 
 We use squash-merge, so your commit history in the PR can be messy; only the final PR title and body end up in `main`.
 
+### PR title format
+
+Because Draft0 uses squash-merge, the PR title becomes the merge commit on `main`.
+
+- PR titles follow the [Conventional Commits](https://www.conventionalcommits.org/) specification.
+- Required shape: `<type>(<optional scope>)!: <description>` (scope optional, `!` optional).
+- Allowed types: `feat`, `fix`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`, `docs`.
+- Allowed scopes (when present): `oxlint`, `oxfmt`, `tsdown`, `tsconfig`, `docs`, `deps`, `release`.
+- `release` scope is reserved for release automation and authorized maintainers.
+- Prefixing a PR title with `[WIP]` skips title validation while work is in progress.
+- Package versioning is still driven by [Changesets](#changesets), not by commit type alone.
+
 ## Release automation
 
 Releases are automated with [Changesets](https://github.com/changesets/changesets) via a single workflow file: `.github/workflows/publish.yml`.

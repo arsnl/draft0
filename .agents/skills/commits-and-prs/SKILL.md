@@ -12,6 +12,8 @@ Draft0 uses [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/
 
 The repository **squash-merges** — the **PR title** is what lands on `main`, so it must follow this format.
 
+The repository enforces PR title checks in CI (blocking by default). Accepted PR title shape is `<type>(<optional scope>)!: <description>` (scope optional, `!` optional).
+
 **Versioning** is driven by [Changesets](https://github.com/changesets/changesets), not by commit type alone. For published packages, use `npx changeset` when the change is user-facing (see [`CONTRIBUTING.md`](../../../CONTRIBUTING.md) and `$package-changes`).
 
 ## Types
@@ -28,6 +30,8 @@ Use the package or app folder name **without** the `@draft0/` prefix (e.g. `oxli
 - **Packages** under `packages/`: e.g. `oxlint`, `oxfmt`, `tsdown`, `tsconfig`.
 - **Apps** under `apps/`: e.g. `docs`.
 - **Cross-cutting:** `deps` (dependency bumps), `release` (changesets and publish flow).
+
+The `release` scope is reserved for release automation and authorized maintainers.
 
 Omit the scope for workspace-wide changes (root config, root scripts, agent docs).
 
