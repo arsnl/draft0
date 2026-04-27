@@ -20,8 +20,8 @@ import { resolvePresetDependencies } from "./resolve-preset-dependencies.ts";
  *
  * - `root` (default `true`) - Whether this is the root config. Some options (e.g. `options`) are only
  *   honored on the root config, so set this to `false` for nested configs.
- * - `esm` (default `true`) - Whether the project uses ESM. Set this to `false` for CommonJS
- *   projects so ESM-only rules are disabled and Node globals are enabled.
+ * - `esm` (default `true`) - Whether the project uses ESM. Set this to `false` for CommonJS projects
+ *   so ESM-only rules are disabled and Node globals are enabled.
  * - `presets` (default `[]`) - Additional presets to include. Available names: `analog`, `angular`,
  *   `astro`, `core`, `ember`, `jest`, `jsx`, `lit`, `nestjs`, `nextjs`, `nuxt`, `playwright`,
  *   `preact`, `qwik`, `reactNative`, `reactRouter`, `react`, `remix`, `solid`, `svelteKit`,
