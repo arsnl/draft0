@@ -1,0 +1,58 @@
+name: PR Title
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+
+jobs:
+  validate_pr_title:
+    name: Validate PR title
+    if: github.repository == 'arsnl/draft0'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Validate Conventional Commit PR title
+        id: lint_pr_title
+        uses: amannn/action-semantic-pull-request@v6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            build 
+            chore 
+            ci 
+            docs 
+            feat 
+            fix 
+            perf 
+            refactor 
+            revert 
+            style
+            test
+          scopes: |
+            oxlint
+            oxfmt
+            tsdown
+            tsconfig
+            docs
+            deps
+            release
+          requireScope: false
+          # Ensures the subject doesn't start with an uppercase character.
+          subjectPattern: ^(?![A-Z]).+$
+          subjectPatternError: |
+            The subject "{subject}" found in the pull request title "{title}"
+            didn't match the configured pattern. Please ensure that the subject
+            doesn't start with an uppercase character.
+
+      - name: Restrict release scope to release automation
+        if: ${{ steps.lint_pr_title.outputs.scope == 'release' && github.event.pull_request.user.login != 'github-actions[bot]' }}
+        run: |
+          echo "The 'release' scope is reserved for release automation."
+          echo "PR author '${{ github.event.pull_request.user.login }}' is not authorized to use scope 'release'."
+          exit 1

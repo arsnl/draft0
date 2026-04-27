@@ -26,7 +26,7 @@ on:
 jobs:
   stable_release:
     name: Stable release
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' && github.repository == 'arsnl/draft0'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -61,6 +61,8 @@ jobs:
           version: npx changeset version
           publish: npx changeset publish
           createGithubReleases: true
+          title: "chore(release): version packages"
+          commit: "chore(release): version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -68,7 +70,7 @@ jobs:
 
   snapshot_release:
     name: Snapshot release
-    if: github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'workflow_dispatch' && github.repository == 'arsnl/draft0'
     runs-on: ubuntu-latest
     permissions:
       contents: write

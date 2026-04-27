@@ -1,0 +1,22 @@
+documentation:
+  - changed-files:
+      - any-glob-to-any-file: ["apps/docs/**", "**/*.md", "**/*.mdx"]
+
+pkg:oxlint:
+  - changed-files:
+      - any-glob-to-any-file: "packages/oxlint/**"
+
+pkg:oxfmt:
+  - changed-files:
+      - any-glob-to-any-file: "packages/oxfmt/**"
+
+pkg:tsdown:
+  - changed-files:
+      - any-glob-to-any-file: "packages/tsdown/**"
+
+pkg:tsconfig:
+  - changed-files:
+      - any-glob-to-any-file: "packages/tsconfig/**"
+
+release:
+  - base-branch: "changeset-release/main"
