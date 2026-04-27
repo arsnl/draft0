@@ -1,5 +1,14 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
   "display": "Preact — https://preactjs.com/",
-  "extends": ["../bundler/dom/app.json"]
+  "extends": ["../bundler/dom/app.json"],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+    "paths": {
+      "react": ["./node_modules/preact/compat/"],
+      "react-dom": ["./node_modules/preact/compat/"]
+    },
+    "types": ["vite/client"]
+  }
 }

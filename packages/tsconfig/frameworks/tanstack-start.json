@@ -1,5 +1,8 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
   "display": "TanStack Start — https://tanstack.com/start/",
-  "extends": ["../bundler/dom/app.json"]
+  "extends": ["../bundler/dom/app.json"],
+  "compilerOptions": {
+    "jsx": "react-jsx"
+  }
 }

@@ -1,19 +1,5 @@
 {
   "extends": ["@draft0/tsconfig/frameworks/nextjs"],
-  "compilerOptions": {
-    "incremental": true,
-    "allowImportingTsExtensions": true,
-    "paths": {
-      "@/*": ["./*"]
-    }
-  },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
-    "**/*.mts"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

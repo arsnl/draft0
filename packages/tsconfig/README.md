@@ -30,7 +30,7 @@ These presets are aligned with [TypeScript 6.0](https://www.typescriptlang.org/d
 - **Subpath imports `#/`** — Node can define `package.json` `imports` entries like `"#/*": "./dist/*"`. TypeScript resolves [`#/`-style subpath imports](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-6-0.html#subpath-imports-starting-with-) when **`moduleResolution`** is **`node16`/`nodenext`** or **`bundler`**. The `/tsc/*` and `/bundler/*` presets use **`NodeNext`** or **`bundler`** as appropriate, so this works without extra `compilerOptions`.
 - **DOM `lib` —** In TS 6.0, [`dom` now includes what used to require `dom.iterable` / `dom.asynciterable`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-6-0.html#the-dom-lib-now-contains-domiterable-and-domasynciterable), so only **`dom`** (plus `es2025`) is listed in DOM presets.
 - **`types` default** — [TS 6.0 defaults `types` to `[]`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-6-0.html#types-now-defaults-to). **No-DOM** presets set **`"types": ["node"]`** so `globals` and `@types/node` work without auto-loading every `@types` package. DOM-oriented apps that need extra globals (e.g. `vitest`) should add them in a local `tsconfig` (for example `compilerOptions.types`).
-- **`noUncheckedSideEffectImports`** — TS 6.0 [defaults this to `true`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-6-0.html#simple-default-changes); it stays on in `base` so side-effect-only imports are checked. The [Next.js framework preset](./frameworks/next.json) turns it **off** where the tool expects to parse many entry-side imports.
+- **`noUncheckedSideEffectImports`** — TS 6.0 [defaults this to `true`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-6-0.html#simple-default-changes); it stays on in `base` so side-effect-only imports are checked. The [Next.js framework preset](./frameworks/nextjs.json) turns it **off** where the tool expects to parse many entry-side imports.
 - **`rootDir`** — [TS 6.0 defaults `rootDir` to the config directory](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-6-0.html#rootdir-now-defaults-to). If you keep sources under `src/`, set **`rootDir`: `./src`** (and `include`) in your app so emit paths match your layout.
 
 ### `tsc` (emit with the TypeScript compiler)
@@ -61,19 +61,22 @@ All presets build on `base`, which is strict, targets **`ES2025`**, and enables 
 
 Framework files live under `frameworks/` and **extend** one of the eight project-shape presets so we can add framework-specific `compilerOptions` later without a breaking rename.
 
-- **Real overlays today:** `next` / `nextjs` (Next.js), `nestjs` (Nest).
-- **Placeholders** (same as `bundler/dom/app` for now, audited in [FRAMEWORKS.md](./FRAMEWORKS.md): Analog, Angular, Astro, Ember, Nuxt, Qwik, React Native, React Router, Remix, Svelte, SvelteKit, TanStack Start, Vue, Lit, Preact, Solid.
+**How we align with upstream:** Official starters often set `target`, `module`, or `lib` to older ECMAScript years. Draft0 keeps **`ES2025`** and the shared strict [`base`](./base.json) layer; framework presets add only **deltas** (JSX mode, TS server plugins, decorators, framework-specific `types`, etc.) that tools actually require. Anything layout-specific (`include` / `exclude` / `paths` / project `references`) stays in your app `tsconfig`. See [FRAMEWORKS.md](./FRAMEWORKS.md) for the per-framework audit and doc links.
+
+- **Overlays with extra `compilerOptions`:** Next.js (`nextjs`), NestJS, Analog, Angular, Astro, Ember, Lit, Preact, Qwik, React Native, React Router, Remix, Solid, TanStack Start, Vue.
+- **Documented compose-only (official config is generated elsewhere):** Nuxt (`.nuxt/tsconfig.json`), SvelteKit (`.svelte-kit/tsconfig.json`).
+- **Inherits shape only (no extra `compilerOptions` in the preset file):** Svelte (Vite library/app).
 
 Examples:
 
 ```jsonc
 // Next.js App Router app
 {
-  "extends": "@draft0/tsconfig/frameworks/next",
+  "extends": "@draft0/tsconfig/frameworks/nextjs",
 }
 ```
 
-Aliases: `@draft0/tsconfig/next`, `@draft0/tsconfig/nextjs`, and `.json` variants re-export the same file.
+Aliases (same file as `frameworks/nextjs`): `@draft0/tsconfig/next`, `@draft0/tsconfig/nextjs` (see `package.json` `exports`). `.json` suffix is optional on import paths that resolve through the export map.
 
 ```jsonc
 // NestJS app

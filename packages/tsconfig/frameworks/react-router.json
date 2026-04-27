@@ -1,5 +1,8 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
   "display": "React Router — https://reactrouter.com/",
-  "extends": ["../bundler/dom/app.json"]
+  "extends": ["../bundler/dom/app.json"],
+  "compilerOptions": {
+    "rootDirs": [".", "./.react-router/types"]
+  }
 }

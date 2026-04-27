@@ -1,5 +1,9 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
   "display": "Qwik — https://qwik.dev/",
-  "extends": ["../bundler/dom/app.json"]
+  "extends": ["../bundler/dom/app.json"],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "@builder.io/qwik"
+  }
 }

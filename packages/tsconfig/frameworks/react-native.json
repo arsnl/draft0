@@ -1,5 +1,9 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
   "display": "React Native — https://reactnative.dev/",
-  "extends": ["../bundler/dom/app.json"]
+  "extends": ["../bundler/no-dom/app.json"],
+  "compilerOptions": {
+    "jsx": "react-native",
+    "types": ["react-native"]
+  }
 }

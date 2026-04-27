@@ -4,6 +4,7 @@
   "extends": ["../tsc/no-dom/app.json"],
   "compilerOptions": {
     "emitDecoratorMetadata": true,
+    "erasableSyntaxOnly": false,
     "experimentalDecorators": true,
     "incremental": true
   }
