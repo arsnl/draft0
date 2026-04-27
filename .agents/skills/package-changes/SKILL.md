@@ -20,7 +20,7 @@ Use this skill when a change is **user-facing** for npm consumers of `@draft0/*`
 ## Checklist
 
 - [ ] **Public API** — only export what consumers need; avoid import side effects; keep tree-shaking friendly.
-- [ ] **Node** — follow each package’s stated Node target (repo packages often use `>= 22.18` where specified).
+- [ ] **Node** — follow each package’s stated Node target (repo packages often use `>= 24` where specified).
 - [ ] **Peers** — prefer `peerDependencies` for `oxlint`, `oxfmt`, `typescript` (and similar host tools) so apps pin versions.
 - [ ] **Build** — `npm run build` (or the package’s documented script) produces valid `dist/`.
 - [ ] **README** — update when behavior or usage changes.

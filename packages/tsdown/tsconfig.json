@@ -1,10 +1,11 @@
 {
-  "extends": "@draft0/tsconfig/base.json",
+  "extends": "@draft0/tsconfig/bundler/no-dom/lib-monorepo.json",
   "compilerOptions": {
     "noEmit": true,
     "rewriteRelativeImportExtensions": true,
     "types": ["node"],
     "allowJs": false,
+    "declaration": true,
     "isolatedDeclarations": true
   }
 }

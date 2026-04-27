@@ -1,0 +1,16 @@
+{
+  "$schema": "https://www.schemastore.org/tsconfig",
+  "display": "bundler / DOM / lib (declaration emit)",
+  "extends": ["../../base.json"],
+  "compilerOptions": {
+    "lib": ["es2025", "dom", "dom.iterable"],
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "dist",
+    "noUncheckedSideEffectImports": true
+  }
+}

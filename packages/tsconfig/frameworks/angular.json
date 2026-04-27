@@ -1,0 +1,5 @@
+{
+  "$schema": "https://www.schemastore.org/tsconfig",
+  "display": "Angular (placeholder — extends bundler / DOM / App)",
+  "extends": ["../bundler/dom/app.json"]
+}

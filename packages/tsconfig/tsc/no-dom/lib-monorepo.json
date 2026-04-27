@@ -1,0 +1,15 @@
+{
+  "$schema": "https://www.schemastore.org/tsconfig",
+  "display": "tsc / no DOM / lib (monorepo)",
+  "extends": ["../../base.json"],
+  "compilerOptions": {
+    "lib": ["es2025", "esnext"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "composite": true,
+    "noUncheckedSideEffectImports": true
+  }
+}
