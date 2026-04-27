@@ -3,7 +3,7 @@
   "display": "tsc / DOM / lib",
   "extends": ["../../base.json"],
   "compilerOptions": {
-    "lib": ["es2025", "dom", "dom.iterable"],
+    "lib": ["es2025", "dom"],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "sourceMap": true,

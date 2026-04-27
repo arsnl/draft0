@@ -3,7 +3,7 @@
   "display": "bundler / DOM / App (typecheck only)",
   "extends": ["../../base.json"],
   "compilerOptions": {
-    "lib": ["es2025", "dom", "dom.iterable"],
+    "lib": ["es2025", "dom"],
     "module": "preserve",
     "moduleResolution": "bundler",
     "noEmit": true,
