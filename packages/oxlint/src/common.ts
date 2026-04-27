@@ -109,13 +109,16 @@ export type Draft0OxlintConfig = Simplify<
      */
     root?: boolean;
     /**
+     * Whether the config is for ESM modules.
+     *
+     * @default true
+     */
+    esm?: boolean;
+    /**
      * The framework/library presets to use.
      *
      * @default [ ]
      */
     presets?: PresetName[];
-    // TODO: Add esm and typescript options support
-    // esm?: boolean;
-    // typescript?: boolean;
   } & OxlintConfig
 >;

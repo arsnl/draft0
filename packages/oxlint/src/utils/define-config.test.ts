@@ -38,6 +38,23 @@ describe(defineConfig, () => {
     expect(config.options).toBeUndefined();
   });
 
+  it("keeps ESM-first rules by default", () => {
+    const config = defineConfig();
+
+    expect(config.rules?.["unicorn/prefer-module"]).toStrictEqual(["error"]);
+    expect(config.env?.node).toBeUndefined();
+  });
+
+  it("applies CommonJS overrides when esm is false", () => {
+    const config = defineConfig({ esm: false });
+
+    expect(config.env?.node).toBe(true);
+    expect(config.rules?.["import/extensions"]).toStrictEqual(["off"]);
+    expect(config.rules?.["node/global-require"]).toStrictEqual(["error"]);
+    expect(config.rules?.["unicorn/prefer-module"]).toStrictEqual(["off"]);
+    expect(config.rules?.["unicorn/require-module-specifiers"]).toStrictEqual(["off"]);
+  });
+
   it("lets local rule config override preset values", () => {
     const config = defineConfig({
       rules: {
@@ -46,5 +63,16 @@ describe(defineConfig, () => {
     });
 
     expect(config.rules?.["eslint/no-console"]).toStrictEqual(["error"]);
+  });
+
+  it("lets local rule config override CommonJS preset values", () => {
+    const config = defineConfig({
+      esm: false,
+      rules: {
+        "unicorn/prefer-module": ["warn"],
+      },
+    });
+
+    expect(config.rules?.["unicorn/prefer-module"]).toStrictEqual(["warn"]);
   });
 });

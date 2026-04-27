@@ -12,4 +12,8 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/labeler@v6
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Run labeler
+        uses: actions/labeler@v6
