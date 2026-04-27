@@ -30,7 +30,7 @@ body:
     id: package-version
     attributes:
       label: Package version
-      description: e.g. 0.1.2 or 0.1.2-next.abcdef12
+      description: e.g. 0.1.2 or 0.1.2-next.9fc28c1
       placeholder: 0.0.0
     validations:
       required: true
