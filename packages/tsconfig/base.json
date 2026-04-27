@@ -1,7 +1,6 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
-  "display": "Base (strict, shared only)",
-
+  "display": "Base",
   "compilerOptions": {
     "target": "ES2025",
     "esModuleInterop": true,
@@ -14,6 +13,8 @@
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
-    "exactOptionalPropertyTypes": true
+    "exactOptionalPropertyTypes": true,
+    "noUncheckedSideEffectImports": true,
+    "erasableSyntaxOnly": true
   }
 }

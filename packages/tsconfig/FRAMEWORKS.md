@@ -1,6 +1,6 @@
 # Framework presets (audit)
 
-Framework entries under `frameworks/` extend one of the [12 project-shape presets](README.md) so we can add framework-specific `compilerOptions` later without changing the public decision tree.
+Framework entries under `frameworks/` extend one of the [eight project-shape presets](README.md) so we can add framework-specific `compilerOptions` later without changing the public decision tree.
 
 Candidates align with [`@draft0/oxlint`](../oxlint/src/presets/index.ts) framework names. Test tools (Jest, Vitest, Playwright) are not root `tsconfig` presets. Plain UI libraries (JSX, React, Vue, Svelte) are usually covered by `bundler/dom/*` plus framework docs, not a separate `@draft0/tsconfig` entry unless the framework owns the app scaffold.
 
@@ -25,4 +25,4 @@ Candidates align with [`@draft0/oxlint`](../oxlint/src/presets/index.ts) framewo
 | `preact`         | `bundler/dom/app` | Same as React-oriented bundler apps.                                                                               | Placeholder           |
 | `solid`          | `bundler/dom/app` | Vite + Solid templates use bundler + JSX preserve patterns.                                                        | Placeholder           |
 
-**Maintenance:** When adding real compiler options for a framework, keep `extends` pointed at the correct project-shape preset, copy only the delta from that framework’s official init template, and link the upstream file in a short comment in the JSON (JSON does not support comments — document the link in this file or the README instead).
+**Maintenance:** When adding real compiler options for a framework, keep `extends` pointed at the correct project-shape preset, copy only the delta from that framework’s official init template, and link the upstream file in this file or the README (JSON does not support comments). Re-check [TypeScript release notes](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-6-0.html) when bumping the supported compiler (e.g. `moduleResolution`, `types`, DOM `lib`).

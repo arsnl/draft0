@@ -1,5 +1,5 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
-  "display": "Remix (placeholder — extends bundler / DOM / App)",
+  "display": "Remix — https://remix.run/",
   "extends": ["../bundler/dom/app.json"]
 }

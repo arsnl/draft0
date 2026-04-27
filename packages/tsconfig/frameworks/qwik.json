@@ -1,5 +1,5 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
-  "display": "Qwik (placeholder — extends bundler / DOM / App)",
+  "display": "Qwik — https://qwik.dev/",
   "extends": ["../bundler/dom/app.json"]
 }

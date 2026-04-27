@@ -1,12 +1,11 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
-  "display": "tsc / DOM / App",
+  "display": "tsc / DOM / app",
   "extends": ["../../base.json"],
   "compilerOptions": {
     "lib": ["es2025", "dom"],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "sourceMap": true,
-    "noUncheckedSideEffectImports": true
+    "sourceMap": true
   }
 }

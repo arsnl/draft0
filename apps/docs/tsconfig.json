@@ -1,5 +1,5 @@
 {
-  "extends": ["@draft0/tsconfig/frameworks/next.json"],
+  "extends": ["@draft0/tsconfig/frameworks/nextjs"],
   "compilerOptions": {
     "incremental": true,
     "allowImportingTsExtensions": true,

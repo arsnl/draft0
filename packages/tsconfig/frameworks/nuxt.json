@@ -1,5 +1,5 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
-  "display": "Nuxt (placeholder — extends bundler / DOM / App)",
+  "display": "Nuxt — https://nuxt.com/",
   "extends": ["../bundler/dom/app.json"]
 }

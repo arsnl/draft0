@@ -1,5 +1,5 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
-  "display": "Preact (placeholder — extends bundler / DOM / App)",
+  "display": "Preact — https://preactjs.com/",
   "extends": ["../bundler/dom/app.json"]
 }

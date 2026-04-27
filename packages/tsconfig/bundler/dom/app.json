@@ -1,12 +1,11 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
-  "display": "bundler / DOM / App (typecheck only)",
+  "display": "bundler / DOM / app",
   "extends": ["../../base.json"],
   "compilerOptions": {
     "lib": ["es2025", "dom"],
     "module": "preserve",
     "moduleResolution": "bundler",
-    "noEmit": true,
-    "noUncheckedSideEffectImports": true
+    "noEmit": true
   }
 }

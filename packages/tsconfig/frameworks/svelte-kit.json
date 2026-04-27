@@ -1,5 +1,5 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
-  "display": "SvelteKit (placeholder — extends bundler / DOM / App)",
+  "display": "SvelteKit — https://kit.svelte.dev/",
   "extends": ["../bundler/dom/app.json"]
 }

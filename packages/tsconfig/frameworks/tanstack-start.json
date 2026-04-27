@@ -1,5 +1,5 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
-  "display": "TanStack Start (placeholder — extends bundler / DOM / App)",
+  "display": "TanStack Start — https://tanstack.com/start/",
   "extends": ["../bundler/dom/app.json"]
 }

@@ -1,5 +1,5 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
-  "display": "React Router (placeholder — extends bundler / DOM / App)",
+  "display": "React Router — https://reactrouter.com/",
   "extends": ["../bundler/dom/app.json"]
 }

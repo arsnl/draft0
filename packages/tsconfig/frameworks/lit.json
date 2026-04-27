@@ -1,5 +1,5 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
-  "display": "Lit (placeholder — extends bundler / DOM / App)",
+  "display": "Lit — https://lit.dev/",
   "extends": ["../bundler/dom/app.json"]
 }

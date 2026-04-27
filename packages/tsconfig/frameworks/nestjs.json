@@ -1,6 +1,6 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
-  "display": "NestJS (app)",
+  "display": "NestJS — https://nestjs.com/",
   "extends": ["../tsc/no-dom/app.json"],
   "compilerOptions": {
     "emitDecoratorMetadata": true,

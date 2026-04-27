@@ -1,5 +1,5 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
-  "display": "Astro (placeholder — extends bundler / DOM / App)",
+  "display": "Astro — https://astro.build/",
   "extends": ["../bundler/dom/app.json"]
 }

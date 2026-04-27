@@ -1,6 +1,6 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
-  "display": "Next.js (App)",
+  "display": "Next.js — https://nextjs.org/",
   "extends": ["../bundler/dom/app.json"],
   "compilerOptions": {
     "plugins": [{ "name": "next" }],

@@ -1,5 +1,5 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
-  "display": "Solid (placeholder — extends bundler / DOM / App)",
+  "display": "Solid — https://www.solidjs.com/",
   "extends": ["../bundler/dom/app.json"]
 }
