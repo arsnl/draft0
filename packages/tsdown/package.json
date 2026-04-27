@@ -1,6 +1,6 @@
 {
   "name": "@draft0/tsdown",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Opinionated tsdown presets to help you ship faster.",
   "keywords": [
     "build",
