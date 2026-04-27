@@ -1,5 +1,6 @@
 import type { OxlintConfig } from "oxlint";
 import type { Draft0OxlintConfig } from "../common.ts";
+import { preset as cjsPreset } from "../presets/cjs.ts";
 import { presets } from "../presets/index.ts";
 import { mergeConfigs } from "./merge-configs.ts";
 import { resolvePresetDependencies } from "./resolve-preset-dependencies.ts";
@@ -19,6 +20,8 @@ import { resolvePresetDependencies } from "./resolve-preset-dependencies.ts";
  *
  * - `root` (default `true`) - Whether this is the root config. Some options (e.g. `options`) are only
  *   honored on the root config, so set this to `false` for nested configs.
+ * - `esm` (default `true`) - Whether the project uses ESM. Set this to `false` for CommonJS
+ *   projects so ESM-only rules are disabled and Node globals are enabled.
  * - `presets` (default `[]`) - Additional presets to include. Available names: `analog`, `angular`,
  *   `astro`, `core`, `ember`, `jest`, `jsx`, `lit`, `nestjs`, `nextjs`, `nuxt`, `playwright`,
  *   `preact`, `qwik`, `reactNative`, `reactRouter`, `react`, `remix`, `solid`, `svelteKit`,
@@ -45,16 +48,28 @@ import { resolvePresetDependencies } from "./resolve-preset-dependencies.ts";
  *     },
  *   });
  *
+ * @example
+ *   // Use the preset in a CommonJS project.
+ *   import { defineConfig } from "@draft0/oxlint";
+ *
+ *   export default defineConfig({
+ *     esm: false,
+ *   });
+ *
  * @param config - Oxlint options merged after the resolved presets.
  *
  * @returns The merged Oxlint configuration.
  */
 export const defineConfig = (config: Draft0OxlintConfig = {}): OxlintConfig => {
-  const { root = true, presets: inputPresets = [], ...self } = config;
+  const { root = true, esm = true, presets: inputPresets = [], ...self } = config;
 
   const presetConfigs = [...resolvePresetDependencies(inputPresets)].map(
     (preset) => presets[preset],
   );
+
+  if (!esm) {
+    presetConfigs.push(cjsPreset);
+  }
 
   return [...presetConfigs, self].reduce((acc, conf) => mergeConfigs(conf, acc, { root }), {});
 };

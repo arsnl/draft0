@@ -364,7 +364,7 @@ export const preset: OxlintConfig = {
     "import/no-cycle": ["error"],
     "import/no-default-export": ["off"], // Disabled: Too strict universally; frameworks and configs need defaults
     "import/no-duplicates": ["off"], // Disabled: Redundant; eslint/no-duplicate-imports already covers this
-    "import/no-dynamic-require": ["error"],
+    "import/no-dynamic-require": ["error", { esmodule: true }],
     "import/no-empty-named-blocks": ["error"],
     "import/no-mutable-exports": ["error"],
     "import/no-named-as-default-member": ["error"],
