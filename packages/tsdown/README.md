@@ -2,15 +2,15 @@
 
 **Skip setup, start shipping.**
 
-`@draft0/tsdown` is part of Draft0, an opinionated, zero-configuration toolkit for modern TypeScript projects. This package provides a [tsdown](https://tsdown.dev) config helper with sensible defaults for ESM-first output, declaration emit, dependency strategy, and package quality checks so you can publish libraries and CLIs without hand-tuning every bundler flag.
+`@draft0/tsdown` is part of Draft0, an opinionated, zero-configuration toolkit for modern TypeScript projects.
+
+This package provides a [tsdown](https://tsdown.dev) config helper with sensible defaults for ESM-first output, declaration emit, dependency strategy, and package quality checks so you can publish libraries and CLIs without hand-tuning every bundler flag.
 
 ## Install
 
 ```sh
 npm install -D @draft0/tsdown tsdown
 ```
-
-> Requirements: `Node.js >= 24`. If TypeScript is used, `TypeScript >= 6` is recommended.
 
 ## Usage
 

@@ -2,7 +2,9 @@
 
 **Skip setup, start shipping.**
 
-`@draft0/tsconfig` is part of Draft0, an opinionated, zero-configuration toolkit for modern TypeScript projects. This package provides ready-to-use [TypeScript `tsconfig`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) presets so you can use strict, modern defaults immediately and focus on your code.
+`@draft0/tsconfig` is part of Draft0, an opinionated, zero-configuration toolkit for modern TypeScript projects.
+
+This package provides ready-to-use [TypeScript `tsconfig`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) presets so you can use strict, modern defaults immediately and focus on your code.
 
 Use it as an `extends` layer in your project `tsconfig.json`, then add your own `include`, `exclude`, aliases, and output-specific overrides.
 
@@ -12,7 +14,19 @@ Use it as an `extends` layer in your project `tsconfig.json`, then add your own 
 npm install -D @draft0/tsconfig typescript
 ```
 
-> Requirements: `TypeScript >= 6.0.0`, `Node.js >= 24`
+## Usage
+
+```jsonc
+// tsconfig.json
+{
+  "extends": "@draft0/tsconfig/tsc/dom/app",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules"],
+}
+```
 
 ## Pick a preset in 30 seconds
 
