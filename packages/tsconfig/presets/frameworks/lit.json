@@ -1,0 +1,10 @@
+{
+  "$schema": "https://www.schemastore.org/tsconfig",
+  "display": "Lit — https://lit.dev/",
+  "extends": ["../bundler/dom/app.json"],
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "types": ["vite/client"],
+    "useDefineForClassFields": false
+  }
+}

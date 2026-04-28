@@ -1,0 +1,5 @@
+{
+  "$schema": "https://www.schemastore.org/tsconfig",
+  "display": "bundler / no DOM / lib",
+  "extends": ["./app.json"]
+}

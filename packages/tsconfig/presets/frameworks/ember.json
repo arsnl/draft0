@@ -1,0 +1,9 @@
+{
+  "$schema": "https://www.schemastore.org/tsconfig",
+  "display": "Ember — https://emberjs.com/",
+  "extends": ["../bundler/dom/app.json"],
+  "compilerOptions": {
+    "erasableSyntaxOnly": false,
+    "experimentalDecorators": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://www.schemastore.org/tsconfig",
+  "display": "tsc / DOM / lib",
+  "extends": ["./app.json"],
+  "compilerOptions": {
+    "declaration": true
+  }
+}

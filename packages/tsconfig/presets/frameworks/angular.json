@@ -1,0 +1,10 @@
+{
+  "$schema": "https://www.schemastore.org/tsconfig",
+  "display": "Angular — https://angular.dev/",
+  "extends": ["../bundler/dom/app.json"],
+  "compilerOptions": {
+    "erasableSyntaxOnly": false,
+    "experimentalDecorators": true,
+    "importHelpers": true
+  }
+}

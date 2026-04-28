@@ -1,3 +1,5 @@
+import type { UserConfig } from "tsdown";
 import { defineConfig } from "@draft0/tsdown";
 
-export default defineConfig();
+const config: UserConfig = defineConfig();
+export default config;

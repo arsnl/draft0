@@ -1,10 +1,10 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
-  "extends": ["./base.json"],
-  "display": "NestJS",
-
+  "display": "NestJS — https://nestjs.com/",
+  "extends": ["../tsc/no-dom/app.json"],
   "compilerOptions": {
     "emitDecoratorMetadata": true,
+    "erasableSyntaxOnly": false,
     "experimentalDecorators": true,
     "incremental": true
   }

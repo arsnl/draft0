@@ -1,0 +1,9 @@
+{
+  "$schema": "https://www.schemastore.org/tsconfig",
+  "display": "Remix — https://remix.run/",
+  "extends": ["../bundler/dom/app.json"],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "types": ["@remix-run/node", "vite/client"]
+  }
+}

@@ -19,17 +19,32 @@
     "url": "git+https://github.com/arsnl/draft0.git",
     "directory": "packages/tsconfig"
   },
+  "files": [
+    "presets"
+  ],
+  "type": "module",
+  "exports": {
+    "./core": "./presets/core.json",
+    "./tsc/dom/*": "./presets/tsc/dom/*.json",
+    "./tsc/no-dom/*": "./presets/tsc/no-dom/*.json",
+    "./bundler/dom/*": "./presets/bundler/dom/*.json",
+    "./bundler/no-dom/*": "./presets/bundler/no-dom/*.json",
+    "./frameworks/*": "./presets/frameworks/*.json"
+  },
   "publishConfig": {
     "access": "public",
     "provenance": true,
     "registry": "https://registry.npmjs.org/"
   },
   "peerDependencies": {
-    "typescript": ">=5.0.0"
+    "typescript": ">=6.0.0"
   },
   "peerDependenciesMeta": {
     "typescript": {
       "optional": true
     }
+  },
+  "engines": {
+    "node": ">=24.0.0"
   }
 }

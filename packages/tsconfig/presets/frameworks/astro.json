@@ -1,0 +1,10 @@
+{
+  "$schema": "https://www.schemastore.org/tsconfig",
+  "display": "Astro — https://astro.build/",
+  "extends": ["../bundler/dom/app.json"],
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "jsx": "preserve",
+    "plugins": [{ "name": "@astrojs/ts-plugin" }]
+  }
+}

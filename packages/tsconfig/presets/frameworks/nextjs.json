@@ -1,14 +1,10 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
-  "extends": ["./base.json"],
-  "display": "Next.js",
-
+  "display": "Next.js — https://nextjs.org/",
+  "extends": ["../bundler/dom/app.json"],
   "compilerOptions": {
-    "module": "esnext",
-    "moduleResolution": "bundler",
     "plugins": [{ "name": "next" }],
     "jsx": "preserve",
-    "noEmit": true,
     "noUncheckedSideEffectImports": false
   }
 }
