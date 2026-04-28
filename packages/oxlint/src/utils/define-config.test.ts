@@ -32,8 +32,8 @@ describe(defineConfig, () => {
     expect(reactPlugins).toHaveLength(1);
   });
 
-  it("does not include root-only options when root is false", () => {
-    const config = defineConfig({ root: false });
+  it("does not include root-only options when nested is true", () => {
+    const config = defineConfig({ nested: true });
 
     expect(config.options).toBeUndefined();
   });

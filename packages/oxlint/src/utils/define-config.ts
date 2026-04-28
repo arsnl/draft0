@@ -18,8 +18,8 @@ import { resolvePresetDependencies } from "./resolve-preset-dependencies.ts";
  *
  * On top of the native Oxlint schema, the config accepts two extra fields:
  *
- * - `root` (default `true`) - Whether this is the root config. Some options (e.g. `options`) are only
- *   honored on the root config, so set this to `false` for nested configs.
+ * - `nested` (default `false`) - Whether this is a nested config. When `true`, root-only options
+ *   (e.g. `options`) are not merged.
  * - `esm` (default `true`) - Whether the project uses ESM. Set this to `false` for CommonJS projects
  *   so ESM-only rules are disabled and Node globals are enabled.
  * - `presets` (default `[]`) - Additional presets to include. Available names: `analog`, `angular`,
@@ -61,7 +61,7 @@ import { resolvePresetDependencies } from "./resolve-preset-dependencies.ts";
  * @returns The merged Oxlint configuration.
  */
 export const defineConfig = (config: Draft0OxlintConfig = {}): OxlintConfig => {
-  const { root = true, esm = true, presets: inputPresets = [], ...self } = config;
+  const { nested = false, esm = true, presets: inputPresets = [], ...self } = config;
 
   const presetConfigs = [...resolvePresetDependencies(inputPresets)].map(
     (preset) => presets[preset],
@@ -71,5 +71,5 @@ export const defineConfig = (config: Draft0OxlintConfig = {}): OxlintConfig => {
     presetConfigs.push(cjsPreset);
   }
 
-  return [...presetConfigs, self].reduce((acc, conf) => mergeConfigs(conf, acc, { root }), {});
+  return [...presetConfigs, self].reduce((acc, conf) => mergeConfigs(conf, acc, { nested }), {});
 };

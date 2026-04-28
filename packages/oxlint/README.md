@@ -61,40 +61,26 @@ export default defineConfig({
 });
 ```
 
-## Monorepos and `root`
+## Monorepos
 
-`root` defaults to `true`, so you do not need to set it explicitly for your top-level config. Setting `root: true` can still make intent clearer when documenting monorepo config structure.
+Oxlint supports per-directory configs: it lints each file using the **nearest** `oxlint.config.ts` (or `.oxlintrc.json`) walking up from that file. Configs are **not** merged automatically across directories — see [Nested configuration files](https://oxc.rs/docs/guide/usage/linter/nested-config).
 
-Use `root: false` for nested package-level configs.
+A few top-level Oxlint settings are root-only. In particular, `options.typeAware` and `options.typeCheck` make Oxlint **error** if they appear in a nested config. Since `@draft0/oxlint`'s `core` preset turns those on, a per-package config built from the preset would otherwise fail to lint.
 
-### Root config (repo)
-
-```ts
-// oxlint.config.ts (at monorepo root)
-import { defineConfig } from "@draft0/oxlint";
-
-export default defineConfig({
-  root: true,
-  presets: ["vitest"],
-});
-```
-
-### Package config (nested)
+Set `nested: true` in any package-level config so the root-only `options` are stripped from the result. Leave it off (the default) for your repo's root `oxlint.config.ts`.
 
 ```ts
 // packages/web/oxlint.config.ts
 import { defineConfig } from "@draft0/oxlint";
 
 export default defineConfig({
-  root: false,
+  nested: true,
   presets: ["nextjs"],
   rules: {
     "eslint/no-console": ["off"],
   },
 });
 ```
-
-When `root` is `false`, root-only `options` are not applied. This keeps nested configs focused on local rules and preset composition.
 
 ## Documentation
 

@@ -103,11 +103,13 @@ export type OxlintRuleMeta = {
 export type Draft0OxlintConfig = Simplify<
   {
     /**
-     * Whether the config is the root config.
+     * Whether this config is nested under another config.
      *
-     * @default true
+     * When `true`, root-only options (such as `options`) are not merged.
+     *
+     * @default false
      */
-    root?: boolean;
+    nested?: boolean;
     /**
      * Whether the config is for ESM modules.
      *

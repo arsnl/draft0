@@ -11,8 +11,10 @@
   // Controls auto save of editors that have unsaved changes.
   //  - onFocusChange: An editor with changes is automatically saved when the editor loses focus.
   "files.autoSave": "onFocusChange",
+
   "javascript.preferences.importModuleSpecifier": "relative",
   "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.tsdk": "node_modules/typescript/lib",
 
   "files.associations": {
     "**/packages/tsconfig/*.json": "jsonc"
