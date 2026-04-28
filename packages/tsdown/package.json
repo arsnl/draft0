@@ -1,7 +1,7 @@
 {
   "name": "@draft0/tsdown",
   "version": "0.0.0",
-  "description": "Opinionated tsdown presets to help you ship faster.",
+  "description": "Opinionated tsdown config helper to help you ship faster.",
   "keywords": [
     "build",
     "draft0",
@@ -29,10 +29,6 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
-    },
-    "./presets": {
-      "types": "./dist/presets/index.d.ts",
-      "import": "./dist/presets/index.js"
     }
   },
   "publishConfig": {

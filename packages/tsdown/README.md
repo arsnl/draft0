@@ -1,14 +1,16 @@
 # @draft0/tsdown
 
-Opinionated [tsdown](https://tsdown.dev) preset for building TypeScript libraries.
+**Skip setup, start shipping.**
 
-Sensible defaults for ESM output, types, and package validation — so you can publish without tuning a bundler.
+`@draft0/tsdown` is part of Draft0, an opinionated, zero-configuration toolkit for modern TypeScript projects. This package provides a [tsdown](https://tsdown.dev) config helper with sensible defaults for ESM-first output, declaration emit, dependency strategy, and package quality checks so you can publish libraries and CLIs without hand-tuning every bundler flag.
 
 ## Install
 
 ```sh
 npm install -D @draft0/tsdown tsdown
 ```
+
+> Requirements: `Node.js >= 24`. If TypeScript is used, `TypeScript >= 6` is recommended.
 
 ## Usage
 
@@ -19,10 +21,50 @@ import { defineConfig } from "@draft0/tsdown";
 export default defineConfig();
 ```
 
+## Draft0 options
+
+`defineConfig` accepts a `draft0` object with high-level toggles:
+
+- `dts` (default `true`) - emit TypeScript declaration files
+- `dual` (default `false`) - generate dual ESM + CJS output
+- `bundle` (default `false`) - bundle dependencies from `node_modules`
+
+## Examples
+
+### Defaults (dts + ESM-only, external dependencies)
+
+```ts
+import { defineConfig } from "@draft0/tsdown";
+
+export default defineConfig();
+```
+
+### Dual output (ESM + CJS)
+
+```ts
+import { defineConfig } from "@draft0/tsdown";
+
+export default defineConfig({
+  draft0: {
+    dual: true,
+  },
+});
+```
+
+### Bundled CLI-style build
+
+```ts
+import { defineConfig } from "@draft0/tsdown";
+
+export default defineConfig({
+  draft0: {
+    bundle: true,
+    dts: false,
+  },
+  entry: ["src/cli.ts"],
+});
+```
+
 ## Documentation
 
-Full preset list and options: [docs.draft0.dev](https://docs.draft0.dev/).
-
-## License
-
-[MIT](./LICENSE)
+Full documentation: [docs.draft0.dev](https://docs.draft0.dev/).

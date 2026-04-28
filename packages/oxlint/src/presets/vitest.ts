@@ -18,7 +18,7 @@ const vitestCompatibleRules: DummyRuleMap = getCompatibleRules({
 export const preset: OxlintConfig = {
   overrides: [
     {
-      files: ["**/*.{test,spec}.{js,jsx,cjs,mjs,ts,tsx}"],
+      files: ["**/*.{test,spec}.{js,jsx,ts,tsx,cjs,mjs,cts,mts}"],
       plugins: ["vitest"],
       rules: {
         "eslint/no-empty-function": ["off"], // Disabled: Too strict; mock callbacks often need empty functions

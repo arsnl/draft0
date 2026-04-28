@@ -1,4 +1,2 @@
-export type { Presets, PresetName } from "./presets/index.ts";
-export type { Draft0TSDownConfig } from "./common.ts";
-export { presets } from "./presets/index.ts";
+export type { Draft0ConfigOptions, Draft0TSDownConfig } from "./common.ts";
 export { defineConfig } from "./utils/define-config.ts";

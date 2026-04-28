@@ -115,3 +115,7 @@ All presets inherit from a strict [Draft0 Core](./presets/core.json) config (ES2
   "extends": "@draft0/tsconfig/core",
 }
 ```
+
+## Documentation
+
+Full documentation: [docs.draft0.dev](https://docs.draft0.dev/).
