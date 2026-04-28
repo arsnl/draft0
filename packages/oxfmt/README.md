@@ -2,15 +2,15 @@
 
 **Skip setup, start shipping.**
 
-`@draft0/oxfmt` is part of Draft0, an opinionated, zero-configuration toolkit for modern TypeScript projects. This package provides an [Oxfmt](https://oxc.rs/docs/guide/usage/formatter) helper with shared formatting defaults (JSDoc, import sorting, package.json sorting, and related options) so you can rely on consistent style without assembling every knob yourself.
+`@draft0/oxfmt` is part of Draft0, an opinionated, zero-configuration toolkit for modern TypeScript projects.
+
+This package provides an [Oxfmt](https://oxc.rs/docs/guide/usage/formatter) helper with shared formatting defaults (JSDoc, import sorting, package.json sorting, and related options) so you can rely on consistent style without assembling every knob yourself.
 
 ## Install
 
 ```sh
 npm install -D @draft0/oxfmt oxfmt
 ```
-
-> Requirements: `Node.js >= 24`, `oxfmt >= 0.46`
 
 ## Usage
 
@@ -38,10 +38,10 @@ export default defineConfig({
 If you prefer to start from [`defineConfig` in `oxfmt`](https://oxc.rs/docs/guide/usage/formatter/config.html#create-a-config-file), spread Draft0’s baseline and add your overrides:
 
 ```ts
-import { defineConfig as defineOxfmtConfig } from "oxfmt";
+import { defineConfig } from "oxfmt";
 import { defaults } from "@draft0/oxfmt";
 
-export default defineOxfmtConfig({
+export default defineConfig({
   ...defaults,
   sortPackageJson: false,
 });
