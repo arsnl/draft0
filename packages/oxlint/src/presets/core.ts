@@ -711,8 +711,8 @@ export const preset: OxlintConfig = {
   overrides: [
     {
       files: [
-        "**/*.{test,spec}.{js,jsx,cjs,mjs,ts,tsx}",
-        "**/__tests__/**/*.{js,jsx,cjs,mjs,ts,tsx}",
+        "**/*.{test,spec}.{js,jsx,ts,tsx,cjs,mjs,cts,mts}",
+        "**/__tests__/**/*.{js,jsx,ts,tsx,cjs,mjs,cts,mts}",
       ],
       rules: {
         "eslint/no-empty-function": ["off"], // Disabled: Too strict; mock callbacks often need empty functions

@@ -1,14 +1,34 @@
 import type { UserConfig } from "tsdown";
 import type { Simplify } from "type-fest";
-import type { PresetName } from "./presets/index.ts";
+
+export type Draft0ConfigOptions = {
+  /**
+   * Emit TypeScript declaration files.
+   *
+   * @default true
+   */
+  dts?: boolean;
+  /**
+   * Generate dual ESM and CJS output.
+   *
+   * @default false
+   */
+  dual?: boolean;
+  /**
+   * Bundle dependencies from node_modules.
+   *
+   * @default false
+   */
+  bundle?: boolean;
+};
 
 export type Draft0TSDownConfig = Simplify<
   {
     /**
-     * The TSDown preset to use.
+     * Draft0 high-level options used to derive a TSDown base config.
      *
-     * @default "recommended"
+     * @default { dts: true, dual: false, bundle: false }
      */
-    preset?: PresetName;
+    draft0?: Draft0ConfigOptions;
   } & UserConfig
 >;
