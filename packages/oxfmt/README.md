@@ -1,8 +1,8 @@
 # @draft0/oxfmt
 
-Opinionated [Oxfmt](https://oxc.rs/docs/guide/usage/formatter) preset for modern TypeScript projects.
+**Skip setup, start shipping.**
 
-One config, one style, no debates.
+`@draft0/oxfmt` is part of Draft0, an opinionated, zero-configuration toolkit for modern TypeScript projects. This package provides an [Oxfmt](https://oxc.rs/docs/guide/usage/formatter) preset so you can enforce one consistent formatting style across your codebase without spending time on formatter setup.
 
 ## Install
 
@@ -21,8 +21,4 @@ export default defineConfig();
 
 ## Documentation
 
-Full options and recipes: [docs.draft0.dev](https://docs.draft0.dev/).
-
-## License
-
-[MIT](./LICENSE)
+Full documentation: [docs.draft0.dev](https://docs.draft0.dev/).

@@ -1,8 +1,8 @@
 # @draft0/tsdown
 
-Opinionated [tsdown](https://tsdown.dev) config helper for modern libraries and CLIs.
+**Skip setup, start shipping.**
 
-Sensible defaults for ESM-first output, declaration emit, dependency strategy, and package quality checks so you can ship without hand-tuning every bundler flag.
+`@draft0/tsdown` is part of Draft0, an opinionated, zero-configuration toolkit for modern TypeScript projects. This package provides a [tsdown](https://tsdown.dev) config helper with sensible defaults for ESM-first output, declaration emit, dependency strategy, and package quality checks so you can publish libraries and CLIs without hand-tuning every bundler flag.
 
 ## Install
 
