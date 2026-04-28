@@ -1,28 +1,27 @@
 import { describe, expect, it } from "vitest";
-import { presets } from "../presets/index.ts";
+import { defaults } from "../defaults.ts";
 import { defineConfig } from "./define-config.ts";
 
 describe(defineConfig, () => {
-  it("returns the recommended preset when no config is passed", () => {
-    expect(defineConfig()).toStrictEqual(presets.recommended);
+  it("returns Draft0 defaults when no config is passed", () => {
+    expect(defineConfig()).toStrictEqual(defaults);
   });
 
-  it("uses the recommended preset when preset is omitted", () => {
+  it("applies overrides on top of defaults", () => {
     expect(defineConfig({ sortPackageJson: false })).toStrictEqual({
-      ...presets.recommended,
+      ...defaults,
       sortPackageJson: false,
     });
   });
 
-  it("applies explicit overrides on top of the selected preset", () => {
+  it("supports explicit top-level overrides with shallow merge semantics", () => {
     expect(
       defineConfig({
-        preset: "recommended",
         sortPackageJson: false,
         jsdoc: { separateReturnsFromParam: false },
       }),
     ).toStrictEqual({
-      ...presets.recommended,
+      ...defaults,
       sortPackageJson: false,
       jsdoc: { separateReturnsFromParam: false },
     });

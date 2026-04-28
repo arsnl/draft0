@@ -23,7 +23,7 @@ Draft0 is a growing ecosystem. The current presets are:
 | Package                                 | What it is       | npm                                                                                                         |
 | --------------------------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------- |
 | [`@draft0/oxlint`](packages/oxlint)     | Oxlint presets   | [![npm](https://img.shields.io/npm/v/@draft0/oxlint.svg)](https://www.npmjs.com/package/@draft0/oxlint)     |
-| [`@draft0/oxfmt`](packages/oxfmt)       | Oxfmt presets    | [![npm](https://img.shields.io/npm/v/@draft0/oxfmt.svg)](https://www.npmjs.com/package/@draft0/oxfmt)       |
+| [`@draft0/oxfmt`](packages/oxfmt)       | Oxfmt defaults   | [![npm](https://img.shields.io/npm/v/@draft0/oxfmt.svg)](https://www.npmjs.com/package/@draft0/oxfmt)       |
 | [`@draft0/tsdown`](packages/tsdown)     | tsdown presets   | [![npm](https://img.shields.io/npm/v/@draft0/tsdown.svg)](https://www.npmjs.com/package/@draft0/tsdown)     |
 | [`@draft0/tsconfig`](packages/tsconfig) | tsconfig presets | [![npm](https://img.shields.io/npm/v/@draft0/tsconfig.svg)](https://www.npmjs.com/package/@draft0/tsconfig) |
 

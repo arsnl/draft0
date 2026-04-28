@@ -12,7 +12,7 @@ Use it as an `extends` layer in your project `tsconfig.json`, then add your own 
 npm install -D @draft0/tsconfig typescript
 ```
 
-> Requirements: `TypeScript >= 6.0.0`, `Node.js >= 24`
+> Requirements: `Node.js >= 24`, `TypeScript >= 6`
 
 ## Pick a preset in 30 seconds
 

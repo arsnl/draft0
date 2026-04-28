@@ -1,4 +1,3 @@
-export type { Presets, PresetName } from "./presets/index.ts";
-export type { Draft0OxfmtConfig } from "./common.ts";
-export { presets } from "./presets/index.ts";
+export type { OxfmtConfig } from "oxfmt";
+export { defaults } from "./defaults.ts";
 export { defineConfig } from "./utils/define-config.ts";

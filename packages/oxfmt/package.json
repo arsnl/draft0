@@ -1,11 +1,12 @@
 {
   "name": "@draft0/oxfmt",
   "version": "0.0.0",
-  "description": "Opinionated Oxfmt presets to help you ship faster.",
+  "description": "Opinionated Oxfmt to help you ship faster.",
   "keywords": [
     "config",
     "draft0",
     "format",
+    "formatter",
     "oxfmt"
   ],
   "homepage": "https://github.com/arsnl/draft0",
@@ -29,10 +30,6 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
-    },
-    "./presets": {
-      "types": "./dist/presets/index.d.ts",
-      "import": "./dist/presets/index.js"
     }
   },
   "publishConfig": {
@@ -43,9 +40,6 @@
   "scripts": {
     "dev": "tsdown --watch",
     "build": "tsdown"
-  },
-  "dependencies": {
-    "type-fest": "^5.5.0"
   },
   "devDependencies": {
     "@draft0/tsconfig": "*",
