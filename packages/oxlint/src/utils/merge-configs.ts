@@ -6,14 +6,14 @@ import type { OxlintConfig } from "oxlint";
  * @param self - The self config. The config that is being merged into.
  * @param other - The other config. The config that is being merged from.
  * @param options - The options for the merge.
- * @param options.root - Whether the config is the root config. Defaults to true.
+ * @param options.nested - Whether the config is nested under another config. Defaults to false.
  *
  * @returns The merged config.
  */
 export const mergeConfigs = (
   self: OxlintConfig,
   other: OxlintConfig = {},
-  { root = true }: { root?: boolean } = {},
+  { nested = false }: { nested?: boolean } = {},
 ): OxlintConfig => {
   const {
     categories: _categories,
@@ -37,7 +37,7 @@ export const mergeConfigs = (
     ...((self.rules ?? other.rules) !== undefined && {
       rules: { ...other.rules, ...self.rules },
     }),
-    ...(root &&
+    ...(!nested &&
       (self.options ?? other.options) !== undefined && {
         options: { ...other.options, ...self.options },
       }),

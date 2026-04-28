@@ -52,17 +52,17 @@ describe(mergeConfigs, () => {
     ]);
   });
 
-  it("drops options when merging for a non-root config", () => {
+  it("drops options when merging for a nested config", () => {
     const merged = mergeConfigs(
       { options: { typeAware: false } },
       { options: { typeAware: true } },
-      { root: false },
+      { nested: true },
     );
 
     expect(merged.options).toBeUndefined();
   });
 
-  it("merges settings/env/globals and root options", () => {
+  it("merges settings/env/globals and non-nested options", () => {
     const merged = mergeConfigs(
       {
         settings: { react: { version: "detect" } },
