@@ -1,6 +1,6 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig",
-  "display": "Base",
+  "display": "Draft0 Core",
   "compilerOptions": {
     "target": "ES2025",
     "esModuleInterop": true,

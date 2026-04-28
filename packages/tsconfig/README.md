@@ -106,12 +106,12 @@ Add `include` and `exclude` yourself to fit your repo layout.
 }
 ```
 
-## Shared base only
+## Draft0 Core only
 
-All presets inherit from a strict [base](./src/base.json) config (ES2025 target, strict mode, stronger module/type-checking defaults). If you only want those defaults, use:
+All presets inherit from a strict [Draft0 Core](./presets/core.json) config (ES2025 target, strict mode, stronger module/type-checking defaults). If you only want those defaults, use:
 
 ```jsonc
 {
-  "extends": "@draft0/tsconfig/base",
+  "extends": "@draft0/tsconfig/core",
 }
 ```

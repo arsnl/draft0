@@ -20,16 +20,16 @@
     "directory": "packages/tsconfig"
   },
   "files": [
-    "src"
+    "presets"
   ],
   "type": "module",
   "exports": {
-    "./base": "./src/base.json",
-    "./tsc/dom/*": "./src/tsc/dom/*.json",
-    "./tsc/no-dom/*": "./src/tsc/no-dom/*.json",
-    "./bundler/dom/*": "./src/bundler/dom/*.json",
-    "./bundler/no-dom/*": "./src/bundler/no-dom/*.json",
-    "./frameworks/*": "./src/frameworks/*.json"
+    "./core": "./presets/core.json",
+    "./tsc/dom/*": "./presets/tsc/dom/*.json",
+    "./tsc/no-dom/*": "./presets/tsc/no-dom/*.json",
+    "./bundler/dom/*": "./presets/bundler/dom/*.json",
+    "./bundler/no-dom/*": "./presets/bundler/no-dom/*.json",
+    "./frameworks/*": "./presets/frameworks/*.json"
   },
   "publishConfig": {
     "access": "public",
