@@ -49,6 +49,7 @@ export const preset: OxlintConfig = {
     "eslint/eqeqeq": ["error", "always"],
     "eslint/for-direction": ["error"],
     "eslint/func-names": ["warn", "as-needed"],
+    "eslint/func-name-matching": ["off"], // Disabled: Style preference; both declarations and expressions are valid
     "eslint/func-style": ["off"], // Disabled: Style preference; both declarations and expressions are valid
     "eslint/getter-return": ["error"],
     "eslint/grouped-accessor-pairs": ["error", "getBeforeSet", { enforceForTSTypes: true }],
@@ -237,6 +238,7 @@ export const preset: OxlintConfig = {
     "eslint/no-unassigned-vars": ["error"],
     "eslint/no-undef": ["off"], // Disabled: Rule in nursery and not ready yet
     "eslint/no-undefined": ["off"], // Disabled: Too restrictive; undefined is standard in modern JS/TS
+    "eslint/no-underscore-dangle": ["off"], // Disabled: Too restrictive; underscore is valid in some cases
     "eslint/no-unexpected-multiline": ["error"],
     "eslint/no-unmodified-loop-condition": ["off"], // Disabled: May produce false positives; not fully stable yet
     "eslint/no-unneeded-ternary": ["error", { defaultAssignment: false }],
