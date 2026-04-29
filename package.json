@@ -12,11 +12,11 @@
     "test": "vitest run",
     "start": "turbo run start",
     "check:lint": "oxlint",
-    "check:format": "oxfmt --check",
-    "check:all": "npm run check:lint && npm run check:format",
+    "check:fmt": "oxfmt --check",
+    "check": "npm run check:lint && npm run check:fmt",
     "fix:lint": "oxlint --fix",
-    "fix:format": "oxfmt",
-    "fix:all": "npm run fix:lint && npm run fix:format"
+    "fix:fmt": "oxfmt",
+    "fix": "npm run fix:lint && npm run fix:fmt"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.6.0",

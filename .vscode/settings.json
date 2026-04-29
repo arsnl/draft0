@@ -17,6 +17,6 @@
   "typescript.tsdk": "node_modules/typescript/lib",
 
   "files.associations": {
-    "**/packages/tsconfig/*.json": "jsonc"
+    "**/packages/tsconfig/presets/**/*.json": "jsonc"
   }
 }

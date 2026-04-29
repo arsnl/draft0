@@ -23,6 +23,7 @@
     "presets"
   ],
   "type": "module",
+  "sideEffects": false,
   "exports": {
     "./core": "./presets/core.json",
     "./tsc/dom/*": "./presets/tsc/dom/*.json",

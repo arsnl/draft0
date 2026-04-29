@@ -45,7 +45,7 @@ npm install -D @draft0/tsconfig typescript
 - **Application code** → `.../.../app`
 - **Library code** → `.../.../lib`
 
-**Examples:**
+### Examples
 
 - Browser app using `tsc`: `@draft0/tsconfig/tsc/dom/app`
 - Node service using `tsc`: `@draft0/tsconfig/tsc/no-dom/app`

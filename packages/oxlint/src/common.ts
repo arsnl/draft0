@@ -100,27 +100,32 @@ export type OxlintRuleMeta = {
   referenced: boolean;
 };
 
+export type Draft0Options = {
+  /**
+   * Whether this config is nested under another config.
+   *
+   * When `true`, root-only options (such as `options`) are not merged.
+   *
+   * @default false
+   */
+  nested?: boolean;
+  /**
+   * Whether the config is for ESM modules.
+   *
+   * @default true
+   */
+  esm?: boolean;
+  /**
+   * The framework/library presets to use.
+   *
+   * @default [ ]
+   */
+  presets?: PresetName[];
+};
+
 export type Draft0OxlintConfig = Simplify<
   {
-    /**
-     * Whether this config is nested under another config.
-     *
-     * When `true`, root-only options (such as `options`) are not merged.
-     *
-     * @default false
-     */
-    nested?: boolean;
-    /**
-     * Whether the config is for ESM modules.
-     *
-     * @default true
-     */
-    esm?: boolean;
-    /**
-     * The framework/library presets to use.
-     *
-     * @default [ ]
-     */
-    presets?: PresetName[];
+    /** Draft0 convenience options used to derive the base Oxlint config. */
+    draft0?: Draft0Options;
   } & OxlintConfig
 >;

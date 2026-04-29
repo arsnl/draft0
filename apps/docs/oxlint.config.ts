@@ -1,6 +1,8 @@
 import { defineConfig } from "@draft0/oxlint";
 
 export default defineConfig({
-  nested: true,
-  presets: ["nextjs"],
+  draft0: {
+    nested: true,
+    presets: ["nextjs"],
+  },
 });

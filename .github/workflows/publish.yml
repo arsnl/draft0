@@ -53,7 +53,7 @@ jobs:
         run: npm run build
 
       - name: Run checks
-        run: npm run check:all
+        run: npm run check
 
       - name: Create release PR or publish
         uses: changesets/action@v1
@@ -94,7 +94,7 @@ jobs:
         run: npm run build
 
       - name: Run checks
-        run: npm run check:all
+        run: npm run check
 
       - name: Prepare snapshot versions
         env:

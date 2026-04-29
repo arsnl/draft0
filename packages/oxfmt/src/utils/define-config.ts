@@ -1,4 +1,4 @@
-import type { OxfmtConfig } from "oxfmt";
+import type { Draft0OxfmtConfig } from "../common.ts";
 import { defaults } from "../defaults.ts";
 
 /**
@@ -36,7 +36,7 @@ import { defaults } from "../defaults.ts";
  *
  * @returns A complete Oxfmt configuration.
  */
-export const defineConfig = (config: OxfmtConfig = {}): OxfmtConfig => ({
+export const defineConfig = (config: Draft0OxfmtConfig = {}): Draft0OxfmtConfig => ({
   ...defaults,
   ...config,
 });

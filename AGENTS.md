@@ -22,8 +22,8 @@ Subprojects may ship their own `AGENTS.md` — the closest file wins.
 ## Quick commands
 
 - **Install:** `npm install`
-- **Auto-fix (lint + format):** `npm run fix:all`
-- **Verify (lint + format check):** `npm run check:all`
+- **Auto-fix (lint + format):** `npm run fix`
+- **Verify (lint + format check):** `npm run check`
 - **Lint paths:** `npx oxlint <paths>` (add `--fix` when appropriate)
 - **Format paths:** `npx oxfmt <paths>` (add `--check` to verify only)
 
@@ -43,7 +43,7 @@ Reserve human judgment for what linters cannot see: business logic, public API d
 
 ## Linter and written conventions
 
-- Run **`npm run fix:all`** and **`npm run check:all`** on your changes before you rely on manual formatting.
+- Run **`npm run fix`** and **`npm run check`** on your changes before you rely on manual formatting.
 - For TypeScript and JavaScript rules when the tool is quiet or you need a checklist, use skill **`$code-style`**.
 
 ## Security (all code)
@@ -76,7 +76,7 @@ Releases, changesets, and PR flow: [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 - Prefer `grep` / targeted reads over loading huge files; avoid re-reading unchanged regions.
 - Do not read generated trees (`node_modules/`, `dist/`, `.next/`) for application logic; search if needed.
-- After edits, one verification pass (`check:all`, tests) rather than re-running the same check without new changes.
+- After edits, one verification pass (`check`, tests) rather than re-running the same check without new changes.
 - For large logs: capture once, then analyze the file (per Next.js / CI triage pattern).
 
 ## Specialized skills
@@ -90,5 +90,5 @@ Deeper, task-specific workflows live under [`.agents/skills/`](.agents/skills/).
 | `$commits-and-prs`  | Conventional Commits, scopes, PR titles, breaking changes                        |
 | `$package-changes`  | Published `packages/*`, `README`, peers, `tsdown`, changesets                    |
 | `$docs-app`         | `apps/docs` (Next.js docs site)                                                  |
-| `$quality-checks`   | `fix:all`, `check:all`, `oxlint`, `oxfmt`, turbo                                 |
+| `$quality-checks`   | `fix`, `check`, `oxlint`, `oxfmt`, turbo                                         |
 | `$authoring-skills` | Adding or editing skills in `.agents/skills/`                                    |
