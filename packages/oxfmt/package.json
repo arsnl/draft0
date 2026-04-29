@@ -44,10 +44,10 @@
   "devDependencies": {
     "@draft0/tsconfig": "*",
     "@draft0/tsdown": "*",
-    "oxfmt": "0.46.0"
+    "oxfmt": "0.47.0"
   },
   "peerDependencies": {
-    "oxfmt": "^0.46.0"
+    "oxfmt": "^0.47.0"
   },
   "engines": {
     "node": ">=24.0.0"
