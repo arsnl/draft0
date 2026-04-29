@@ -21,7 +21,7 @@ import { defineConfig } from "@draft0/oxfmt";
 export default defineConfig();
 ```
 
-## Merge priority (`self` wins)
+## Merge priority
 
 `defineConfig(...)` merges your config after the bundled Draft0 defaults (`defaults`). The merge is shallow at the top level: any object you supply for nested fields (such as `jsdoc` or `sortImports`) replaces the entire corresponding object from defaults, so overrides are explicit rather than deeply merged field by field.
 

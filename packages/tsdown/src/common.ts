@@ -1,7 +1,7 @@
 import type { UserConfig } from "tsdown";
 import type { Simplify } from "type-fest";
 
-export type Draft0ConfigOptions = {
+export type Draft0Options = {
   /**
    * Emit TypeScript declaration files.
    *
@@ -22,13 +22,13 @@ export type Draft0ConfigOptions = {
   bundle?: boolean;
 };
 
-export type Draft0TSDownConfig = Simplify<
+export type Draft0TsdownConfig = Simplify<
   {
     /**
      * Draft0 high-level options used to derive a TSDown base config.
      *
      * @default { dts: true, dual: false, bundle: false }
      */
-    draft0?: Draft0ConfigOptions;
+    draft0?: Draft0Options;
   } & UserConfig
 >;

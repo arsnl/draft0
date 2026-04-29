@@ -1,7 +1,7 @@
 import type { UserConfig } from "tsdown";
-import type { Draft0ConfigOptions, Draft0TSDownConfig } from "../common.ts";
+import type { Draft0Options, Draft0TsdownConfig } from "../common.ts";
 
-const resolveFromDraft0 = (draft0: Draft0ConfigOptions = {}): UserConfig => {
+const resolveFromDraft0 = (draft0: Draft0Options = {}): UserConfig => {
   const { dts = true, dual = false, bundle = false } = draft0;
 
   return {
@@ -60,7 +60,7 @@ const resolveFromDraft0 = (draft0: Draft0ConfigOptions = {}): UserConfig => {
  *
  * @returns The merged tsdown configuration.
  */
-export const defineConfig = (config: Draft0TSDownConfig = {}): UserConfig => {
+export const defineConfig = (config: Draft0TsdownConfig = {}): UserConfig => {
   const { draft0, ...self } = config;
   const resolvedConfig = resolveFromDraft0(draft0);
 

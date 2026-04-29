@@ -10,7 +10,7 @@ describe(defineConfig, () => {
   });
 
   it("auto-includes react when next preset is used", () => {
-    const config = defineConfig({ presets: ["nextjs"] });
+    const config = defineConfig({ draft0: { presets: ["nextjs"] } });
 
     expect(config.plugins).toContain("nextjs");
     expect(config.plugins).toContain("react");
@@ -19,21 +19,21 @@ describe(defineConfig, () => {
   });
 
   it("auto-includes react when reactRouter preset is used", () => {
-    const config = defineConfig({ presets: ["reactRouter"] });
+    const config = defineConfig({ draft0: { presets: ["reactRouter"] } });
 
     expect(config.plugins).toContain("react");
     expect(config.rules?.["react/jsx-key"]).toStrictEqual(["error"]);
   });
 
   it("deduplicates repeated presets while preserving resulting config", () => {
-    const config = defineConfig({ presets: ["nextjs", "react", "react"] });
+    const config = defineConfig({ draft0: { presets: ["nextjs", "react", "react"] } });
     const reactPlugins = (config.plugins ?? []).filter((plugin) => plugin === "react");
 
     expect(reactPlugins).toHaveLength(1);
   });
 
   it("does not include root-only options when nested is true", () => {
-    const config = defineConfig({ nested: true });
+    const config = defineConfig({ draft0: { nested: true } });
 
     expect(config.options).toBeUndefined();
   });
@@ -46,7 +46,7 @@ describe(defineConfig, () => {
   });
 
   it("applies CommonJS overrides when esm is false", () => {
-    const config = defineConfig({ esm: false });
+    const config = defineConfig({ draft0: { esm: false } });
 
     expect(config.env?.node).toBe(true);
     expect(config.rules?.["import/extensions"]).toStrictEqual(["off"]);
@@ -67,7 +67,7 @@ describe(defineConfig, () => {
 
   it("lets local rule config override CommonJS preset values", () => {
     const config = defineConfig({
-      esm: false,
+      draft0: { esm: false },
       rules: {
         "unicorn/prefer-module": ["warn"],
       },

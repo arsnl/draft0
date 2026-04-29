@@ -21,25 +21,29 @@ import { defineConfig } from "@draft0/tsdown";
 export default defineConfig();
 ```
 
-## Draft0 options
+## Options
 
-`defineConfig` accepts a `draft0` object with high-level toggles:
+### `dts`
 
-- `dts` (default `true`) - emit TypeScript declaration files
-- `dual` (default `false`) - generate dual ESM + CJS output
-- `bundle` (default `false`) - bundle dependencies from `node_modules`
+`draft0.dts` controls whether TypeScript declaration files are emitted. It defaults to `true`, which is the right choice for most published libraries because consumers and tooling expect bundled type definitions.
 
-## Examples
-
-### Defaults (dts + ESM-only, external dependencies)
+Set `dts: false` when you're building an executable or bundle where declaration output is unnecessary.
 
 ```ts
 import { defineConfig } from "@draft0/tsdown";
 
-export default defineConfig();
+export default defineConfig({
+  draft0: {
+    dts: false,
+  },
+});
 ```
 
-### Dual output (ESM + CJS)
+### `dual`
+
+`draft0.dual` controls output module formats. It defaults to `false`, so Draft0 generates ESM output only.
+
+Set `dual: true` when you need both ESM and CommonJS artifacts for mixed consumer environments.
 
 ```ts
 import { defineConfig } from "@draft0/tsdown";
@@ -51,7 +55,11 @@ export default defineConfig({
 });
 ```
 
-### Bundled CLI-style build
+### `bundle`
+
+`draft0.bundle` controls dependency bundling strategy. It defaults to `false`, so dependencies from `node_modules` stay external.
+
+Set `bundle: true` for CLI-style builds or single-file distribution workflows where you want dependencies included in the output.
 
 ```ts
 import { defineConfig } from "@draft0/tsdown";

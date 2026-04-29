@@ -16,16 +16,18 @@ import { resolvePresetDependencies } from "./resolve-preset-dependencies.ts";
  * The opinionated `core` preset is always prepended, duplicate presets are deduplicated, and
  * dependencies for requested presets are auto-included.
  *
- * On top of the native Oxlint schema, the config accepts two extra fields:
+ * On top of the native Oxlint schema, the config accepts one Draft0 namespace field:
  *
- * - `nested` (default `false`) - Whether this is a nested config. When `true`, root-only options
- *   (e.g. `options`) are not merged.
- * - `esm` (default `true`) - Whether the project uses ESM. Set this to `false` for CommonJS projects
- *   so ESM-only rules are disabled and Node globals are enabled.
- * - `presets` (default `[]`) - Additional presets to include. Available names: `analog`, `angular`,
- *   `astro`, `core`, `ember`, `jest`, `jsx`, `lit`, `nestjs`, `nextjs`, `nuxt`, `playwright`,
- *   `preact`, `qwik`, `reactNative`, `reactRouter`, `react`, `remix`, `solid`, `svelteKit`,
- *   `svelte`, `tanstackStart`, `vitest`, `vue`
+ * - `draft0` - optional `{ nested, esm, presets }` wrapper.
+ *
+ *   - `nested` (default `false`) - Whether this is a nested config. When `true`, root-only options
+ *     (e.g. `options`) are not merged.
+ *   - `esm` (default `true`) - Whether the project uses ESM. Set this to `false` for CommonJS projects
+ *     so ESM-only rules are disabled and Node globals are enabled.
+ *   - `presets` (default `[]`) - Additional presets to include. Available names: `analog`, `angular`,
+ *     `astro`, `core`, `ember`, `jest`, `jsx`, `lit`, `nestjs`, `nextjs`, `nuxt`, `playwright`,
+ *     `preact`, `qwik`, `reactNative`, `reactRouter`, `react`, `remix`, `solid`, `svelteKit`,
+ *     `svelte`, `tanstackStart`, `vitest`, `vue`
  *
  * See the [Oxlint configuration
  * reference](https://oxc.rs/docs/guide/usage/linter/config-file-reference) for the full set of
@@ -42,7 +44,9 @@ import { resolvePresetDependencies } from "./resolve-preset-dependencies.ts";
  *   import { defineConfig } from "@draft0/oxlint";
  *
  *   export default defineConfig({
- *     presets: ["nextjs", "vitest"],
+ *     draft0: {
+ *       presets: ["nextjs", "vitest"],
+ *     },
  *     rules: {
  *       "no-console": "error",
  *     },
@@ -53,7 +57,9 @@ import { resolvePresetDependencies } from "./resolve-preset-dependencies.ts";
  *   import { defineConfig } from "@draft0/oxlint";
  *
  *   export default defineConfig({
- *     esm: false,
+ *     draft0: {
+ *       esm: false,
+ *     },
  *   });
  *
  * @param config - Oxlint options merged after the resolved presets.
@@ -61,7 +67,8 @@ import { resolvePresetDependencies } from "./resolve-preset-dependencies.ts";
  * @returns The merged Oxlint configuration.
  */
 export const defineConfig = (config: Draft0OxlintConfig = {}): OxlintConfig => {
-  const { nested = false, esm = true, presets: inputPresets = [], ...self } = config;
+  const { draft0 = {}, ...self } = config;
+  const { nested = false, esm = true, presets: inputPresets = [] } = draft0;
 
   const presetConfigs = [...resolvePresetDependencies(inputPresets)].map(
     (preset) => presets[preset],
