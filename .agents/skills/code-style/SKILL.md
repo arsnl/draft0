@@ -9,7 +9,7 @@ description: >
 
 # code-style
 
-**Defaults:** [AGENTS.md](../../../AGENTS.md) tells you to run `fix:all` and `check:all` and trust **@draft0/oxlint** / **@draft0/oxfmt**. This skill fills gaps when the linter is silent or you need a written rule.
+**Defaults:** [AGENTS.md](../../../AGENTS.md) tells you to run `fix` and `check` and trust **@draft0/oxlint** / **@draft0/oxfmt**. This skill fills gaps when the linter is silent or you need a written rule.
 
 ## Type safety and explicitness
 

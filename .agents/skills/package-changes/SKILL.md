@@ -37,7 +37,7 @@ Use this skill when a change is **user-facing** for npm consumers of `@draft0/*`
 # From repo root; adjust to the package
 npm run build
 npm run test
-npm run check:all
+npm run check
 ```
 
 ## Related skills

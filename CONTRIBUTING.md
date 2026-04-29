@@ -103,13 +103,13 @@ Open a [feature request](https://github.com/arsnl/draft0/issues/new/choose) usin
 4. Run quality checks:
 
    ```sh
-   npm run check:all
+   npm run check
    ```
 
 5. Auto-fix what can be fixed:
 
    ```sh
-   npm run fix:all
+   npm run fix
    ```
 
 ## Development workflow
@@ -142,7 +142,7 @@ Changes that don't affect a published package (docs, CI, internal refactor, test
 
 - Keep PRs focused. One logical change per PR.
 - Include a changeset for user-facing package changes.
-- Make sure the build (`npm run build`), checks (`npm run check:all`), and tests (`npm test`) are passing before requesting review.
+- Make sure the build (`npm run build`), checks (`npm run check`), and tests (`npm test`) are passing before requesting review.
 - Update docs / examples if behavior changed.
 - Be patient — reviews happen in batches.
 
