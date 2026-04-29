@@ -34,6 +34,14 @@ export const preset: OxlintConfig = {
         "vitest/prefer-called-once": ["off"], // Disabled: Conflicts with vitest/prefer-called-times — both rules enforce opposite styles
         "vitest/prefer-called-times": ["error"],
         "vitest/prefer-describe-function-title": ["error"],
+        "vitest/prefer-expect-assertions": [
+          "error",
+          {
+            onlyFunctionsWithAsyncKeyword: true,
+            onlyFunctionsWithExpectInCallback: true,
+            onlyFunctionsWithExpectInLoop: true,
+          },
+        ],
         "vitest/prefer-expect-type-of": ["error"],
         "vitest/prefer-import-in-mock": ["error"],
         "vitest/prefer-importing-vitest-globals": ["error"],
@@ -45,6 +53,7 @@ export const preset: OxlintConfig = {
         "vitest/require-local-test-context-for-concurrent-snapshots": ["error"],
         "vitest/require-mock-type-parameters": ["error"],
         "vitest/require-test-timeout": ["off"], // Disabled: Too verbose; use default timeout or overrides per test if needed
+        "vitest/valid-title": ["error", { ignoreTypeOfDescribeName: true }],
         "vitest/warn-todo": ["error"],
         ...vitestCompatibleRules,
       },

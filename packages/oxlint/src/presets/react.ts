@@ -12,6 +12,7 @@ export const preset: OxlintConfig = {
     "react/checked-requires-onchange-or-readonly": ["error"],
     "react/display-name": ["error"],
     "react/exhaustive-deps": ["error"],
+    "react/forbid-component-props": ["off"], // Disabled: Too restrictive; className/style on custom components is a common, valid React pattern.
     "react/forbid-dom-props": ["error"],
     "react/forbid-elements": ["error"],
     "react/forward-ref-uses-ref": ["error"],
@@ -40,6 +41,7 @@ export const preset: OxlintConfig = {
     "react/no-danger": ["error"],
     "react/no-danger-with-children": ["error"],
     "react/no-did-mount-set-state": ["error"],
+    "react/no-did-update-set-state": ["error"],
     "react/no-direct-mutation-state": ["error"],
     "react/no-find-dom-node": ["error"],
     "react/no-is-mounted": ["error"],

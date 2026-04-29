@@ -52,6 +52,14 @@ export const preset: OxlintConfig = {
           { additionalTestBlockFunctions: ["each.test"] },
         ],
         "jest/prefer-equality-matcher": ["error"],
+        "jest/prefer-expect-assertions": [
+          "error",
+          {
+            onlyFunctionsWithAsyncKeyword: true,
+            onlyFunctionsWithExpectInCallback: true,
+            onlyFunctionsWithExpectInLoop: true,
+          },
+        ],
         "jest/prefer-expect-resolves": ["error"],
         "jest/prefer-hooks-in-order": ["error"],
         "jest/prefer-hooks-on-top": ["error"],
