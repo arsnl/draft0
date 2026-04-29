@@ -46,17 +46,17 @@
     "build": "tsdown"
   },
   "dependencies": {
-    "oxlint-plugin-eslint": "^1.59.0",
-    "oxlint-tsgolint": "^0.20.0",
-    "type-fest": "^5.5.0"
+    "oxlint-plugin-eslint": "^1.62.0",
+    "oxlint-tsgolint": "^0.22.1",
+    "type-fest": "^5.6.0"
   },
   "devDependencies": {
     "@draft0/tsconfig": "*",
     "@draft0/tsdown": "*",
-    "oxlint": "1.61.0"
+    "oxlint": "1.62.0"
   },
   "peerDependencies": {
-    "oxlint": "^1.61.0"
+    "oxlint": "^1.62.0"
   },
   "engines": {
     "node": ">=24.0.0"
