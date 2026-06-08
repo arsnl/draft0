@@ -132,4 +132,4 @@ All presets inherit from a strict [Draft0 Core](./presets/core.json) config (ES2
 
 ## Documentation
 
-Full documentation: [docs.draft0.dev](https://docs.draft0.dev/).
+Full documentation: [draft0.dev](https://draft0.dev/).

@@ -75,4 +75,4 @@ export default defineConfig({
 
 ## Documentation
 
-Full documentation: [docs.draft0.dev](https://docs.draft0.dev/).
+Full documentation: [draft0.dev](https://draft0.dev/).
