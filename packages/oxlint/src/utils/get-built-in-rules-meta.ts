@@ -1,7 +1,7 @@
 import type { OxlintPlugin, OxlintRuleMeta } from "../common.ts";
 import { spawnSync } from "node:child_process";
 import { readFileSync } from "node:fs";
-import { dirname, resolve } from "node:path";
+import nodePath from "node:path";
 import { fileURLToPath } from "node:url";
 import { COMPATIBLE_RULES } from "./get-compatible-rules.ts";
 import { getPluginFromRuleScope } from "./get-plugin-from-rule-scope.ts";
@@ -48,7 +48,7 @@ const resolveOxlintBin = (): string => {
     );
   }
 
-  return resolve(dirname(pkgPath), relativeBin);
+  return nodePath.resolve(nodePath.dirname(pkgPath), relativeBin);
 };
 
 /**

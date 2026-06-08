@@ -49,20 +49,6 @@ const JS_RULES_META: OxlintRuleMeta[] = [
     compatible: false,
     referenced: false,
   },
-  {
-    scope: "eslint_js",
-    value: "prefer-arrow-callback",
-    category: "style",
-    type_aware: false,
-    fix: "fixable_fix",
-    default: false,
-    docs_url: "https://eslint.org/docs/latest/rules/prefer-arrow-callback",
-    plugin: "eslint-js",
-    name: "eslint-js/prefer-arrow-callback",
-    builtIn: false,
-    compatible: false,
-    referenced: false,
-  },
 ];
 
 /**

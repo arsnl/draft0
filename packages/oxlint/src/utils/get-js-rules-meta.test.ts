@@ -10,7 +10,6 @@ describe(getJsRulesMeta, () => {
       "eslint-js/no-restricted-syntax",
       "eslint-js/no-unreachable-loop",
       "eslint-js/one-var",
-      "eslint-js/prefer-arrow-callback",
     ]);
     expect(meta.every((rule) => rule.plugin === "eslint-js")).toBe(true);
     expect(meta.every((rule) => !rule.builtIn)).toBe(true);

@@ -2,6 +2,7 @@ import type { DummyRuleMap, OxlintConfig } from "oxlint";
 import { getCompatibleRules } from "../utils/get-compatible-rules.ts";
 import { preset as jestPreset } from "./jest.ts";
 
+// TODO: Remove and write rules in vitest directly. OXC team stopped supporting the non-sense of "compatible rules" and now every rules are clearly separated and documented.
 const vitestCompatibleRules: DummyRuleMap = getCompatibleRules({
   /* v8 ignore next -- @preserve */
   sourceRules: jestPreset.overrides?.[0]?.rules ?? {},
@@ -30,6 +31,7 @@ export const preset: OxlintConfig = {
         "vitest/no-conditional-tests": ["error"],
         "vitest/no-import-node-test": ["error"],
         "vitest/no-importing-vitest-globals": ["off"], // Disabled: Conflicts with vitest/prefer-importing-vitest-globals — both rules enforce opposite styles
+        "vitest/padding-around-after-all-blocks": ["error"],
         "vitest/prefer-called-exactly-once-with": ["error"],
         "vitest/prefer-called-once": ["off"], // Disabled: Conflicts with vitest/prefer-called-times — both rules enforce opposite styles
         "vitest/prefer-called-times": ["error"],
