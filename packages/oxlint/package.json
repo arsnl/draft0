@@ -53,7 +53,7 @@
   "devDependencies": {
     "@draft0/tsconfig": "*",
     "@draft0/tsdown": "*",
-    "oxlint": "1.62.0"
+    "oxlint": "1.69.0"
   },
   "peerDependencies": {
     "oxlint": "^1.62.0"

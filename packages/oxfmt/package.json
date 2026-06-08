@@ -44,7 +44,7 @@
   "devDependencies": {
     "@draft0/tsconfig": "*",
     "@draft0/tsdown": "*",
-    "oxfmt": "0.47.0"
+    "oxfmt": "0.54.0"
   },
   "peerDependencies": {
     "oxfmt": "^0.47.0"
