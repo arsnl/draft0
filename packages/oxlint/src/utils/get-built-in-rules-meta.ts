@@ -1,12 +1,10 @@
-import type { OxlintPlugin, OxlintRuleMeta } from "../common.ts";
+import type { OxlintRuleMeta } from "../common.ts";
 import { spawnSync } from "node:child_process";
 import { readFileSync } from "node:fs";
-import { dirname, resolve } from "node:path";
+import nodePath from "node:path";
 import { fileURLToPath } from "node:url";
-import { COMPATIBLE_RULES } from "./get-compatible-rules.ts";
 import { getPluginFromRuleScope } from "./get-plugin-from-rule-scope.ts";
 import { getReferencedRuleNames } from "./get-referenced-rule-names.ts";
-import { getRuleScopeFromPlugin } from "./get-rule-scope-from-plugin.ts";
 
 // `oxlint --rules --format json` is not a documented public contract and can drift across
 // versions. If `isOxlintCliRuleMeta` starts rejecting entries, update both shapes together.
@@ -48,7 +46,7 @@ const resolveOxlintBin = (): string => {
     );
   }
 
-  return resolve(dirname(pkgPath), relativeBin);
+  return nodePath.resolve(nodePath.dirname(pkgPath), relativeBin);
 };
 
 /**
@@ -108,40 +106,5 @@ export const getBuiltInRulesMeta = (): OxlintRuleMeta[] => {
     };
   });
 
-  const compatibleRules = Object.entries(COMPATIBLE_RULES).map(
-    ([compatibleRuleName, sourceRuleName]) => {
-      const sourceRule = sourceRules.find(({ name }) => name === sourceRuleName);
-      const [plugin, value] = compatibleRuleName.split("/") as [
-        OxlintPlugin | undefined,
-        string | undefined,
-      ];
-
-      if (!sourceRule) {
-        throw new Error(
-          `Source rule ${sourceRuleName} not found from Oxlint CLI rules while getting compatible rule ${compatibleRuleName}`,
-        );
-      }
-
-      if (!plugin || !value) {
-        throw new Error(
-          `Compatible rule ${compatibleRuleName} name is invalid. Expected format: "plugin/value".`,
-        );
-      }
-
-      const name = `${plugin}/${value}`;
-
-      return {
-        ...sourceRule,
-        scope: getRuleScopeFromPlugin(plugin),
-        value,
-        plugin,
-        name,
-        builtIn: false,
-        compatible: true,
-        referenced: referencedRuleNames.has(name),
-      } satisfies OxlintRuleMeta;
-    },
-  );
-
-  return [...sourceRules, ...compatibleRules];
+  return [...sourceRules];
 };

@@ -5,12 +5,11 @@ describe(getJsRulesMeta, () => {
   it("returns metadata entries for third-party JavaScript plugin rules", () => {
     const meta = getJsRulesMeta();
 
-    expect(meta).toHaveLength(4);
+    expect(meta).toHaveLength(3);
     expect(meta.map((rule) => rule.name)).toStrictEqual([
       "eslint-js/no-restricted-syntax",
       "eslint-js/no-unreachable-loop",
       "eslint-js/one-var",
-      "eslint-js/prefer-arrow-callback",
     ]);
     expect(meta.every((rule) => rule.plugin === "eslint-js")).toBe(true);
     expect(meta.every((rule) => !rule.builtIn)).toBe(true);

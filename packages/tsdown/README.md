@@ -2,6 +2,8 @@
 
 **Skip setup, start shipping.**
 
+> ⚠️ This package is in beta preview and its API is subject to change.
+
 `@draft0/tsdown` is part of Draft0, an opinionated, zero-configuration toolkit for modern TypeScript projects.
 
 This package provides a [tsdown](https://tsdown.dev) config helper with sensible defaults for ESM-first output, declaration emit, dependency strategy, and package quality checks so you can publish libraries and CLIs without hand-tuning every bundler flag.
@@ -75,4 +77,4 @@ export default defineConfig({
 
 ## Documentation
 
-Full documentation: [docs.draft0.dev](https://docs.draft0.dev/).
+Full documentation: [draft0.dev](https://draft0.dev/).

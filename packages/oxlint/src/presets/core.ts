@@ -55,7 +55,9 @@ export const preset: OxlintConfig = {
     "eslint/grouped-accessor-pairs": ["error", "getBeforeSet", { enforceForTSTypes: true }],
     "eslint/guard-for-in": ["error"],
     "eslint/id-length": ["off"], // Disabled: Style preference; variable names are context-dependent
+    "eslint/id-match": ["off"], // Disabled: Too restrictive; variable names are context-dependent
     "eslint/init-declarations": ["off"], // Disabled: TypeScript strict mode already catches uninitialized variables
+    "eslint/logical-assignment-operators": ["error", "always"],
     "eslint/max-classes-per-file": ["off"], // Disabled: Arbitrary limit; co-located helper classes are valid
     "eslint/max-depth": ["off"], // Disabled: Arbitrary threshold; better enforced through code review
     "eslint/max-lines-per-function": ["off"], // Disabled: Arbitrary limit; better enforced through code review
@@ -106,6 +108,8 @@ export const preset: OxlintConfig = {
     "eslint/no-func-assign": ["error"],
     "eslint/no-global-assign": ["error"],
     "eslint/no-implicit-coercion": ["error"],
+    "eslint/no-implicit-globals": ["error"],
+    "eslint/no-implied-eval": ["error"],
     "eslint/no-import-assign": ["error"],
     "eslint/no-inline-comments": ["off"], // Disabled: Too restrictive; inline comments often improve clarity
     "eslint/no-inner-declarations": ["error"],
@@ -222,6 +226,7 @@ export const preset: OxlintConfig = {
       })),
     ],
     "eslint/no-restricted-imports": ["off"], // Disabled: Project-specific; no universal import restrictions to apply
+    "eslint/no-restricted-properties": ["off"], // Disabled: Project-specific; Other rules already covers the well-known restricted properties (e.g. unicorn/prefer-global-this)
     "eslint/no-return-assign": ["error", "always"],
     "eslint/no-script-url": ["error"],
     "eslint/no-self-assign": ["error", { props: true }],
@@ -261,12 +266,12 @@ export const preset: OxlintConfig = {
       "warn",
       {
         vars: "all",
-        varsIgnorePattern: /^_/.source,
+        varsIgnorePattern: /^_/u.source,
         args: "after-used",
-        argsIgnorePattern: /^_/.source,
+        argsIgnorePattern: /^_/u.source,
         caughtErrors: "all",
-        caughtErrorsIgnorePattern: /^_/.source,
-        destructuredArrayIgnorePattern: /^_/.source,
+        caughtErrorsIgnorePattern: /^_/u.source,
+        destructuredArrayIgnorePattern: /^_/u.source,
         ignoreRestSiblings: true,
       },
     ],
@@ -291,6 +296,7 @@ export const preset: OxlintConfig = {
       { avoidQuotes: true, ignoreConstructors: false },
     ],
     "eslint/operator-assignment": ["error", "always"],
+    "eslint/prefer-arrow-callback": ["error"],
     "eslint/prefer-const": ["error", { destructuring: "any", ignoreReadBeforeAssign: true }],
     "eslint/prefer-destructuring": [
       "error",
@@ -303,16 +309,19 @@ export const preset: OxlintConfig = {
       },
     ],
     "eslint/prefer-exponentiation-operator": ["error"],
+    "eslint/prefer-named-capture-group": ["error"],
     "eslint/prefer-numeric-literals": ["error"],
     "eslint/prefer-object-has-own": ["error"],
     "eslint/prefer-object-spread": ["error"],
     "eslint/prefer-promise-reject-errors": ["error"],
+    "eslint/prefer-regex-literals": ["error", { disallowRedundantWrapping: true }],
     "eslint/prefer-rest-params": ["error"],
     "eslint/prefer-spread": ["error"],
     "eslint/prefer-template": ["error"],
     "eslint/preserve-caught-error": ["error"],
     "eslint/radix": ["error"],
     "eslint/require-await": ["off"], // Disabled: Redundant; typescript/require-await already covers this
+    "eslint/require-unicode-regexp": ["error"],
     "eslint/require-yield": ["error"],
     "eslint/sort-imports": ["error", { ignoreCase: true, ignoreDeclarationSort: true }], // Only used for sorting import members since oxfmt don't support it yet.
     "eslint/sort-keys": ["off"], // Disabled: Too strict; logical grouping preferred over alphabetical
@@ -348,7 +357,6 @@ export const preset: OxlintConfig = {
     ],
     "eslint-js/no-unreachable-loop": ["error"],
     "eslint-js/one-var": ["error", "never"],
-    "eslint-js/prefer-arrow-callback": ["error"],
     "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
     "import/default": ["error"],
     "import/export": ["error"],
@@ -359,6 +367,7 @@ export const preset: OxlintConfig = {
     "import/max-dependencies": ["off"], // Disabled: Arbitrary limit; varies per module responsibility
     "import/named": ["error"],
     "import/namespace": ["error"],
+    "import/newline-after-import": ["error", { considerComments: true }],
     "import/no-absolute-path": ["error"],
     "import/no-amd": ["error"],
     "import/no-anonymous-default-export": ["off"], // Disabled: Framework configs often require anonymous default exports
@@ -398,7 +407,12 @@ export const preset: OxlintConfig = {
     "jsdoc/require-returns-description": ["error"],
     "jsdoc/require-returns-type": ["off"], // Disabled: Redundant; TypeScript already provides type information
     "jsdoc/require-returns": ["error"],
+    "jsdoc/require-throws-description": ["error"],
+    "jsdoc/require-throws-type": ["error"],
+    "jsdoc/require-yields-description": ["error"],
+    "jsdoc/require-yields-type": ["error"],
     "jsdoc/require-yields": ["error"],
+    "node/callback-return": ["off"], // Disabled: Conflicts with promise/prefer-await-to-callbacks and promise/no-callback-in-promise
     "node/global-require": ["off"], // Disabled: Useless; cannot use with unicorn/prefer-module
     "node/handle-callback-err": ["off"], // Disabled: Redundant; already covered by eslint/no-unused-vars
     "node/no-exports-assign": ["off"], // Disabled: Conflicts with unicorn/prefer-module
@@ -486,6 +500,7 @@ export const preset: OxlintConfig = {
       { accessibility: "explicit", overrides: { constructors: "no-public" } },
     ],
     "typescript/explicit-module-boundary-types": ["off"], // Disabled: Too verbose; TypeScript inference handles boundary types reliably
+    "typescript/method-signature-style": ["error", "property"],
     "typescript/no-array-delete": ["error"],
     "typescript/no-base-to-string": ["error"],
     "typescript/no-confusing-non-null-assertion": ["off"], // Disabled: Low severity; developers using ! understand its semantics
@@ -593,6 +608,7 @@ export const preset: OxlintConfig = {
     "unicorn/escape-case": ["error"],
     "unicorn/explicit-length-check": ["off"], // Disabled: Too verbose; truthy .length checks are idiomatic JavaScript
     "unicorn/filename-case": ["error"],
+    "unicorn/import-style": ["error"],
     "unicorn/new-for-builtins": ["error"],
     "unicorn/no-abusive-eslint-disable": ["error"],
     "unicorn/no-accessor-recursion": ["error"],
@@ -617,6 +633,7 @@ export const preset: OxlintConfig = {
     "unicorn/no-length-as-slice-end": ["error"],
     "unicorn/no-lonely-if": ["error"],
     "unicorn/no-magic-array-flat-depth": ["error"],
+    "unicorn/no-negated-condition": ["off"], // Disabled: Subjective; negated conditions can be more readable
     "unicorn/no-negation-in-equality-check": ["error"],
     "unicorn/no-nested-ternary": ["off"], // Disabled: Duplicate of eslint/no-nested-ternary; intentionally allowed
     "unicorn/no-new-array": ["error"],

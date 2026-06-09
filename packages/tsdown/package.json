@@ -8,7 +8,7 @@
     "tsdown",
     "typescript"
   ],
-  "homepage": "https://github.com/arsnl/draft0",
+  "homepage": "https://draft0.dev",
   "bugs": {
     "url": "https://github.com/arsnl/draft0/issues"
   },
@@ -41,16 +41,16 @@
     "build": "tsdown"
   },
   "dependencies": {
-    "@arethetypeswrong/core": "^0.18.2",
-    "@draft0/tsconfig": "*",
-    "publint": "^0.3.18",
-    "type-fest": "^5.6.0"
+    "@arethetypeswrong/core": "^0.18.3",
+    "publint": "^0.3.21",
+    "type-fest": "^5.7.0"
   },
   "devDependencies": {
-    "tsdown": "0.21.10"
+    "@draft0/tsconfig": "*",
+    "tsdown": "0.22.2"
   },
   "peerDependencies": {
-    "tsdown": "^0.21.10"
+    "tsdown": "^0.22.2"
   },
   "engines": {
     "node": ">=24.0.0"

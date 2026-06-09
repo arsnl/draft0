@@ -2,6 +2,8 @@
 
 **Skip setup, start shipping.**
 
+> ⚠️ This package is in beta preview and its API is subject to change.
+
 `@draft0/oxfmt` is part of Draft0, an opinionated, zero-configuration toolkit for modern TypeScript projects.
 
 This package provides an [Oxfmt](https://oxc.rs/docs/guide/usage/formatter) helper with shared formatting defaults (JSDoc, import sorting, package.json sorting, and related options) so you can rely on consistent style without assembling every knob yourself.
@@ -49,4 +51,4 @@ export default defineConfig({
 
 ## Documentation
 
-Full documentation: [docs.draft0.dev](https://docs.draft0.dev/).
+Full documentation: [draft0.dev](https://draft0.dev/).

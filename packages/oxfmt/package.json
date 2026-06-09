@@ -9,7 +9,7 @@
     "formatter",
     "oxfmt"
   ],
-  "homepage": "https://github.com/arsnl/draft0",
+  "homepage": "https://draft0.dev",
   "bugs": {
     "url": "https://github.com/arsnl/draft0/issues"
   },
@@ -44,10 +44,10 @@
   "devDependencies": {
     "@draft0/tsconfig": "*",
     "@draft0/tsdown": "*",
-    "oxfmt": "0.47.0"
+    "oxfmt": "0.54.0"
   },
   "peerDependencies": {
-    "oxfmt": "^0.47.0"
+    "oxfmt": "^0.54.0"
   },
   "engines": {
     "node": ">=24.0.0"

@@ -47,6 +47,7 @@ export const preset: OxlintConfig = {
     "react/no-is-mounted": ["error"],
     "react/no-multi-comp": ["off"], // Disabled: Too restrictive; multiple components per file for colocation is idiomatic React and encouraged for readability
     "react/no-namespace": ["error"],
+    "react/no-object-type-as-default-prop": ["off"], // Disabled: Old behavior; React compiler handles this
     "react/no-react-children": ["error"],
     "react/no-redundant-should-component-update": ["error"],
     "react/no-render-return-value": ["error"],
@@ -54,6 +55,7 @@ export const preset: OxlintConfig = {
     "react/no-string-refs": ["error"],
     "react/no-this-in-sfc": ["error"],
     "react/no-unescaped-entities": ["error"],
+    "react/no-unstable-nested-components": ["error"],
     "react/no-unknown-property": [
       "error",
       { ignore: ["css", "jsx", "global"], requireDataLowercase: true },
@@ -70,9 +72,9 @@ export const preset: OxlintConfig = {
     "react/state-in-constructor": ["error"],
     "react/style-prop-object": ["error"],
     "react/void-dom-elements-no-children": ["error"],
-    "react-perf/jsx-no-jsx-as-prop": ["off"], // Disabled: Redundant; let the React compiler enforce this
-    "react-perf/jsx-no-new-array-as-prop": ["off"], // Disabled: Redundant; let the React compiler enforce this
-    "react-perf/jsx-no-new-function-as-prop": ["off"], // Disabled: Redundant; let the React compiler enforce this
-    "react-perf/jsx-no-new-object-as-prop": ["off"], // Disabled: Redundant; let the React compiler enforce this
+    "react-perf/jsx-no-jsx-as-prop": ["off"], // Disabled: Old behavior; React compiler handles this
+    "react-perf/jsx-no-new-array-as-prop": ["off"], // Disabled: Old behavior; React compiler handles this
+    "react-perf/jsx-no-new-function-as-prop": ["off"], // Disabled: Old behavior; React compiler handles this
+    "react-perf/jsx-no-new-object-as-prop": ["off"], // Disabled: Old behavior; React compiler handles this
   },
 };

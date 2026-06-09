@@ -31,7 +31,7 @@ Use `npm run ...` or `npx turbo run ...` for workspace tasks so Turborepo cachin
 
 ## Tooling
 
-- **Package manager:** `npm@11.7.0` (enforced via `packageManager` in `package.json`).
+- **Package manager:** `npm` (enforced via `packageManager` in `package.json`).
 - **Node (repo):** `>= 24` — do not switch this repo to `pnpm`, `yarn`, or `bun`.
 - Published packages may document a different supported Node range in their own `package.json` — follow that for package-specific code.
 
