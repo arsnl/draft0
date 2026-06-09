@@ -2,6 +2,8 @@
 
 **Skip setup, start shipping.**
 
+> ⚠️ This package is in beta preview and its API is subject to change.
+
 `@draft0/tsconfig` is part of Draft0, an opinionated, zero-configuration toolkit for modern TypeScript projects.
 
 This package provides ready-to-use [TypeScript `tsconfig`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) presets so you can use strict, modern defaults immediately and focus on your code.

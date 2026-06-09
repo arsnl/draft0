@@ -2,6 +2,8 @@
 
 **Skip setup, start shipping.**
 
+> ⚠️ This package is in beta preview and its API is subject to change.
+
 `@draft0/oxlint` is part of Draft0, an opinionated, zero-configuration toolkit for modern TypeScript projects.
 
 This package provides an [Oxlint](https://oxc.rs/docs/guide/usage/linter) preset so you can get strict, framework-aware linting defaults out of the box and focus on shipping features.
