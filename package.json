@@ -27,7 +27,7 @@
     "@draft0/oxlint": "*",
     "@types/node": "^25.9.2",
     "@vitest/coverage-v8": "^4.1.8",
-    "turbo": "^2.9.16",
+    "turbo": "^2.9.17",
     "typescript": "6.0.3",
     "vitest": "^4.1.8"
   },
